@@ -72,6 +72,7 @@ _default_tag_whitelists = bleach.ALLOWED_TAGS + [
     'dl',
     'dt',
     'dd',
+    'sup',
 ] + ['h{}'.format(n) for n in range(8)]
 
 

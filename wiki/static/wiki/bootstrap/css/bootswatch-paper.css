@@ -9352,7 +9352,7 @@ input[type="checkbox"]:disabled:checked:after,
 }
 
 /******************************
- a tag target 
+ kjh- a tag target 
 *******************************/
 
 :target:before {
@@ -9360,4 +9360,57 @@ content:"";
 display:block;
 height:90px; /* fixed header height*/
 margin:-90px 0 0; /* negative fixed header height */
+}
+
+/******************************
+ kjh- form tag  
+*******************************/
+
+.form-horizontal .wiki-control input[type=text], .form-horizontal .wiki-control input[type=password], .form-horizontal .wiki-control input[type=email]{
+    width: 95%;
+    display: inline-block;
+}
+.form-horizontal .wiki-control select{
+     width: 280px;
+    display: inline-block; 
+}
+.form-horizontal .wiki-control .input-group {
+      width: 95%;
+    display: inline-block; 
+}
+.form-horizontal .wiki-control .input-group input[type=text]{
+      width: 100%;
+    display: inline-block; 
+}
+.input-group-addon{
+     display: none;  
+}
+input:focus {
+    outline: none;
+}
+
+.form-horizontal .wiki-control .markItUpContainer{
+  display: block;
+}
+.form-horizontal .wiki-control .markItUpContainer .markItUpHeader{
+  margin-bottom:  10px;
+  background-color: yellow;
+  display: block;
+}
+textarea.markItUp {
+    font-size: 16px;
+    padding: 10px;
+    float: none;
+    display: block;
+    width: 95%;
+    height: 400px;
+    font-size: 13px;
+    color: #222;
+    margin-top: 50px;
+    /*background-color: hsl(0, 0%, 98%);*/
+    box-shadow: inset 2px -2px  0 #e6e6e6;
+    display: block;
+}
+textarea:focus.markItUp {
+box-shadow: inset 2px -2px 0 #2196f3;
 }

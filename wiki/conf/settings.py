@@ -72,7 +72,7 @@ _default_tag_whitelists = bleach.ALLOWED_TAGS + [
     'dl',
     'dt',
     'dd',
-    'sup',
+    'sup',# add to modify footnote display error => <sup id="fnref:footnote">1</sup>.
 ] + ['h{}'.format(n) for n in range(8)]
 
 

@@ -9350,3 +9350,14 @@ input[type="checkbox"]:disabled:checked:after,
 .fa-meanpath:before {
   content: "\f20c";
 }
+
+/******************************
+ a tag target 
+*******************************/
+
+:target:before {
+content:"";
+display:block;
+height:90px; /* fixed header height*/
+margin:-90px 0 0; /* negative fixed header height */
+}

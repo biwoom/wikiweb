@@ -12,13 +12,14 @@
 </script>
 {% endaddtoblock %}
 
-<div class="panel-group" id="accordion_{{ plugin.slug }}">
+<div class="panel-group col-lg-12" id="accordion_{{ plugin.slug }}">
 
 {% for plugin, plugin_form in sidebar %}
 
-  <div class="panel panel-default">
+  <div class="panel panel-default col-lg-3" style="margin-top: 15px;">
 
-    <div class="panel-heading">
+    <!--<div class="panel-heading">-->
+      <div class="panel-body">
       <a class="panel-toggle" href="#collapse_{{ plugin.slug }}" data-toggle="collapse">
         <h3 class="panel-title"><span class="fa fa-fw {{ plugin.sidebar.icon_class }}"></span> {{ plugin.sidebar.headline }}</h3>
       </a>
@@ -38,5 +39,6 @@
     </div>
 
   </div>
+  
 {% endfor %}
 </div>

@@ -1702,9 +1702,10 @@ h6[id]:target:before{margin-top:-8.4rem;padding-top:8.4rem}
 *******************************/
 
 sup[id^="fnref:"]:before{display:inline-block;content:""}
-sup[id^="fnref:"]:target:before{margin-top:-15rem;padding-top:15rem}
+sup[id^="fnref:"]:target:before{margin-top:-15rem;padding-top:15rem;}
 .footnote{color:rgba(0,0,0,.54);font-size:1.28rem}
 .footnote li:target{color:rgba(0,0,0,.87)}
+
 
 /******************************
  kjh- form tag  
@@ -1736,14 +1737,14 @@ input:focus {
     outline: 0 !important;
 }
 
-.form-horizontal .wiki-control .markItUpContainer{
-  display: block;
-}
-.form-horizontal .wiki-control .markItUpContainer .markItUpHeader{
-  margin-bottom:  10px;
-  background-color: yellow;
-  display: block;
-}
+/*.form-horizontal .wiki-control .markItUpContainer{*/
+/*  display: block;*/
+/*}*/
+/*.form-horizontal .wiki-control .markItUpContainer .markItUpHeader{*/
+/*  margin-bottom:  10px;*/
+/*  background-color: yellow;*/
+/*  display: block;*/
+/*}*/
 textarea.markItUp {
     font-size: 16px;
     padding: 10px;
@@ -1753,12 +1754,57 @@ textarea.markItUp {
     height: 400px;
     font-size: 13px;
     color: #222;
-    margin-top: 50px;
-    /*background-color: hsl(0, 0%, 98%);*/
+    background-color: hsl(0, 0%, 98%);
     box-shadow: inset 2px -2px  0 #e6e6e6;
     display: block;
 }
 textarea:focus.markItUp {
 box-shadow: inset 2px -2px 0 #2196f3;
+}
+
+.markItUpHeader:before{
+  content:""!important;
+  display: block!important;
+  margin-bottom: 10px!important;
+}
+.markItUpEditor{
+  
+}
+/******************************
+ kjh- edit preview  
+*******************************/
+.modal-content {
+  width: 100%;
+}
+.modal-dialog {
+  width: 90%;
+  margin: 50px auto;
+}
+.modal-body iframe {
+  /*min-width: 900px;*/
+  width: 100%;
+  min-height: 350px;
+  height: 100%;
+  border: 0;
+}
+/******************************
+ kjh- edit sidebar menu  
+*******************************/
+/*.panel{*/
+/*  display: inline-block; */
+/*}*/
+.panel-title{
+  color: #737373;
+}
+.tt-dropdown-menu{
+  background-color: #e6f5ff !important;
+  padding: 10px;
+  max-width: 280px;
+}
+.tt-hint{
+  visibility: hidden!important;
+}
+.panel-group[id^="accordion_"]{
+  display: inline-block;
 }
 

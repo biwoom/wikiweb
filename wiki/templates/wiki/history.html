@@ -55,7 +55,8 @@
       <div class="panel-group" id="accordion{{ revision.revision_number }}">
         <div class="panel panel-default">
           <div class="panel-heading">
-            <a class="panel-toggle" style="float: left;" href="#collapse{{ revision.revision_number }}" onclick="get_diff_json('{% url 'wiki:diff' revision.id %}', $('#collapse{{ revision.revision_number }}'))">
+            <a class="panel-toggle" style="float: left;" href="#collapse{{ revision.revision_number }}" onclick="get_diff_json('{% url 'wiki:diff' revision.id %}', $('#collapse{{ revision.revision_number }}'))" data-toggle="collapse">
+            
               {% if revision == article.current_revision %}
                 <i class="fa fa-flag"></i>
               {% else %}

@@ -1737,14 +1737,6 @@ input:focus {
     outline: 0 !important;
 }
 
-/*.form-horizontal .wiki-control .markItUpContainer{*/
-/*  display: block;*/
-/*}*/
-/*.form-horizontal .wiki-control .markItUpContainer .markItUpHeader{*/
-/*  margin-bottom:  10px;*/
-/*  background-color: yellow;*/
-/*  display: block;*/
-/*}*/
 textarea.markItUp {
     font-size: 16px;
     padding: 10px;
@@ -1790,9 +1782,6 @@ box-shadow: inset 2px -2px 0 #2196f3;
 /******************************
  kjh- edit sidebar menu  
 *******************************/
-/*.panel{*/
-/*  display: inline-block; */
-/*}*/
 .panel-title{
   color: #737373;
 }
@@ -1808,3 +1797,6 @@ box-shadow: inset 2px -2px 0 #2196f3;
   display: inline-block;
 }
 
+/******************************
+ kjh- history menu  
+*******************************/

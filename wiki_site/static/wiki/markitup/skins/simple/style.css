@@ -5,6 +5,7 @@
 .markItUp * {
 	margin:0px; padding:0px;
 	outline:none;
+	margin-bottom: 10px;
 }
 .markItUp a:link,
 .markItUp a:visited {

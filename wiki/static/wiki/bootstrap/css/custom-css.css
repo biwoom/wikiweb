@@ -1716,7 +1716,8 @@ sup[id^="fnref:"]:target:before{margin-top:-15rem;padding-top:15rem;}
     display: inline-block;
 }
 .form-horizontal .wiki-control select{
-     width: 280px;
+    /*width: 280px;*/
+    width: 90%;
     display: inline-block; 
 }
 .form-horizontal .wiki-control .input-group {
@@ -1800,3 +1801,18 @@ box-shadow: inset 2px -2px 0 #2196f3;
 /******************************
  kjh- history menu  
 *******************************/
+
+/******************************
+ kjh- notification menu  
+*******************************/
+ul[id^="id_form-0-email"] {
+    margin-top: 0;
+    margin-bottom: 11.5px;
+    list-style-type: none !important;
+    margin-left: 0px;
+    padding-left: 0;
+}
+select[multiple] {
+    background: none;
+    min-height: 150px;
+}

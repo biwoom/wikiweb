@@ -1820,3 +1820,9 @@ div[id^="div_id_form-0-email"]{
   /*visibility: hidden!important;*/
   display: none!important;
 }
+/******************************
+ kjh- navbar menu  
+*******************************/
+.navbar-brand{
+  font-family: 'Lobster'!important;
+}

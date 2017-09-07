@@ -12,6 +12,7 @@
     <!--<link href="{% static "wiki/bootstrap/css/wiki-bootstrap.min.css" %}" rel="stylesheet">-->
     <link href="{% static "wiki/bootstrap/css/bootswatch-paper.css" %}" rel="stylesheet">
     <link href="{% static "wiki/bootstrap/css/custom-css.css" %}" rel="stylesheet">
+    <link href="//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext" rel="stylesheet" type="text/css">
     {% render_block "css" %}
 
     <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
@@ -131,7 +132,7 @@
         <footer id="wiki-footer">
         <hr />
         {% block wiki_footer_logo %}
-        <a href="http://nalanda.or.kr/" class="pull-right"><img src="{% static "wiki/img/inb-logo-eng-lotus-bo-notran.png" %}" style="width:105px" "height:75px"/></a>
+        <a href="http://nalanda.or.kr/" class="pull-right"  target="_blank"><img src="{% static "wiki/img/inb-logo-eng-lotus-bo-notran.png" %}" style="width:105px" "height:75px"/></a>
         {% endblock %}
         {% block wiki_footer_prepend %}
         {% endblock %}

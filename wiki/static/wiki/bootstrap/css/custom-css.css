@@ -1,4 +1,15 @@
-
+/******************************
+ Tibetan font
+*******************************/
+@import url(//fonts.googleapis.com/earlyaccess/notosanstibetan.css);
+@font-face {
+  font-family: 'Tibetan Machine Uni';
+  src: url('../fonts/TibMachUni.ttf') format('truetype')
+}
+@font-face {
+  font-family: 'Monlam Uni OuChan2';
+  src: url('../fonts/Monlam Uni OuChan2.ttf') format('truetype')
+}
 /******************************
  ICONS
 *******************************/
@@ -1763,6 +1774,18 @@ box-shadow: inset 2px -2px 0 #2196f3;
 .markItUpEditor{
   
 }
+
+.wiki-label{
+  padding-right: 0px !important;
+  
+}
+
+@media (min-width: 768px){
+.form-horizontal .control-label {
+    text-align: left;
+    margin-bottom: 0;
+    padding-top: 7px;
+}}
 /******************************
  kjh- edit preview  
 *******************************/
@@ -1796,6 +1819,7 @@ box-shadow: inset 2px -2px 0 #2196f3;
 }
 .panel-group[id^="accordion_"]{
   display: inline-block;
+  width: 100%;
 }
 
 /******************************
@@ -1820,9 +1844,133 @@ div[id^="div_id_form-0-email"]{
   /*visibility: hidden!important;*/
   display: none!important;
 }
+div[id^="div_id_edit_email"]{
+  /*visibility: hidden!important;*/
+  display: none!important;
+}
+
 /******************************
  kjh- navbar menu  
 *******************************/
 .navbar-brand{
   font-family: 'Lobster'!important;
+}
+
+/******************************
+ kjh- table
+*******************************/
+/*=====================================*/
+/*=================기본 테이블*/
+table { 
+    width: 100%; 
+    border-collapse: collapse; 
+    margin:0px auto;
+    font-family: sans-serif;
+}
+tr:nth-of-type(odd) { 
+    background: #f2f2f2;
+}
+th { 
+    background: #0f9fff;
+    /*background: #80ccff;*/
+    /*background: #4dd2ff;*/
+    background: #33adff;
+    padding: 10px; 
+    border: 1px solid #ccc; 
+    text-align: left; 
+    color: white; 
+    font-family: sans-serif;
+    font-weight: bold; 
+    font-size: 20px;
+}
+td  { 
+    padding: 5px; 
+    border: 1px solid #ccc; 
+    text-align: left; 
+    font-size: 23px;
+    color: black;
+} 
+
+
+/*=====================================*/    
+/*=============티벳어 테이블    */
+.tibetan+div>table{
+    width: 100%; 
+    border-collapse: collapse; 
+    margin:0px auto;
+    /*font-family: 'Noto Sans Tibetan', sans-serif;*/
+    font-family: 'Tibetan Machine Uni', sans-serif;
+    /*font-family: 'Monlam Uni OuChan2', sans-serif;*/
+}
+.tibetan+div>table>tbody>tr>td  { 
+    padding: 5px; 
+    border: 1px solid #ccc; 
+    text-align: left; 
+    font-size: 23px;
+    color: black;
+}
+.tibetan+div>table>tbody>tr>td:first-child{
+    /*background: red;*/
+    font-family: sans-serif;
+    font-size: 16px;
+    width: 5%; 
+} 
+/*}*/
+/*td:nth-of-type(odd) { */
+/*    font-family: sans-serif;*/
+/*    font-size: 16px;*/
+/*    width: 5%; */
+/*}   */
+
+/*티벳어 테이블 안에 한국어 써야 할 때*/
+.tibetan+div>table>tbody>tr>td>em { 
+    font-family: sans-serif;
+    font-style: normal;
+    font-size: 16px;
+}     
+
+
+/*=====================================*/
+/*====================한국어 테이블    */
+.korean+div>table{
+    width: 100%; 
+    border-collapse: collapse; 
+    margin:0px auto;
+    font-family: sans-serif;
+}
+.korean+div>table>tbody>tr>td  { 
+    padding: 5px; 
+    border: 1px solid #ccc; 
+    text-align: left; 
+    font-size: 16px;
+    color: black;
+}
+.korean+div>table>tbody>tr>td:first-child{
+    /*background: blue;*/
+    font-family: sans-serif;
+    font-size: 16px;
+    width: 5%; 
+} 
+
+/*한국어 테이블 안에 티벳어 써야 할 때*/
+.korean+div>table>tbody>tr>td>em { 
+    font-family: 'Tibetan Machine Uni', sans-serif;
+    font-style: normal;
+    font-size: 23px;
+} 
+
+.korean, .tibetan {
+  display: inline-block;
+  padding: .2em .6em .3em;
+  font-size: 15px;;
+  font-weight: bold;
+  line-height: 1;
+  color: #ffffff;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: baseline;
+  border-radius: .25em;
+  background-color:#d9d9d9;
+  margin-bottom: 1em;
+  margin-top: 1em;
 }

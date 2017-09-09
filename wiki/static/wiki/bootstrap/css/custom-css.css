@@ -1881,13 +1881,13 @@ th {
     color: white; 
     font-family: sans-serif;
     font-weight: bold; 
-    font-size: 20px;
+    font-size: 18px;
 }
 td  { 
     padding: 5px; 
     border: 1px solid #ccc; 
     text-align: left; 
-    font-size: 23px;
+    font-size: 13px;
     color: black;
 } 
 
@@ -1901,6 +1901,10 @@ td  {
     /*font-family: 'Noto Sans Tibetan', sans-serif;*/
     font-family: 'Tibetan Machine Uni', sans-serif;
     /*font-family: 'Monlam Uni OuChan2', sans-serif;*/
+}
+.tibetan+div>table>thead>tr>th  { 
+    /*font-size: 23px;*/
+    /*color: red;*/
 }
 .tibetan+div>table>tbody>tr>td  { 
     padding: 5px; 
@@ -1961,16 +1965,41 @@ td  {
 
 .korean, .tibetan {
   display: inline-block;
-  padding: .2em .6em .3em;
+  padding: .4em .6em .3em;
   font-size: 15px;;
   font-weight: bold;
   line-height: 1;
-  color: #ffffff;
+  /*color: #ffffff;*/
+  color: black;
   text-align: center;
   white-space: nowrap;
   vertical-align: baseline;
   border-radius: .25em;
   background-color:#d9d9d9;
-  margin-bottom: 1em;
+  margin-bottom: 1.7em;
   margin-top: 1em;
+}
+
+/******************************
+ kjh- article images
+*******************************/
+.thumbnail {
+    /* display: block; */
+    padding: 4px;
+    margin-top: 5px;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-bottom: 5px;
+    line-height: 1.846;
+    background-color: #ffffff;
+    border: 1px solid #dddddd;
+    border-radius: 3px;
+    -webkit-transition: border 0.2s ease-in-out;
+    -o-transition: border 0.2s ease-in-out;
+    transition: border 0.2s ease-in-out;
+}
+.caption{
+  padding: 1px !important;
+  /*border-top: 2px solid #e6e6e6 !important;*/
+  /*background-color: #f2f2f2!important;*/
 }

@@ -4,5 +4,3 @@ __pycache__
 .DS_Store
 *.log
 *.bak
-wiki_site/db/wiki_database.db
-*.db

@@ -1722,7 +1722,7 @@ sup[id^="fnref:"]:target:before{margin-top:-15rem;padding-top:15rem;}
  kjh- form tag  
 *******************************/
 
-.form-horizontal .wiki-control input[type=text], .form-horizontal .wiki-control input[type=password], .form-horizontal .wiki-control input[type=email]{
+.form-horizontal .wiki-control input[type=text], .form-horizontal .wiki-control input[type=password], .form-horizontal .wiki-control input[type=email] {
     width: 95%;
     display: inline-block;
 }
@@ -1771,13 +1771,16 @@ box-shadow: inset 2px -2px 0 #2196f3;
   display: block!important;
   margin-bottom: 10px!important;
 }
-.markItUpEditor{
-  
+/*에디터 상단 아이콘 메뉴*/
+.markItUpHeader ul li {
+    list-style: none;
+    float: left;
+    position: relative;
+    width: 30px;
 }
-
 .wiki-label{
   padding-right: 0px !important;
-  
+  /*padding-left: 5px !important;*/
 }
 
 @media (min-width: 768px){
@@ -1820,8 +1823,24 @@ box-shadow: inset 2px -2px 0 #2196f3;
 .panel-group[id^="accordion_"]{
   display: inline-block;
   width: 100%;
+  padding: 0px;
 }
-
+#accordion_macros{
+  display: none;
+}
+/*:last-child*/
+/*#accordion_:nth-child(4){*/
+/*  display: none;*/
+/*}*/
+/*#accordion_:first-child{*/
+/*  background-color: blue !important;*/
+/*}*/
+/*.panel-group:nth-child(4){*/
+/*  display: none;*/
+/*}*/
+/*panel panel-default col-lg-3*/
+/*nth-of-type(n)*/
+/*nth-child(n)*/
 /******************************
  kjh- history menu  
 *******************************/
@@ -1861,36 +1880,33 @@ div[id^="div_id_edit_email"]{
 *******************************/
 /*=====================================*/
 /*=================기본 테이블*/
-table { 
-    width: 100%; 
-    border-collapse: collapse; 
-    margin:0px auto;
-    font-family: sans-serif;
-}
-tr:nth-of-type(odd) { 
-    background: #f2f2f2;
-}
-th { 
-    background: #0f9fff;
-    /*background: #80ccff;*/
-    /*background: #4dd2ff;*/
-    background: #33adff;
-    padding: 10px; 
-    border: 1px solid #ccc; 
-    text-align: left; 
-    color: white; 
-    font-family: sans-serif;
-    font-weight: bold; 
-    font-size: 18px;
-}
-td  { 
-    padding: 5px; 
-    border: 1px solid #ccc; 
-    text-align: left; 
-    font-size: 13px;
-    color: black;
-} 
-
+/*table { */
+/*    width: 100%; */
+/*    border-collapse: collapse; */
+/*    margin:0px auto;*/
+/*    font-family: sans-serif;*/
+/*}*/
+/*tr:nth-of-type(odd) { */
+/*    background: #f2f2f2;*/
+/*}*/
+/*th { */
+/*    background: #0f9fff;*/
+/*    background: #33adff;*/
+/*    padding: 10px; */
+/*    border: 1px solid #ccc; */
+/*    text-align: left; */
+/*    color: white; */
+/*    font-family: sans-serif;*/
+/*    font-weight: bold; */
+/*    font-size: 18px;*/
+/*}*/
+/*td  { */
+/*    padding: 5px; */
+/*    border: 1px solid #ccc; */
+/*    text-align: left; */
+/*    font-size: 13px;*/
+/*    color: black;*/
+/*} */
 
 /*=====================================*/    
 /*=============티벳어 테이블    */
@@ -1902,6 +1918,28 @@ td  {
     font-family: 'Tibetan Machine Uni', sans-serif;
     /*font-family: 'Monlam Uni OuChan2', sans-serif;*/
 }
+.tibetan+div>table tr:nth-of-type(odd) { 
+    background: #f2f2f2;
+}
+.tibetan+div>table>thead>tr>th { 
+    background: #0f9fff;
+    background: #33adff;
+    padding: 10px; 
+    border: 1px solid #ccc; 
+    text-align: left; 
+    color: white; 
+    font-family: sans-serif;
+    font-weight: bold; 
+    font-size: 18px;
+}
+/*td  { */
+/*    padding: 5px; */
+/*    border: 1px solid #ccc; */
+/*    text-align: left; */
+/*    font-size: 13px;*/
+/*    color: black;*/
+/*} */
+
 .tibetan+div>table>thead>tr>th  { 
     /*font-size: 23px;*/
     /*color: red;*/
@@ -1919,13 +1957,6 @@ td  {
     font-size: 16px;
     width: 5%; 
 } 
-/*}*/
-/*td:nth-of-type(odd) { */
-/*    font-family: sans-serif;*/
-/*    font-size: 16px;*/
-/*    width: 5%; */
-/*}   */
-
 /*티벳어 테이블 안에 한국어 써야 할 때*/
 .tibetan+div>table>tbody>tr>td>em { 
     font-family: sans-serif;
@@ -1942,6 +1973,20 @@ td  {
     margin:0px auto;
     font-family: sans-serif;
 }
+.korean+div>table tr:nth-of-type(odd) { 
+    background: #f2f2f2;
+}
+.korean+div>table>thead>tr>th { 
+    background: #0f9fff;
+    background: #33adff;
+    padding: 10px; 
+    border: 1px solid #ccc; 
+    text-align: left; 
+    color: white; 
+    font-family: sans-serif;
+    font-weight: bold; 
+    font-size: 18px;
+}
 .korean+div>table>tbody>tr>td  { 
     padding: 5px; 
     border: 1px solid #ccc; 
@@ -1955,14 +2000,12 @@ td  {
     font-size: 16px;
     width: 5%; 
 } 
-
 /*한국어 테이블 안에 티벳어 써야 할 때*/
 .korean+div>table>tbody>tr>td>em { 
     font-family: 'Tibetan Machine Uni', sans-serif;
     font-style: normal;
     font-size: 23px;
 } 
-
 .korean, .tibetan {
   display: inline-block;
   padding: .4em .6em .3em;
@@ -2003,3 +2046,35 @@ td  {
   /*border-top: 2px solid #e6e6e6 !important;*/
   /*background-color: #f2f2f2!important;*/
 }
+
+/******************************
+ kjh- button
+*******************************/
+.btn{
+  margin-left: 7px !important;
+}
+
+/******************************
+ kjh- gloval history 
+*******************************/
+.row{
+  margin-left: 0px !important;
+  margin-right: 0px !important;
+}
+
+/******************************
+ kjh- add file to article 
+*******************************/
+/*.wiki-control{*/
+/*  display: inline-block !important;*/
+/*}*/
+/*input[type="file"] {*/
+/*  display: inline-block !important;*/
+/*}*/
+/*.asteriskField{*/
+/*  display: inline-block !important;*/
+/*}*/
+input[id^="id_file"]+.asteriskField{
+  visibility: hidden;
+}
+/*#id_file+*/

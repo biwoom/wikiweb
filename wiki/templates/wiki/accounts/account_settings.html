@@ -4,7 +4,7 @@
 {% block wiki_pagetitle %}{% trans "Account Settings" %}{% endblock %}
 
 {% block wiki_contents %}
-<h1 class="page-header">{% trans "Account Settings" %}</h1>
+<h2 class="page-header">{% trans "Account Settings" %}</h2>
 <form class="form-horizontal" action="" method="post">{% csrf_token %}
     {% wiki_form form %}
     <button type="submit" name="save_changes" class="btn btn-primary btn-lg">

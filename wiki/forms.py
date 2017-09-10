@@ -671,9 +671,10 @@ class UserCreationForm(UserCreationForm):
         fields = ("username", "email")
 
 class UserUpdateForm(forms.ModelForm):
-    password1 = forms.CharField(label="New password", widget=forms.PasswordInput(), required=False)
-    password2 = forms.CharField(label="Confirm password", widget=forms.PasswordInput(), required=False)
-
+    # password1 = forms.CharField(label="New password", widget=forms.PasswordInput(), required=False)
+    # password2 = forms.CharField(label="Confirm password", widget=forms.PasswordInput(), required=False)
+    password1 = forms.CharField(label="새 비밀번호", widget=forms.PasswordInput(), required=False)
+    password2 = forms.CharField(label="새 비밀번호 확인", widget=forms.PasswordInput(), required=False)
     def clean(self):
         password1 = self.cleaned_data.get('password1')
         password2 = self.cleaned_data.get('password2')

@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: django-wiki\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-07-10 15:09+0200\n"
-"PO-Revision-Date: 2017-09-09 02:15+0900\n"
+"PO-Revision-Date: 2017-09-10 09:29+0900\n"
 "Last-Translator: jh kim <freedharma@gmail.com>\n"
 "Language-Team: Korean (Korea) (http://www.transifex.com/django-wiki/django-wiki/language/ko_KR/)\n"
 "MIME-Version: 1.0\n"
@@ -128,7 +128,7 @@ msgstr "요약"
 
 #: forms.py:223
 msgid "Give a short reason for your edit, which will be stated in the revision log."
-msgstr "개정판 로그에 남길 편집 이유를 간단히 쓰세요."
+msgstr "변경내역에 대한 기록을 남기세요."
 
 #: forms.py:279
 msgid "Article is missing title or has an invalid title"
@@ -140,7 +140,7 @@ msgstr "편집하는 동안 누군가에 의해 개정판이 바뀌었습니다.
 
 #: forms.py:297
 msgid "No changes made. Nothing to save."
-msgstr "갱신된 내용이 없습니다. 저장될 내용이 없습니다."
+msgstr "새롭게 변경된 내용이 없습니다."
 
 #: forms.py:337
 msgid "Select an option"
@@ -152,11 +152,11 @@ msgstr "Slug"
 
 #: forms.py:402
 msgid "This will be the address where your article can be found. Use only alphanumeric characters and - or _.<br>Note: If you change the slug later on, links pointing to this article are <b>not</b> updated."
-msgstr ""
+msgstr "slug는 문서의 주소로 사용됩니다. 알파벳과 - 또는 _ 만을 사용할 수 있습니다. <br>slug가 변경되면 문서의 링크도 상실되므로 신중히 지정하시고 지정한 이후에는 변경하지 마십시오."
 
 #: forms.py:411
 msgid "Write a brief message for the article's history log."
-msgstr "문서 히스토리 로그에 남길 간략한 메시지를 쓰세요."
+msgstr "문서 변경내역에 대한 간략한 기록을 남기세요."
 
 #: forms.py:430
 msgid "Yes, I am sure"
@@ -463,7 +463,7 @@ msgstr "설명"
 
 #: plugins/attachments/forms.py:20
 msgid "A short summary of what the file contains"
-msgstr "어떤 내용의 파일인지 간략히 요약"
+msgstr "파일에 대한 설명"
 
 #: plugins/attachments/forms.py:69
 msgid "Remove previous"
@@ -475,11 +475,11 @@ msgstr "(공간 확보를 위해)이전 첨부 개정판 및 파일들을 삭제
 
 #: plugins/attachments/forms.py:79
 msgid "File or zip archive"
-msgstr "파일 또는 zip아카이브"
+msgstr "파일"
 
 #: plugins/attachments/forms.py:84
 msgid "Unzip file"
-msgstr "파일 압축 풀기"
+msgstr "unzip"
 
 #: plugins/attachments/forms.py:86
 msgid "Create individual attachments for files in a .zip file - directories do not work."
@@ -646,7 +646,7 @@ msgstr "개정판들"
 
 #: plugins/attachments/templates/wiki/plugins/attachments/index.html:62
 msgid "There are no attachments for this article."
-msgstr "이 문서에는 첨부가 없습니다."
+msgstr "이 문서에는 첨부 자료가 없습니다."
 
 #: plugins/attachments/templates/wiki/plugins/attachments/index.html:72
 msgid "Upload new file"
@@ -816,7 +816,7 @@ msgstr ""
 #: plugins/globalhistory/templates/wiki/plugins/globalhistory/globalhistory.html:14
 #, python-format
 msgid "List of all <strong>%(cnt)s changes</strong> in the wiki."
-msgstr ""
+msgstr "모두 <strong>%(cnt)s 종류의 변경기록</strong> 이 있습니다."
 
 #: plugins/globalhistory/templates/wiki/plugins/globalhistory/globalhistory.html:21
 msgid "Show all revisions of all articles"
@@ -824,15 +824,15 @@ msgstr ""
 
 #: plugins/globalhistory/templates/wiki/plugins/globalhistory/globalhistory.html:24
 msgid "Show last revision of every article"
-msgstr ""
+msgstr "각 문서의 마지막 개정판만 보기"
 
 #: plugins/globalhistory/templates/wiki/plugins/globalhistory/globalhistory.html:35
 msgid "Revision ID"
-msgstr ""
+msgstr "개정판 ID"
 
 #: plugins/globalhistory/templates/wiki/plugins/globalhistory/globalhistory.html:36
 msgid "Article"
-msgstr ""
+msgstr "문서"
 
 #: plugins/globalhistory/templates/wiki/plugins/globalhistory/globalhistory.html:37
 msgid "Message"
@@ -840,7 +840,7 @@ msgstr "메시지"
 
 #: plugins/globalhistory/templates/wiki/plugins/globalhistory/globalhistory.html:61 templates/wiki/history.html:72
 msgid "no log message"
-msgstr "로그 메시지가 없습니다."
+msgstr ""
 
 #: plugins/globalhistory/templates/wiki/plugins/globalhistory/globalhistory.html:67 templates/wiki/includes/revision_info.html:18
 msgid "restored"
@@ -856,7 +856,7 @@ msgstr "익명사용자 (IP logged)"
 
 #: plugins/globalhistory/templates/wiki/plugins/globalhistory/globalhistory.html:91
 msgid "Go to article history"
-msgstr "문서 변경내역 보기"
+msgstr "변경내역 보기"
 
 #: plugins/globalhistory/templates/wiki/plugins/globalhistory/globalhistory.html:92
 msgid "Go to article"
@@ -880,7 +880,7 @@ msgstr "문서 추가"
 
 #: plugins/help/templates/wiki/plugins/help/sidebar.html:3
 msgid "To create a new wiki article, create a link to it. Clicking the link gives you the creation page."
-msgstr "새로운 위키 문서를 만들기 위해서는 링크를 생성하세요. 생성한 링크를 클릭하면 새로운 페이지 만들기로 이동합니다. "
+msgstr "새로운 위키 문서를 만들기 위해서는 링크를 생성하세요. 생성한 링크를 클릭하면 새로운 페이지 만들기로 이동합니다."
 
 #: plugins/help/templates/wiki/plugins/help/sidebar.html:6 plugins/links/templates/wiki/plugins/links/sidebar.html:22
 msgid "An external link"
@@ -888,11 +888,11 @@ msgstr "외부 링크"
 
 #: plugins/help/templates/wiki/plugins/help/sidebar.html:9
 msgid "Headers"
-msgstr "헤더"
+msgstr "제목과 목차"
 
 #: plugins/help/templates/wiki/plugins/help/sidebar.html:10
 msgid "Use these codes for headers and to automatically generate Tables of Contents."
-msgstr "헤더에 이 코드들을 사용하여 목차를 자동으로 생성하세요."
+msgstr "아래의 코드들을 사용하여 제목을 만들 수 있습니다. 또한 [TOC]를 입력하면 목차가 자동으로 생성됩니다."
 
 #: plugins/help/templates/wiki/plugins/help/sidebar.html:25
 msgid "Typography"
@@ -908,7 +908,7 @@ msgstr "표"
 
 #: plugins/help/wiki_plugin.py:12
 msgid "Help"
-msgstr "도움말"
+msgstr ""
 
 #: plugins/images/forms.py:20
 #, python-format
@@ -1058,14 +1058,16 @@ msgid ""
 "After uploading an image, it is attached to this particular article and can be used only here. Other users may replace the image, but older versions are kept. To show the image press the Insert button and select the "
 "options you want to use. You can use Markdown in the caption. The Markdown code syntax for images looks like this"
 msgstr ""
+"이미지를 업로드 한 후에는 특정 기사에 첨부되며 여기에서만 사용할 수 있습니다. 다른 사용자는 이미지를 대체 할 수 있지만 이전 버전은 유지됩니다. 이미지를 표시하려면 이미지 추가 버튼 누르고 사용할 옵션을 선택하십시오. 이미지"
+"의 Markdown 코드 구문은 다음과 같습니다."
 
 #: plugins/images/templates/wiki/plugins/images/sidebar.html:145
 msgid "Possible values for align are"
-msgstr ""
+msgstr "이미지의 정렬을 위해 다음 코드를 사용할 수 있습니다."
 
 #: plugins/images/templates/wiki/plugins/images/sidebar.html:146
 msgid "Possible values for size are"
-msgstr ""
+msgstr "이미지의 크기를 위해 다음의 코드를 사용할 수 있습니다."
 
 #: plugins/images/templates/wiki/plugins/images/sidebar.html:159
 msgid "Alignment"
@@ -1118,7 +1120,7 @@ msgstr "다른 위키 페이지 링크"
 
 #: plugins/links/templates/wiki/plugins/links/sidebar.html:6
 msgid "Type in something from another wiki page's title and auto-complete will help you create a tag for your wiki link. Tags for links look like this:"
-msgstr ""
+msgstr "다른 위키 페이지의 제목을 입력하면 자동 완성 기능이 위키 링크의 태그를 만드는 데 도움을 드립니다. 링크 태그는 다음과 같습니다:"
 
 #: plugins/links/templates/wiki/plugins/links/sidebar.html:25
 msgid "You can link to another website simply by inserting an address example.com or http://example.com or by using the markdown syntax:"
@@ -1126,7 +1128,7 @@ msgstr "단순히 example.com 또는 http://example.com 과 같이 주소를 입
 
 #: plugins/links/wiki_plugin.py:23
 msgid "Links"
-msgstr "링크들"
+msgstr "링크추가"
 
 #: plugins/macros/mdx/macro.py:84
 msgid "Article list"
@@ -1166,7 +1168,7 @@ msgstr "이 단계 이하는 없습니다"
 
 #: plugins/macros/wiki_plugin.py:16
 msgid "Macros"
-msgstr "매크로"
+msgstr "매크"
 
 #: plugins/notifications/forms.py:19
 #, python-format
@@ -1477,12 +1479,12 @@ msgid ""
 "    "
 msgstr ""
 "\n"
-"<strong><a href=\"%(self_url)s\">/%(path)s</a></strong> 둘러보기. 이 단계에는 %(articles_plur_verb)s <strong>%(cnt)s %(articles_plur)s</strong> 개의 문서가 있습니다.\n"
+"<strong><a href=\"%(self_url)s\">/%(path)s</a></strong> 둘러보기. 이 단계에는 <strong>%(cnt)s </strong> 개의 문서가 있습니다.\n"
 "    "
 
 #: templates/wiki/dir.html:50 templates/wiki/search.html:31
 msgid "Last modified"
-msgstr "마지막으로 수정됨"
+msgstr "마지막 수정"
 
 #: templates/wiki/dir.html:74 templates/wiki/search.html:40
 msgid "There are no articles in this level"
@@ -1631,11 +1633,11 @@ msgstr "하위 문서 보기"
 
 #: templates/wiki/includes/breadcrumbs.html:48
 msgid "New article next to"
-msgstr "다음 새 문서"
+msgstr "동위에 새 문서 추가"
 
 #: templates/wiki/includes/breadcrumbs.html:53
 msgid "New article below"
-msgstr "하위 새 문서"
+msgstr "하위에 새 문서 추가"
 
 #: templates/wiki/includes/revision_info.html:10
 msgid "by"

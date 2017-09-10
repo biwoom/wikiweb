@@ -2065,16 +2065,15 @@ div[id^="div_id_edit_email"]{
 /******************************
  kjh- add file to article 
 *******************************/
-/*.wiki-control{*/
-/*  display: inline-block !important;*/
-/*}*/
-/*input[type="file"] {*/
-/*  display: inline-block !important;*/
-/*}*/
-/*.asteriskField{*/
-/*  display: inline-block !important;*/
-/*}*/
+
 input[id^="id_file"]+.asteriskField{
   visibility: hidden;
 }
-/*#id_file+*/
+
+/******************************
+ kjh- article 
+*******************************/
+#article-menu{
+  border-bottom: solid 2px #d9d9d9;
+  margin-bottom: 20px;
+}

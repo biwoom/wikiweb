@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: django-wiki\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-07-10 15:09+0200\n"
-"PO-Revision-Date: 2017-09-10 09:29+0900\n"
+"PO-Revision-Date: 2017-09-10 11:46+0900\n"
 "Last-Translator: jh kim <freedharma@gmail.com>\n"
 "Language-Team: Korean (Korea) (http://www.transifex.com/django-wiki/django-wiki/language/ko_KR/)\n"
 "MIME-Version: 1.0\n"
@@ -1381,7 +1381,7 @@ msgstr "최상위 문서 생성"
 
 #: templates/wiki/delete.html:5 templates/wiki/delete.html:52 templates/wiki/edit.html:49
 msgid "Delete article"
-msgstr "문서 삭제"
+msgstr "삭제"
 
 #: templates/wiki/delete.html:11
 msgid "You cannot delete a root article."
@@ -1508,7 +1508,7 @@ msgstr "미리 보기"
 
 #: templates/wiki/edit.html:43 templates/wiki/move.html:37
 msgid "Move article"
-msgstr "문서 이동"
+msgstr "이동"
 
 #: templates/wiki/edit.html:79
 msgid "Back to editor"

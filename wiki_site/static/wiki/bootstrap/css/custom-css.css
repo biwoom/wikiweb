@@ -2069,7 +2069,7 @@ input[id^="id_file"]+.asteriskField{
 }
 
 /******************************
- kjh- article 
+ kjh- article - text
 *******************************/
 #article-menu{
   /*border-bottom: solid 2px #d9d9d9;*/
@@ -2125,4 +2125,21 @@ hr {
     overflow: hidden;
     box-sizing: content-box;
     border-bottom: 1px solid #ddd;
+}
+/******************************
+ kjh- article - codeblock
+*******************************/
+
+pre {
+  display: block;
+  padding: 9.5px;
+  margin: 0 0 10px;
+  font-size: 13px;
+  line-height: 1.42857143;
+  word-break: break-all;
+  word-wrap: break-word;
+  color: #333333;
+  background-color: #f6f8fa;
+  border: 1px solid #ccc;
+  border-radius: 4px;
 }

@@ -2003,6 +2003,7 @@ div[id^="div_id_edit_email"]{
 /*한국어 테이블 안에 티벳어 써야 할 때*/
 .korean+div>table>tbody>tr>td>em { 
     font-family: 'Tibetan Machine Uni', sans-serif;
+    /*font-family: 'Monlam Uni OuChan2', sans-serif;*/
     font-style: normal;
     font-size: 23px;
 } 

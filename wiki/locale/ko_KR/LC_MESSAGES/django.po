@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: django-wiki\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-07-10 15:09+0200\n"
-"PO-Revision-Date: 2017-09-10 11:46+0900\n"
+"PO-Revision-Date: 2017-09-22 22:03+0900\n"
 "Last-Translator: jh kim <freedharma@gmail.com>\n"
 "Language-Team: Korean (Korea) (http://www.transifex.com/django-wiki/django-wiki/language/ko_KR/)\n"
 "MIME-Version: 1.0\n"
@@ -816,7 +816,7 @@ msgstr ""
 #: plugins/globalhistory/templates/wiki/plugins/globalhistory/globalhistory.html:14
 #, python-format
 msgid "List of all <strong>%(cnt)s changes</strong> in the wiki."
-msgstr "모두 <strong>%(cnt)s 종류의 변경기록</strong> 이 있습니다."
+msgstr "모두 <strong>%(cnt)s개의 변경기록</strong> 이 있습니다."
 
 #: plugins/globalhistory/templates/wiki/plugins/globalhistory/globalhistory.html:21
 msgid "Show all revisions of all articles"

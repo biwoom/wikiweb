@@ -1787,19 +1787,25 @@ box-shadow: inset 2px -2px 0 #2196f3;
 /******************************
  kjh- edit preview  
 *******************************/
-.modal-content {
-  width: 100%;
-}
 .modal-dialog {
   width: 90%;
   margin: 50px auto;
 }
+.modal-content {
+  width: 100%;
+}
+.modal-content>.modal-body{
+  padding-bottom: 0;
+}
 .modal-body iframe {
   /*min-width: 900px;*/
   width: 100%;
-  min-height: 350px;
+  min-height: 450px;
   height: 100%;
   border: 0;
+}
+.modal-footer{
+  padding-top: 6px;
 }
 /******************************
  kjh- edit sidebar menu  

@@ -1881,33 +1881,37 @@ div[id^="div_id_edit_email"]{
 *******************************/
 
 /* #: 기본 테이블 */
-/*table { */
-/*    width: 100%; */
-/*    border-collapse: collapse; */
-/*    margin:0px auto;*/
-/*    font-family: sans-serif;*/
-/*}*/
-/*tr:nth-of-type(odd) { */
-/*    background: #f2f2f2;*/
-/*}*/
-/*th { */
-/*    background: #0f9fff;*/
-/*    background: #33adff;*/
-/*    padding: 10px; */
-/*    border: 1px solid #ccc; */
-/*    text-align: left; */
-/*    color: white; */
-/*    font-family: sans-serif;*/
-/*    font-weight: bold; */
-/*    font-size: 18px;*/
-/*}*/
-/*td  { */
-/*    padding: 5px; */
-/*    border: 1px solid #ccc; */
-/*    text-align: left; */
-/*    font-size: 13px;*/
-/*    color: black;*/
-/*} */
+
+.table-responsive>table { 
+    width: 99%; 
+    border-collapse: collapse; 
+    /*margin:0px auto;*/
+    /*padding: 20px 20px;*/
+    padding: 10% 10%;
+    /*margin: 20px 20px;*/
+    font-family: sans-serif;
+}
+.table-responsive>table>tbody>tr:nth-of-type(odd) { 
+    background-color: #f9f9f9;
+}
+.table-responsive>table>thead>tr>th { 
+    /*background: #0f9fff;*/
+    background: #ffffff;
+    padding: 10px !important; 
+    border: 1px solid #ccc; 
+    text-align: left; 
+    color: #737373; 
+    font-family: sans-serif;
+    font-weight: bold; 
+    font-size: 15px;
+}
+.table-responsive>table>tbody>tr>td  { 
+    padding: 10px !important; 
+    border: 1px solid #ccc; 
+    text-align: left; 
+    font-size: 13px;
+    color: black;
+} 
 
    
 /* #: 티벳어 테이블    */

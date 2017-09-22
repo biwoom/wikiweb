@@ -1878,8 +1878,8 @@ div[id^="div_id_edit_email"]{
 /******************************
  kjh- table
 *******************************/
-/*=====================================*/
-/*=================기본 테이블*/
+
+/* #: 기본 테이블 */
 /*table { */
 /*    width: 100%; */
 /*    border-collapse: collapse; */
@@ -1908,8 +1908,8 @@ div[id^="div_id_edit_email"]{
 /*    color: black;*/
 /*} */
 
-/*=====================================*/    
-/*=============티벳어 테이블    */
+   
+/* #: 티벳어 테이블    */
 .tibetan+div>table{
     width: 100%; 
     border-collapse: collapse; 
@@ -1932,13 +1932,6 @@ div[id^="div_id_edit_email"]{
     font-weight: bold; 
     font-size: 18px;
 }
-/*td  { */
-/*    padding: 5px; */
-/*    border: 1px solid #ccc; */
-/*    text-align: left; */
-/*    font-size: 13px;*/
-/*    color: black;*/
-/*} */
 
 .tibetan+div>table>thead>tr>th  { 
     /*font-size: 23px;*/
@@ -1965,8 +1958,7 @@ div[id^="div_id_edit_email"]{
 }     
 
 
-/*=====================================*/
-/*====================한국어 테이블    */
+/* #: 한국어 테이블    */
 .korean+div>table{
     width: 100%; 
     border-collapse: collapse; 

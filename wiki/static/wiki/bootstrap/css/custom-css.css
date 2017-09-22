@@ -1690,12 +1690,6 @@
  kjh- a tag target auto move bottom 
 *******************************/
 
-/*:target:before {*/
-/*content:"";*/
-/*display:block; */
-/*height:90px; */
-/*margin:-90px 0 0;*/
-/*}*/
 h1[id]:before{display:block;margin-top:-.4rem;padding-top:.4rem;content:""}
 h1[id]:target:before{margin-top:-8.4rem;padding-top:8.4rem}
 h2[id]:before{display:block;margin-top:-.4rem;padding-top:.4rem;content:""}

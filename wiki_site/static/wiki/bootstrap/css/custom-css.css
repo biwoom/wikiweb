@@ -2066,15 +2066,15 @@ input[id^="id_file"]+.asteriskField{
   margin-bottom: 20px;
 }
 blockquote {
-    padding: 11.5px 23px;
-    margin: 0 0 23px;
-    font-size: 16.25px;
+    /*padding: 11.5px 23px;*/
+    /*margin: 0 0 23px;*/
+    /*font-size: 16.25px;*/
     border-left: 0px !important;
 }
 blockquote >p{
-    padding: 11.5px 23px;
-    margin: 0 0 23px;
-    font-size: 16.25px;
+    padding: 10px 20px;
+    margin: 0 0 13px;
+    font-size: 14px;
     border-left: 5px solid #eeeeee;
 }
 

@@ -17,7 +17,11 @@
   {{ formset.management_form }}
   {% for form in formset %}
     <fieldset>
-      <legend>{% trans "Settings for" %} {{ form.instance.articlesubscriptions.count }} {% trans "articles" %}</legend>
+      <legend>
+        <!--{% trans "Settings for" %} {{ form.instance.articlesubscriptions.count }} {% trans "articles" %}-->
+        <!--#:kjh-->
+        현재 알림 설정 문서 :  {{ form.instance.articlesubscriptions.count }}
+        </legend>
       {% include "wiki/includes/formerrors.html" with form=form %}
       {% for field in form %}
         {% include "wiki/includes/formfield.html" %}

@@ -1687,7 +1687,7 @@
 }
 
 /******************************
- kjh- a tag target 
+ kjh- a tag target auto move bottom 
 *******************************/
 
 /*:target:before {*/
@@ -1708,6 +1708,7 @@ h5[id]:before{display:block;margin-top:-.4rem;padding-top:.4rem;content:""}
 h5[id]:target:before{margin-top:-8.4rem;padding-top:8.4rem}
 h6[id]:before{display:block;margin-top:-.4rem;padding-top:.4rem;content:""}
 h6[id]:target:before{margin-top:-8.4rem;padding-top:8.4rem}
+
 /******************************
  kjh- footnote target 
 *******************************/

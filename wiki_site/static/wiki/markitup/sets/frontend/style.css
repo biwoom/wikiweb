@@ -12,36 +12,38 @@ textarea.markItUp {padding: 10px; float: none; display: block; width: 100%; heig
 .markItUpContainer {margin-right: 20px; width: -20px;}
 
 .markItUp .markItUpButton1 a {
-	background-image:url(images/h1.png);
+	background-image:url(images/h1.svg);
 }
 .markItUp .markItUpButton2 a {
-	background-image:url(images/h2.png);
+	background-image:url(images/h2.svg);
 }
 .markItUp .markItUpButton3 a {
-	background-image:url(images/h3.png);
+	background-image:url(images/h3.svg);
 }
 .markItUp .markItUpButton4 a {
-	background-image:url(images/h4.png);
+	background-image:url(images/h4.svg);
 }
 .markItUp .markItUpButton5 a {
-	background-image:url(images/h5.png);
+	background-image:url(images/h5.svg);
 }
 .markItUp .markItUpButton6 a {
-	background-image:url(images/h6.png);
+	background-image:url(images/h6.svg);
 }
 
 .markItUp .markItUpButton7 a {
-	background-image:url(images/bold.png);
+	background-image:url(images/bold.svg);
+	height: 13px;
 }
 .markItUp .markItUpButton8 a {
-	background-image:url(images/italic.png);
+	background-image:url(images/italic.svg);
+	height: 13px;
 }
 
 .markItUp .markItUpButton9 a {
-	background-image:url(images/list-bullet.png);
+	background-image:url(images/list-bullet.svg);
 }
 .markItUp .markItUpButton10 a {
-	background-image:url(images/list-numeric.png);
+	background-image:url(images/list-numeric.svg);
 }
 
 /*.markItUp .markItUpButton11 a {
@@ -52,10 +54,10 @@ textarea.markItUp {padding: 10px; float: none; display: block; width: 100%; heig
 }*/
 
 .markItUp .markItUpButton11 a	{
-	background-image:url(images/quotes.png);
+	background-image:url(images/quotes.svg);
 }
 .markItUp .markItUpButton12 a	{
-	background-image:url(images/code.png);
+	background-image:url(images/code.svg);
 }
 
 .markItUp .preview a {

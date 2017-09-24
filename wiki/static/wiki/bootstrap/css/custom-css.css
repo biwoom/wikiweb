@@ -1749,7 +1749,7 @@ textarea.markItUp {
     padding: 10px;
     float: none;
     display: block;
-    width: 95%;
+    width: 100% !important;
     height: 400px;
     font-size: 13px;
     color: #222;
@@ -1761,7 +1761,6 @@ textarea.markItUp {
 textarea:focus.markItUp {
 box-shadow: inset 2px -2px 0 #2196f3;
 }
-
 .markItUpHeader:before{
   content:""!important;
   display: block!important;
@@ -1778,13 +1777,91 @@ box-shadow: inset 2px -2px 0 #2196f3;
   padding-right: 0px !important;
   /*padding-left: 5px !important;*/
 }
-
+.markItUp .markItUpButton10{
+  top: -1.8px !important;
+}
 @media (min-width: 768px){
 .form-horizontal .control-label {
     text-align: left;
     margin-bottom: 0;
     padding-top: 7px;
 }}
+@media (max-width: 768px){
+.markItUpContainer{
+  width: 110% !important;
+  margin-left: -20px !important;
+}
+.markItUpHeader ul li {
+    list-style: none;
+    float: left;
+    position: relative;
+    width: 20px;
+    /*margin-bottom: 3px;*/
+    margin-left: 2px;
+}
+.markItUpHeader ul .markItUpSeparator {
+	width:1px;
+	height:16px;
+	overflow:hidden;
+	background-color:#CCC;
+	margin-right: 6px !important;
+	margin-left: 4px !important;
+}
+.markItUp .markItUpButton1 a {
+	background-image:url(images/h1.svg);
+	margin: 0px;
+}
+.markItUp .markItUpButton2 a {
+	background-image:url(images/h2.svg);
+	margin: 0px;
+}
+.markItUp .markItUpButton3 a {
+	background-image:url(images/h3.svg);
+	margin: 0px;
+}
+.markItUp .markItUpButton4 a {
+	background-image:url(images/h4.svg);
+	margin: 0px;
+}
+.markItUp .markItUpButton5 a {
+	background-image:url(images/h5.svg);
+	margin: 0px;
+}
+.markItUp .markItUpButton6 a {
+	background-image:url(images/h6.svg);
+	margin: 0px;
+}
+.markItUp .markItUpButton7 a {
+	background-image:url(images/bold.svg);
+	margin: 0px;
+	height: 13px;
+}
+.markItUp .markItUpButton8 a {
+	background-image:url(images/italic.svg);
+	margin: 0px;
+	width: 18px !important;
+	height: 13px;
+}
+.markItUp .markItUpButton8 {
+	width: 15px !important;
+}
+.markItUp .markItUpButton9 a {
+	background-image:url(images/list-bullet.svg);
+	margin: 0px;
+}
+.markItUp .markItUpButton10 a {
+	background-image:url(images/list-numeric.svg);
+	margin: 0px;
+}
+.markItUp .markItUpButton11 a	{
+	background-image:url(images/quotes.svg);
+	margin: 0px;
+}
+.markItUp .markItUpButton12 a	{
+	background-image:url(images/code.svg);
+	margin: 0px;
+}
+}
 /******************************
  kjh- edit preview  
 *******************************/

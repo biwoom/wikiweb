@@ -1753,9 +1753,10 @@ textarea.markItUp {
     height: 400px;
     font-size: 13px;
     color: #222;
-    background-color: hsl(0, 0%, 98%);
+    background-color: #f6f8fa;
     box-shadow: inset 2px -2px  0 #e6e6e6;
     display: block;
+    border-top: 2px solid #e6e6e6;
 }
 textarea:focus.markItUp {
 box-shadow: inset 2px -2px 0 #2196f3;

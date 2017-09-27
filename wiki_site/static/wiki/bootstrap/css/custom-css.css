@@ -1710,8 +1710,8 @@ h6[id]:target:before{margin-top:-8.4rem;padding-top:8.4rem}
 sup[id^="fnref:"]:before{display:inline-block;content:""}
 sup[id^="fnref:"]:target:before{margin-top:-15rem;padding-top:15rem;}
 .footnote{color:rgba(0,0,0,.54);font-size:1.28rem}
-.footnote li:target{color:rgba(0,0,0,.87)}
-
+/*.footnote li:target{color:rgba(0,0,0,.87)}*/
+.footnote li:target{color:#043862; font-size:1.5rem}
 
 /******************************
  kjh- form tag  
@@ -1957,9 +1957,58 @@ div[id^="div_id_edit_email"]{
 /******************************
  kjh- table
 *******************************/
+/* #: 회화 테이블 */
+.dialogue+div>table{
+    width: 100%; 
+    border-collapse: collapse; 
+    margin:0px auto;
+    /*font-family: 'Noto Sans Tibetan', sans-serif;*/
+    font-family: 'Tibetan Machine Uni', sans-serif;
+    /*font-family: 'Monlam Uni OuChan2', sans-serif;*/
+}
+.dialogue+div>table tr:nth-of-type(odd) { 
+    background: #f9f9f9;
+}
+.dialogue+div>table>thead>tr>th { 
+    background: #ffffff;
+    padding: 10px !important; 
+    border: 1px solid #ccc; 
+    text-align: left; 
+    color: #737373; 
+    font-family: sans-serif;
+    font-weight: bold; 
+    font-size: 15px;
+}
+.dialogue+div>table>thead>tr>th  { 
+    /*font-size: 23px;*/
+    /*color: red;*/
+}
+.dialogue+div>table>tbody>tr>td  { 
+    padding: 4px !important; 
+    border: 1px solid #ccc; 
+    text-align: left; 
+    font-size: 20px;
+    color: black;
+    padding-left: 6px !important;
+}
+.dialogue+div>table>tbody>tr>td:first-child{
+    font-family: sans-serif;
+    font-size: 16px;
+    width: 3%; 
+} 
+.dialogue+div>table>tbody>tr>td:nth-child(4){
+    font-family: sans-serif;
+    font-size: 15px;
+} 
+/*dialogue 테이블 안에 티벳어 이외의 언어 써야 할 때*/
+.dialogue+div>table>tbody>tr>td>em { 
+    font-family: sans-serif;
+    font-style: normal;
+    font-size: 16px;
+}     
+
 
 /* #: 기본 테이블 */
-
 .table-responsive>table { 
     width: 99%; 
     border-collapse: collapse; 
@@ -1973,7 +2022,6 @@ div[id^="div_id_edit_email"]{
     background-color: #f9f9f9;
 }
 .table-responsive>table>thead>tr>th { 
-    /*background: #0f9fff;*/
     background: #ffffff;
     padding: 10px !important; 
     border: 1px solid #ccc; 
@@ -2002,18 +2050,17 @@ div[id^="div_id_edit_email"]{
     /*font-family: 'Monlam Uni OuChan2', sans-serif;*/
 }
 .tibetan+div>table tr:nth-of-type(odd) { 
-    background: #f2f2f2;
+    background: #f9f9f9;
 }
 .tibetan+div>table>thead>tr>th { 
-    background: #0f9fff;
-    background: #33adff;
-    padding: 10px; 
+    background: #ffffff;
+    padding: 10px !important; 
     border: 1px solid #ccc; 
     text-align: left; 
-    color: white; 
+    color: #737373; 
     font-family: sans-serif;
     font-weight: bold; 
-    font-size: 18px;
+    font-size: 15px;
 }
 
 .tibetan+div>table>thead>tr>th  { 
@@ -2021,17 +2068,18 @@ div[id^="div_id_edit_email"]{
     /*color: red;*/
 }
 .tibetan+div>table>tbody>tr>td  { 
-    padding: 5px; 
+    padding: 4px !important; 
     border: 1px solid #ccc; 
     text-align: left; 
-    font-size: 23px;
+    font-size: 20px;
     color: black;
+    padding-left: 6px !important;
 }
 .tibetan+div>table>tbody>tr>td:first-child{
     /*background: red;*/
     font-family: sans-serif;
     font-size: 16px;
-    width: 5%; 
+    width: 3%; 
 } 
 /*티벳어 테이블 안에 한국어 써야 할 때*/
 .tibetan+div>table>tbody>tr>td>em { 
@@ -2049,56 +2097,85 @@ div[id^="div_id_edit_email"]{
     font-family: sans-serif;
 }
 .korean+div>table tr:nth-of-type(odd) { 
-    background: #f2f2f2;
+    background: #f9f9f9;
 }
 .korean+div>table>thead>tr>th { 
-    background: #0f9fff;
-    background: #33adff;
-    padding: 10px; 
+    background: #ffffff;
+    padding: 10px !important; 
     border: 1px solid #ccc; 
     text-align: left; 
-    color: white; 
+    color: #737373; 
     font-family: sans-serif;
     font-weight: bold; 
-    font-size: 18px;
+    font-size: 15px;
 }
 .korean+div>table>tbody>tr>td  { 
-    padding: 5px; 
+    padding: 4px !important; 
     border: 1px solid #ccc; 
     text-align: left; 
-    font-size: 16px;
+    font-size: 20px;
     color: black;
+    padding-left: 6px !important;
 }
 .korean+div>table>tbody>tr>td:first-child{
     /*background: blue;*/
     font-family: sans-serif;
     font-size: 16px;
-    width: 5%; 
+    width: 3%; 
 } 
 /*한국어 테이블 안에 티벳어 써야 할 때*/
 .korean+div>table>tbody>tr>td>em { 
     font-family: 'Tibetan Machine Uni', sans-serif;
     /*font-family: 'Monlam Uni OuChan2', sans-serif;*/
     font-style: normal;
-    font-size: 23px;
+    font-size: 20px;
 } 
-.korean, .tibetan {
+
+.korean, .tibetan, .dialogue {
+  padding: 8px 15px;
+  margin-bottom: 5px;
+  list-style: none;
+  background-color: #f5f5f5;
+  border-radius: 3px;
   display: inline-block;
-  padding: .4em .6em .3em;
-  font-size: 15px;;
-  font-weight: bold;
-  line-height: 1;
-  /*color: #ffffff;*/
-  color: black;
-  text-align: center;
-  white-space: nowrap;
-  vertical-align: baseline;
-  border-radius: .25em;
-  background-color:#d9d9d9;
-  margin-bottom: 1.7em;
-  margin-top: 1em;
+  margin-bottom: 9px;
 }
 
+/*티벳어 제목 ================= */
+.tibetan-title {
+  font-family: 'Tibetan Machine Uni', sans-serif;
+  padding: 5px; 
+  text-align: left; 
+  font-size: 28px;  
+  color: black;  
+  /*text-align: center;*/
+  padding-bottom: 2px solid #eee;
+  margin-bottom: 10px;
+}
+.tibetan-subtitle {
+  font-family: 'Tibetan Machine Uni', sans-serif;
+  padding: 5px; 
+  text-align: left; 
+  font-size: 23px;  
+  color: black;  
+  /*text-align: center;*/
+  padding-bottom: 2px solid #eee;
+  margin-bottom: 10px;
+}
+/*티벳어 제목 내부 각주 스타일 ===================*/
+.tibetan-title>sup{
+  top: -2em;
+  font-size: 0.4em;
+}
+/*티벳어 테이블 내부 각주 스타일 ===================*/
+.tibetan+div>table>tbody>tr>td>sup{
+  top: -1.3em;
+  font-size: 0.6em;
+}
+.dialogue+div>table>tbody>tr>td>sup{
+  top: -1.3em;
+  font-size: 0.6em;
+}
 /******************************
  kjh- article images
 *******************************/

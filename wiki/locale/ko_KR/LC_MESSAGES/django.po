@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: django-wiki\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-07-10 15:09+0200\n"
-"PO-Revision-Date: 2017-09-22 22:03+0900\n"
+"PO-Revision-Date: 2017-09-27 20:34+0900\n"
 "Last-Translator: jh kim <freedharma@gmail.com>\n"
 "Language-Team: Korean (Korea) (http://www.transifex.com/django-wiki/django-wiki/language/ko_KR/)\n"
 "MIME-Version: 1.0\n"
@@ -152,7 +152,7 @@ msgstr "Slug"
 
 #: forms.py:402
 msgid "This will be the address where your article can be found. Use only alphanumeric characters and - or _.<br>Note: If you change the slug later on, links pointing to this article are <b>not</b> updated."
-msgstr "slug는 문서의 주소로 사용됩니다. 알파벳과 - 또는 _ 만을 사용할 수 있습니다. <br>slug가 변경되면 문서의 링크도 상실되므로 신중히 지정하시고 지정한 이후에는 변경하지 마십시오."
+msgstr "slug는 문서의 주소로 사용됩니다. 알파벳과 - 또는 _ 만을 사용할 수 있습니다."
 
 #: forms.py:411
 msgid "Write a brief message for the article's history log."

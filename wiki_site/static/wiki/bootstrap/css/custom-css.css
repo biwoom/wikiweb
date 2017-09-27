@@ -1907,19 +1907,6 @@ box-shadow: inset 2px -2px 0 #2196f3;
 #accordion_macros{
   display: none;
 }
-/*:last-child*/
-/*#accordion_:nth-child(4){*/
-/*  display: none;*/
-/*}*/
-/*#accordion_:first-child{*/
-/*  background-color: blue !important;*/
-/*}*/
-/*.panel-group:nth-child(4){*/
-/*  display: none;*/
-/*}*/
-/*panel panel-default col-lg-3*/
-/*nth-of-type(n)*/
-/*nth-child(n)*/
 /******************************
  kjh- history menu  
 *******************************/
@@ -2298,4 +2285,19 @@ pre {
   background-color: #f6f8fa;
   border: 1px solid #ccc;
   border-radius: 4px;
+}
+
+/******************************
+ kjh- article menu
+*******************************/
+
+@media (max-width: 480px){
+.breadcrumb{
+  margin-top: 10px !important;
+  margin-left: 1px !important;
+}
+}
+.breadcrumb{
+  margin-top: 10px;
+  margin-left: 10px;
 }

@@ -1967,8 +1967,9 @@ div[id^="div_id_edit_email"]{
     /*font-family: 'Monlam Uni OuChan2', sans-serif;*/
 }
 .dialogue+div>table tr:nth-of-type(odd) { 
-    background: #f9f9f9;
-}
+    /*background: #f9f9f9;*/
+    background: #f6f8fa;
+}s
 .dialogue+div>table>thead>tr>th { 
     background: #ffffff;
     padding: 10px !important; 
@@ -2019,7 +2020,7 @@ div[id^="div_id_edit_email"]{
     font-family: sans-serif;
 }
 .table-responsive>table>tbody>tr:nth-of-type(odd) { 
-    background-color: #f9f9f9;
+    background-color: #f6f8fa;
 }
 .table-responsive>table>thead>tr>th { 
     background: #ffffff;
@@ -2050,7 +2051,7 @@ div[id^="div_id_edit_email"]{
     /*font-family: 'Monlam Uni OuChan2', sans-serif;*/
 }
 .tibetan+div>table tr:nth-of-type(odd) { 
-    background: #f9f9f9;
+    background: #f6f8fa9;
 }
 .tibetan+div>table>thead>tr>th { 
     background: #ffffff;
@@ -2097,7 +2098,7 @@ div[id^="div_id_edit_email"]{
     font-family: sans-serif;
 }
 .korean+div>table tr:nth-of-type(odd) { 
-    background: #f9f9f9;
+    background: #f6f8fa;
 }
 .korean+div>table>thead>tr>th { 
     background: #ffffff;

@@ -1910,7 +1910,9 @@ box-shadow: inset 2px -2px 0 #2196f3;
 /******************************
  kjh- history menu  
 *******************************/
-
+.diff-container {
+overflow-x: scroll;
+}
 /******************************
  kjh- notification menu  
 *******************************/
@@ -2158,11 +2160,11 @@ div[id^="div_id_edit_email"]{
 /*티벳어 테이블 내부 각주 스타일 ===================*/
 .tibetan+div>table>tbody>tr>td>sup{
   top: -1.3em;
-  font-size: 0.6em;
+  font-size: 0.5em;
 }
 .dialogue+div>table>tbody>tr>td>sup{
   top: -1.3em;
-  font-size: 0.6em;
+  font-size: 0.5em;
 }
 /******************************
  kjh- article images

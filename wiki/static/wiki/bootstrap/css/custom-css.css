@@ -2322,7 +2322,7 @@ pre {
 /******************************
  kjh- article accordian
 *******************************/
-.acd-span, .acd-ul, .acd-label, .acd-header, .acd-nav, .acd-input {
+.acd-ul, .acd-label, .acd-header, .acd-nav, .acd-input {
   margin: 0;
   padding: 0;
   border: 0;
@@ -2538,12 +2538,14 @@ label > span {
 .acd-ul>li>a:before {
   content: "-";
   float: left; 
-  margin-right: 10px;    
+  margin-right: 10px;  
+  margin-top: 3px;
 }  
 .acd-label:after, .acd-input:checked + .acd-label:after {
   content: "+";
   float: left; 
-  margin-right: 10px;    
+  margin-right: 10px;
+  margin-top: 3px;
 }
 .acd-input:checked + .acd-label:after {
   content: "-";
@@ -2566,3 +2568,16 @@ label > span {
   padding-bottom: 10px; 
   color: #808080;    
 }     
+/**
+ * tibetan font size ==========================
+ */  
+.acd-label>span+em{
+   font-size: 17px;
+   font-style: normal;
+   color: #56a6f5;
+}
+.acd-ul>li>a>em{
+   font-size: 17px;
+   font-style: normal;
+   color: #56a6f5;
+}

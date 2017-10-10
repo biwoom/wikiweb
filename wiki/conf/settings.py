@@ -74,6 +74,16 @@ _default_tag_whitelists = bleach.ALLOWED_TAGS + [
     'dd',
     'sup',# add to modify footnote display error => <sup id="fnref:footnote">1</sup>.
     'iframe',
+    'header',
+    'h2',
+    'h4',
+    'nav',
+    'ul',
+    'li',
+    'input',
+    'label',
+    'span',
+    'a',
 ] + ['h{}'.format(n) for n in range(8)]
 
 
@@ -102,6 +112,17 @@ _default_attribute_whitelist['iframe'].append('width')
 _default_attribute_whitelist['iframe'].append('height')
 _default_attribute_whitelist['iframe'].append('frameborder')
 _default_attribute_whitelist['iframe'].append('allowfullscreen')
+
+_default_attribute_whitelist['header'].append('role')
+
+_default_attribute_whitelist['nav'].append('role')
+
+_default_attribute_whitelist['input'].append('type')
+_default_attribute_whitelist['input'].append('hidden')
+
+_default_attribute_whitelist['label'].append('for')
+
+_default_attribute_whitelist['a'].append('href')
 
 #: Dictionary of allowed attributes in Markdown article contents.
 MARKDOWN_HTML_ATTRIBUTES = _default_attribute_whitelist

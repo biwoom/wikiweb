@@ -2318,3 +2318,251 @@ pre {
   margin-top: 10px;
   margin-left: 10px;
 }
+
+/******************************
+ kjh- article accordian
+*******************************/
+.acd-span, .acd-ul, .acd-label, .acd-header, .acd-nav, .acd-input {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+  font-family: sans-serif;      
+}
+    
+.acd-nav__list { list-style: none }    
+a { text-decoration: none; }
+
+/**
+ * Styling acd-navigation ==========================
+ */
+.acd-header {
+  margin-right: auto;
+  margin-left: auto;
+  /*max-width: 50rem;*/
+  max-width: 80%;
+  margin-top:50px;
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.25);
+}
+
+/**
+ * 1st level items ==========================
+ */
+.acd-nav a, .acd-nav label {
+  display: block;
+  padding: .85rem;
+  color: #000000;
+  background-color: #ffffff;
+  box-shadow: inset 0 -1px #f2f2f2;
+  -webkit-transition: all .05s ease-in;
+  transition: all .05s ease-in;
+}
+.acd-nav a:focus, .acd-nav a:hover, .acd-nav label:focus, .acd-nav label:hover {
+/*  color: rgba(255, 255, 255, 0.8);*/
+  color: orangered;
+  background: #e6e6e6;
+}
+.acd-nav label { cursor: pointer; }
+
+/**
+ * 2nd level lists items ==========================
+ */    
+.group-list-2nd a, .group-list-2nd label {
+  padding-left: 2rem;
+  background: #f9f9f9;
+  box-shadow: inset 0 -1px #ffffff;
+}
+.group-list-2nd a:focus, .group-list-2nd a:hover, .group-list-2nd label:focus, .group-list-2nd label:hover { background: #d9d9d9; }
+    
+/**
+ * 3rd level list items ==========================
+ */
+.group-list-3rd a, .group-list-3rd label {
+  padding-left: 3rem;
+  background: #e6e6e6;
+  box-shadow: inset 0 -1px #ffffff;
+}
+.group-list-3rd a:focus, .group-list-3rd a:hover, .group-list-3rd label:focus, .group-list-3rd label:hover { background: #cccccc; }
+
+/**
+ * 4th level list items ==========================
+ */
+.group-list-4th a, .group-list-4th label {
+  padding-left: 4rem;
+  background: #eedaf1;
+  box-shadow: inset 0 -1px #ffffff;
+}
+.group-list-4th a:focus, .group-list-4th a:hover, .group-list-4th label:focus, .group-list-4th label:hover { background: #ddb5e3; }
+    
+/**
+ * 5th level list items ==========================
+ */
+.group-list-5th a, .group-list-5th label {
+  padding-left: 5rem;
+  background: #dff0d8;
+  box-shadow: inset 0 -1px #ffffff;
+}
+.group-list-5th a:focus, .group-list-5th a:hover, .group-list-5th label:focus, .group-list-5th label:hover { background: #b3dba3; }
+
+/**
+ * 6th level list items ==========================
+ */
+.group-list-6th a, .group-list-6th label {
+  padding-left: 6rem;
+  background: #fde8e8;
+  box-shadow: inset 0 -1px #ffffff;
+}
+.group-list-6th a:focus, .group-list-6th a:hover, .group-list-6th label:focus, .group-list-6th label:hover { background: #f9b9b9; }    
+ 
+/**
+ * 7th level list items ==========================
+ */
+.group-list-7th a, .group-list-7th label {
+  padding-left: 7rem;
+  background: #ffebcc;
+  box-shadow: inset 0 -1px #ffffff;
+}
+.group-list-7th a:focus, .group-list-7th a:hover, .group-list-7th label:focus, .group-list-7th label:hover { background: #ffd699; }      
+      
+/**
+ * 8th level list items ==========================
+ */
+.group-list-8th a, .group-list-8th label {
+  padding-left: 8rem;
+  background: #cceeff;
+  box-shadow: inset 0 -1px #ffffff;
+}
+.group-list-8th a:focus, .group-list-8th a:hover, .group-list-8th label:focus, .group-list-8th label:hover { background: #99ddff; }    
+ 
+/**
+ * 9th level list items ==========================
+ */
+.group-list-9th a, .group-list-9th label {
+  padding-left: 9rem;
+  background: #e6e6ff;
+  box-shadow: inset 0 -1px #ffffff;
+}
+.group-list-9th a:focus, .group-list-9th a:hover, .group-list-9th label:focus, .group-list-9th label:hover { background: #b3b3ff; }      
+    
+/**
+ * 10th level list items ==========================
+ */
+.group-list-10th a, .group-list-10th label {
+  padding-left: 10rem;
+  background: #f2e6d9;
+  box-shadow: inset 0 -1px #ffffff;
+}
+.group-list-10th a:focus, .group-list-10th a:hover, .group-list-10th label:focus, .group-list-10th label:hover { background: #dec0a0; }   
+
+/**
+ * 11th level list items ==========================
+ */
+.group-list-11th a, .group-list-11th label {
+  padding-left: 11rem;
+  background: #d9d9d9;
+  box-shadow: inset 0 -1px #ffffff;
+}
+.group-list-11th a:focus, .group-list-11th a:hover, .group-list-11th label:focus, .group-list-11th label:hover { background: #d9d9d9; }
+    
+/**
+ * 12th level list items ==========================
+ */
+.group-list-12th a, .group-list-12th label {
+  padding-left: 12rem;
+  background: #d9d9d9;
+  box-shadow: inset 0 -1px #ffffff;
+}
+.group-list-12th a:focus, .group-list-12th a:hover, .group-list-12th label:focus, .group-list-12th label:hover { background: #d9d9d9; }    
+
+/**
+ * 13th level list items ==========================
+ */
+.group-list-13th a, .group-list-13th label {
+  padding-left: 13rem;
+  background: #d9d9d9;
+  box-shadow: inset 0 -1px #ffffff;
+}
+.group-list-13th a:focus, .group-list-13th a:hover, .group-list-13th label:focus, .group-list-13th label:hover { background: #d9d9d9; }  
+    
+/**
+ * 14th level list items ==========================
+ */
+.group-list-14th a, .group-list-14th label {
+  padding-left: 14rem;
+  background: #d9d9d9;
+  box-shadow: inset 0 -1px #ffffff;
+}
+.group-list-14th a:focus, .group-list-14th a:hover, .group-list-14th label:focus, .group-list-14th label:hover { background: #d9d9d9; }    
+    
+/**
+ * 15th level list items ==========================
+ */
+.group-list-15th a, .group-list-15th label {
+  padding-left: 15rem;
+  background: #d9d9d9;
+  box-shadow: inset 0 -1px #ffffff;
+}
+.group-list-15th a:focus, .group-list-15th a:hover, .group-list-15th label:focus, .group-list-15th label:hover { background: #d9d9d9; }      
+    
+    
+/**
+ * Hide nested lists ==========================
+ */
+.group-list, .group-list-2nd, .group-list-3rd, .group-list-4th, .group-list-5th, .group-list-6th, .group-list-7th, .group-list-8th, .group-list-9th, .group-list-10th, .group-list-11th, .group-list-12th, .group-list-13th, .group-list-14th, .group-list-15th {
+  height: 100%;
+  max-height: 0;
+  overflow: hidden;
+  -webkit-transition: max-height .05s ease-in-out;
+  transition: max-height .05s ease-in-out;
+}
+.acd-nav__list input[type=checkbox]:checked + label + ul { max-height: 100%;}
+
+/**
+ * Rotating chevron icon ==========================
+ */
+label > span {
+  float: right;
+  -webkit-transition: -webkit-transform .25s ease;
+  transition: transform .25s ease;
+}
+.acd-nav__list input[type=checkbox]:checked + label > span {
+  -webkit-transform: rotate(90deg);
+  -ms-transform: rotate(90deg);
+  transform: rotate(90deg);
+}
+/**
+ * add mark ==========================
+ */
+.acd-ul>li>a:before {
+  content: "-";
+  float: left; 
+  margin-right: 10px;    
+}  
+.acd-label:after, .acd-input:checked + .acd-label:after {
+  content: "+";
+  float: left; 
+  margin-right: 10px;    
+}
+.acd-input:checked + .acd-label:after {
+  content: "-";
+  float: left;   
+  margin-right: 10px;    
+}   
+.acd-h2{
+  margin: 0 auto;
+  text-align: center;  
+  font-size: 150%;
+  padding-top: 10px;    
+  padding-bottom: 10px; 
+  color: #595959;    
+} 
+.acd-h4{
+  margin: 0 auto;
+  margin-top: 10px;
+  text-align: center;  
+  font-size: 120%;
+  padding-bottom: 10px; 
+  color: #808080;    
+}     

@@ -1753,7 +1753,7 @@ textarea.markItUp {
     padding: 10px;
     float: none;
     display: block;
-    width: 100% !important;
+    /*width: 100% !important;*/
     height: 400px;
     font-size: 13px;
     color: #222;

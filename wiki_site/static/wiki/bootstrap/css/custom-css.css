@@ -2526,11 +2526,15 @@ label > span {
   float: right;
   -webkit-transition: -webkit-transform .25s ease;
   transition: transform .25s ease;
+  margin-left: 10px;
+  margin-top: 8px;
+  color: #00aaff;
 }
 .acd-nav__list input[type=checkbox]:checked + label > span {
   -webkit-transform: rotate(90deg);
   -ms-transform: rotate(90deg);
   transform: rotate(90deg);
+  color: #bfbfbf;
 }
 /**
  * add mark ==========================
@@ -2580,4 +2584,23 @@ label > span {
    font-size: 17px;
    font-style: normal;
    color: #666666;
+}
+@media (max-width: 480px){
+.acd-ul>li>a:before {
+  content: "";
+  float: left; 
+  margin-right: 10px;  
+  margin-top: 3px;
+}  
+.acd-label:after, .acd-input:checked + .acd-label:after {
+  content: "";
+  float: left; 
+  margin-right: 10px;
+  margin-top: 3px;
+}
+.acd-input:checked + .acd-label:after {
+  content: "";
+  float: left;   
+  margin-right: 10px;    
+}  
 }

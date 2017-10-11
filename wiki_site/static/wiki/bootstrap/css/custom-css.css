@@ -2574,10 +2574,10 @@ label > span {
 .acd-label>span+em{
    font-size: 17px;
    font-style: normal;
-   color: #56a6f5;
+   color: #666666;
 }
 .acd-ul>li>a>em{
    font-size: 17px;
    font-style: normal;
-   color: #56a6f5;
+   color: #666666;
 }

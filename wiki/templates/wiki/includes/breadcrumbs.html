@@ -37,7 +37,9 @@
     </a>
     <ul class="dropdown-menu">
       <li>
-        {% if urlpath.parent %}
+        {#{% if urlpath.parent %}#}
+        {# kjh #}
+        {% if false %}
         <a href="{% url 'wiki:create' path=urlpath.parent.path %}" style="padding: 7px;">
           <span class="fa fa-arrow-right"></span>
          {{ article.current_revision.title }} {% trans "New article next to" %} 

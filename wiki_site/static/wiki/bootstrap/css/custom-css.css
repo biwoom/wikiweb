@@ -1717,6 +1717,10 @@ sup[id^="fnref:"]:target:before{margin-top:-15rem;padding-top:15rem;}
 /*.footnote li:target{color:rgba(0,0,0,.87)}*/
 .footnote li:target{color:#043862; font-size:1.5rem}
 
+.footnote{color:rgba(0,0,0,.54);font-size:1.28rem}
+/*.footnote li:target{color:rgba(0,0,0,.87)}*/
+.footnote li:target{color:#043862; font-size:1.5rem}
+
 /******************************
  kjh- form tag  
 *******************************/
@@ -2080,11 +2084,11 @@ div[id^="div_id_edit_email"]{
     font-size: 15px;
     width: 3%; 
 } 
-.tibetan+div>table>tbody>tr>td:nth-child(3){
-    font-family: sans-serif;
-    font-size: 15px;
-    width: 47%;
-}
+/*.tibetan+div>table>tbody>tr>td:nth-child(3){*/
+/*    font-family: sans-serif;*/
+/*    font-size: 15px;*/
+/*    width: 47%;*/
+/*}*/
 /*티벳어 테이블 안에 한국어 써야 할 때*/
 .tibetan+div>table>tbody>tr>td>em { 
     font-family: sans-serif;
@@ -2135,8 +2139,65 @@ div[id^="div_id_edit_email"]{
     font-style: normal;
     font-size: 20px;
 } 
+/* #: 한국어-티벳어(korean-tibetan) 테이블 ====================== */
+.korean-tibetan+div>table{
+    width: 100%; 
+    border-collapse: collapse; 
+    margin:0px auto;
+    font-family: sans-serif;
+}
+.korean-tibetan+div>table tr:nth-of-type(odd) { 
+    background: #f6f8fa;
+}
+.korean-tibetan+div>table>thead>tr>th { 
+    background: #ffffff;
+    padding: 10px !important; 
+    border: 1px solid #ccc; 
+    text-align: left; 
+    color: #737373; 
+    font-family: sans-serif;
+    font-weight: bold; 
+    font-size: 15px;
+}
+.korean-tibetan+div>table>tbody>tr>td  { 
+    padding: 4px !important; 
+    border: 1px solid #ccc; 
+    text-align: left; 
+    font-size: 20px;
+    color: black;
+    padding-left: 6px !important;
+}
+.korean-tibetan+div>table>tbody>tr>td:first-child{
+    /*background: blue;*/
+    font-family: sans-serif;
+    font-size: 16px;
+    width: 3%; 
+} 
+.korean-tibetan+div>table>tbody>tr>td:nth-child(2){
+    font-family: sans-serif;
+    font-size: 15px;
+    width: 17%;
+}
+.korean-tibetan+div>table>tbody>tr>td:nth-child(3){
+    font-family: sans-serif;
+    /*font-size: 15px;*/
+    width: 26.6%;
+}
+.korean-tibetan+div>table>tbody>tr>td:nth-child(4){
+    font-family: sans-serif;
+    /*font-size: 15px;*/
+    width: 26.6%;
+}
+/*한국어 테이블 안에 티벳어 써야 할 때*/
+.korean-tibetan+div>table>tbody>tr>td>em { 
+    font-family: 'Tibetan Machine Uni', sans-serif;
+    /*font-family: 'DDC_Uchen', sans-serif;*/
+    /*font-family: 'Monlam Uni OuChan2', sans-serif;*/
+    font-style: normal;
+    font-size: 20px;
+} 
 
-.korean, .tibetan, .dialogue {
+.korean, .tibetan, .dialogue, .korean-tibetan {
   padding: 8px 15px;
   margin-bottom: 5px;
   list-style: none;

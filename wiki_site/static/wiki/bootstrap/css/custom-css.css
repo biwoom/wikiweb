@@ -2169,24 +2169,24 @@ div[id^="div_id_edit_email"]{
 }
 .korean-tibetan+div>table>tbody>tr>td:first-child{
     /*background: blue;*/
-    font-family: sans-serif;
+    font-family: 'Tibetan Machine Uni', sans-serif;
     font-size: 16px;
-    width: 3%; 
+    width: 25%; 
 } 
 .korean-tibetan+div>table>tbody>tr>td:nth-child(2){
-    font-family: sans-serif;
-    font-size: 15px;
-    width: 17%;
+    font-family: 'Tibetan Machine Uni', sans-serif;
+    /*font-size: 15px;*/
+    width: 25%;
 }
 .korean-tibetan+div>table>tbody>tr>td:nth-child(3){
-    font-family: sans-serif;
+    font-family: 'Tibetan Machine Uni', sans-serif;
     /*font-size: 15px;*/
-    width: 26.6%;
+    width: 25%;
 }
 .korean-tibetan+div>table>tbody>tr>td:nth-child(4){
-    font-family: sans-serif;
+    font-family: 'Tibetan Machine Uni', sans-serif;
     /*font-size: 15px;*/
-    width: 26.6%;
+    width: 25%;
 }
 /*한국어 테이블 안에 티벳어 써야 할 때*/
 .korean-tibetan+div>table>tbody>tr>td>em { 

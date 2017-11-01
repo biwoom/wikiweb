@@ -38,7 +38,8 @@
               {% trans "Save changes" %}
             </button>
 
-              {% if user.is_authenticated and urlpath.path %}
+              {# % if user.is_authenticated and urlpath.path % #}
+               {% if user.is_staff %}
               <a href="{% url 'wiki:move' path=urlpath.path article_id=article.id %}" class="btn btn-success ">
                 <span class="fa fa-random"></span>
                 {% trans "Move article" %}

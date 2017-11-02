@@ -39,13 +39,17 @@
             </button>
 
               {# % if user.is_authenticated and urlpath.path % #}
-               {% if user.is_staff %}
+              {% if user.is_staff %}
               <a href="{% url 'wiki:move' path=urlpath.path article_id=article.id %}" class="btn btn-success ">
                 <span class="fa fa-random"></span>
                 {% trans "Move article" %}
               </a>
               {% endif %}
-              {% if article|can_delete:user %}
+              
+              {# % if article|can_delete:user % #} 
+              {# % if user.username == article.owner or user.is_staff % #}
+              
+              {% if article.owner.email == user.email or user.is_staff %}
               <a href="{% url 'wiki:delete' path=urlpath.path article_id=article.id %}" class="btn btn-info">
                 <span class="fa fa-trash-o"></span>
                 {% trans "Delete article" %}
@@ -130,6 +134,7 @@ var confirmOnPageExit = function (e) {
     return;
   }
 };
+
 </script>
 {% endaddtoblock %}
 

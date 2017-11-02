@@ -57,7 +57,7 @@ class Article(models.Model):
         help_text=_(
             'The owner of the article, usually the creator. The owner always has both read and write access.'),
         on_delete=models.SET_NULL)
-
+                             
     group = models.ForeignKey(
         settings.GROUP_MODEL, verbose_name=_('group'),
         blank=True, null=True,

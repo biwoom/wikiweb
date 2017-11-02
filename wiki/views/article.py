@@ -249,15 +249,22 @@ class Edit(ArticleMixin, FormView):
 
     form_class = forms.EditForm
     template_name = "wiki/edit.html"
+    
+    
 
     @method_decorator(get_article(can_write=True, not_locked=True))
     def dispatch(self, request, article, *args, **kwargs):
         self.sidebar_plugins = plugin_registry.get_sidebar()
         self.sidebar = []
         return super(Edit, self).dispatch(request, article, *args, **kwargs)
+        
+    def get_aritcle_auth(self, request):
+        aritcle_auth = self.user.username
+        return aritcle_auth    
 
     def get_initial(self):
         initial = FormView.get_initial(self)
+        # aritcle_auth = 1
 
         for field_name in ['title', 'content']:
             session_key = 'unsaved_article_%s_%d' % (
@@ -388,7 +395,7 @@ class Edit(ArticleMixin, FormView):
         if self.urlpath:
             return redirect("wiki:get", path=self.urlpath.path)
         return redirect('wiki:get', article_id=self.article.id)
-
+        
     def get_context_data(self, **kwargs):
         # Needed for Django 1.9 because get_context_data is no longer called
         # with the form instance

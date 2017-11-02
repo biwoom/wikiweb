@@ -226,6 +226,10 @@ class EditForm(forms.Form, SpamProtectionMixin):
     current_revision = forms.IntegerField(
         required=False,
         widget=forms.HiddenInput())
+    
+    def get_aritcle_auth(self):
+        aritcle_auth = self.user.username
+        return aritcle_auth   
 
     def __init__(self, request, current_revision, *args, **kwargs):
 

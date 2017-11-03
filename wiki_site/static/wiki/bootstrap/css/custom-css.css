@@ -2735,3 +2735,10 @@ label > span {
   color: #777777;
   white-space: nowrap;
 }
+
+/******************************
+ kjh-editor
+*******************************/
+#article_edit_form>div>div{
+  width: 100% !important;
+}

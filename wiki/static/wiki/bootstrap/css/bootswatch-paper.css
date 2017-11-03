@@ -5009,7 +5009,7 @@ a.badge:focus {
   margin-bottom: 23px;
   line-height: 1.846;
   background-color: #ffffff;
-  border: 1px solid #dddddd;
+  /*border: 1px solid #dddddd;*/
   border-radius: 3px;
   -webkit-transition: border 0.2s ease-in-out;
   -o-transition: border 0.2s ease-in-out;

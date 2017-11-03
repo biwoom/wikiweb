@@ -2254,11 +2254,23 @@ div[id^="div_id_edit_email"]{
     margin-bottom: 5px;
     line-height: 1.846;
     background-color: #ffffff;
-    border: 1px solid #dddddd;
+    /*border: 1px solid #dddddd;*/
     border-radius: 3px;
     -webkit-transition: border 0.2s ease-in-out;
     -o-transition: border 0.2s ease-in-out;
     transition: border 0.2s ease-in-out;
+}
+.thumbnail a > img {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 80%;
+    /*margin: 20px;*/
+    margin-bottom: 20px;
+    margin-top: 20px;
+    position: relative;
+    -moz-box-shadow: 4px 4px 8px rgba(0, 0, 0,0.5);
+    -webkit-box-shadow: 4px 4px 8px rgba(0, 0, 0, .5);
+    box-shadow: 4px 4px 8px rgba(0, 0, 0, .5);
 }
 .caption{
   padding: 1px !important;

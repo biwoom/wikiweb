@@ -2,7 +2,7 @@
 {% if is_paginated %}
 <ul class="pagination">
     {% if page_obj.has_previous %}
-        <li><a class="prev btn btn-info" href="?{% if search_query %}q={{ search_query  }}&{% endif %}page={{ page_obj.previous_page_number }}{% if appended_key %}&{{ appended_key }}={{ appended_value }}{% endif %}">&laquo;</a></li>
+        <li><a class="page-item" href="?{% if search_query %}q={{ search_query  }}&{% endif %}page={{ page_obj.previous_page_number }}{% if appended_key %}&{{ appended_key }}={{ appended_value }}{% endif %}">&laquo;</a></li>
     {% else %}
         <li class="disabled"><span>&laquo;</span></li>
     {% endif %}
@@ -16,7 +16,7 @@
     {% endfor %}
 
     {% if page_obj.has_next %}
-        <li><a class="next btn btn-info" href="?{% if search_query %}q={{ search_query  }}&{% endif %}page={{ page_obj.next_page_number }}{% if appended_key %}&{{ appended_key }}={{ appended_value }}{% endif %}">&raquo;</a></li>
+        <li><a class="page-itemo" href="?{% if search_query %}q={{ search_query  }}&{% endif %}page={{ page_obj.next_page_number }}{% if appended_key %}&{{ appended_key }}={{ appended_value }}{% endif %}">&raquo;</a></li>
     {% else %}
         <li class="disabled"><span>&raquo;</span></li>
     {% endif %}

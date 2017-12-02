@@ -14,6 +14,7 @@ admin.autodiscover()
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
     url(r'^robots.txt', lambda _: HttpResponse('User-agent: *\nDisallow: /')),
+    url(r'^dictapp/', include('dictapp.urls'))
 ]
 
 if settings.DEBUG:

@@ -1,0 +1,122 @@
+{% extends 'dictapp/base.html' %}
+
+{% block content %}
+        
+   {% if user.is_authenticated %}
+    <div class="dictapp_btn">
+    <a class="btn btn-default" href="{% url 'dict_edit' pk=dict.pk %}"><span class="fa fa-pencil-square-o" aria-hidden="true">  편집</span></a>
+    <a class="btn btn-default" href="{% url 'dict_new' %}"><span class="fa fa-plus" aria-hidden="true">  NEW</span></a>
+    </div>
+   {% endif %}
+   
+    <div class="dict">
+
+        
+        <!--# 티벳어 표제어-->
+        <h1>{{ dict.title }}</h1>
+        
+        <!--# 단어 설명(품사/한국어 표제어/의미/용례/어원) -->
+        <p>{{ dict.get_markdown }}</p>
+        
+        <!--# 동사 미래 ti_future_tense -->
+        {% if dict.ti_future_tense %}
+        <p>{{ dict.ti_future_tense }}</p>
+        {% endif %}
+        
+        <!--# 동사 현재 ti_present_tense -->
+        {% if dict.ti_present_tense %}
+        <p>{{ dict.ti_present_tense }}</p>
+        {% endif %}
+        
+        <!--# 동사 과거 ti_past_tense -->
+        {% if dict.ti_past_tense %}
+        <p>{{ dict.ti_past_tense }}</p>
+        {% endif %}
+        
+        <!--# 동의어 ti_synonym -->
+        {% if dict.ti_synonym %}
+        <p>{{ dict.ti_synonym }}</p>
+        {% endif %}
+        
+        <!--# 유의어 ti_thesaurus -->
+        {% if dict.ti_thesaurus %}
+        <p>{{ dict.ti_thesaurus }}</p>
+        {% endif %}
+        
+        <!--# 반의어 ti_antonym -->
+        {% if dict.ti_antonym %}
+        <p>{{ dict.ti_antonym }}</p>
+        {% endif %}
+        
+        <!--# 높임말 ti_honorific -->
+        {% if dict.ti_honorific %}
+        <p>{{ dict.ti_honorific }}</p>
+        {% endif %}
+        
+        <!--# 낮춤말 ti_humble_terms -->
+        {% if dict.ti_humble_terms %}
+        <p>{{ dict.ti_humble_terms }}</p>
+        {% endif %}
+        
+        <!--# 한국어 ti_korean_entry -->
+        {% if dict.ti_korean_entry %}
+        <p>{{ dict.ti_korean_entry }}</p>
+        {% endif %}
+        
+        <!--# 범어 ti_sanskrit_entry -->
+        {% if dict.ti_sanskrit_entry %}
+        <p>{{ dict.ti_sanskrit_entry }}</p>
+        {% endif %}
+        
+        <!--# 빨리어 ti_pali_entry -->
+        {% if dict.ti_pali_entry %}
+        <p>{{ dict.ti_pali_entry }}</p>
+        {% endif %}
+        
+        <!--# 한문 ti_classical_chinese_entry -->
+        {% if dict.ti_classical_chinese_entry %}
+        <p>{{ dict.ti_classical_chinese_entry }}</p>
+        {% endif %}
+        
+        <!--# 영어 ti_english_entry -->
+        {% if dict.ti_english_entry %}
+        <p>{{ dict.ti_english_entry }}</p>
+        {% endif %}
+        
+        <!--# 와일리 ti_wylie -->
+        {% if dict.ti_wylie %}
+        <p>{{ dict.ti_wylie }}</p>
+        {% endif %}
+        
+        <!--# 사진 자료 이미지파일-->
+        {% if dict.image %}
+        <img src='{{ dict.image.url }}' class='img-responsive' />
+        {% endif %}
+        
+        <!--# 발음 오디오 파일-->
+        {% if dict.audio %}
+        <audio controls>
+        <source src="{{ dict.audio.url }}" type="audio/mp3">
+        </audio>
+        {% endif %}
+        
+        
+        <!--# 변경일자 -->
+        {% if dict.published_date %}
+        <div class="date">{{ dict.published_date }}</div>
+        {% endif %}
+        <!--============================================================-->
+        <!--생략부-->
+        {# <p>{{ dict.text|linebreaksbr }}</p> #}
+        {# <p>분류 : <span class=''>{{ dict.classification }}</span></p> #}
+        <!--#  파일-->
+        {# {% if dict.file %} #}
+        {# <div class=''> #}
+        {# <a href="{{ dict.file.url }}" download="{{ dict.file }}"><span class=''>파일 :</span> {{ dict.get_filename }}</a>  #}
+        {# </div>  #}
+        {# {% endif %} #}
+        
+    </div>
+  
+         
+{% endblock %}

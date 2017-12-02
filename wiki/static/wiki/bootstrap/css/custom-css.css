@@ -1950,7 +1950,12 @@ div[id^="div_id_edit_email"]{
 .navbar-brand{
   font-family: 'Lobster'!important;
 }
-
+.navbar-default .navbar-nav > li > a {
+    color: #666666;
+    font-size: 1.4em;
+    font-weight: 300;
+    margin-top: 2px;
+}
 /******************************
  kjh- table
 *******************************/

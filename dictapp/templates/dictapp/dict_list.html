@@ -1,0 +1,52 @@
+{% extends 'dictapp/base.html' %}
+
+{% block content %}
+    {# % for dict in dicts % #}
+    {% for dict in dicts reversed %}
+    	<div class="dict">
+    	        <!--<p>published: {{ dict.published_date }}</p>-->
+    	        <h1 class="dict_h1"><a href="{% url 'dict_detail' pk=dict.pk %}">{{ dict.title }}</a></h1>
+    	        {# <p>{{ dict.text|linebreaksbr }}</p> #}
+    	        <!--<hr></hr>-->
+    	        <p>{{ dict.get_markdown }}</p>
+    	        <!--<hr></hr>-->
+    	        <!--<p>분류  : <span class=''>{{ dict.classification }}</span></p>-->
+    	        <!--{% if dict.image %}-->
+             <!--   <img src='{{ dict.image.url }}' class='img-responsive' />-->
+             <!--   {% endif %}-->
+    	</div>
+    {% endfor %}
+    
+     {% if error_text %}
+     <div class="jumbotron">
+     <h1 class="display-3">Sorry</h1>
+     <p>검색결과가 없습니다</p>
+     </div>
+     {% endif %}
+     
+    <ul class="pagination">
+    
+        {% if dicts.has_previous %}
+        <li><a class='page-item' href="?page={{ dicts.previous_page_number }}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}" >&laquo;</a></li>
+        {% else %}
+        <li class="disabled"><span>&laquo;</span></li>
+        {% endif %}
+         
+        {% for pc in dicts.paginator.page_range %}
+        {% if pc == 0 %}
+            <li class="disabled"><span>...</span></li>
+        {% else %}
+            <li class="{% if pc == dicts.number %} active{% endif %}"><a href="?{% if request.GET.q %}q={{ request.GET.q }}&{% endif %}page={{ pc }}{% if appended_key %}&{{ appended_key }}={{ appended_value }}{% endif %}">{{ pc }}</a></li>
+        {% endif %}
+        {% endfor %}
+
+        {% if dicts.has_next %}
+        <li><a class='page-item' href="?page={{ dicts.next_page_number }}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}">&raquo;</a></li>
+        {% else %}
+        <li class="disabled"><span>&raquo;</span></li>
+        {% endif %}
+ 
+    </ul>
+
+
+{% endblock %}

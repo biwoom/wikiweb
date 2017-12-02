@@ -53,6 +53,10 @@ INSTALLED_APPS = [
     'wiki.plugins.notifications',
     'wiki.plugins.globalhistory',
     'mptt',
+    # 사전앱
+    'dictapp',
+    'markdown_deux',
+    #
 ]
 
 TEST_RUNNER = 'django.test.runner.DiscoverRunner'
@@ -152,9 +156,19 @@ STATIC_ROOT = os.path.join(PROJECT_DIR, 'static')
 MEDIA_ROOT = os.path.join(PROJECT_DIR, 'media')
 MEDIA_URL = '/media/'
 
-
 WIKI_ANONYMOUS_WRITE = False
 WIKI_ANONYMOUS_CREATE = False
 
 WIKI_ACCOUNT_HANDLING = True
 WIKI_ACCOUNT_SIGNUP_ALLOWED = True
+
+# 사전앱 마크다운 - 테이블 설정
+MARKDOWN_DEUX_STYLES = {
+    "default": {
+        "extras": {
+            "code-friendly": None,
+            "tables": None,
+        },
+        "safe_mode": "escape",
+    },
+}

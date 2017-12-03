@@ -1950,12 +1950,18 @@ div[id^="div_id_edit_email"]{
 .navbar-brand{
   font-family: 'Lobster'!important;
 }
-.navbar-default .navbar-nav > li > a {
+.navbar-default .navbar-nav > .nav-list > a {
     color: #666666;
     font-size: 1.4em;
     font-weight: 300;
     margin-top: 2px;
 }
+/*.navbar-default .navbar-nav > li > a >span {*/
+/*    color: #666666;*/
+/*    font-size: 1em;*/
+/*    font-weight: 300;*/
+/*    margin-top: 2px;*/
+/*}*/
 /******************************
  kjh- table
 *******************************/
@@ -2286,7 +2292,7 @@ div[id^="div_id_edit_email"]{
 /******************************
  kjh- button
 *******************************/
-.btn{
+.btn-group{
   margin-left: 7px !important;
 }
 

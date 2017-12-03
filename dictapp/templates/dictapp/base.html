@@ -3,7 +3,7 @@
   <head>
 	<link href="//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext" rel="stylesheet" type="text/css">
 	<link href="{% static "dictapp/bootstrap/css/bootswatch-paper.css" %}" rel="stylesheet">
-  <link href="{% static "dictapp/bootstrap/css/dictapp-custom-css.css" %}" rel="stylesheet">
+    <link href="{% static "dictapp/bootstrap/css/dictapp-custom-css.css" %}" rel="stylesheet">
 
    
   <title>INB Dictionary</title>
@@ -45,6 +45,52 @@
                   </div>
                   </form>
                   </div>
+                  
+            <!-- 로그인 바 -->
+            <div class="navbar-right">
+            {% if user.is_authenticated %}
+                <ul class="nav navbar-nav">
+                    <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    <!--<span class="badge notification-cnt">0</span>-->
+                    {{ user }}
+                <b class="caret"></b>
+                    </a>
+                    <ul class="dropdown-menu">
+                    {# % if "ACCOUNT_HANDLING"|wiki_settings % #}
+                    <li>
+                        <!--<a href="https://wiki-blog-dict-biwoom.c9users.io/_accounts/settings/">-->
+                        <a href="{% url 'wiki:profile_update' %}">    
+                        <i class="fa fa-gear"></i>
+                        {# % trans "Account Settings" % #}계정 설정
+                        </a>
+                    </li>
+                    <li>
+                        <!--<a href="https://wiki-blog-dict-biwoom.c9users.io/_accounts/logout">-->
+                        <a href="{% url 'wiki:logout' %}">    
+                        <i class="fa fa-power-off"></i>
+                        {# % trans "Log out" % #} 로그아웃
+                        </a>
+                    </li>
+                    {# % endif % #}
+                    </ul>
+                </li>
+                </ul>
+            {% else %}
+                  <ul class="nav navbar-nav">
+                  <li>
+                  <a href="{% url 'wiki:login' %}">로그인</a>
+                  </li>
+                  {# % if "ACCOUNT_HANDLING"|wiki_settings % #}
+                  <li>
+                  <a href="{% url 'wiki:signup' %}">{# % trans "Sign up" % #}회원가입</a>
+                  </li>
+                  {# % endif % #}
+                  </ul>
+            {% endif %}
+            </div>
+                   
+                  
             </div>
       </div>
       </div>

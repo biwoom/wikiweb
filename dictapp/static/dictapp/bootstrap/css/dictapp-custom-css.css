@@ -3158,7 +3158,6 @@ blockquote>p>code{
   margin-left: 0px !important;
   margin-top: 10px;
 }
-/*h6[id]:before{display:block;margin-top:-.4rem;padding-top:.4rem;content:""}*/
-/*h6[id]:target:before{margin-top:-8.4rem;padding-top:8.4rem}*/
-button[id^="dict-id-"]:before{display:block;content:""}
-button[id^="dict-id-"]:target:before{margin-top:-50rem;padding-top:50rem;}
+.dict_list_collaps_btn-2{
+  margin-top: -30px;
+}

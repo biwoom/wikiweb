@@ -6,14 +6,10 @@
     {% for dict in dicts reversed %}
     	<div class="dict">
             
-    	     <!--티벳어 표제어-->
-    	     <h1 class="dict_h1" id="dict-id-{{ dict.pk }}" ><a href="{% url 'dict_detail' pk=dict.pk %}">{{ dict.title }}</a></h1>
-    	     {# <p>{{ dict.text|linebreaksbr }}</p> #}
-    	     
-    	     <!--한글 설명-->
-    	     <!--<p>{{ dict.get_markdown }}</p>-->
-    	     
-    	    <!--<p><code>기본정보</code></p>-->
+    	    <!--티벳어 표제어-->
+    	    <h1 class="dict_h1" id="dict-id-{{ dict.pk }}" ><a href="{% url 'dict_detail' pk=dict.pk %}">{{ dict.title }}</a></h1>
+    	    {# <p>{{ dict.text|linebreaksbr }}</p> #}
+    	    
     	    <p>
             <code>기본정보</code>    
             {% if dict.ti_wylie %}
@@ -26,16 +22,16 @@
             </p>
             
             <!--# 범어/한문  -->
-            <p>
             {% if dict.ti_sanskrit_entry or ti_classical_chinese_entry%}
-            <strong><code>관련단어</code></strong>
-            {% if dict.ti_sanskrit_entry %}
-        	<em class="dict_list_label"> 범어 </em> <strong class="dict_list_text"><span> | </span> {{ dict.ti_sanskrit_entry }}</strong> <span> . </span>
-        	{% endif %}
-        	
-            {% if dict.ti_classical_chinese_entry %}
-            <em class="dict_list_label"> 한문 </em> <strong class="dict_list_text"><span> | </span> {{ dict.ti_classical_chinese_entry }}</strong> <span> . </span>
-        	{% endif %}
+            <p>
+                <strong><code>관련단어</code></strong>
+                {% if dict.ti_sanskrit_entry %}
+            	<em class="dict_list_label"> 범어 </em> <strong class="dict_list_text"><span> | </span> {{ dict.ti_sanskrit_entry }}</strong> <span> . </span>
+            	{% endif %}
+            	
+                {% if dict.ti_classical_chinese_entry %}
+                <em class="dict_list_label"> 한문 </em> <strong class="dict_list_text"><span> | </span> {{ dict.ti_classical_chinese_entry }}</strong> <span> . </span>
+            	{% endif %}
             </p>
             {% endif %}
             
@@ -57,36 +53,19 @@
         	</tr>
             </table>
             {% endif %}
-            
-<!--미리보기 탭            -->
-<!--<header class="acd-header" role="banner" style="margin-top:15px; margin-left:0px; max-width: 99%;">-->
-<!--<nav class="acd-nav" role="navigation" style="margin: 10px 10px;">-->
-<!--<ul class="acd-ul acd-nav__list">-->
-      <!--group-1   -->
-<!--    <li class="acd-li">-->
-<!--    <input class="acd-input" id="group-{{ dict.pk }}" type="checkbox" hidden />-->
-<!--    <label class="acd-label" for="group-{{ dict.pk }}" style="width: 100% !important;"> 단어설명 미리보기 </a></label>-->
-<!--        <ul class="acd-ul group-list-2nd">        -->
-<!--        <li><div>{{ dict.get_markdown }}</div></li>-->
-<!--        </ul>     -->
-<!--     </li>        -->
-<!--</ul>   -->
-<!--</nav>-->
-<!--</header>-->
- 
- 
-    <p>
-    <button class="btn btn-default dict_list_collaps_btn" type="button" data-toggle="collapse" data-target="#{{ dict.pk }}" aria-expanded="false" aria-controls="collapseExample">
-    전체보기 
+           
+<!--전체보기 탭-->
+    
+    <button class="btn btn-default dict_list_collaps_btn" type="button" data-toggle="collapse" data-target="#dict_collaps_{{ dict.pk }}" aria-expanded="false" aria-controls="collapseExample">
+    전체보기
     <!--<i class="fa fa-angle-double-down" aria-hidden="true"></i>-->
     <!--<i class="fa fa-arrow-down" aria-hidden="true"></i>-->
     </button>
-    </p>
-    <div class="collapse" id="{{ dict.pk }}">
+    
+    <div class="collapse" id="dict_collaps_{{ dict.pk }}">
     <div class="card card-body">
+    
     <div class="dict">
-
-        
         <!--# 티벳어 표제어-->
         <h1>{{ dict.title }}</h1>
         
@@ -250,7 +229,12 @@
         <div class="date">{{ dict.published_date }}</div>
         {% endif %}
         
+        <a class="btn btn-primary dict_list_collaps_btn-2 pull-right" href="#dict-id-{{ dict.pk }}" type="button" data-toggle="collapse" 
+        data-target="#dict_collaps_{{ dict.pk }}" aria-expanded="false" aria-controls="collapseExample">
+       내용접기
+       </a>
     </div>
+    
     </div>
     </div>  
     
@@ -289,6 +273,4 @@
         <li class="disabled"><span>&raquo;</span></li>
         {% endif %}
     </ul>
-
-
 {% endblock %}

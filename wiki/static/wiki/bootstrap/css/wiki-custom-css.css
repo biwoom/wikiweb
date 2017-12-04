@@ -2303,7 +2303,9 @@ div[id^="div_id_edit_email"]{
   margin-left: 0px !important;
   margin-right: 0px !important;
 }
-
+input[type="radio"]{
+  margin-top: 10px !important;
+}
 /******************************
  kjh- add file to article 
 *******************************/

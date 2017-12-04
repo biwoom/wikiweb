@@ -1,22 +1,265 @@
 {% extends 'dictapp/base.html' %}
 
 {% block content %}
+    <!--검색결과 리스트로 반환-->
     {# % for dict in dicts % #}
     {% for dict in dicts reversed %}
     	<div class="dict">
-    	        <!--<p>published: {{ dict.published_date }}</p>-->
-    	        <h1 class="dict_h1"><a href="{% url 'dict_detail' pk=dict.pk %}">{{ dict.title }}</a></h1>
-    	        {# <p>{{ dict.text|linebreaksbr }}</p> #}
-    	        <!--<hr></hr>-->
-    	        <p>{{ dict.get_markdown }}</p>
-    	        <!--<hr></hr>-->
-    	        <!--<p>분류  : <span class=''>{{ dict.classification }}</span></p>-->
-    	        <!--{% if dict.image %}-->
-             <!--   <img src='{{ dict.image.url }}' class='img-responsive' />-->
-             <!--   {% endif %}-->
-    	</div>
+            
+    	     <!--티벳어 표제어-->
+    	     <h1 class="dict_h1" id="dict-id-{{ dict.pk }}" ><a href="{% url 'dict_detail' pk=dict.pk %}">{{ dict.title }}</a></h1>
+    	     {# <p>{{ dict.text|linebreaksbr }}</p> #}
+    	     
+    	     <!--한글 설명-->
+    	     <!--<p>{{ dict.get_markdown }}</p>-->
+    	     
+    	    <!--<p><code>기본정보</code></p>-->
+    	    <p>
+            <code>기본정보</code>    
+            {% if dict.ti_wylie %}
+        	<em class="dict_list_label"> Wylie </em> <strong class="dict_list_text"><span> | </span> {{ dict.ti_wylie }}</strong> <span> . </span>
+        	{% endif %}
+        	
+            {% if dict.ti_korean_entry %}
+            <em class="dict_list_label"> 한국어 </em> <strong class="dict_list_text"><span> | </span> {{ dict.ti_korean_entry }}</strong> <span> . </span>
+        	{% endif %}
+            </p>
+            
+            <!--# 범어/한문  -->
+            <p>
+            {% if dict.ti_sanskrit_entry or ti_classical_chinese_entry%}
+            <strong><code>관련단어</code></strong>
+            {% if dict.ti_sanskrit_entry %}
+        	<em class="dict_list_label"> 범어 </em> <strong class="dict_list_text"><span> | </span> {{ dict.ti_sanskrit_entry }}</strong> <span> . </span>
+        	{% endif %}
+        	
+            {% if dict.ti_classical_chinese_entry %}
+            <em class="dict_list_label"> 한문 </em> <strong class="dict_list_text"><span> | </span> {{ dict.ti_classical_chinese_entry }}</strong> <span> . </span>
+        	{% endif %}
+            </p>
+            {% endif %}
+            
+    	     <!--# 동사 시제 tense -->
+            {% if dict.ti_future_tense %}
+            <!--<p><code>동사변화</code></p>-->
+            <table class="dict-tabel-multi-verb">
+        	<tr>
+        		<td>  미래</td>
+        		<td> <span></span> 현재</td>
+        		<td> <span></span> 과거</td>
+        		<td> <span></span> 명령</td>
+        	</tr>
+        	<tr>
+        		<td>  {{ dict.ti_future_tense }} </td>
+        		<td> <span></span> {{ dict.ti_present_tense }} </td>
+        		<td> <span></span> {{ dict.ti_past_tense }} </td>
+        		<td> <span></span> {{ dict.ti_imperative }} </td>
+        	</tr>
+            </table>
+            {% endif %}
+            
+<!--미리보기 탭            -->
+<!--<header class="acd-header" role="banner" style="margin-top:15px; margin-left:0px; max-width: 99%;">-->
+<!--<nav class="acd-nav" role="navigation" style="margin: 10px 10px;">-->
+<!--<ul class="acd-ul acd-nav__list">-->
+      <!--group-1   -->
+<!--    <li class="acd-li">-->
+<!--    <input class="acd-input" id="group-{{ dict.pk }}" type="checkbox" hidden />-->
+<!--    <label class="acd-label" for="group-{{ dict.pk }}" style="width: 100% !important;"> 단어설명 미리보기 </a></label>-->
+<!--        <ul class="acd-ul group-list-2nd">        -->
+<!--        <li><div>{{ dict.get_markdown }}</div></li>-->
+<!--        </ul>     -->
+<!--     </li>        -->
+<!--</ul>   -->
+<!--</nav>-->
+<!--</header>-->
+ 
+ 
+    <p>
+    <button class="btn btn-default dict_list_collaps_btn" type="button" data-toggle="collapse" data-target="#{{ dict.pk }}" aria-expanded="false" aria-controls="collapseExample">
+    전체보기 
+    <!--<i class="fa fa-angle-double-down" aria-hidden="true"></i>-->
+    <!--<i class="fa fa-arrow-down" aria-hidden="true"></i>-->
+    </button>
+    </p>
+    <div class="collapse" id="{{ dict.pk }}">
+    <div class="card card-body">
+    <div class="dict">
+
+        
+        <!--# 티벳어 표제어-->
+        <h1>{{ dict.title }}</h1>
+        
+        <!--# 단어 설명(품사/한국어 표제어/의미/용례/어원) -->
+        <p>{{ dict.get_markdown }}</p>
+        
+        <!--# 동사 시제 tense -->
+        {% if dict.ti_future_tense %}
+        <p><code>동사변화</code></p>
+        <table class="dict-tabel-multi-verb">
+    	<tr>
+    		<td>  미래</td>
+    		<td> <span></span> 현재</td>
+    		<td> <span></span> 과거</td>
+    		<td> <span></span> 명령</td>
+    	</tr>
+    	<tr>
+    		<td>  {{ dict.ti_future_tense }} </td>
+    		<td> <span></span> {{ dict.ti_present_tense }} </td>
+    		<td> <span></span> {{ dict.ti_past_tense }} </td>
+    		<td> <span></span> {{ dict.ti_imperative }} </td>
+    	</tr>
+        </table>
+        {% endif %}
+        
+        <!--나머지 리스트 묶음-->
+        <div class="dict-list-collapse">
+            <p><strong><code>관련단어</code></strong></p>
+            <!--# 와일리 ti_wylie -->
+            {% if dict.ti_wylie %}
+            <table class="dict-tabel-1-row">
+        	<tr>
+        		<td> wylie</td>
+        		<td>  <span></span> {{ dict.ti_wylie }} </td>
+        	</tr>
+            </table>
+            {% endif %}
+            
+            <!--# 유의어 ti_thesaurus -->
+            {% if dict.ti_thesaurus %}
+            <table class="dict-tabel-1-row">
+        	<tr>
+        		<td> 유의어</td>
+        		<td>  <span></span> {{ dict.ti_thesaurus }} </td>
+        	</tr>
+            </table>
+            {% endif %}
+            
+            <!--# 반의어 ti_antonym -->
+            {% if dict.ti_antonym %}
+            <table class="dict-tabel-1-row">
+        	<tr>
+        		<td> 반의어</td>
+        		<td> <span></span> {{ dict.ti_antonym }} </td>
+        	</tr>
+            </table>
+            {% endif %}
+            
+            <!--# 높임말 ti_honorific -->
+            {% if dict.ti_honorific %}
+            <table class="dict-tabel-1-row">
+        	<tr>
+        		<td> 높임말</td>
+        		<td> <span></span> {{ dict.ti_honorific }} </td>
+        	</tr>
+            </table>
+            {% endif %}
+            
+            <!--# 낮춤말 ti_humble_terms -->
+            {% if dict.ti_humble_terms %}
+            <table class="dict-tabel-1-row">
+        	<tr>
+        		<td> 낮춤말</td>
+        		<td> <span></span> {{ dict.ti_humble_terms }} </td>
+        	</tr>
+            </table>
+            {% endif %}
+            
+            <!--# 한국어 ti_korean_entry -->
+            {% if dict.ti_korean_entry %}
+            <table class="dict-tabel-1-row">
+        	<tr>
+        		<td> 한국어</td>
+        		<td> <span></span> {{ dict.ti_korean_entry }} </td>
+        	</tr>
+            </table>
+            {% endif %}
+            
+            <!--# 범어 ti_sanskrit_entry -->
+            {% if dict.ti_sanskrit_entry %}
+            <table class="dict-tabel-1-row">
+        	<tr>
+        		<td> 범어 </td>
+        		<td> <span></span> {{ dict.ti_sanskrit_entry }} </td>
+        	</tr>
+            </table>
+            {% endif %}
+            
+            <!--# 한문 ti_classical_chinese_entry -->
+            {% if dict.ti_classical_chinese_entry %}
+            <table class="dict-tabel-1-row">
+        	<tr>
+        		<td> 한문 </td>
+        		<td> <span></span> {{ dict.ti_classical_chinese_entry }} </td>
+        	</tr>
+            </table>
+            {% endif %}
+            
+            <!--# 빨리어 ti_pali_entry -->
+            {% if dict.ti_pali_entry %}
+            <table class="dict-tabel-1-row">
+        	<tr>
+        		<td> 빨리어 </td>
+        		<td> <span></span> {{ dict.ti_pali_entry }} </td>
+        	</tr>
+            </table>
+            {% endif %}
+            
+            <!--# 영어 ti_english_entry -->
+            {% if dict.ti_english_entry %}
+            <table class="dict-tabel-1-row">
+        	<tr>
+        		<td> 영어</td>
+        		<td> <span></span> {{ dict.ti_english_entry }} </td>
+        	</tr>
+            </table>
+            {% endif %}
+        </div>
+        
+        
+        <!--# 사진 자료 이미지파일-->
+        {% if dict.image %}
+        <div class="dict-list-collapse">
+            <p><strong><code>참고 이미지</code></strong></p>
+            <img src='{{ dict.image.url }}' class='img-responsive' />
+        </div>
+        {% endif %}
+        
+        <!--# 발음 오디오 파일-->
+        {% if dict.audio %}
+        <div class="dict-list-collapse">  
+            <p><strong><code>발음</code></strong>
+            <!--<audio controls>-->
+            <!--<source src="{{ dict.audio.url }}" type="audio/mp3">-->
+            <!--</audio>-->
+            <!--</p>-->
+            
+            <audio id="{{ dict.audio.url }}" src="{{ dict.audio.url }}" type="audio/mp3" ></audio>
+            <button class="btn btn-default" onclick="document.getElementById('{{ dict.audio.url }}').play()">
+            <i class="fa fa-play" aria-hidden="true"></i>
+            </button>
+            <button class="btn btn-default" onclick="document.getElementById('{{ dict.audio.url }}').pause()">
+            <i class="fa fa-pause" aria-hidden="true"></i>
+            </button> 
+        </div>
+        {% endif %}
+        
+        
+        <!--# 변경일자 -->
+        {% if dict.published_date %}
+        <div class="date">{{ dict.published_date }}</div>
+        {% endif %}
+        
+    </div>
+    </div>
+    </div>  
+    
+    
+    
+    </div>
     {% endfor %}
     
+    <!--검색결과 없는 경우-->
      {% if error_text %}
      <div class="jumbotron">
      <h1 class="display-3">Sorry</h1>
@@ -24,8 +267,8 @@
      </div>
      {% endif %}
      
+    <!--페이지네이션 부분-->
     <ul class="pagination">
-    
         {% if dicts.has_previous %}
         <li><a class='page-item' href="?page={{ dicts.previous_page_number }}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}" >&laquo;</a></li>
         {% else %}
@@ -45,7 +288,6 @@
         {% else %}
         <li class="disabled"><span>&raquo;</span></li>
         {% endif %}
- 
     </ul>
 
 

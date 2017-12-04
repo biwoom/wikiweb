@@ -20,7 +20,22 @@ def dict_list(request):
     if query:
         dicts_list = dicts_list.filter(
 				Q(title__icontains=query)|
-				Q(text__icontains=query)
+				Q(text__icontains=query) |
+				Q(ti_wylie__icontains=query)|
+				Q(ti_past_tense__icontains=query)|
+				Q(ti_present_tense__icontains=query)|
+				Q(ti_future_tense__icontains=query)|
+				Q(ti_imperative__icontains=query)|
+				Q(ti_synonym__icontains=query)|
+				Q(ti_thesaurus__icontains=query)|
+				Q(ti_antonym__icontains=query)|
+				Q(ti_honorific__icontains=query)|
+				Q(ti_humble_terms__icontains=query)|
+				Q(ti_korean_entry__icontains=query)|
+				Q(ti_sanskrit_entry__icontains=query)|
+				Q(ti_pali_entry__icontains=query)|
+				Q(ti_classical_chinese_entry__icontains=query)|
+				Q(ti_english_entry__icontains=query)
 				).distinct()
     if not dicts_list:
             error_text = 1

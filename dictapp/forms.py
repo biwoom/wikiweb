@@ -72,8 +72,6 @@ class DictForm(forms.ModelForm):
             'ti_future_tense',
             # 티벳어 동사 명령형 필드
             'ti_imperative',
-            # 티벳어 동의어 필드
-            'ti_synonym',
             # 티벳어 유의어 필드
             'ti_thesaurus',
             # 티벳어 반의어 필드

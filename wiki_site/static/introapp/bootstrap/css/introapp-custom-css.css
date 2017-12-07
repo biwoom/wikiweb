@@ -4,13 +4,29 @@
  * Copyright 2017-* DesignRevision (https://designrevision.com)
  * Copyright 2017-* Catalin Vasile (http://catalin.me)
  */
+@import url(//fonts.googleapis.com/earlyaccess/notosanstibetan.css); 
+ 
 @import url("https://fonts.googleapis.com/css?family=Poppins:300,400,500,600|Roboto+Mono");
 @media (max-width: 575px) {
   html {
     font-size: 15px;
   }
 }
-
+/******************************
+ Tibetan font
+*******************************/
+@font-face {
+  font-family: 'Tibetan Machine Uni';
+  src: url('../fonts/TibMachUni.ttf') format('truetype')
+}
+@font-face {
+  font-family: 'Monlam Uni OuChan2';
+  src: url('../fonts/Monlam Uni OuChan2.ttf') format('truetype')
+}
+@font-face {
+  font-family: 'DDC_Uchen';
+  src: url('../fonts/DDC_Uchen.ttf') format('truetype')
+}
 body {
   font-size: 1rem;
   font-weight: 300;
@@ -4400,7 +4416,7 @@ a.text-black:focus, a.text-black:hover {
 
 .welcome {
   background: #fff;
-  height: 100vh;
+  height: 85vh;
   text-align: center;
   overflow: hidden;
   position: relative;
@@ -4500,12 +4516,12 @@ a.text-black:focus, a.text-black:hover {
 /*kjh    */
   -webkit-filter: drop-shadow(5px 5px 5px rgba(0,0,0,0.4));
   filter: drop-shadow(5px 5px 5px rgba(0,0,0,0.4));
-    
+  opacity: 0.6;  
   will-change: transform;
   position: absolute;
   /*중앙정렬*/
   left: 50%;
-  margin-top: 10px;
+  margin-top: 20px;
 
   -webkit-transform: translate(-50%);
           transform: translate(-50%);
@@ -4515,7 +4531,7 @@ a.text-black:focus, a.text-black:hover {
   -webkit-animation: float 7s ease-in-out infinite;
           animation: float 7s ease-in-out infinite;       
 }
- /*@keyframes float {
+ @keyframes float {
   0% {
     -webkit-transform: translate(-50%, 0px);
             transform: translate(-50%, 0px);
@@ -4528,12 +4544,7 @@ a.text-black:focus, a.text-black:hover {
     -webkit-transform: translate(-50%, 0px);
             transform: translate(-50%, 0px);
   }
-}*/
-/*.nalanda {
-  -webkit-transform: translate(-50%);
-          transform: translate(-50%);      
-}*/
-
+}
 /*@-webkit-keyframes float {
   0% {
     -webkit-transform: translate(-50%, 0px);
@@ -4568,6 +4579,7 @@ a.text-black:focus, a.text-black:hover {
   position: relative;
   background: #fafafa;
   padding-top: 5.3125rem;
+  margin-top: 30px;
 }
 
 .page-content:before {
@@ -4691,6 +4703,8 @@ a.text-black:focus, a.text-black:hover {
 }
 
 .slide-in {
+  border-bottom-style: none;
+  margin-bottom: 20px !important;
   will-change: transform;
   opacity: 0;
   -webkit-transform: translateY(50%);
@@ -4699,7 +4713,9 @@ a.text-black:focus, a.text-black:hover {
   transition: transform 850ms cubic-bezier(0.785, 0.135, 0.15, 0.86), opacity 850ms cubic-bezier(0.785, 0.135, 0.15, 0.86);
   transition: transform 850ms cubic-bezier(0.785, 0.135, 0.15, 0.86), opacity 850ms cubic-bezier(0.785, 0.135, 0.15, 0.86), -webkit-transform 850ms cubic-bezier(0.785, 0.135, 0.15, 0.86);
 }
-
+.inb-brand-text{
+  margin-bottom: 30px !important;
+}
 .slide-in.visible {
   -webkit-transform: translateY(0);
           transform: translateY(0);
@@ -4829,3 +4845,159 @@ a.text-black:focus, a.text-black:hover {
   text-decoration: none;
 }
 /*# sourceMappingURL=shards-demo.css.map */
+
+/*kjh*/
+
+/*로고 브랜드 */
+.mb-auto {
+    margin-bottom: 20px !important;
+}
+/* 아이폰 6 & 6 Plus 가로 */
+@media only screen and (min-device-width : 375px) and (max-device-width : 736px) and (orientation : landscape) {
+.mt-auto {margin-top: 33%!important;}
+.welcome {height: 100vh;}
+.nalanda{opacity: 0.3; margin-top: 25px;}
+.product-by{min-height: 140px !important;}
+.page-content {padding-top: 3rem;}
+.mb-auto {margin-bottom: 5px !important;}
+}
+/* 아이폰 6 & 6 Plus 세로 */
+@media only screen and (min-device-width : 375px) and (max-device-width : 736px) and (orientation : portrait) {
+.nalanda{width:290px;  opacity: 0.3; margin-top: 17%;}
+}
+
+/* PC 및 노트북 ----------- */
+@media only screen and (min-width : 400px) {
+/*.nalanda{margin-top: 150px;}*/
+}
+/*@media only screen and (min-width : 700px) {*/
+/*.nalanda{margin-top: 150px;}*/
+/*}*/
+/*@media only screen and (min-width : 1000px) {*/
+/*.nalanda{margin-top: 150px;}*/
+/*}*/
+/*@media only screen and (min-width : 1800px) and (max-height: 2000px){*/
+/*.nalanda{margin-top: 10px;}*/
+/*.page-content {padding-top:70px;}*/
+/*}*/
+/*@media only screen and (min-width : 1800px) and (min-height: 2000px){*/
+/*.nalanda{margin-top: 180px;}*/
+/*.page-content {padding-top:70px;}*/
+/*}*/
+/*@media (min-width : 1800px) {*/
+/*.nalanda{margin-top: 180px;}*/
+/*.page-content {padding-top:70px;}*/
+/*}*/
+@media only screen and (max-device-height: 3000px){
+.nalanda{margin-top: 180px;}
+}
+@media only screen and (max-device-height: 1000px){
+.nalanda{margin-top: 30px;}
+}
+@media only screen and (max-device-height: 700px) {
+.nalanda{margin-top: 30px;}
+}
+@media only screen and (max-device-height: 400px) {
+.nalanda{margin-top: 30px;}
+}
+/*@media screen and (max-device-height: 3000px){*/
+/*.nalanda{margin-top: 180px;}*/
+/*}*/
+/*@media screen and (max-height: 3000px){*/
+/*.nalanda{margin-top: 10px;}*/
+/*}*/
+/*티벳어 학술원 이름*/
+.product-by>p{
+ margin-bottom: 5px !important;
+}  
+
+/******************************
+ kjh-마크다운 markdown
+*******************************/
+code {
+    padding: 2px 4px;
+    font-size: 90%;
+    font-weight: bold;
+    color: #ffffff;
+    background-color: #adbfd2;
+    border-radius: 3px;
+}
+em{
+    padding: 2px 4px;
+    font-size: 1.4rem;
+    font-weight: 500;
+    /*color: #4a9cff;*/
+    color: #0073ff;
+    background-color: white;
+    border-radius: 3px;
+    font-style: normal !important;
+}
+ul{
+/*list-style-type: lower-roman;*/
+list-style-type: square;
+}
+.introapp_list>.intro>hr{
+  /*border-bottom-style:  0.1px dotted #e6f2ff !important;*/
+  height: 0.1px;
+  background-color: #e6f2ff;
+  border-bottom-style: dotted;
+  margin: 40px 0;
+}
+.date{
+    padding: 2px 10px;
+    font-size: 90%;
+    font-weight: bold;
+    background-color: #fff2e6;
+    border-radius: 9px;
+    width: 160px;
+    margin-top: 50px; 
+}
+blockquote{
+  background-color: #e6f2ff;
+}
+p>em>code{
+  background-color: #ff6666;
+  font-size: 1rem !important;
+}
+p>a>em>code{
+  background-color: #ff6666;
+  font-size: 1rem !important;
+}
+p>strong>code{
+  background-color: #80d4ff;
+}
+ul>li>code{
+  background-color: #f5f5f5;
+  list-style-type: none !important;
+  color: #737373;
+  margin-left: -40px;
+  font-size: 1em;
+  font-style: italic;
+  font-weight: 500;
+  display: -webkit-inline-box;
+}
+blockquote>p>code{
+  background-color: #ccffcc;
+  color: #666666;  
+}
+#wiki-footer>hr{
+    height: 2px;
+    padding: 0;
+    margin: 16px 0;
+    background-color: #e7e7e7;
+    border: 0 none;
+    overflow: hidden;
+    box-sizing: content-box;
+    border-bottom: 1px solid #ddd;  
+}
+
+/*소개문구*/
+.lead {
+    font-size: 1rem !important;
+}
+.section-title>.typo-head{
+  color: #5f738e !important;
+  font-size: 1.5rem !important;
+}
+.text-muted{font-weight: 100;}
+.footer-cta{padding: 10px 0 !important;}

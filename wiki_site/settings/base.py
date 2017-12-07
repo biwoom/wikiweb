@@ -56,8 +56,6 @@ INSTALLED_APPS = [
     # 사전앱
     'dictapp',
     'markdown_deux',
-    'bookapp',
-    'blogapp',
     'introapp',
 ]
 
@@ -174,18 +172,3 @@ MARKDOWN_DEUX_STYLES = {
         "safe_mode": "escape",
     },
 }
-
-# email setup - gamil
-from .email_info import *
-
-# EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-# DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
-# EMAIL_BACKEND = "sgbackend.SendGridBackend"
-# SENDGRID_API_KEY = "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"
-
-
-EMAIL_HOST = EMAIL_HOST
-EMAIL_HOST_USER = EMAIL_HOST_USER
-EMAIL_HOST_PASSWORD =EMAIL_HOST_PASSWORD
-EMAIL_PORT = EMAIL_PORT
-EMAIL_USE_TLS = EMAIL_USE_TLS

@@ -12,9 +12,12 @@
 
 {% block wiki_header_navlinks %}
 <ul class="nav navbar-nav">
-  {% if user.is_authenticated %}
-  <li class="nav-list"><a href="/dictapp"> DICTAPP </a></li>
-  {% endif %}
+  <li class="nav-list"><a href="/dictapp"> DICT </a></li>
+
+  <li class="nav-list"><a href="/bookapp"> BOOK </a></li>
+
+  <li class="nav-list"><a href="/home"> HOME </a></li>
+
   <!--<li class=""><a href="http://www.nalanda.or.kr/" target="_blank"> INB </a></li>-->
 </ul>
 {% endblock %}

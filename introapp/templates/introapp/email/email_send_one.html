@@ -1,0 +1,61 @@
+{% extends 'introapp/base.1.html' %}
+
+{% block content %}
+    
+    <form method="POST" class="post-form" enctype='multipart/form-data'>{% csrf_token %}
+    
+      <!-- Form Controls -->
+        <div id="forms" class="container mb-5">
+            <div class="section-title col-lg-8 col-md-10 ml-auto mr-auto">
+                <h3 class="mb-4">Email Sending to Member</h3>
+                <p>회원에게 이메일 발송하기</p>
+            </div>
+
+            <!-- Form Controls - Simple Forms: Default / Using Icons (Seamless) -->
+            <div class="example col-lg-8 col-md-10 ml-auto mr-auto">
+                <h5>Simple Forms</h5>
+
+                <!-- Form Controls: Simple Forms -->
+                <div class="row mb-5">
+                    <div class="col-md-12">
+                        <form>
+                            <div class="row">
+                                <div class="form-group col-md-6">
+                                    <label for="form1-name" class="col-form-label">{{ form.mamber_name.label }}</label>
+                                    <div class="">{{ form.mamber_name }}</div>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label for="form1-name" class="col-form-label">{{ form.mamber_email.label }}</label>
+                                    <div class="">{{ form.mamber_email }}</div>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label for="form1-name" class="col-form-label">{{ form.subject.label }}</label>
+                                    <div class="">{{ form.subject }}</div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6 mb-4">
+                                    <label for="form1-password">{{ form.message.label }}</label>
+                                    <div class="">{{ form.message }}</div>
+                                </div>
+                            </div>
+                            
+                        </form>
+                    </div>
+                </div>
+                <button type="submit" class="save btn btn-primary" style="margin-top: 10px;">이메일보내기</button>
+            </div>
+        </div>    
+      
+    </form>
+    
+    <!--<form method="POST" class="post-form" enctype='multipart/form-data'>{% csrf_token %}-->
+    
+    <!--    {{ form.as_p }}-->
+        
+    <!--    <hr style="height: 0.5px;">-->
+    <!--    <button type="submit" class="save btn btn-default" style="margin-top: 10px;">이메일보내기</button>-->
+    <!--</form>-->
+    
+{% endblock %}

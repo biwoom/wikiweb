@@ -1,0 +1,276 @@
+{% extends 'introapp/base-origin.html' %}
+
+{% block content %}
+    <!--검색결과 리스트로 반환-->
+    {# % for intro in intros % #}
+    {% for intro in intros reversed %}
+    	<div class="intro">
+            
+    	    <!--티벳어 표제어-->
+    	    <h1 class="intro_h1" id="intro-id-{{ intro.pk }}" ><a href="{% url 'intro_detail' pk=intro.pk %}">{{ intro.title }}</a></h1>
+    	    {# <p>{{ intro.text|linebreaksbr }}</p> #}
+    	    
+    	    <p>
+            <code>기본정보</code>    
+            {% if intro.ti_wylie %}
+        	<em class="intro_list_label"> Wylie </em> <strong class="intro_list_text"><span> | </span> {{ intro.ti_wylie }}</strong> <span> . </span>
+        	{% endif %}
+        	
+            {% if intro.ti_korean_entry %}
+            <em class="intro_list_label"> 한국어 </em> <strong class="intro_list_text"><span> | </span> {{ intro.ti_korean_entry }}</strong> <span> . </span>
+        	{% endif %}
+            </p>
+            
+            <!--# 범어/한문  -->
+            {% if intro.ti_sanskrit_entry or ti_classical_chinese_entry%}
+            <p>
+                <strong><code>관련단어</code></strong>
+                {% if intro.ti_sanskrit_entry %}
+            	<em class="intro_list_label"> 범어 </em> <strong class="intro_list_text"><span> | </span> {{ intro.ti_sanskrit_entry }}</strong> <span> . </span>
+            	{% endif %}
+            	
+                {% if intro.ti_classical_chinese_entry %}
+                <em class="intro_list_label"> 한문 </em> <strong class="intro_list_text"><span> | </span> {{ intro.ti_classical_chinese_entry }}</strong> <span> . </span>
+            	{% endif %}
+            </p>
+            {% endif %}
+            
+    	     <!--# 동사 시제 tense -->
+            {% if intro.ti_future_tense %}
+            <!--<p><code>동사변화</code></p>-->
+            <table class="intro-tabel-multi-verb">
+        	<tr>
+        		<td>  미래</td>
+        		<td> <span></span> 현재</td>
+        		<td> <span></span> 과거</td>
+        		<td> <span></span> 명령</td>
+        	</tr>
+        	<tr>
+        		<td>  {{ intro.ti_future_tense }} </td>
+        		<td> <span></span> {{ intro.ti_present_tense }} </td>
+        		<td> <span></span> {{ intro.ti_past_tense }} </td>
+        		<td> <span></span> {{ intro.ti_imperative }} </td>
+        	</tr>
+            </table>
+            {% endif %}
+           
+<!--전체보기 탭-->
+    
+    <button class="btn btn-default intro_list_collaps_btn" type="button" data-toggle="collapse" data-target="#intro_collaps_{{ intro.pk }}" aria-expanded="false" aria-controls="collapseExample">
+    전체보기
+    <!--<i class="fa fa-angle-double-down" aria-hidden="true"></i>-->
+    <!--<i class="fa fa-arrow-down" aria-hidden="true"></i>-->
+    </button>
+    
+    <div class="collapse" id="intro_collaps_{{ intro.pk }}">
+    <div class="card card-body">
+    
+    <div class="intro">
+        <!--# 티벳어 표제어-->
+        <h1>{{ intro.title }}</h1>
+        
+        <!--# 단어 설명(품사/한국어 표제어/의미/용례/어원) -->
+        <p>{{ intro.get_markdown }}</p>
+        
+        <!--# 동사 시제 tense -->
+        {% if intro.ti_future_tense %}
+        <p><code>동사변화</code></p>
+        <table class="intro-tabel-multi-verb">
+    	<tr>
+    		<td>  미래</td>
+    		<td> <span></span> 현재</td>
+    		<td> <span></span> 과거</td>
+    		<td> <span></span> 명령</td>
+    	</tr>
+    	<tr>
+    		<td>  {{ intro.ti_future_tense }} </td>
+    		<td> <span></span> {{ intro.ti_present_tense }} </td>
+    		<td> <span></span> {{ intro.ti_past_tense }} </td>
+    		<td> <span></span> {{ intro.ti_imperative }} </td>
+    	</tr>
+        </table>
+        {% endif %}
+        
+        <!--나머지 리스트 묶음-->
+        <div class="intro-list-collapse">
+            <p><strong><code>관련단어</code></strong></p>
+            <!--# 와일리 ti_wylie -->
+            {% if intro.ti_wylie %}
+            <table class="intro-tabel-1-row">
+        	<tr>
+        		<td> wylie</td>
+        		<td>  <span></span> {{ intro.ti_wylie }} </td>
+        	</tr>
+            </table>
+            {% endif %}
+            
+            <!--# 유의어 ti_thesaurus -->
+            {% if intro.ti_thesaurus %}
+            <table class="intro-tabel-1-row">
+        	<tr>
+        		<td> 유의어</td>
+        		<td>  <span></span> {{ intro.ti_thesaurus }} </td>
+        	</tr>
+            </table>
+            {% endif %}
+            
+            <!--# 반의어 ti_antonym -->
+            {% if intro.ti_antonym %}
+            <table class="intro-tabel-1-row">
+        	<tr>
+        		<td> 반의어</td>
+        		<td> <span></span> {{ intro.ti_antonym }} </td>
+        	</tr>
+            </table>
+            {% endif %}
+            
+            <!--# 높임말 ti_honorific -->
+            {% if intro.ti_honorific %}
+            <table class="intro-tabel-1-row">
+        	<tr>
+        		<td> 높임말</td>
+        		<td> <span></span> {{ intro.ti_honorific }} </td>
+        	</tr>
+            </table>
+            {% endif %}
+            
+            <!--# 낮춤말 ti_humble_terms -->
+            {% if intro.ti_humble_terms %}
+            <table class="intro-tabel-1-row">
+        	<tr>
+        		<td> 낮춤말</td>
+        		<td> <span></span> {{ intro.ti_humble_terms }} </td>
+        	</tr>
+            </table>
+            {% endif %}
+            
+            <!--# 한국어 ti_korean_entry -->
+            {% if intro.ti_korean_entry %}
+            <table class="intro-tabel-1-row">
+        	<tr>
+        		<td> 한국어</td>
+        		<td> <span></span> {{ intro.ti_korean_entry }} </td>
+        	</tr>
+            </table>
+            {% endif %}
+            
+            <!--# 범어 ti_sanskrit_entry -->
+            {% if intro.ti_sanskrit_entry %}
+            <table class="intro-tabel-1-row">
+        	<tr>
+        		<td> 범어 </td>
+        		<td> <span></span> {{ intro.ti_sanskrit_entry }} </td>
+        	</tr>
+            </table>
+            {% endif %}
+            
+            <!--# 한문 ti_classical_chinese_entry -->
+            {% if intro.ti_classical_chinese_entry %}
+            <table class="intro-tabel-1-row">
+        	<tr>
+        		<td> 한문 </td>
+        		<td> <span></span> {{ intro.ti_classical_chinese_entry }} </td>
+        	</tr>
+            </table>
+            {% endif %}
+            
+            <!--# 빨리어 ti_pali_entry -->
+            {% if intro.ti_pali_entry %}
+            <table class="intro-tabel-1-row">
+        	<tr>
+        		<td> 빨리어 </td>
+        		<td> <span></span> {{ intro.ti_pali_entry }} </td>
+        	</tr>
+            </table>
+            {% endif %}
+            
+            <!--# 영어 ti_english_entry -->
+            {% if intro.ti_english_entry %}
+            <table class="intro-tabel-1-row">
+        	<tr>
+        		<td> 영어</td>
+        		<td> <span></span> {{ intro.ti_english_entry }} </td>
+        	</tr>
+            </table>
+            {% endif %}
+        </div>
+        
+        
+        <!--# 사진 자료 이미지파일-->
+        {% if intro.image %}
+        <div class="intro-list-collapse">
+            <p><strong><code>참고 이미지</code></strong></p>
+            <img src='{{ intro.image.url }}' class='img-responsive' />
+        </div>
+        {% endif %}
+        
+        <!--# 발음 오디오 파일-->
+        {% if intro.audio %}
+        <div class="intro-list-collapse">  
+            <p><strong><code>발음</code></strong>
+            <!--<audio controls>-->
+            <!--<source src="{{ intro.audio.url }}" type="audio/mp3">-->
+            <!--</audio>-->
+            <!--</p>-->
+            
+            <audio id="{{ intro.audio.url }}" src="{{ intro.audio.url }}" type="audio/mp3" ></audio>
+            <button class="btn btn-default" onclick="document.getElementById('{{ intro.audio.url }}').play()">
+            <i class="fa fa-play" aria-hidden="true"></i>
+            </button>
+            <button class="btn btn-default" onclick="document.getElementById('{{ intro.audio.url }}').pause()">
+            <i class="fa fa-pause" aria-hidden="true"></i>
+            </button> 
+        </div>
+        {% endif %}
+        
+        
+        <!--# 변경일자 -->
+        {% if intro.published_date %}
+        <div class="date">{{ intro.published_date }}</div>
+        {% endif %}
+        
+        <a class="btn btn-primary intro_list_collaps_btn-2 pull-right" href="#intro-id-{{ intro.pk }}" type="button" data-toggle="collapse" 
+        data-target="#intro_collaps_{{ intro.pk }}" aria-expanded="false" aria-controls="collapseExample">
+       내용접기
+       </a>
+    </div>
+    
+    </div>
+    </div>  
+    
+    
+    
+    </div>
+    {% endfor %}
+    
+    <!--검색결과 없는 경우-->
+     {% if error_text %}
+     <div class="jumbotron">
+     <h1 class="display-3">Sorry</h1>
+     <p>검색결과가 없습니다</p>
+     </div>
+     {% endif %}
+     
+    <!--페이지네이션 부분-->
+    <ul class="pagination">
+        {% if intros.has_previous %}
+        <li><a class='page-item' href="?page={{ intros.previous_page_number }}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}" >&laquo;</a></li>
+        {% else %}
+        <li class="disabled"><span>&laquo;</span></li>
+        {% endif %}
+         
+        {% for pc in intros.paginator.page_range %}
+        {% if pc == 0 %}
+            <li class="disabled"><span>...</span></li>
+        {% else %}
+            <li class="{% if pc == intros.number %} active{% endif %}"><a href="?{% if request.GET.q %}q={{ request.GET.q }}&{% endif %}page={{ pc }}{% if appended_key %}&{{ appended_key }}={{ appended_value }}{% endif %}">{{ pc }}</a></li>
+        {% endif %}
+        {% endfor %}
+
+        {% if intros.has_next %}
+        <li><a class='page-item' href="?page={{ intros.next_page_number }}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}">&raquo;</a></li>
+        {% else %}
+        <li class="disabled"><span>&raquo;</span></li>
+        {% endif %}
+    </ul>
+{% endblock %}

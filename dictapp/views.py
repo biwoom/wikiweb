@@ -7,7 +7,7 @@ from django.shortcuts import redirect
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 # 검색
 from django.db.models import Q
-
+    
 def dict_home(request):
     return render(request, 'dictapp/dict_home.html')
 

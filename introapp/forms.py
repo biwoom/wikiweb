@@ -1,5 +1,6 @@
 from django import forms
-
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.models import User
 from .models import Intro_BW
 
 class CommentForm(forms.Form):
@@ -20,9 +21,26 @@ class Email_member_Form(forms.Form):
     subject = forms.CharField(label='Subject')
     mamber_email = forms.EmailField(label='mamber_email', required=True)
     message = forms.CharField(label='Email message', widget=forms.Textarea)    
-    
-class Intro_BWForm(forms.ModelForm):
 
+# 회원가입 커스텀 폼
+class SignupForm(UserCreationForm):
+    email = forms.EmailField(max_length=200, help_text='Required')
+    class Meta:
+        model = User
+        fields = ('username', 'email', 'password1', 'password2')
+
+
+
+
+
+
+
+
+# ===============================================
+# ===============================================
+# ===============================================
+
+class Intro_BWForm(forms.ModelForm):
     class Meta:
         model = Intro_BW
         fields = (

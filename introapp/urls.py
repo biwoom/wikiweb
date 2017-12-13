@@ -7,6 +7,10 @@ urlpatterns = [
     # 이메일
     url(r'^contact_us/$', views.email_contact_us, name='email_contact_us'),
     url(r'^email_one/$', views.email_send_one, name='email_send_one'),
+    # 회원가입
+    url(r'^signup/$', views.signup, name='signup'),
+    url(r'^activate/(?P<uidb64>[0-9A-Za-z_\-]+)/(?P<token>[0-9A-Za-z]{1,13}-[0-9A-Za-z]{1,20})/$',
+        views.activate, name='activate'),
     # 인트로
     url(r'^intro/$', views.intro_home, name='intro_home'),
     url(r'^list/$', views.intro_list, name='intro_list'),

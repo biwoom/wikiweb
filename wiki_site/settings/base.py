@@ -174,3 +174,11 @@ MARKDOWN_DEUX_STYLES = {
         "safe_mode": "escape",
     },
 }
+
+# account 앱 설정
+# LOGIN_URL = '/accounts/login/' # 기본값
+# LOGOUT_URL = '/accounts/logout/' # 기본값
+# LOGIN_REDIRECT_URL = '/' # 반드시 정의할 것!
+
+# AUTH_USER_MODEL = 'account.User'
+# AUTHENTICATION_BACKENDS = ('account.backends.OpencartBackend',)

@@ -79,6 +79,7 @@ from django.template.loader import render_to_string
 from .tokens import account_activation_token
 from django.contrib.auth.models import User
 from django.core.mail import EmailMessage
+from .python_email.email_info import SERVER_DOMAIN
 
 def signup(request):
     if request.method == 'POST':
@@ -87,11 +88,12 @@ def signup(request):
             user = form.save(commit=False)
             user.is_active = False
             user.save()
-            current_site = get_current_site(request)
+            # current_site = get_current_site(request)
+            current_site = SERVER_DOMAIN
             subject = 'Activate your blog account.'
             message = render_to_string('introapp/email/acc_active_email.html', {
                 'user': user,
-                'domain': current_site.domain,
+                'domain': current_site,
                 'uid':urlsafe_base64_encode(force_bytes(user.pk)),
                 'token':account_activation_token.make_token(user),
             })

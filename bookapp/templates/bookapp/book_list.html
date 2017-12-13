@@ -2,6 +2,12 @@
 {% load staticfiles%}
 {% block content %}
     <!--검색결과 리스트로 반환-->
+{% if user.is_staff %}
+    <div class="bookapp_btn">
+    <a class="btn btn-default" href="{% url 'book_new' %}"><span class="fa fa-plus" aria-hidden="true">  NEW</span></a>
+    </div>
+{% endif %}
+   
 {# % for book in books % #}
 {% for book in books reversed %}
 <div class="book">
@@ -63,11 +69,13 @@
                 &nbsp;|&nbsp;<strong>출판사</strong>&nbsp;:&nbsp;
                     {{ book.publisher }}
                 {% endif %}
+                </p>
             </div>
             </div>
             
             <div class="col-md-9">
             <div class="book_list_col content"> 
+                <p>
                  {% if book.page_num %}
                 <strong>페이지수</strong>&nbsp;:&nbsp;
                     {{ book.page_num }} 페이지

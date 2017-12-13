@@ -9,8 +9,8 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.db.models import Q
 
 
-# def book_home(request):
-#     return render(request, 'bookapp/book_home.html')
+def book_home(request):
+    return render(request, 'bookapp/book_home.html')
 
 
 def book_list(request):

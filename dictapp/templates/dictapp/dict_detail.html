@@ -2,7 +2,7 @@
 
 {% block content %}
         
-   {% if user.is_authenticated %}
+   {% if user.is_staff %}
     <div class="dictapp_btn">
     <a class="btn btn-default" href="{% url 'dict_edit' pk=dict.pk %}"><span class="fa fa-pencil-square-o" aria-hidden="true">  편집</span></a>
     <a class="btn btn-default" href="{% url 'dict_new' %}"><span class="fa fa-plus" aria-hidden="true">  NEW</span></a>

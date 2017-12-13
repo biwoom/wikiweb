@@ -2810,14 +2810,20 @@ input[type="file"]{
   background-color: #ffffff;
   width: 1%;
   height: 15px;
-  vertical-align: super;
+  vertical-align: sub;
 }
 /*input 이미지/오디오 선택 태그*/
 #id_image, #id_audio{
   margin-top: 0px;
   padding-top: 5px;
   margin-left: 0px;
-  display: inline;
+  display: -webkit-box;
+}
+#image-clear_id:after, #audio-clear_id:after{
+  display: none !important;
+}
+#id_image + a{
+  display: -webkit-box;
 }
 /*사진자료 & 발음오디오 input 태그*/
 .post-form>p:nth-child(19){

@@ -14,6 +14,7 @@ from __future__ import unicode_literals
 import os
 
 from django.core.urlresolvers import reverse_lazy
+from django.conf.locale.ko import formats as ko_formats
 
 
 PROJECT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -53,7 +54,7 @@ INSTALLED_APPS = [
     'wiki.plugins.notifications',
     'wiki.plugins.globalhistory',
     'mptt',
-    # 사전앱
+    'bookapp',
     'dictapp',
     'markdown_deux',
     'introapp',
@@ -138,6 +139,7 @@ TIME_ZONE = 'Asia/Seoul'
 # Language code for this installation. All choices can be found here:
 # http://www.i18nguy.com/unicode/language-identifiers.html
 LANGUAGE_CODE = 'ko_KR'
+ko_formats.DATETIME_FORMAT = 'Y-m-d G:i:s'
 
 SITE_ID = 1
 

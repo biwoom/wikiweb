@@ -7,12 +7,14 @@ class CommentForm(forms.Form):
     url = forms.URLField(label='Your website', required=False)
     comment = forms.CharField()
 
+# 회원 to 관리자 문의 이메일
 class Contact_us_Form(forms.Form):
     name = forms.CharField(label='Your name')
     subject = forms.CharField(label='Subject')
     email = forms.EmailField(label='Your email', required=True)
     message = forms.CharField(label='Email message', widget=forms.Textarea)
-    
+
+# 관리자 to 회원 1인 이메일    
 class Email_member_Form(forms.Form):
     mamber_name = forms.CharField(label='mamber_name')
     subject = forms.CharField(label='Subject')

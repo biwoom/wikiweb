@@ -1,0 +1,458 @@
+{% extends 'bookapp/base.html' %}
+
+{% block content %}
+    <h1 style="margin-bottom: 30px;">새로운 도서정보 입력</h1>
+    
+    <form method="POST" class="post-form" enctype='multipart/form-data'>{% csrf_token %}
+    
+        <!--{{ form.as_p }}-->
+        
+        
+         {{ form.non_field_errors }}
+<!-- # 저자파트 ============================ -->
+<div class="book"> 
+<h3 id="book-id-author">저자파트 </h3>
+<button class="btn btn-default book_list_collaps_btn" type="button" data-toggle="collapse" data-target="#book_collaps_author" aria-expanded="false" aria-controls="collapseExample">
+    저자 입력
+</button>
+<div class="collapse" id="book_collaps_author">
+<div class="card card-body">
+            <!-- # 1.1. 주 저자이름 -->
+            <div class="form-group">
+            {{ form.main_author.errors }}
+            <label for="id_main_author" class="col-form-label">주저자 이름:</label>
+            {{ form.main_author }}
+            </div>
+            <!-- # 1.2. 주 저자 약력 -->
+            <div class="form-group">
+            {{ form.main_author_profile.errors }}
+            <label for="id_main_author_profile" class="col-form-label">주저자 약력:</label>
+            {{ form.main_author_profile }}
+            </div>
+            <!-- # 1.3. 주 저자 이미지 -->
+            <!--<div class="form-group">-->
+            <!--{{ form.main_author_img.errors }}-->
+            <!--<label for="id_main_author_img" class="col-form-label">주저자 사진:</label>-->
+            <!--{{ form.main_author_img }}-->
+            <!--</div>-->
+            <!-- # 2.1. 주석자 이름 -->
+            <!--<div class="form-group">-->
+            <!--{{ form.annotator.errors }}-->
+            <!--<label for="id_annotator" class="col-form-label">주석자 이름:</label>-->
+            <!--{{ form.annotator }}-->
+            <!--</div>-->
+            <!-- # 2.2. 주석자 약력 -->
+            <!--<div class="form-group">-->
+            <!--{{ form.annotator_profile.errors }}-->
+            <!--<label for="id_annotator_profile" class="col-form-label">주석자 약력:</label>-->
+            <!--{{ form.annotator_profile }}-->
+            <!--</div>-->
+            <!-- # 2.3. 주석자 이미지 -->
+            <!--<div class="form-group">-->
+            <!--{{ form.annotator_img.errors }}-->
+            <!--<label for="id_annotator_img" class="col-form-label">주석자 사진:</label>-->
+            <!--{{ form.annotator_img }}-->
+            <!--</div>-->
+            <!-- # 3.1. 주 번역자 이름 -->
+            <div class="form-group">
+            {{ form.main_translator.errors }}
+            <label for="id_main_translator" class="col-form-label">주번역자 이름:</label>
+            {{ form.main_translator }}
+            </div>
+            <!-- # 3.2. 주 번역자 약력 -->
+            <div class="form-group">
+            {{ form.main_translator_profile.errors }}
+            <label for="id_main_translator_profile" class="col-form-label">주번역자 약력:</label>
+            {{ form.main_translator_profile }}
+            </div>
+            <!-- # 3.3. 주 번역자 이미지 -->
+            <!--<div class="form-group">-->
+            <!--{{ form.main_translator_img.errors }}-->
+            <!--<label for="id_main_translator_img" class="col-form-label">주번역자 사진:</label>-->
+            <!--{{ form.main_translator_img }}-->
+            <!--</div>-->
+            <!-- # 4.1. 다중저자-목록 -->
+            <!--<div class="form-group">-->
+            <!--{{ form.co_author.errors }}-->
+            <!--<label for="id_co_author" class="col-form-label">다중저자 이름:</label>-->
+            <!--{{ form.co_author }}-->
+            <!--</div>-->
+            <!-- # 4.2. 다중역자-목록 -->
+            <!--<div class="form-group">-->
+            <!--{{ form.co_translator.errors }}-->
+            <!--<label for="id_co_translator" class="col-form-label">다중역자 이름:</label>-->
+            <!--{{ form.co_translator }}-->
+            <!--</div>-->
+            <!-- # 4.3. 다중 저자/역자 - 약력 -->
+            <div class="form-group">
+            {{ form.co_writer_profile.errors }}
+            <label for="id_co_writer_profile" class="col-form-label">다중저자.역자:</label>
+            {{ form.co_writer_profile }}
+            </div>
+<a class="btn btn-primary book_list_collaps_btn-2 pull-right" href="#book-id-author" type="button" data-toggle="collapse" data-target="#book_collaps_author" aria-expanded="false" aria-controls="collapseExample">
+내용접기
+</a>
+</div>   
+</div>
+</div>  
+
+
+<!-- # 메이커 파트 ============================== -->
+<div class="book"> 
+<h3 id="book-id-editor">메이커파트 </h3>
+<button class="btn btn-default book_list_collaps_btn" type="button" data-toggle="collapse" data-target="#book_collaps_editor" aria-expanded="false" aria-controls="collapseExample">
+    메이커 입력
+</button>
+<div class="collapse" id="book_collaps_editor">
+<div class="card card-body">
+
+            <!-- # 1. 편집자 -->
+            <div class="form-group">
+            {{ form.editor.errors }}
+            <label for="id_editor" class="col-form-label">편집자:</label>
+            {{ form.editor }}
+            </div>
+            <!-- # 2. 제작사 -->
+            <div class="form-group">
+            {{ form.production_company.errors }}
+            <label for="id_production_company" class="col-form-label">제작사:</label>
+            {{ form.production_company }}
+            </div>
+            <!-- # 3. 발행자 -->
+            <div class="form-group">
+            {{ form.publisher.errors }}
+            <label for="id_publisher" class="col-form-label">발행자:</label>
+            {{ form.publisher }}
+            </div>
+            <!-- # 4. 출판사 -->
+            <div class="form-group">
+            {{ form.publishing_company.errors }}
+            <label for="id_publishing_company" class="col-form-label">출판사:</label>
+            {{ form.publishing_company }}
+            </div>
+            <!-- # 5. 후원자 -->
+            <div class="form-group">
+            {{ form.contributor.errors }}
+            <label for="id_contributor" class="col-form-label">후원자:</label>
+            {{ form.contributor }}
+            </div>
+            <!-- # 6. 기여자 -->
+            <div class="form-group">
+            {{ form.helper.errors }}
+            <label for="id_helper" class="col-form-label">기여자:</label>
+            {{ form.helper }}
+            </div>
+            <!-- # 7. 판권소유자 -->
+            <div class="form-group">
+            {{ form.copyright_holder.errors }}
+            <label for="id_copyright_holder" class="col-form-label">판권소유:</label>
+            {{ form.copyright_holder }}
+            </div>
+            <!-- # 8. 삽화가 -->
+            <div class="form-group">
+            {{ form.illustrator.errors }}
+            <label for="id_illustrator" class="col-form-label">삽화가:</label>
+            {{ form.illustrator }}
+            </div>
+<a class="btn btn-primary book_list_collaps_btn-2 pull-right" href="#book-id-editor" type="button" data-toggle="collapse" data-target="#book_collaps_editor" aria-expanded="false" aria-controls="collapseExample">
+내용접기
+</a>
+</div>   
+</div>
+</div> 
+
+
+<!-- # 서지정보 파트 ============================== -->
+<div class="book"> 
+<h3 id="book-id-published">서지정보파트 </h3>
+<button class="btn btn-default book_list_collaps_btn" type="button" data-toggle="collapse" data-target="#book_collaps_published" aria-expanded="false" aria-controls="collapseExample">
+    서지정보 입력
+</button>
+<div class="collapse" id="book_collaps_published">
+<div class="card card-body">
+
+            <!-- # 1. 출판일 -->
+            <div class="form-group">
+            {{ form.published_date.errors }}
+            <label for="id_published_date" class="col-form-label">출판일:</label>
+            {{ form.published_date }}
+            </div>
+            <!-- # 2. 페이지수 -->
+            <div class="form-group">
+            {{ form.page_num.errors }}
+            <label for="id_page_num" class="col-form-label">페이지수:</label>
+            {{ form.page_num }}
+            </div>
+            <!-- # 3. ISBN -->
+            <div class="form-group">
+            {{ form.isbn.errors }}
+            <label for="id_isbn" class="col-form-label">ISBN:</label>
+            {{ form.isbn }}
+            </div>
+            <!-- # 4. 개정일 -->
+            <div class="form-group">
+            {{ form.revised_date.errors }}
+            <label for="id_revised_date" class="col-form-label">개정일:</label>
+            {{ form.revised_date }}
+            </div>
+            <!-- # 5. 판형 -->
+            <div class="form-group">
+            {{ form.edition.errors }}
+            <label for="id_edition" class="col-form-label">판형:</label>
+            {{ form.edition }}
+            </div>
+            <!-- # 6. 쇄 -->
+            <div class="form-group">
+            {{ form.printing.errors }}
+            <label for="id_printing" class="col-form-label">쇄:</label>
+            {{ form.printing }}
+            </div>
+<a class="btn btn-primary book_list_collaps_btn-2 pull-right" href="#book-id-published" type="button" data-toggle="collapse" data-target="#book_collaps_published" aria-expanded="false" aria-controls="collapseExample">
+내용접기
+</a>
+</div>   
+</div>
+</div>        
+        
+
+<!-- # 책 제목 파트 ============================== -->
+<div class="book"> 
+<h3 id="book-id-title">책제목 </h3>
+<button class="btn btn-default book_list_collaps_btn" type="button" data-toggle="collapse" data-target="#book_collaps_title" aria-expanded="false" aria-controls="collapseExample">
+    책제목 입력
+</button>
+<div class="collapse" id="book_collaps_title">
+<div class="card card-body">
+
+            <!-- # 1. 컬렉션 제목 -->
+            <div class="form-group">
+            {{ form.collection_title.errors }}
+            <label for="id_collection_title" class="col-form-label">컬렉션제목:</label>
+            {{ form.collection_title }}
+            </div>
+            <!-- # 2. 주제목 -->
+            <div class="form-group">
+            {{ form.main_title.errors }}
+            <label for="id_main_title" class="col-form-label">주제목:</label>
+            {{ form.main_title }}
+            </div>
+            <!-- # 3. 부제목 -->
+            <div class="form-group">
+            {{ form.sub_title.errors }}
+            <label for="id_sub_title" class="col-form-label">부제목:</label>
+            {{ form.sub_title }}
+            </div>
+            <!-- # 4. 권번호 -->
+            <div class="form-group">
+            {{ form.volume.errors }}
+            <label for="id_volume" class="col-form-label">권:</label>
+            {{ form.volume }}
+            </div>
+<a class="btn btn-primary book_list_collaps_btn-2 pull-right" href="#book-id-title" type="button" data-toggle="collapse" data-target="#book_collaps_title" aria-expanded="false" aria-controls="collapseExample">
+내용접기
+</a>
+</div>   
+</div>
+</div> 
+       
+
+<!-- # 책 소개 파트 ============================== -->
+<div class="book"> 
+<h3 id="book-id-introduction">책소개 </h3>
+<button class="btn btn-default book_list_collaps_btn" type="button" data-toggle="collapse" data-target="#book_collaps_introduction" aria-expanded="false" aria-controls="collapseExample">
+    책소개 입력
+</button>
+<div class="collapse" id="book_collaps_introduction">
+<div class="card card-body">
+
+            <!-- # 1. 책소개 - 책소개/추천사/보도자료 -->
+            <div class="form-group">
+            {{ form.introduction.errors }}
+            <label for="id_introduction" class="col-form-label">책소개:</label>
+            {{ form.introduction }}
+            </div>
+            <!-- # 2. 목차  -->
+            <div class="form-group">
+            {{ form.table_of_contents.errors }}
+            <label for="id_table_of_contents" class="col-form-label">목차:</label>
+            {{ form.table_of_contents }}
+            </div>
+            <!-- # 3. 표지_이미지 -->
+            <div class="form-group">
+            {{ form.cover_img.errors }}
+            <label for="id_cover_img" class="col-form-label">표지:</label>
+            {{ form.cover_img }}
+            </div>
+            <!-- # 4.1 책내용_미리보기_이미지1 -->
+            <div class="form-group">
+            {{ form.preview_img_1.errors }}
+            <label for="id_preview_img_1" class="col-form-label">내용사진1:</label>
+            {{ form.preview_img_1 }}
+            </div>
+            <!-- # 4.2 책내용_미리보기_이미지2 -->
+            <div class="form-group">
+            {{ form.preview_img_2.errors }}
+            <label for="id_preview_img_2" class="col-form-label">내용사진2:</label>
+            {{ form.preview_img_2 }}
+            </div>
+            <!-- # 4.3 책내용_미리보기_이미지3 -->
+            <!--<div class="form-group">-->
+            <!--{{ form.preview_img_3.errors }}-->
+            <!--<label for="id_preview_img_3" class="col-form-label">내용사진3:</label>-->
+            <!--{{ form.preview_img_3 }}-->
+            <!--</div>-->
+            <!-- # 5. subject -->
+            <div class="form-group">
+            {{ form.subject.errors }}
+            <label for="id_subject" class="col-form-label">주제분류:</label>
+            {{ form.subject }}
+            </div>
+            <!-- # 6. 토픽(주제) 키워드- 여러종류의 관련키워드 나열 -->
+            <div class="form-group">
+            {{ form.topic_keyword.errors }}
+            <label for="id_topic_keyword" class="col-form-label">키워드:</label>
+            {{ form.topic_keyword }}
+            </div>
+<a class="btn btn-primary book_list_collaps_btn-2 pull-right" href="#book-id-introduction" type="button" data-toggle="collapse" data-target="#book_collaps_introduction" aria-expanded="false" aria-controls="collapseExample">
+내용접기
+</a>
+</div>   
+</div>
+</div> 
+        
+
+<!-- # 가격 파트 ============================== -->
+<div class="book"> 
+<h3 id="book-id-price">가격 </h3>
+<button class="btn btn-default book_list_collaps_btn" type="button" data-toggle="collapse" data-target="#book_collaps_price" aria-expanded="false" aria-controls="collapseExample">
+    가격 입력
+</button>
+<div class="collapse" id="book_collaps_price">
+<div class="card card-body">
+
+            <!-- # 1. 정가 -->
+            <div class="form-group">
+            {{ form.price.errors }}
+            <label for="id_price" class="col-form-label">정가:</label>
+            {{ form.price }}
+            </div>
+            <!-- # 2. 판매가 -->
+            <div class="form-group">
+            {{ form.selling_price.errors }}
+            <label for="id_selling_price" class="col-form-label">판매가:</label>
+            {{ form.selling_price }}
+            </div>
+            <!-- # 3. 재고수량 -->
+            <div class="form-group">
+            {{ form.stock_num.errors }}
+            <label for="id_stock_num" class="col-form-label">재고량:</label>
+            {{ form.stock_num }}
+            </div>
+            <!-- # 4. 판매상태 - 판매중 / 준비중 / 절판 -->
+            <div class="form-group">
+            {{ form.sale_check.errors }}
+            <label for="id_sale_check" class="col-form-label">판매상태:</label>
+            {{ form.sale_check }}
+            </div>
+            <!-- # 5. 구입문의 - 입금은행정보 -->
+            <div class="form-group">
+            {{ form.our_bank.errors }}
+            <label for="id_our_bank" class="col-form-label">구입정보:</label>
+            {{ form.our_bank }}
+            </div>
+<a class="btn btn-primary book_list_collaps_btn-2 pull-right" href="#book-id-price" type="button" data-toggle="collapse" data-target="#book_collaps_price" aria-expanded="false" aria-controls="collapseExample">
+내용접기
+</a>
+</div>   
+</div>
+</div> 
+        
+
+<!-- # 추가 정보 파트 ============================== -->
+<div class="book"> 
+<h3 id="book-id-errata">추가정보 </h3>
+<button class="btn btn-default book_list_collaps_btn" type="button" data-toggle="collapse" data-target="#book_collaps_errata" aria-expanded="false" aria-controls="collapseExample">
+    추가정보 입력
+</button>
+<div class="collapse" id="book_collaps_errata">
+<div class="card card-body">
+
+            <!-- # 1. 오탈자(정정정보) -->
+            <div class="form-group">
+            {{ form.errata.errors }}
+            <label for="id_errata" class="col-form-label">오탈자:</label>
+            {{ form.errata }}
+            </div>
+            <!-- # 2. 오탈자수정일 -->
+            <div class="form-group">
+            {{ form.errata_date.errors }}
+            <label for="id_errata_date" class="col-form-label">오탈자수정일:</label>
+            {{ form.errata_date }}
+            </div>
+            <!-- # 3. 강의 동영상 유투브 URL -->
+            <div class="form-group">
+            {{ form.video_url.errors }}
+            <label for="id_video_url" class="col-form-label">강의동영상 URL:</label>
+            {{ form.video_url }}
+            </div>
+            <!-- # 4. 관련문서 위키 URL -->
+            <div class="form-group">
+            {{ form.wiki_url.errors }}
+            <label for="id_wiki_url" class="col-form-label">위키문서 URL:</label>
+            {{ form.wiki_url }}
+            </div>
+            <!-- # 5. 부록자료-파일 필드  -->
+            <div class="form-group">
+            {{ form.supplement_file.errors }}
+            <label for="id_supplement_file" class="col-form-label">부록자료:</label>
+            {{ form.supplement_file }}
+            </div>
+<a class="btn btn-primary book_list_collaps_btn-2 pull-right" href="#book-id-errata" type="button" data-toggle="collapse" data-target="#book_collaps_errata" aria-expanded="false" aria-controls="collapseExample">
+내용접기
+</a>
+</div>   
+</div>
+</div> 
+
+
+<!-- # 작성자 파트 ==============================   -->
+<div class="book"> 
+<h3 id="book-id-draftsman">작성자 </h3>
+<button class="btn btn-default book_list_collaps_btn" type="button" data-toggle="collapse" data-target="#book_collaps_draftsman" aria-expanded="false" aria-controls="collapseExample">
+    작성자 입력
+</button>
+<div class="collapse" id="book_collaps_draftsman">
+<div class="card card-body">  
+            <!-- # 1. 북정보 작성자 -->
+            <div class="form-group">
+            {{ form.draftsman.errors }}
+            <label for="id_draftsman" class="col-form-label">도서정보 작성자:</label>
+            {{ form.draftsman }}
+            </div>
+            <!-- # 2. 북정보 생성일 -->
+            <div class="form-group">
+            {{ form.created_date.errors }}
+            <label for="id_created_date" class="col-form-label">도서정보 생성일:</label>
+            {{ form.created_date }}
+            </div>
+            <!-- # 3. 북정보 수정일 -->
+            <div class="form-group">
+            {{ form.re_draft_date.errors }}
+            <label for="id_re_draft_date" class="col-form-label">도서정보 수정일:</label>
+            {{ form.re_draft_date }}
+            </div>
+<a class="btn btn-primary book_list_collaps_btn-2 pull-right" href="#book-id-draftsman" type="button" data-toggle="collapse" data-target="#book_collaps_draftsman" aria-expanded="false" aria-controls="collapseExample">
+내용접기
+</a>
+</div>   
+</div>
+</div> 
+
+
+        <hr style="height: 0.5px;">
+        <button type="submit" class="save btn btn-default" style="margin-top: 10px;">Save</button>
+ 
+      
+    </form>
+    
+{% endblock %}

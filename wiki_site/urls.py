@@ -15,9 +15,9 @@ urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
     url(r'^robots.txt', lambda _: HttpResponse('User-agent: *\nDisallow: /')),
     url(r'^dictapp/', include('dictapp.urls')),
-    # url(r'^bookapp/', include('bookapp.urls')),
+    url(r'^bookapp/', include('bookapp.urls')),
     # url(r'^blogapp/', include('blogapp.urls')),
-    url(r'^home/', include('introapp.urls')),
+    # url(r'^home/', include('introapp.urls')),
     url(r'', include('introapp.urls'))
 ]
 

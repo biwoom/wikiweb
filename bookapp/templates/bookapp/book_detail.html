@@ -1,0 +1,723 @@
+{% extends 'bookapp/base.html' %}
+{% load staticfiles%}
+{% block content %}
+        
+   {% if user.is_authenticated %}
+    <div class="bookapp_btn">
+    <a class="btn btn-default" href="{% url 'book_edit' pk=book.pk %}"><span class="fa fa-pencil-square-o" aria-hidden="true">  편집</span></a>
+    <a class="btn btn-default" href="{% url 'book_new' %}"><span class="fa fa-plus" aria-hidden="true">  NEW</span></a>
+    </div>
+   {% endif %}
+
+<div id="main-wrapper">
+<!-- Page Preloader -->
+<!--<div id="preloader">-->
+<!--    <div id="status">-->
+<!--        <div class="status-mes"></div>-->
+<!--    </div>-->
+<!--</div>-->
+
+
+<div class="columns-block container">
+<div class="left-col-block blocks">
+    <header class="header theiaStickySidebar">
+        <!--책 표지 이미지-->
+        <div class="profile-img">
+            {% if book.cover_img %}
+            <div class="dict-list-collapse">
+            <img src='{{ book.cover_img.url }}' class='book_cover_img img-responsive' />
+            </div>
+            {% else %}
+            <img src="{% static "bookapp/tem/img/img-profile.jpg" %}" class="img-responsive" alt=""/>
+            {% endif %}
+        </div>
+        <div class="content">
+            <!--컬렉션제목-->
+            {% if book.collection_title %}   
+            <p>{{ book.collection_title }}</p>
+            {% endif %}
+            <!--책 주제목-->
+            {% if book.main_title %}
+            <h1>{{ book.main_title }}</h1>
+            {% endif %}
+            <!--책 부제목-->
+            {% if book.sub_title %}
+            <span class="lead">{{ book.sub_title }}</span>
+            {% endif %}
+            <!--책 권수-->
+            {% if book.volume %}
+            <span class="lead">{{ book.volume }}권</span>
+            {% endif %}
+            
+
+            <div class="about-text">
+                <!--주저자 이름-->
+                {% if book.main_author %}   
+                <p>저자: {{ book.main_author }}</p>
+                {% endif %}
+                <!--주역자 이름-->
+                {% if book.main_translator %}   
+                <p>역자: {{ book.main_translator }}</p>
+                {% endif %}
+                <!--출판사 이름-->
+                {% if book.publisher %}   
+                <p>출판사: {{ book.publisher }}</p>
+                {% endif %}
+                <!--출판일-->
+                {% if book.published_date %}   
+                <p>출판일: {{ book.published_date|date:"Y년 m월 d일" }}</p>
+                {% endif %}
+            </div>
+            <ul class="social-icon">
+                <li><a class="facebook hasTooltip" href="https://www.facebook.com/inb.nalanda" target="_blank"><i class="fa fa-facebook"></i></a></li>
+                <li><a class="twitter hasTooltip" href="https://twitter.com/nalandakorea" target="_blank" ><i class="fa fa-twitter"></i></a></li>
+                <li><a class="youtube hasTooltip" href="https://www.youtube.com/channel/UCl7_LpYKuwHB6OamMhpKF_g" target="_blank" ><i class="fa fa-youtube"></i></a></li>
+             </ul>
+        </div>
+
+    </header>
+    <!-- .header-->
+</div>
+<!-- .left-col-block -->
+
+
+<div class="right-col-block blocks">
+<div class="theiaStickySidebar">
+    
+<!--저자파트    -->
+<section class="section-wrapper section-experience gray-bg">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="section-title"><h2>저자소개</h2></div>
+            </div>
+        </div>
+        
+         <!--.row-->
+        <div class="row">
+            <div class="col-md-12">
+                <!--주저자 이름-->
+                {% if book.main_author %} 
+                <div class="content-item">
+                <small>저자</small>
+                <p class="lead">{{ book.main_author }}</p>
+                </div>
+                {% endif %}
+                
+                <!--주저자 약력-->
+                {% if book.main_author_profile %}  
+                <div class="content-item">
+                    <small>저자 약력</small>
+                    <p>{{ book.get_markdown_main_author_profile }}</p>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</section>
+<!-- .section-저자파트 -->
+
+<!--역자파트    -->
+<section class="section-wrapper section-experience gray-bg">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="section-title"><h2>역자소개</h2></div>
+            </div>
+        </div>
+        
+         <!--.row-->
+        <div class="row">
+            <div class="col-md-12">
+                <!--역자 이름-->
+                {% if book.main_translator %} 
+                <div class="content-item">
+                <small>역자</small>
+                <p class="lead">{{ book.main_translator }}</p>
+                </div>
+                {% endif %}
+                
+                <!--역자 약력-->
+                {% if book.main_translator_profile %}  
+                <div class="content-item">
+                    <small>역자 약력</small>
+                    <p>{{ book.get_markdown_main_translator_profile }}</p>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+        <!--.row-->
+    </div>
+    <!-- .container-fluid -->
+</section>
+<!-- .section-역자파트 -->
+
+<!--공동저자 파트    -->
+<section class="section-wrapper section-experience gray-bg">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="section-title"><h2>공저자 소개</h2></div>
+            </div>
+        </div>
+        
+         <!--.row-->
+        <div class="row">
+            <div class="col-md-12">
+                <!--공저자 -->
+                {% if book.co_writer_profile %}  
+                <div class="content-item">
+                    <small>공저자</small>
+                    <p>{{ book.get_markdown_co_writer_profile }}</p>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+        <!--.row-->
+    </div>
+    <!-- .container-fluid -->
+</section>
+
+
+<!--책소개파트-->
+<section class="section-wrapper section-interest gray-bg">
+    <div class="container-fluid">
+        <!--<div class="row">-->
+        <!--    <div class="col-md-12">-->
+        <!--        <div class="section-title">-->
+        <!--            <h2>도서내용</h2>-->
+        <!--        </div>-->
+        <!--    </div>-->
+        <!--</div>-->
+        <!-- .row -->
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="content-item">
+                    <!--책소개-->
+                    {% if book.introduction %}  
+                    <div class="content-item">
+                    <h3>책소개</h3>
+                    <p>{{ book.get_markdown_introduction }}</p>
+                    </div>
+                    {% endif %}
+                </div>
+                <div class="content-item">
+                    <!--목차-->
+                    {% if book.table_of_contents %}  
+                    <div class="content-item">
+                    <h3>목차</h3>
+                    <p>{{ book.get_markdown_table_of_contents }}</p>
+                    </div>
+                    {% endif %}
+                </div>
+                <div class="content-item">
+                    <!--분야-->
+                    {% if book.subject %}  
+                    <div class="content-item">
+                    <h3>분야</h3>
+                    <small>이 책의 관련분야</small>
+                    <p>{{ book.subject }}</p>
+                    </div>
+                    {% endif %}
+                </div>
+                <div class="content-item">
+                    <!--키워드-->
+                    {% if book.topic_keyword %}  
+                    <div class="content-item">
+                    <h3>키워드</h3>
+                    <small>이 책의 주요키워드</small>
+                    <p>{{ book.topic_keyword }}</p>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        <!-- .row -->
+    </div>
+</section>
+
+<!--미리보기 이미지-->
+<section class="section-wrapper portfolio-section">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="section-title">
+                    <h2>상세이미지</h2>
+                </div>
+            </div>
+            
+            <!--책내용 미리보기-사진1-->
+            {% if book.preview_img_1 %}
+            <div class="col-md-6">
+                <div class="portfolio-item" href="#">
+                    <div class="portfolio-thumb">
+                    <img src="{{ book.preview_img_1.url }}" alt="preview_img_1"  class="img-rounded">
+                    </div>
+                </div>
+            </div>
+            {% endif %}
+            
+            <!--책내용 미리보기-사진2-->
+            {% if book.preview_img_2 %}
+            <div class="col-md-6">
+                <div class="portfolio-item" href="#">
+                    <div class="portfolio-thumb">
+                    <img src="{{ book.preview_img_2.url }}" alt="preview_img_2"  class="img-rounded">
+                    </div>
+                </div>
+            </div>
+            {% endif %}
+        </div>
+        <!-- /.row -->
+    </div>
+</section>
+
+<!--서지정보-->
+<section class="expertise-wrapper section-wrapper gray-bg">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="section-title">
+                    <h2>서지정보</h2>
+                </div>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-md-12">
+                {% if book.published_date %}
+                <div class="col-md-4">
+                <address>
+                    <strong>출판일</strong><br>
+                    {{ book.published_date|date:"Y-m-d" }}<br>
+                </address>
+                </div>
+                {% endif %}
+                
+                {% if book.page_num %}
+                <div class="col-md-4">
+                <address>
+                    <strong>페이지수</strong><br>
+                    {{ book.page_num }} 페이지<br>
+                </address>
+                </div>
+                {% endif %}
+                
+                {% if book.revised_date %}
+                <div class="col-md-4">
+                <address>
+                    <strong>개정일</strong><br>
+                    {{ book.revised_date|date:"Y-m-d" }}<br>
+                </address>
+                </div>
+                {% endif %}
+                
+                {% if book.isbn %}
+                <div class="col-md-4">
+                <address>
+                    <strong>ISBN</strong><br>
+                    {{ book.isbn }}<br>
+                </address>
+                </div>
+                {% endif %}
+                
+                {% if book.edition %}
+                <div class="col-md-4">
+                <address>
+                    <strong>판형.edition</strong><br>
+                    {{ book.edition }} 판<br>
+                </address>
+                </div>
+                {% endif %}
+
+                {% if book.printing %}
+                <div class="col-md-4">
+                <address>
+                    <strong>쇄.printing</strong><br>
+                    {{ book.printing }} 쇄<br>
+                </address>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</section>
+
+<!--메이커 파트   -->
+<section class="section-wrapper section-experience gray-bg">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="section-title"><h2>Makers</h2></div>
+            </div>
+        </div>
+        
+         <!--.row-->
+        <div class="row">
+                
+                {% if book.editor %}
+                <div class="col-md-4">
+                <address>
+                    <strong>편집인</strong><br>
+                    {{ book.editor }}<br>
+                </address>
+                </div>
+                {% endif %}
+                
+                {% if book.production_company %}
+                <div class="col-md-4">
+                <address>
+                    <strong>제작사</strong><br>
+                    {{ book.production_company }}<br>
+                </address>
+                </div>
+                {% endif %}
+                
+                {% if book.publisher %}
+                <div class="col-md-4">
+                <address>
+                    <strong>발행인</strong><br>
+                    {{ book.publisher }}<br>
+                </address>
+                </div>
+                {% endif %}
+                
+                {% if book.publishing_company %}
+                <div class="col-md-4">
+                <address>
+                    <strong>출판사</strong><br>
+                    {{ book.publishing_company }}<br>
+                </address>
+                </div>
+                {% endif %}
+                
+                {% if book.contributor %}
+                <div class="col-md-4">
+                <address>
+                    <strong>후원인</strong><br>
+                    {{ book.contributor }}<br>
+                </address>
+                </div>
+                {% endif %}
+
+                {% if book.helper %}
+                <div class="col-md-4">
+                <address>
+                    <strong>기여자</strong><br>
+                    {{ book.helper }}<br>
+                </address>
+                </div>
+                {% endif %}
+                
+                {% if book.illustrator %}
+                <div class="col-md-4">
+                <address>
+                    <strong>삽화가</strong><br>
+                    {{ book.illustrator }}<br>
+                </address>
+                </div>
+                {% endif %}
+                
+                {% if book.copyright_holder %}
+                <div class="col-md-4">
+                <address>
+                    <strong>판권</strong><br>
+                    <i class="fa fa-copyright" aria-hidden="true"></i> &nbsp; {{ book.copyright_holder }}<br>
+                </address>
+                </div>
+                {% endif %}
+                
+        </div>
+        <!--.row-->
+    </div>
+    <!-- .container-fluid -->
+</section>
+
+
+
+
+<!--오탈자파트-->
+<section class="section-wrapper section-interest gray-bg">
+    <div class="container-fluid">
+
+        <div class="row">
+            <div class="col-md-12">
+                 <!--오탈자-->
+                {% if book.errata %} 
+                <div class="content-item">
+                    <div class="content-item">
+                    <h3>오탈자</h3>
+                    <p>{{ book.get_markdown_errata }}</p>
+                    </div>
+                </div>
+                {% endif %}
+                
+                <address>
+                <strong>오탈자를 알려주세요</strong><br>
+                <a href="mailto:nalandakorea@gmail.com
+                    ?subject=오탈자 정보 알림
+                    &body=도서명: {{ book.main_title }}{{ book.volume }}권 %0A%0A 페이지: [몇 페이지] %0A%0A 행: [몇 행] %0A%0A 정정정보: [수정사항를 입력해주세요] %0A%0A %0A 수정사항을 알려주셔서 감사합니다. 
+                    ">
+                <button class="book_btn btn btn-pill btn-warning">    
+                <i class="fa fa-envelope" aria-hidden="true"></i>&nbsp; 이메일보내기
+                </button>
+                </a>
+                </address>
+                
+                <!--오탈자 등록일-->
+                <!--{% if book.errata_date %}-->
+                <!--<div class="content-item">-->
+                <!--    <div class="content-item">-->
+                <!--    <h3>오탈자 등록일</h3>-->
+                <!--    <p>{{ book.errata_date|date:"Y-m-d" }}</p>-->
+                <!--    </div>-->
+                <!--</div>-->
+                <!--{% endif %}-->
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!--관련자료 파트-->
+<section class="section-wrapper section-interest gray-bg">
+    <div class="container-fluid">
+
+        <div class="row">
+            <div class="col-md-12">
+                 <!--video_url-->
+                {% if book.video_url %} 
+                <div class="content-item">
+                    <div class="content-item">
+                    <h3>강의동영상</h3>
+                    <p><a href="{{ book.video_url }}" target="_blank">{{ book.video_url }}</a></p>
+                    </div>
+                </div>
+                {% endif %}
+                
+                <!--wiki_url-->
+                {% if book.wiki_url %} 
+                <div class="content-item">
+                    <div class="content-item">
+                    <h3>위키문서</h3>
+                    <p><a href="{{ book.wiki_url }}" target="_blank">{{ book.wiki_url }}</a></p>
+                    </div>
+                </div>
+                {% endif %}
+                
+                <!--참고자료 -->
+                {% if book.supplement_file %} 
+                <div class="content-item">
+                    <div class="content-item">
+                    <h3>참고자료</h3>
+                    <p>
+                    <button type="button" class="btn btn-link">
+                    <a href="{{ book.supplement_file.url }}" target="_blank" download >
+                    <i class="fa fa-cloud-download" aria-hidden="true"></i>
+                    </a>
+                    </button>| &nbsp;{{ book.get_filename }}
+                    </p>
+                    </div>
+                </div>
+                {% endif %}
+                
+            </div>
+        </div>
+    </div>
+</section>
+
+<!--가격정보-->
+<section class="expertise-wrapper section-wrapper gray-bg">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="section-title">
+                    <h2>구입정보</h2>
+                </div>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-md-12">
+                {% if book.price %}
+                <div class="col-md-4">
+                <address>
+                    <strong>정가</strong><br>
+                    {{ book.price }} 원<br>
+                </address>
+                </div>
+                {% endif %}
+                
+                {% if book.selling_price %}
+                <div class="col-md-4">
+                <address>
+                    <strong>판매가</strong><br>
+                    {{ book.selling_price }} 원<br>
+                </address>
+                </div>
+                {% endif %}
+                
+                {% if book.stock_num %}
+                <div class="col-md-4">
+                <address>
+                    <strong>재고</strong><br>
+                    {{ book.stock_num }} 권<br>
+                </address>
+                </div>
+                {% endif %}
+                
+                {% if book.sale_check %}
+                <div class="col-md-4">
+                <address>
+                    <strong>판매상태</strong><br>
+                    <span class="book_sale_check_span">
+                    {{ book.sale_check }}</span><br>
+                </address>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+        
+        <div class="row book_our_bank_div">
+            <div class="col-md-12">
+            {% if book.our_bank %}
+                <div class="col-md-12">
+                <address>
+                    <strong>입금정보</strong><br>
+                    <span class="book_sale_check_span">
+                    {{ book.our_bank }}</span><br>
+                </address>
+                </div>
+            {% endif %}    
+            </div>
+        </div>    
+    </div>
+</section>
+
+
+<section class="section-contact section-wrapper gray-bg">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="section-title">
+                    <h2>구입 문의</h2>
+                </div>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-md-12">
+                <address>
+                    <strong>주소 Address</strong><br>
+                    경상북도 경주시 첨성로 81번길 20<br>
+                    Institute Of Nalanda Buddhism (P.O.) #20, 81-gil,<br> 
+                    Cheomseong-ro, Gyeongju-si, Gyeongsangbuk-do, Korea
+                </address>
+                
+                <address>
+                    <strong>전화 Phone Number</strong><br>
+                    054-624-5353
+                </address>
+
+                <address>
+                <strong>Email 주문하기</strong><br>
+                <a href="mailto:nalandakorea@gmail.com
+                    ?subject=도서구입문의
+                    &body=주문도서: {{ book.main_title }}{{ book.volume }}권 %0A%0A 도서가격: {{ book.price }} 원 %0A%0A 입금계좌: {{ book.our_bank }} %0A%0A 배송지 주소: [주문자님의 주소를 입력해 주세요] %0A%0A%0A 입금이 완료되면 배송이 시작됩니다.
+                    ">
+                <button class="book_btn btn btn-pill btn-warning">    
+               <i class="fa fa-shopping-bag" aria-hidden="true"></i>&nbsp; 주문 이메일 보내기 </button>
+                </button>
+                </a>
+                
+                <!--<address>-->
+                <!--    <strong>Email 주문하기</strong><br>-->
+                <!--    <a href="mailto:nalandakorea@gmail.com-->
+                <!--    ?subject=도서구입문의-->
+                <!--    &body=주문도서: {{ book.main_title }}{{ book.volume }}권 %0A 입금계좌: {{ book.our_bank }} %0A 배송지 주소: [주문자님의 주소를 입력해 주세요] %0A%0A입금이 완료되면 배송이 시작됩니다.-->
+                <!--    ">nalandakorea@gmail.com</a>-->
+                <!--</address>-->
+                
+                <address>
+                    <strong>Web Address</strong><br>
+                    <a href="www.nalanda.or.kr" target="_blank" >www.nalanda.or.kr</a><br>
+                    <a href="www.nalanda.kr" target="_blank" >www.nalanda.kr</a>
+                </address>
+            </div>
+        </div>
+        
+        <!--<div class="row">-->
+        <!--    <div class="col-md-12">-->
+        <!--        <div class="feedback-form">-->
+        <!--            <h2>문의 이메일 보내기</h2>-->
+
+        <!--            <form id="contactForm" action="sendemail.php" method="POST">-->
+        <!--                <div class="form-group">-->
+        <!--                    <label for="InputName">이름-Name</label>-->
+        <!--                    <input type="text" name="name" required="" class="form-control" id="InputName"-->
+        <!--                           placeholder="Full Name">-->
+        <!--                </div>-->
+        <!--                <div class="form-group">-->
+        <!--                    <label for="InputEmail">Email</label>-->
+        <!--                    <input type="email" name="email" required="" class="form-control" id="InputEmail"-->
+        <!--                           placeholder="Email">-->
+        <!--                </div>-->
+        <!--                <div class="form-group">-->
+        <!--                    <label for="InputSelect">분야</label>-->
+        <!--                    <select class="form-control custom-select" name="select">-->
+        <!--                      <option selected="">구입문의</option>-->
+        <!--                      <option value="1">오탈자</option>-->
+        <!--                      <option value="2">강의문의</option>-->
+        <!--                      <option value="3">기타</option>-->
+        <!--                    </select>-->
+        <!--                 </div>-->
+        <!--                <div class="form-group">-->
+        <!--                    <label for="InputSubject">주제</label>-->
+        <!--                    <input type="text" name="subject" class="form-control" id="InputSubject" -->
+        <!--                    placeholder="Subject">-->
+        <!--                </div>-->
+        <!--                <div class="form-group">-->
+        <!--                    <label for="message-text" class="control-label">문의내용</label>-->
+        <!--                    <textarea class="book_textarea form-control" rows="4" required="" -->
+        <!--                    name="message" id="message-text" placeholder="Write message"></textarea>-->
+        <!--                </div>-->
+
+        <!--                <button type="submit" class="btn btn-primary">Submit</button>-->
+        <!--            </form>-->
+        <!--        </div>-->
+
+        <!--    </div>-->
+        <!--</div>-->
+    </div>
+    <!--.container-fluid-->
+</section>
+<!--.section-contact-->
+
+<footer class="footer">
+    <div class="copyright-section">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="copytext">&copy; INB - Institute Of Nalanda Buddhism. 
+                    All rights reserved <a href="http://nalanda.kr">nalanda</a></div>
+                </div>
+            </div>
+            <!--.row-->
+        </div>
+        <!-- .container-fluid -->
+    </div>
+    <!-- .copyright-section -->
+</footer>
+<!-- .footer -->
+</div>
+<!-- Sticky -->
+</div>
+<!-- .right-col-block -->
+</div>
+<!-- .columns-block -->
+</div>
+<!-- #main-wrapper -->
+
+
+{% endblock %}

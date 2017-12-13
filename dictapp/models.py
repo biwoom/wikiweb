@@ -36,8 +36,8 @@ class Dict(models.Model):
                               width_field='width_field',
                               verbose_name='사진자료', help_text=''
                               )
-    height_field = models.IntegerField(default=0)
-    width_field = models.IntegerField(default=0)
+    height_field = models.IntegerField(default=0, blank=True, null=True)
+    width_field = models.IntegerField(default=0, blank=True, null=True)
      
     # 파일 필드 
     file = models.FileField(upload_to=upload_path_file, blank=True, null=True, verbose_name='파일', help_text='')

@@ -1,0 +1,183 @@
+{% extends 'introapp/base-origin.html' %}
+
+{% block content %}
+        
+   {% if user.is_authenticated %}
+    <div class="introapp_btn">
+    <a class="btn btn-default" href="{% url 'intro_edit' pk=intro.pk %}"><span class="fa fa-pencil-square-o" aria-hidden="true">  편집</span></a>
+    <a class="btn btn-default" href="{% url 'intro_new' %}"><span class="fa fa-plus" aria-hidden="true">  NEW</span></a>
+    </div>
+   {% endif %}
+   
+    <div class="intro">
+
+        
+        <!--# 티벳어 표제어-->
+        <h1>{{ intro.title }}</h1>
+        
+        <!--# 단어 설명(품사/한국어 표제어/의미/용례/어원) -->
+        <p>{{ intro.get_markdown }}</p>
+        
+        <!--# 동사 시제 tense -->
+        {% if intro.ti_future_tense %}
+        <p><code>동사변화</code></p>
+        <table class="intro-tabel-multi-verb">
+    	<tr>
+    		<td>  미래</td>
+    		<td> <span></span> 현재</td>
+    		<td> <span></span> 과거</td>
+    		<td> <span></span> 명령</td>
+    	</tr>
+    	<tr>
+    		<td>  {{ intro.ti_future_tense }} </td>
+    		<td> <span></span> {{ intro.ti_present_tense }} </td>
+    		<td> <span></span> {{ intro.ti_past_tense }} </td>
+    		<td> <span></span> {{ intro.ti_imperative }} </td>
+    	</tr>
+        </table>
+        {% endif %}
+        
+        <!--나머지 리스트 묶음-->
+        <div class="intro-list-collapse">
+            <p><strong><code>관련단어</code></strong></p>
+            <!--# 와일리 ti_wylie -->
+            {% if intro.ti_wylie %}
+            <table class="intro-tabel-1-row">
+        	<tr>
+        		<td> wylie</td>
+        		<td>  <span></span> {{ intro.ti_wylie }} </td>
+        	</tr>
+            </table>
+            {% endif %}
+            
+            <!--# 유의어 ti_thesaurus -->
+            {% if intro.ti_thesaurus %}
+            <table class="intro-tabel-1-row">
+        	<tr>
+        		<td> 유의어</td>
+        		<td>  <span></span> {{ intro.ti_thesaurus }} </td>
+        	</tr>
+            </table>
+            {% endif %}
+            
+            <!--# 반의어 ti_antonym -->
+            {% if intro.ti_antonym %}
+            <table class="intro-tabel-1-row">
+        	<tr>
+        		<td> 반의어</td>
+        		<td> <span></span> {{ intro.ti_antonym }} </td>
+        	</tr>
+            </table>
+            {% endif %}
+            
+            <!--# 높임말 ti_honorific -->
+            {% if intro.ti_honorific %}
+            <table class="intro-tabel-1-row">
+        	<tr>
+        		<td> 높임말</td>
+        		<td> <span></span> {{ intro.ti_honorific }} </td>
+        	</tr>
+            </table>
+            {% endif %}
+            
+            <!--# 낮춤말 ti_humble_terms -->
+            {% if intro.ti_humble_terms %}
+            <table class="intro-tabel-1-row">
+        	<tr>
+        		<td> 낮춤말</td>
+        		<td> <span></span> {{ intro.ti_humble_terms }} </td>
+        	</tr>
+            </table>
+            {% endif %}
+            
+            <!--# 한국어 ti_korean_entry -->
+            {% if intro.ti_korean_entry %}
+            <table class="intro-tabel-1-row">
+        	<tr>
+        		<td> 한국어</td>
+        		<td> <span></span> {{ intro.ti_korean_entry }} </td>
+        	</tr>
+            </table>
+            {% endif %}
+            
+            <!--# 범어 ti_sanskrit_entry -->
+            {% if intro.ti_sanskrit_entry %}
+            <table class="intro-tabel-1-row">
+        	<tr>
+        		<td> 범어 </td>
+        		<td> <span></span> {{ intro.ti_sanskrit_entry }} </td>
+        	</tr>
+            </table>
+            {% endif %}
+            
+            <!--# 한문 ti_classical_chinese_entry -->
+            {% if intro.ti_classical_chinese_entry %}
+            <table class="intro-tabel-1-row">
+        	<tr>
+        		<td> 한문 </td>
+        		<td> <span></span> {{ intro.ti_classical_chinese_entry }} </td>
+        	</tr>
+            </table>
+            {% endif %}
+            
+            <!--# 빨리어 ti_pali_entry -->
+            {% if intro.ti_pali_entry %}
+            <table class="intro-tabel-1-row">
+        	<tr>
+        		<td> 빨리어 </td>
+        		<td> <span></span> {{ intro.ti_pali_entry }} </td>
+        	</tr>
+            </table>
+            {% endif %}
+            
+            <!--# 영어 ti_english_entry -->
+            {% if intro.ti_english_entry %}
+            <table class="intro-tabel-1-row">
+        	<tr>
+        		<td> 영어</td>
+        		<td> <span></span> {{ intro.ti_english_entry }} </td>
+        	</tr>
+            </table>
+            {% endif %}
+        </div>
+        
+        
+        <!--# 사진 자료 이미지파일-->
+        {% if intro.image %}
+        <div class="intro-list-collapse">
+            <p><strong><code>참고 이미지</code></strong></p>
+            <img src='{{ intro.image.url }}' class='img-responsive' />
+        </div>
+        {% endif %}
+        
+        <!--# 발음 오디오 파일-->
+        {% if intro.audio %}
+        <div class="intro-list-collapse">  
+            <p><strong><code>발음</code></strong>
+            <audio controls>
+            <source src="{{ intro.audio.url }}" type="audio/mp3">
+            </audio>
+            </p>
+        </div>
+        {% endif %}
+        
+        
+        <!--# 변경일자 -->
+        {% if intro.published_date %}
+        <div class="date">{{ intro.published_date }}</div>
+        {% endif %}
+        <!--============================================================-->
+        <!--생략부-->
+        {# <p>{{ intro.text|linebreaksbr }}</p> #}
+        {# <p>분류 : <span class=''>{{ intro.classification }}</span></p> #}
+        <!--#  파일-->
+        {# {% if intro.file %} #}
+        {# <div class=''> #}
+        {# <a href="{{ intro.file.url }}" download="{{ intro.file }}"><span class=''>파일 :</span> {{ intro.get_filename }}</a>  #}
+        {# </div>  #}
+        {# {% endif %} #}
+        
+    </div>
+  
+         
+{% endblock %}

@@ -1,0 +1,149 @@
+{% load staticfiles %}
+<html>
+  <head>
+    <meta charset="utf-8">  
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="">
+    <meta name="author" content="www.nalanda.kr">
+    
+	<link href="//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+	<!--<link href="{% static "introapp/bootstrap/css/bootswatch-paper.css" %}" rel="stylesheet">-->
+	<link href="{% static "bookapp/bootstrap/css/bootstrap-4.min.css" %}" rel="stylesheet">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	<!--<link href="{% static "introapp/bootstrap/css/custom-css.css" %}" rel="stylesheet">-->
+    <link href="{% static "bookapp/bootstrap/css/bookapp-custom-css.css" %}" rel="stylesheet">
+    
+
+   
+  <title>INB Intro</title>
+
+  </head>
+    
+  <body>
+      <div class="navbar navbar-fixed-top navbar-default">
+      <div class="container">
+            <div class="navbar-header">
+                  <!--햄버거 메뉴-->
+                  <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                  </button>
+                  <!--브랜드 로고-->
+                  <a class="navbar-brand" href="{% url 'book_home' %}">inb Book</a>
+            </div>
+            <div class="navbar-collapse collapse">
+                  <!--메뉴 목록-->
+                  <div class="navbar-left">
+                  <ul class="nav navbar-nav">
+                  <li class="book_menu_list"><a href="{% url 'book_list' %}"> BOOK LIST </a></li>
+                  <li class="book_menu_list"><a href="{% url 'wiki:root' %}"> WIKI </a></li>
+                  <li class="book_menu_list"><a href="/dictapp"> DICT </a></li>
+                  <li class="book_menu_list"><a href="/"> HOME </a></li> 
+                  </ul>
+                  </div>
+                  <!--검색 창-->
+                  <div class="">
+                  <form class="navbar-form navbar-right" method="GET" action="{% url 'book_list' %}">
+                  <div class="input-group">
+                  <input type="search" class="form-control search-query" name="q" placeholder="단어검색" value='{{ request.GET.q  }}'/>
+                  <span class="input-group-btn">
+                  <button class="btn btn-link" type="submit">
+                  <span class="fa fa-search"></span>
+                  </button>
+                  </span>
+                  </div>
+                  </form>
+                  </div>
+                  
+            <!-- 로그인 바 -->
+            <div class="navbar-right">
+            {% if user.is_authenticated %}
+                <ul class="nav navbar-nav">
+                    <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    <!--<span class="badge notification-cnt">0</span>-->
+                    {{ user }}
+                <b class="caret"></b>
+                    </a>
+                    <ul class="dropdown-menu">
+                    {# % if "ACCOUNT_HANDLING"|wiki_settings % #}
+                    <li>
+                        <!--<a href="https://wiki-blog-book-biwoom.c9users.io/_accounts/settings/">-->
+                        <a href="{% url 'wiki:profile_update' %}">    
+                        <i class="fa fa-gear"></i>
+                        {# % trans "Account Settings" % #}계정 설정
+                        </a>
+                    </li>
+                    <li>
+                        <!--<a href="https://wiki-blog-book-biwoom.c9users.io/_accounts/logout">-->
+                        <a href="{% url 'wiki:logout' %}">    
+                        <i class="fa fa-power-off"></i>
+                        {# % trans "Log out" % #} 로그아웃
+                        </a>
+                    </li>
+                    {# % endif % #}
+                    </ul>
+                </li>
+                </ul>
+            {% else %}
+                  <ul class="nav navbar-nav">
+                  <li>
+                  <a href="{% url 'wiki:login' %}">로그인</a>
+                  </li>
+                  {# % if "ACCOUNT_HANDLING"|wiki_settings % #}
+                  <li>
+                  <a href="{% url 'wiki:signup' %}">{# % trans "Sign up" % #}회원가입</a>
+                  </li>
+                  {# % endif % #}
+                  </ul>
+            {% endif %}
+            </div>
+                   
+                  
+            </div>
+      </div>
+      </div>
+
+<!--폼테스트-->
+    <div class="page-content">
+    <!-- Content -->
+    <div class="content clearfix">
+     {% block content %}  
+     {% endblock %}
+    </div>
+    </div>
+<!--폼테스트-->
+
+    <footer class="main-footer" style="padding:1rem 0; margin-bottom:20px;" >
+        <p class="text-muted text-center small p-0 mb-4">&copy; Copyright 2017 — INB</p>
+        <div class="social d-table ml-auto mr-auto">
+            <a class="twitter mx-3 h4" href="https://twitter.com/nalandakorea" target="_blank">
+                <i class="fa fa-twitter"></i>
+                <span class="sr-only">View our Twitter Profile</span>
+            </a>
+            <a class="facebook mx-3 h4" href="https://www.facebook.com/inb.nalanda" target="_blank">
+                <i class="fa fa-facebook"></i>
+                <span class="sr-only">View our Facebook Profile <span>
+            </a>
+            <a class="github mx-3 h4" href="https://www.youtube.com/channel/UCl7_LpYKuwHB6OamMhpKF_g" target="_blank">
+                <i class="fa fa-youtube"></i>
+                <span class="sr-only">View our Youtube Profile</span>
+            </a>
+        </div>
+    </footer>
+</div>
+</div>        
+        
+
+    <script src="{% static "introapp/js/jquery.min.js" %}"></script>
+    <script src="{% static "introapp/js/core.js" %}"></script>
+    <script src="{% static "introapp/bootstrap/js/bootstrap.min.js" %}"></script>
+    <script src="{% static "introapp/js/shards.min.js" %}"></script>
+    <script src="{% static "introapp/js/demo.js" %}"></script>
+    <!-- Optionally enable responsive features in IE8 -->
+    <script src="{% static "introapp/js/respond.min.js" %}"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    </body>
+</html>

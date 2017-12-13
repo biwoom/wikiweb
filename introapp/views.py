@@ -15,8 +15,13 @@ from django.core.mail import send_mail, BadHeaderError
 from django.http import HttpResponse, HttpResponseRedirect
 from .python_email.email_bw import EmailSender
 
+# 홈
+def inb_home(request):
+    return render(request, 'introapp/home/base_home.html')
+
+# 인트로 홈    
 def intro_home(request):
-    return render(request, 'introapp/intro_home.html')
+    return render(request, 'introapp/intro/intro_home.html')    
     
 # 이메일-문의상항   
 def email_contact_us(request):
@@ -105,14 +110,14 @@ def intro_list(request):
         # If page is out of range (e.g. 9999), deliver last page of results.
         introset = paginator.page(paginator.num_pages)
     if error_text == 0:
-        return render(request, 'introapp/intro_list.html', {'intros': introset})
+        return render(request, 'introapp/intro/intro_list.html', {'intros': introset})
     else: 
-        return render(request, 'introapp/intro_list.html', {'intros': introset, 'error_text':error_text})
+        return render(request, 'introapp/intro/intro_list.html', {'intros': introset, 'error_text':error_text})
 
 
 def intro_detail(request, pk):
     a_intro = get_object_or_404(Intro_BW, pk=pk)
-    return render(request, 'introapp/intro_detail.html', {'intro': a_intro})
+    return render(request, 'introapp/intro/intro_detail.html', {'intro': a_intro})
 
 
 def intro_edit(request, pk):
@@ -127,7 +132,7 @@ def intro_edit(request, pk):
             return redirect('intro_detail', pk=a_intro.pk)
     else:
         form = Intro_BWForm(instance=a_intro)
-    return render(request, 'introapp/intro_edit.html', {'form': form})
+    return render(request, 'introapp/intro/intro_edit.html', {'form': form})
     
             
 def intro_new(request):
@@ -144,5 +149,8 @@ def intro_new(request):
                 return redirect('intro_detail', pk=a_intro.pk)
         else:
             form = Intro_BWForm()
-        return render(request, 'introapp/intro_edit.html', {'form': form})
+        return render(request, 'introapp/intro/intro_edit.html', {'form': form})
         
+# def intro_new(request):
+#     form = Intro_BWForm()
+#     return render(request, 'introapp/intro_edit.html', {'form': form})

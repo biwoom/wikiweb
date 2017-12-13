@@ -31,14 +31,16 @@
                   <span class="icon-bar"></span>
                   </button>
                   <!--브랜드 로고-->
-                  <a class="navbar-brand" href="{% url 'intro_home' %}">inb Intro</a>
+                  <a class="navbar-brand" href="{% url 'inb_home' %}">Home</a>
             </div>
             <div class="navbar-collapse collapse">
                   <!--메뉴 목록-->
                   <div class="navbar-left">
                   <ul class="nav navbar-nav">
-                  <li class="intro_menu_list"><a href="{% url 'wiki:root' %}"> wiki </a></li>
-                  <li class="intro_menu_list"><a href="{% url 'intro_list' %}"> word list </a></li> 
+                  <li class="intro_menu_list"><a href="{% url 'intro_list' %}"> Intro list </a></li>
+                  <li class="intro_menu_list"><a href="{% url 'wiki:root' %}"> WIKI </a></li>
+                  <li class="intro_menu_list"><a href="/dictapp"> DICT </a></li>
+                  <li class="intro_menu_list"><a href="/bookapp"> BOOK </a></li>
                   </ul>
                   </div>
                   <!--검색 창-->

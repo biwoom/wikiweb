@@ -1,0 +1,173 @@
+{% load staticfiles %}
+<html>
+  <head>
+    <meta charset="utf-8">  
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="">
+    <meta name="author" content="www.nalanda.kr">
+    
+	<link href="//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+	<!--<link href="{% static "introapp/bootstrap/css/bootswatch-paper.css" %}" rel="stylesheet">-->
+	<link href="{% static "introapp/bootstrap/css/bootstrap-4.min.css" %}" rel="stylesheet">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	<!--<link href="{% static "introapp/bootstrap/css/custom-css.css" %}" rel="stylesheet">-->
+    <link href="{% static "introapp/bootstrap/css/introapp-custom-css.css" %}" rel="stylesheet">
+    
+
+   
+  <title>INB Intro</title>
+
+  </head>
+    
+  <body>
+    
+<div class="loader"><div class="page-loader"></div></div>
+
+<!-- Floating brand nalanda -->
+<img class="nalanda" src="{% static "introapp/images/demo/logo-lotus-tran.png" alt="nalanda_logo"  %}" >
+
+<!-- Welcome Section -->
+<div class="welcome d-flex justify-content-center flex-column">
+    <div class="inner-wrapper mt-auto mb-auto">
+        <h1 class="slide-in inb-brand-text">nalanda</h1>
+        <p class="slide-in">Institute of Nalanda Buddhism</p>
+        <div class="action-links slide-in">
+          <a href="http://nalanda.co.kr" target="_blank" class="btn btn-primary btn-pill align-self-center mr-2"> 소개 </a>
+          <a href="/wiki" class="btn btn-outline-light btn-pill align-self-center"> Wiki 위키 </a>
+          <a href="/dictapp" class="btn btn-outline-light btn-pill align-self-center"> Dict 사전 </a>
+          <a href="/bookapp" class="btn btn-outline-light btn-pill align-self-center"> Book 도서 </a>
+        </div>
+    </div>
+    <div class="product-by">
+            <p> Web Services by</p>
+            <img src="{% static "introapp/images/demo/logo-lotus-bo-tran-tibetan-col1.png" alt="inb-tibetan-name" %}">
+    </div>
+</div>
+
+<!-- Page Content -->
+<div class="page-content">
+    <!-- Content -->
+    <div class="content clearfix">
+
+        <div id="introduction" class="container mb-5">
+            <div class="section-title col-lg-8 col-md-10 ml-auto mr-auto">
+                <p class="lead">
+                <code>사단법인</code> <strong><code>나란다불교학술원</code></strong>은 
+                초기불교와 현교, 밀교의 모든 교학과 
+                수행체계를 갖춘 나란다불교를 계승하고 있는 티벳불교와 관련해 교육, 
+                명상수행, 연구, 역경사업을 하기 위한 단체입니다. 
+                교증(敎證)의 명맥이 살아있는 티벳불교의 전통에 힘입어 한국불교를 
+                더욱 발전시키고 풍요롭게 하며 물질문명 시대에 피폐해진 인간정신을 
+                회복하고 대승적 실천을 실현하는 공동체로서 사회를 정화, 교화하여 
+                사회와 인류에 기여할 실질적인 목적으로 설립되었습니다.    
+                </p>
+            </div>
+        </div>
+
+        <!-- Typography -->
+        <div id="typography" class="container mb-5">
+            <div class="section-title col-lg-8 col-md-10 ml-auto mr-auto">
+                <h3 class="mb-4 typo-head">Web Service</h3>
+                <p>
+                나란다불교학술원에서는 
+                <a href="/wiki"><em><code>위키문서앱</code></em></a>
+                <a href="/dictapp"><em><code>티벳어사전앱</code></em></a>
+                <a href="/bookapp"><em><code>도서앱</code></em></a> 
+                에대한 <strong><code>베타서비스</code></strong> <code>(시험단계의 서비스)</code>
+                를 운영중입니다. 향후 더 유용한 서비스를 위해 꾸준한 개선이 진행 중입니다.
+                </p>
+                <p class="text-center">문의사항이나 서비스 개선사항에 대한 정보를 보내주세요.</p>
+                <a class="d-table ml-auto mr-auto mt-4" href="http://nalanda.or.kr/contact/" target="_blank" >
+                <!--<a href="mailto:nalandakorea@gmail.com">nalandakorea@gmail.com</a>-->
+               <button class="btn btn-pill btn-outline-primary"> 이메일 보내기 </button>
+                </a>
+            </div>
+
+            <div class="example col-md-12 ml-auto mr-auto">
+            </div>
+        </div>
+        
+    <div class="footer-cta bg-dark">
+        <div class="container">
+            <div class="py-5">
+                <div class="text-center">
+                    <h2 class="text-white">WIKI & DICT</h2>
+                    <p class="text-muted col-lg-8 col-md-10 ml-auto mr-auto">
+                    서비스를 이용해 보세요. 
+                    </p>
+                </div>
+
+                <div class="container">
+            <div class="row">
+
+                <!-- Extra: App Landing Page -->
+                <div class="col-md-4 mb-4 ml-auto">
+                    <div class="card">
+                        <img class="card-img-top" src="{% static "introapp/images/demo/wiki-preview2.png" %}"
+                             alt="Shards App Promo - Demo Landing Page">
+                        <div class="card-body py-3">
+                            <h6 class="text-center text-muted m-0">WIKI</h6>
+                        </div>
+                    </div>
+                    <a class="d-table ml-auto mr-auto mt-4" href="/wiki">
+                        <button class="btn btn-pill btn-outline-default">
+                        <i class="fa fa-book mr-1"></i> 위키앱 보기
+                        </button>
+                    </a>
+                </div>
+
+                <!-- Extra: Agency Landing Page -->
+                <div class="col-md-4 mb-4 mr-auto">
+                    <div class="card">
+                        <img class="card-img-top" src="{% static "introapp/images/demo/dict-preview.png" %}"
+                             alt="Shards Agency - Demo Landing Page">
+                        <div class="card-body py-3">
+                            <h6 class="text-center text-muted m-0">DICT</h6>
+                        </div>
+                    </div>
+                    <a class="d-table ml-auto mr-auto mt-4" href="/dictapp">
+                        <button class="btn btn-pill btn-outline-default">
+                        <i class="fa fa-book mr-1"></i> 사전앱 보기
+                        </button>
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+            </div>
+        </div>
+    </div>
+    
+
+    <footer class="main-footer" style="padding:1rem 0; margin-bottom:20px;" >
+        <p class="text-muted text-center small p-0 mb-4">&copy; Copyright 2017 — INB</p>
+        <div class="social d-table ml-auto mr-auto">
+            <a class="twitter mx-3 h4" href="https://twitter.com/nalandakorea" target="_blank">
+                <i class="fa fa-twitter"></i>
+                <span class="sr-only">View our Twitter Profile</span>
+            </a>
+            <a class="facebook mx-3 h4" href="https://www.facebook.com/inb.nalanda" target="_blank">
+                <i class="fa fa-facebook"></i>
+                <span class="sr-only">View our Facebook Profile <span>
+            </a>
+            <a class="github mx-3 h4" href="https://www.youtube.com/channel/UCl7_LpYKuwHB6OamMhpKF_g" target="_blank">
+                <i class="fa fa-youtube"></i>
+                <span class="sr-only">View our Youtube Profile</span>
+            </a>
+        </div>
+    </footer>
+</div>
+</div>        
+        
+
+    <script src="{% static "introapp/js/jquery.min.js" %}"></script>
+    <script src="{% static "introapp/js/core.js" %}"></script>
+    <script src="{% static "introapp/bootstrap/js/bootstrap.min.js" %}"></script>
+    <script src="{% static "introapp/js/shards.min.js" %}"></script>
+    <script src="{% static "introapp/js/demo.js" %}"></script>
+    <!-- Optionally enable responsive features in IE8 -->
+    <script src="{% static "introapp/js/respond.min.js" %}"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    </body>
+</html>

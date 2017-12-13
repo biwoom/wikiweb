@@ -1,0 +1,420 @@
+{% extends 'bookapp/base.html' %}
+{% load staticfiles%}
+{% block content %}
+    <!--검색결과 리스트로 반환-->
+{# % for book in books % #}
+{% for book in books reversed %}
+<div class="book">
+    <!--저자 -->
+    {% if book.main_author %}
+    <div class="row">
+    <div class="col-md-12">
+    <div class="book_list_contents">
+            
+        <div class="col-md-3">
+        <div class="profile-img">
+            {% if book.cover_img %}
+            <div class="dict-list-collapse">
+            <img src='{{ book.cover_img.url }}' class='book_cover_img img-responsive' />
+            </div>
+            {% else %}
+            <img src="{% static "bookapp/tem/img/img-profile.jpg" %}" class="img-responsive" alt=""/>
+            {% endif %}
+        </div></div>
+        
+        <div class="col-md-9">
+         <div class="book_list_col content">
+             <p>
+            <!--컬렉션제목-->
+            {% if book.collection_title %}   
+            <p class="book_list_collection_title">{{ book.collection_title }}</p>
+            {% endif %}
+            <!--책 주제목-->
+            {% if book.main_title %}
+            <a href="{% url 'book_detail' pk=book.pk %}">
+            <h1 class="book_list_main_title">{{ book.main_title }}</h1>
+            </a>
+            {% endif %}
+            <!--책 부제목-->
+            {% if book.sub_title %}
+            <span class="book_list_sub_title lead">{{ book.sub_title }}</span>
+            {% endif %}
+            <!--책 권수-->
+            {% if book.volume %}
+            <span class="book_list_sub_title lead">{{ book.volume }}권</span>
+            {% endif %}
+            </p>
+        </div>
+        </div>    
+        
+            <div class="col-md-9">
+            <div class="book_list_col content">    
+                {% if book.main_author %}
+                <p>
+                <strong>저자</strong> &nbsp;:&nbsp;
+                    {{ book.main_author }}
+                {% endif %}
+                
+                {% if book.main_translator %}
+                &nbsp;|&nbsp;<strong>역자</strong>&nbsp;:&nbsp;
+                    {{ book.main_translator }}
+                {% endif %}
+                {% if book.publisher %}
+                &nbsp;|&nbsp;<strong>출판사</strong>&nbsp;:&nbsp;
+                    {{ book.publisher }}
+                {% endif %}
+            </div>
+            </div>
+            
+            <div class="col-md-9">
+            <div class="book_list_col content"> 
+                 {% if book.page_num %}
+                <strong>페이지수</strong>&nbsp;:&nbsp;
+                    {{ book.page_num }} 페이지
+                {% endif %}
+                
+                 {% if book.edition %}
+                &nbsp;|&nbsp;<strong>판</strong>&nbsp;:&nbsp;
+                    {{ book.edition }} 판
+                </p>
+                {% endif %}
+            </div>
+            </div>
+            
+            <div class="col-md-9">
+            <div class="book_list_col content"> 
+                {% if book.published_date %}
+                <address>
+                    <strong>출판일</strong><br>
+                    {{ book.published_date|date:"Y년 m월 d일" }}<br>
+                </address>
+                {% endif %}
+            </div>
+            </div>    
+    </div>	        
+    </div>
+    </div>
+    
+    <!-- <div class="row">-->
+    <!--        <div class="col-md-12">-->
+    <!--            {% if book.published_date %}-->
+    <!--            <div class="col-md-4">-->
+    <!--            <address>-->
+    <!--                <strong>출판일</strong><br>-->
+    <!--                {{ book.published_date|date:"Y-m-d" }}<br>-->
+    <!--            </address>-->
+    <!--            </div>-->
+    <!--            {% endif %}-->
+                
+    <!--            {% if book.page_num %}-->
+    <!--            <div class="col-md-4">-->
+    <!--            <address>-->
+    <!--                <strong>페이지수</strong><br>-->
+    <!--                {{ book.page_num }} 페이지<br>-->
+    <!--            </address>-->
+    <!--            </div>-->
+    <!--            {% endif %}-->
+                
+    <!--            {% if book.revised_date %}-->
+    <!--            <div class="col-md-4">-->
+    <!--            <address>-->
+    <!--                <strong>개정일</strong><br>-->
+    <!--                {{ book.revised_date|date:"Y-m-d" }}<br>-->
+    <!--            </address>-->
+    <!--            </div>-->
+    <!--            {% endif %}-->
+                
+    <!--            {% if book.isbn %}-->
+    <!--            <div class="col-md-4">-->
+    <!--            <address>-->
+    <!--                <strong>ISBN</strong><br>-->
+    <!--                {{ book.isbn }}<br>-->
+    <!--            </address>-->
+    <!--            </div>-->
+    <!--            {% endif %}-->
+                
+    <!--            {% if book.edition %}-->
+    <!--            <div class="col-md-4">-->
+    <!--            <address>-->
+    <!--                <strong>판형.edition</strong><br>-->
+    <!--                {{ book.edition }} 판<br>-->
+    <!--            </address>-->
+    <!--            </div>-->
+    <!--            {% endif %}-->
+
+    <!--            {% if book.printing %}-->
+    <!--            <div class="col-md-4">-->
+    <!--            <address>-->
+    <!--                <strong>쇄.printing</strong><br>-->
+    <!--                {{ book.printing }} 쇄<br>-->
+    <!--            </address>-->
+    <!--            </div>-->
+    <!--            {% endif %}-->
+    <!--        </div>-->
+    <!--    </div>-->
+    <!--{% endif %}-->
+    	    
+<!--    	    <p>-->
+<!--            <code>기본정보</code>    -->
+<!--            {% if book.ti_wylie %}-->
+<!--        	<em class="book_list_label"> Wylie </em> <strong class="book_list_text"><span> | </span> {{ book.ti_wylie }}</strong> <span> . </span>-->
+<!--        	{% endif %}-->
+        	
+<!--            {% if book.ti_korean_entry %}-->
+<!--            <em class="book_list_label"> 한국어 </em> <strong class="book_list_text"><span> | </span> {{ book.ti_korean_entry }}</strong> <span> . </span>-->
+<!--        	{% endif %}-->
+<!--            </p>-->
+            
+            <!--# 범어/한문  -->
+<!--            {% if book.ti_sanskrit_entry or ti_classical_chinese_entry%}-->
+<!--            <p>-->
+<!--                <strong><code>관련단어</code></strong>-->
+<!--                {% if book.ti_sanskrit_entry %}-->
+<!--            	<em class="book_list_label"> 범어 </em> <strong class="book_list_text"><span> | </span> {{ book.ti_sanskrit_entry }}</strong> <span> . </span>-->
+<!--            	{% endif %}-->
+            	
+<!--                {% if book.ti_classical_chinese_entry %}-->
+<!--                <em class="book_list_label"> 한문 </em> <strong class="book_list_text"><span> | </span> {{ book.ti_classical_chinese_entry }}</strong> <span> . </span>-->
+<!--            	{% endif %}-->
+<!--            </p>-->
+<!--            {% endif %}-->
+            
+    	     <!--# 동사 시제 tense -->
+<!--            {% if book.ti_future_tense %}-->
+            <!--<p><code>동사변화</code></p>-->
+<!--            <table class="book-tabel-multi-verb">-->
+<!--        	<tr>-->
+<!--        		<td>  미래</td>-->
+<!--        		<td> <span></span> 현재</td>-->
+<!--        		<td> <span></span> 과거</td>-->
+<!--        		<td> <span></span> 명령</td>-->
+<!--        	</tr>-->
+<!--        	<tr>-->
+<!--        		<td>  {{ book.ti_future_tense }} </td>-->
+<!--        		<td> <span></span> {{ book.ti_present_tense }} </td>-->
+<!--        		<td> <span></span> {{ book.ti_past_tense }} </td>-->
+<!--        		<td> <span></span> {{ book.ti_imperative }} </td>-->
+<!--        	</tr>-->
+<!--            </table>-->
+<!--            {% endif %}-->
+           
+<!--전체보기 탭-->
+    
+<!--    <button class="btn btn-default book_list_collaps_btn" type="button" data-toggle="collapse" data-target="#book_collaps_{{ book.pk }}" aria-expanded="false" aria-controls="collapseExample">-->
+<!--    전체보기-->
+    <!--<i class="fa fa-angle-double-down" aria-hidden="true"></i>-->
+    <!--<i class="fa fa-arrow-down" aria-hidden="true"></i>-->
+<!--    </button>-->
+    
+<!--    <div class="collapse" id="book_collaps_{{ book.pk }}">-->
+<!--    <div class="card card-body">-->
+    
+<!--    <div class="book">-->
+        <!--# 티벳어 표제어-->
+<!--        <h1>{{ book.title }}</h1>-->
+        
+        <!--# 단어 설명(품사/한국어 표제어/의미/용례/어원) -->
+<!--        <p>{{ book.get_markdown }}</p>-->
+        
+        <!--# 동사 시제 tense -->
+<!--        {% if book.ti_future_tense %}-->
+<!--        <p><code>동사변화</code></p>-->
+<!--        <table class="book-tabel-multi-verb">-->
+<!--    	<tr>-->
+<!--    		<td>  미래</td>-->
+<!--    		<td> <span></span> 현재</td>-->
+<!--    		<td> <span></span> 과거</td>-->
+<!--    		<td> <span></span> 명령</td>-->
+<!--    	</tr>-->
+<!--    	<tr>-->
+<!--    		<td>  {{ book.ti_future_tense }} </td>-->
+<!--    		<td> <span></span> {{ book.ti_present_tense }} </td>-->
+<!--    		<td> <span></span> {{ book.ti_past_tense }} </td>-->
+<!--    		<td> <span></span> {{ book.ti_imperative }} </td>-->
+<!--    	</tr>-->
+<!--        </table>-->
+<!--        {% endif %}-->
+        
+        <!--나머지 리스트 묶음-->
+<!--        <div class="book-list-collapse">-->
+<!--            <p><strong><code>관련단어</code></strong></p>-->
+            <!--# 와일리 ti_wylie -->
+<!--            {% if book.ti_wylie %}-->
+<!--            <table class="book-tabel-1-row">-->
+<!--        	<tr>-->
+<!--        		<td> wylie</td>-->
+<!--        		<td>  <span></span> {{ book.ti_wylie }} </td>-->
+<!--        	</tr>-->
+<!--            </table>-->
+<!--            {% endif %}-->
+            
+            <!--# 유의어 ti_thesaurus -->
+<!--            {% if book.ti_thesaurus %}-->
+<!--            <table class="book-tabel-1-row">-->
+<!--        	<tr>-->
+<!--        		<td> 유의어</td>-->
+<!--        		<td>  <span></span> {{ book.ti_thesaurus }} </td>-->
+<!--        	</tr>-->
+<!--            </table>-->
+<!--            {% endif %}-->
+            
+            <!--# 반의어 ti_antonym -->
+<!--            {% if book.ti_antonym %}-->
+<!--            <table class="book-tabel-1-row">-->
+<!--        	<tr>-->
+<!--        		<td> 반의어</td>-->
+<!--        		<td> <span></span> {{ book.ti_antonym }} </td>-->
+<!--        	</tr>-->
+<!--            </table>-->
+<!--            {% endif %}-->
+            
+            <!--# 높임말 ti_honorific -->
+<!--            {% if book.ti_honorific %}-->
+<!--            <table class="book-tabel-1-row">-->
+<!--        	<tr>-->
+<!--        		<td> 높임말</td>-->
+<!--        		<td> <span></span> {{ book.ti_honorific }} </td>-->
+<!--        	</tr>-->
+<!--            </table>-->
+<!--            {% endif %}-->
+            
+            <!--# 낮춤말 ti_humble_terms -->
+<!--            {% if book.ti_humble_terms %}-->
+<!--            <table class="book-tabel-1-row">-->
+<!--        	<tr>-->
+<!--        		<td> 낮춤말</td>-->
+<!--        		<td> <span></span> {{ book.ti_humble_terms }} </td>-->
+<!--        	</tr>-->
+<!--            </table>-->
+<!--            {% endif %}-->
+            
+            <!--# 한국어 ti_korean_entry -->
+<!--            {% if book.ti_korean_entry %}-->
+<!--            <table class="book-tabel-1-row">-->
+<!--        	<tr>-->
+<!--        		<td> 한국어</td>-->
+<!--        		<td> <span></span> {{ book.ti_korean_entry }} </td>-->
+<!--        	</tr>-->
+<!--            </table>-->
+<!--            {% endif %}-->
+            
+            <!--# 범어 ti_sanskrit_entry -->
+<!--            {% if book.ti_sanskrit_entry %}-->
+<!--            <table class="book-tabel-1-row">-->
+<!--        	<tr>-->
+<!--        		<td> 범어 </td>-->
+<!--        		<td> <span></span> {{ book.ti_sanskrit_entry }} </td>-->
+<!--        	</tr>-->
+<!--            </table>-->
+<!--            {% endif %}-->
+            
+            <!--# 한문 ti_classical_chinese_entry -->
+<!--            {% if book.ti_classical_chinese_entry %}-->
+<!--            <table class="book-tabel-1-row">-->
+<!--        	<tr>-->
+<!--        		<td> 한문 </td>-->
+<!--        		<td> <span></span> {{ book.ti_classical_chinese_entry }} </td>-->
+<!--        	</tr>-->
+<!--            </table>-->
+<!--            {% endif %}-->
+            
+            <!--# 빨리어 ti_pali_entry -->
+<!--            {% if book.ti_pali_entry %}-->
+<!--            <table class="book-tabel-1-row">-->
+<!--        	<tr>-->
+<!--        		<td> 빨리어 </td>-->
+<!--        		<td> <span></span> {{ book.ti_pali_entry }} </td>-->
+<!--        	</tr>-->
+<!--            </table>-->
+<!--            {% endif %}-->
+            
+            <!--# 영어 ti_english_entry -->
+<!--            {% if book.ti_english_entry %}-->
+<!--            <table class="book-tabel-1-row">-->
+<!--        	<tr>-->
+<!--        		<td> 영어</td>-->
+<!--        		<td> <span></span> {{ book.ti_english_entry }} </td>-->
+<!--        	</tr>-->
+<!--            </table>-->
+<!--            {% endif %}-->
+<!--        </div>-->
+        
+        
+        <!--# 사진 자료 이미지파일-->
+<!--        {% if book.image %}-->
+<!--        <div class="book-list-collapse">-->
+<!--            <p><strong><code>참고 이미지</code></strong></p>-->
+<!--            <img src='{{ book.image.url }}' class='img-responsive' />-->
+<!--        </div>-->
+<!--        {% endif %}-->
+        
+        <!--# 발음 오디오 파일-->
+<!--        {% if book.audio %}-->
+<!--        <div class="book-list-collapse">  -->
+<!--            <p><strong><code>발음</code></strong>-->
+            <!--<audio controls>-->
+            <!--<source src="{{ book.audio.url }}" type="audio/mp3">-->
+            <!--</audio>-->
+            <!--</p>-->
+            
+<!--            <audio id="{{ book.audio.url }}" src="{{ book.audio.url }}" type="audio/mp3" ></audio>-->
+<!--            <button class="btn btn-default" onclick="document.getElementById('{{ book.audio.url }}').play()">-->
+<!--            <i class="fa fa-play" aria-hidden="true"></i>-->
+<!--            </button>-->
+<!--            <button class="btn btn-default" onclick="document.getElementById('{{ book.audio.url }}').pause()">-->
+<!--            <i class="fa fa-pause" aria-hidden="true"></i>-->
+<!--            </button> -->
+<!--        </div>-->
+<!--        {% endif %}-->
+        
+        
+        <!--# 변경일자 -->
+<!--        {% if book.published_date %}-->
+<!--        <div class="date">{{ book.published_date }}</div>-->
+<!--        {% endif %}-->
+        
+<!--        <a class="btn btn-primary book_list_collaps_btn-2 pull-right" href="#book-id-{{ book.pk }}" type="button" data-toggle="collapse" -->
+<!--        data-target="#book_collaps_{{ book.pk }}" aria-expanded="false" aria-controls="collapseExample">-->
+<!--       내용접기-->
+<!--       </a>-->
+<!--    </div>-->
+    
+<!--    </div>-->
+<!--    </div>  -->
+    
+
+</div><!--class="book" -->
+{% endfor %} 
+
+
+    <!--검색결과 없는 경우-->
+     {% if error_text %}
+     <div class="jumbotron">
+     <h1 class="display-3">Sorry</h1>
+     <p>검색결과가 없습니다</p>
+     </div>
+     {% endif %}
+     
+    <!--페이지네이션 부분-->
+    <ul class="pagination">
+        {% if books.has_previous %}
+        <li><a class='page-item' href="?page={{ books.previous_page_number }}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}" >&laquo;</a></li>
+        {% else %}
+        <li class="disabled"><span>&laquo;</span></li>
+        {% endif %}
+         
+        {% for pc in books.paginator.page_range %}
+        {% if pc == 0 %}
+            <li class="disabled"><span>...</span></li>
+        {% else %}
+            <li class="{% if pc == books.number %} active{% endif %}"><a href="?{% if request.GET.q %}q={{ request.GET.q }}&{% endif %}page={{ pc }}{% if appended_key %}&{{ appended_key }}={{ appended_value }}{% endif %}">{{ pc }}</a></li>
+        {% endif %}
+        {% endfor %}
+
+        {% if books.has_next %}
+        <li><a class='page-item' href="?page={{ books.next_page_number }}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}">&raquo;</a></li>
+        {% else %}
+        <li class="disabled"><span>&raquo;</span></li>
+        {% endif %}
+    </ul>
+{% endblock %}

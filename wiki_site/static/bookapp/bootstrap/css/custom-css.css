@@ -2799,11 +2799,54 @@ textarea {
   border-radius: .375rem !important;
   box-shadow: none !important;
 }
+/*label + a{*/
+/*  display: block !important;*/
+/*}*/
+/*label:after{*/
+/*  display: block !important;*/
+/*}*/
 input[type="file"]{
-  width: 91%;
-  padding: 1rem 1rem !important;
-  line-height: 1.125rem !important;
+  display: inline !important;
+  width: none !important; ;
+  padding: none !important; 
   background-color: #ffffff;
+    width: none !important; 
+    height: none !important; 
+    padding: 1rem 1rem !important;
+    padding: none !important; 
+    border: none !important; 
+    border-bottom-style: none !important; 
+    line-height: none !important; 
+    border-radius: none !important; 
+    box-shadow: none !important;  
+}
+input[type="checkbox"]{
+   /*display: inline !important;*/
+  width: none !important; ;
+  padding: none !important; 
+  background-color: #ffffff;
+    width: none !important; 
+    height: none !important; 
+    padding: none !important; 
+    border: none !important; 
+    border-bottom-style: none !important; 
+    line-height: none !important; 
+    border-radius: none !important; 
+    box-shadow: none !important;  
+}
+input[type="checkbox"]:before{
+   /*display: inherit !important;*/
+  width: none !important; ;
+  padding: none !important; 
+  background-color: #ffffff;
+    width: none !important; 
+    height: none !important; 
+    padding: none !important; 
+    border: none !important; 
+    border-bottom-style: none !important; 
+    line-height: none !important; 
+    border-radius: none !important; 
+    box-shadow: none !important;  
 }
 /*input 이미지/오디오 현재파일태그*/
 #image-clear_id, #audio-clear_id{
@@ -3474,6 +3517,13 @@ blockquote>p>code{
 .book_textarea{
   width: 100% !important;
 }
+.book_btn{
+  margin-left: 0px !important;
+  margin-bottom: 20px !important;
+  margin-top: 10px !important;
+}
+
+/*파일 이미지 입력폼 스타일*/
 #cover_img-clear_id{
   background-color: #ffffff;
   border: none !important;
@@ -3504,8 +3554,65 @@ blockquote>p>code{
 #id_cover_img{
   display: box;
 }
-.book_btn{
-  margin-left: 0px !important;
-  margin-bottom: 20px !important;
-  margin-top: 10px !important;
+#supplement_file-clear_id{
+  background-color: #ffffff;
+  border: none !important;
+  width: 10px;
+  vertical-align: middle;
+}
+#supplement_file-clear_id:after{
+ margin: 0;
+}  
+.book-form-tabel-1-row>tbody>tr>td{
+   border-style: none;
+   padding-left: 0px !important;
+}
+.book-form-tabel-1-row{
+  /*margin-top: 10px;*/
+  margin-bottom: 10px;
+  /*border-top: solid 1px #ebebeb;*/
+}
+.book-form-tabel-1-row>tbody>tr:nth-child(1){
+  background-color: #ffffff;
+  border-bottom: solid 1px #ebebeb;
+}
+.book-form-tabel-1-row>tbody>tr>td:nth-child(1){
+  width: 20%;
+  font-size: 1em;
+  /*font-weight: bold;*/
+}
+.book-form-tabel-1-row>tbody>tr>td>span{
+    background-color: #a6a6a6;
+    border-left: solid 1px #a6a6a6;
+    margin-right: 20px;
+    margin-left: 0px;
+}
+.book-form-list-collapse{
+  margin-top: 30px;
+  margin-bottom: 30px;
+  border-top: solid 5px #ebebeb;
+}
+.book-form-list-collapse>p{
+  margin-top: 20px;
+}
+
+/*워드리스트 텍스트 */
+.book-form_list_text > span {
+  margin-right: 5px;
+}
+
+@media (min-width: 400px){
+.book-form-tabel-1-row>tbody>tr>td:nth-child(1){
+  width: 15%;
+}
+}
+@media (min-width: 600px){
+.book-form-tabel-1-row>tbody>tr>td:nth-child(1){
+  width: 10%;
+}
+}
+@media (min-width: 1000px){
+.book-form-tabel-1-row>tbody>tr>td:nth-child(1){
+  width: 5%;
+}
 }

@@ -277,24 +277,40 @@
             <label for="id_table_of_contents" class="col-form-label">목차:</label>
             {{ form.table_of_contents }}
             </div>
+            
             <!-- # 3. 표지_이미지 -->
-            <div class="form-group">
             {{ form.cover_img.errors }}
-            <label for="id_cover_img" class="col-form-label">표지:</label>
-            {{ form.cover_img }}
-            </div>
+            <table class="book-form-tabel-1-row">
+        	<tr>
+        		<td> <label for="cover_img" class="col-form-label">표지:</label></td>
+        	</tr>
+        	<tr>
+        		<td>  {{ form.cover_img }}</label></td>
+        	</tr>
+            </table>
+            
             <!-- # 4.1 책내용_미리보기_이미지1 -->
-            <div class="form-group">
             {{ form.preview_img_1.errors }}
-            <label for="id_preview_img_1" class="col-form-label">내용사진1:</label>
-            {{ form.preview_img_1 }}
-            </div>
+            <table class="book-form-tabel-1-row">
+        	<tr>
+        		<td> <label for="id_preview_img_1" class="col-form-label">책소개 사진1:</label></td>
+        	</tr>
+        	<tr>
+        		<td>  {{ form.preview_img_1 }}</label></td>
+        	</tr>
+            </table>
+            
             <!-- # 4.2 책내용_미리보기_이미지2 -->
-            <div class="form-group">
             {{ form.preview_img_2.errors }}
-            <label for="id_preview_img_2" class="col-form-label">내용사진2:</label>
-            {{ form.preview_img_2 }}
-            </div>
+            <table class="book-form-tabel-1-row">
+        	<tr>
+        		<td> <label for="id_preview_img_2" class="col-form-label">책소개 사진2:</label></td>
+        	</tr>
+        	<tr>
+        		<td>  {{ form.preview_img_2 }}</label></td>
+        	</tr>
+            </table>
+            
             <!-- # 4.3 책내용_미리보기_이미지3 -->
             <!--<div class="form-group">-->
             <!--{{ form.preview_img_3.errors }}-->
@@ -401,12 +417,18 @@
             <label for="id_wiki_url" class="col-form-label">위키문서 URL:</label>
             {{ form.wiki_url }}
             </div>
+            
             <!-- # 5. 부록자료-파일 필드  -->
-            <div class="form-group">
             {{ form.supplement_file.errors }}
-            <label for="id_supplement_file" class="col-form-label">부록자료:</label>
-            {{ form.supplement_file }}
-            </div>
+            <table class="book-form-tabel-1-row">
+        	<tr>
+        		<td> <label for="supplement_file" class="col-form-label">부록자료:</label></td>
+        	</tr>
+        	<tr>
+        		<td>  {{ form.supplement_file }}</label></td>
+        	</tr>
+            </table>
+            
 <a class="btn btn-primary book_list_collaps_btn-2 pull-right" href="#book-id-errata" type="button" data-toggle="collapse" data-target="#book_collaps_errata" aria-expanded="false" aria-controls="collapseExample">
 내용접기
 </a>

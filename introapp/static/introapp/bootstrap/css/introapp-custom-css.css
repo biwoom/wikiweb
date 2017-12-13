@@ -4448,7 +4448,7 @@ a.text-black:focus, a.text-black:hover {
 }
 
 .welcome .inner-wrapper > .action-links {
-  transition-delay: 300ms;
+  /*transition-delay: 300ms;*/
 }
 
 .welcome .product-by {
@@ -4705,21 +4705,21 @@ a.text-black:focus, a.text-black:hover {
 .slide-in {
   border-bottom-style: none;
   margin-bottom: 20px !important;
-  will-change: transform;
-  opacity: 0;
-  -webkit-transform: translateY(50%);
-          transform: translateY(50%);
-  transition: opacity 850ms cubic-bezier(0.785, 0.135, 0.15, 0.86), -webkit-transform 850ms cubic-bezier(0.785, 0.135, 0.15, 0.86);
-  transition: transform 850ms cubic-bezier(0.785, 0.135, 0.15, 0.86), opacity 850ms cubic-bezier(0.785, 0.135, 0.15, 0.86);
-  transition: transform 850ms cubic-bezier(0.785, 0.135, 0.15, 0.86), opacity 850ms cubic-bezier(0.785, 0.135, 0.15, 0.86), -webkit-transform 850ms cubic-bezier(0.785, 0.135, 0.15, 0.86);
+  /*will-change: transform;*/
+  /*opacity: 0;*/
+  /*-webkit-transform: translateY(50%);*/
+  /*        transform: translateY(50%);*/
+  /*transition: opacity 850ms cubic-bezier(0.785, 0.135, 0.15, 0.86), -webkit-transform 850ms cubic-bezier(0.785, 0.135, 0.15, 0.86);*/
+  /*transition: transform 850ms cubic-bezier(0.785, 0.135, 0.15, 0.86), opacity 850ms cubic-bezier(0.785, 0.135, 0.15, 0.86);*/
+  /*transition: transform 850ms cubic-bezier(0.785, 0.135, 0.15, 0.86), opacity 850ms cubic-bezier(0.785, 0.135, 0.15, 0.86), -webkit-transform 850ms cubic-bezier(0.785, 0.135, 0.15, 0.86);*/
 }
 .inb-brand-text{
   margin-bottom: 30px !important;
 }
 .slide-in.visible {
-  -webkit-transform: translateY(0);
-          transform: translateY(0);
-  opacity: 1;
+  /*-webkit-transform: translateY(0);*/
+  /*        transform: translateY(0);*/
+  /*opacity: 1;*/
 }
 
 .icons-example .icons-example-wrapper {

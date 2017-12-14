@@ -68,14 +68,14 @@
                     {# % if "ACCOUNT_HANDLING"|wiki_settings % #}
                     <li>
                         <!--<a href="https://wiki-blog-dict-biwoom.c9users.io/_accounts/settings/">-->
-                        <a href="{% url 'wiki:profile_update' %}">    
+                        <a href="/password_change">    
                         <i class="fa fa-gear"></i>
                         {# % trans "Account Settings" % #}계정 설정
                         </a>
                     </li>
                     <li>
                         <!--<a href="https://wiki-blog-dict-biwoom.c9users.io/_accounts/logout">-->
-                        <a href="{% url 'wiki:logout' %}">    
+                        <a href="/logout">    
                         <i class="fa fa-power-off"></i>
                         {# % trans "Log out" % #} 로그아웃
                         </a>
@@ -87,11 +87,12 @@
             {% else %}
                   <ul class="nav navbar-nav">
                   <li>
-                  <a href="{% url 'wiki:login' %}">로그인</a>
+                  <a href="/login">로그인</a>
                   </li>
                   {# % if "ACCOUNT_HANDLING"|wiki_settings % #}
                   <li>
-                  <a href="{% url 'wiki:signup' %}">{# % trans "Sign up" % #}회원가입</a>
+                  <!--<a href="{% url 'wiki:signup' %}">{# % trans "Sign up" % #}회원가입</a>-->
+                  <a href="/signup">회원가입</a>
                   </li>
                   {# % endif % #}
                   </ul>

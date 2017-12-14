@@ -65,13 +65,15 @@
                 <ul class="dropdown-menu">
                   {% if "ACCOUNT_HANDLING"|wiki_settings %}
                   <li>
-                    <a href="{% url 'wiki:profile_update' %}">
+                    <!--<a href="{% url 'wiki:profile_update' %}">-->
+                    <a href="/password_change">  
                       <i class="fa fa-gear"></i>
                       {% trans "Account Settings" %}
                     </a>
                   </li>
                   <li>
-                    <a href="{% url 'wiki:logout' %}">
+                    <!--<a href="{% url 'wiki:logout' %}">-->
+                      <a href="/logout">
                       <i class="fa fa-power-off"></i>
                       {% trans "Log out" %}
                     </a>
@@ -97,11 +99,13 @@
             {% else %}
             <ul class="nav navbar-nav">
               <li>
-                <a href="{% login_url as wiki_login_url %}{{ wiki_login_url }}">{% trans "Log in" %}</a>
+                <!--<a href="{% login_url as wiki_login_url %}{{ wiki_login_url }}">{% trans "Log in" %}</a>-->
+                <a href="/login">{% trans "Log in" %}</a>
               </li>
               {% if "ACCOUNT_HANDLING"|wiki_settings %}
               <li>
-                <a href="{% url 'wiki:signup' %}">{% trans "Sign up" %}</a>
+                <!--<a href="{% url 'wiki:signup' %}">{% trans "Sign up" %}</a>-->
+                 <a href="/signup">{% trans "Sign up" %}</a>
               </li>
               {% endif %}
             </ul>

@@ -2799,6 +2799,10 @@ textarea {
   border-radius: .375rem !important;
   box-shadow: none !important;
 }
+textarea[id="id_message"]{
+  width: 100% !important;
+  height: 350px;
+}
 input[type="file"]{
   width: 91%;
   padding: 1rem 1rem !important;
@@ -3161,4 +3165,12 @@ blockquote>p>code{
 }
 .intro_list_collaps_btn-2{
   margin-top: -30px;
+}
+/*# 회원가입 폼*/
+.signup_custom_form{
+  border-radius: 20px;
+  background: #ffffff !important;
+}
+.signup_custom_form>fieldset>.form-group>form>p>input{
+  width: 100% !important;
 }

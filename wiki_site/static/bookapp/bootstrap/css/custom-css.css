@@ -3616,3 +3616,12 @@ blockquote>p>code{
   width: 5%;
 }
 }
+
+/*# 회원가입 폼*/
+.signup_custom_form{
+  border-radius: 20px;
+  background: #ffffff !important;
+}
+.signup_custom_form>fieldset>.form-group>form>p>input{
+  width: 100% !important;
+}

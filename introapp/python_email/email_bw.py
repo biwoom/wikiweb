@@ -41,18 +41,20 @@ class EmailSender:
             <html>
               <head></head>
               <body>
-                <h2>Hi!<br>How are you?</h2>
+                <h2>나란다불교학술원</h2>
+                <h4>나란다불교학술원 이메일 알림</h4>
                  <p> 발신자 : %s </p>
                  <p> 수신자 : %s </p>
                  <p> 주제 : %s </p>
                  <p> 알림내용 </p>
                  <p> %s </p>
-                 <p> 이 이메일은 나란다불교학술원 문의사항 이메일입니다.</p>
+                 <p> 이 이메일은 나란다불교학술원에서 발송된 이메일입니다.</p>
               </body>
             </html>
             """% (sender, receiver, subject, text)
             
             # part1 = MIMEText(text, 'plain')
+            # part2 = MIMEText(html, 'html')
             part2 = MIMEText(html, 'html')
             
             # msg.attach(part1)
@@ -84,12 +86,14 @@ class EmailSender:
             <html>
               <head></head>
               <body>
-                <h2>Hi!<br>How are you?</h2>
+                <h2>나란다불교학술원 문의하기</h2>
+                <h4>나란다불교학술원 이메일 알림</h4>
                  <p> 발신자 : %s </p>
                  <p> 발신자 E-mail : %s </p>
                  <p> 주제 : %s </p>
                  <p> 문의내용 </p>
                  <p> %s </p>
+                 <hr>
                  <p> 이 이메일은 나란다불교학술원 문의사항 이메일입니다.</p>
               </body>
             </html>

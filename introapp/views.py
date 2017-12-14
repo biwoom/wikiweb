@@ -14,7 +14,27 @@ from django.core.mail import send_mail
 from django.core.mail import send_mail, BadHeaderError
 from django.http import HttpResponse, HttpResponseRedirect
 from .python_email.email_bw import EmailSender
+# 회원가입
+from django.http import HttpResponse
+from django.shortcuts import render, redirect
+from django.contrib.auth import login, authenticate
+from .forms import SignupForm
+from django.contrib.sites.shortcuts import get_current_site
+from django.utils.encoding import force_bytes, force_text
+from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
+from django.template.loader import render_to_string
+from .tokens import account_activation_token
+from django.contrib.auth.models import User
+from django.core.mail import EmailMessage, EmailMultiAlternatives
+from .python_email.email_info import SERVER_DOMAIN
+from django.contrib.auth.views import password_reset
+# 비밀번호 변경
+from django.contrib.auth.models import User
+from django.contrib.auth.forms import UserChangeForm, PasswordChangeForm
+from django.contrib.auth import update_session_auth_hash
+from django.contrib.auth.decorators import login_required
 
+    
 # 홈
 def inb_home(request):
     return render(request, 'introapp/home/base_home.html')
@@ -32,15 +52,26 @@ def email_contact_us(request):
             message = form.cleaned_data.get("message")
             member_name = form.cleaned_data.get("name")
             subject = form.cleaned_data.get("subject")
+            text = '문의-'
+            subject_text = text + subject
             
+            success_msg = '''
+            이메일이 성공적으로 발송되었습니다. 
+            '''
+            fail_msg = '''
+            이메일 발송에 실패했습니다. 차후에 다시 시도해 주세요.
+            '''
             try:
-                send = EmailSender(to_member_email, message, member_name, subject)
-                # send.sending_one()
+                send = EmailSender(to_member_email, message, member_name, subject_text)
                 send.contact_us()
             except IOError:
-                return HttpResponse('이메일 보내기: 실패')
+                # return HttpResponse('이메일 보내기: 실패')
+                return render(request, 'introapp/email/email_contact_us.html', 
+                         {'form': form, 'success_msg': fail_msg})
                 
-            return HttpResponse('이메일 보내기: 성공')
+            # return HttpResponse('이메일 보내기: 성공')
+            return render(request, 'introapp/email/email_contact_us.html', 
+                         {'form': form, 'success_msg': success_msg})
     else:
         form = Contact_us_Form()
     return render(request, 'introapp/email/email_contact_us.html', {'form': form})    
@@ -66,21 +97,7 @@ def email_send_one(request):
     return render(request, 'introapp/email/email_send_one.html', {'form': form})  
 
 
-
-# 회원가입 처리
-from django.http import HttpResponse
-from django.shortcuts import render, redirect
-from django.contrib.auth import login, authenticate
-from .forms import SignupForm
-from django.contrib.sites.shortcuts import get_current_site
-from django.utils.encoding import force_bytes, force_text
-from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
-from django.template.loader import render_to_string
-from .tokens import account_activation_token
-from django.contrib.auth.models import User
-from django.core.mail import EmailMessage
-from .python_email.email_info import SERVER_DOMAIN
-
+# 회원가입 처리 1. 인증이메일 발송
 def signup(request):
     if request.method == 'POST':
         form = SignupForm(request.POST)
@@ -88,7 +105,6 @@ def signup(request):
             user = form.save(commit=False)
             user.is_active = False
             user.save()
-            # current_site = get_current_site(request)
             current_site = SERVER_DOMAIN
             subject = 'Activate your blog account.'
             message = render_to_string('introapp/email/acc_active_email.html', {
@@ -99,21 +115,19 @@ def signup(request):
             })
             to_member_email = form.cleaned_data.get('email')
             
-            # email = EmailMessage(
-            #             mail_subject, message, to=[to_email]
-            # )
-            # email.send()
-            
             send = EmailSender(to_member_email, message, user.username, subject)
-            # send.sending_one()
             send.sending_one()
-                
-            return HttpResponse('Please confirm your email address to complete the registration')
+            
+            confirm_email_msg = '''
+            회원가입을 완료하려면, 발송된 이메일 메시지 내부의 활성화링크로 재접속하세요. \n 
+            Please confirm your email address to complete the registration'''
+            return render(request, 'introapp/account/signup.html', {'form': form, 'confirm_email_msg': confirm_email_msg})
+            # return HttpResponse('Please confirm your email address to complete the registration')
     else:
         form = SignupForm()
     return render(request, 'introapp/account/signup.html', {'form': form})
 
-# 이메일 인증 토큰비교 처리
+# 회원가입 처리 2. 이메일 유효성  검증 후 활성화 
 def activate(request, uidb64, token):
     try:
         uid = force_text(urlsafe_base64_decode(uidb64))
@@ -125,15 +139,13 @@ def activate(request, uidb64, token):
         user.save()
         login(request, user)
         # return redirect('home')
-        return HttpResponse('Thank you for your email confirmation. Now you can login your account.')
+        success_msg = '이메일 인증이 완료되었습니다. 이제 귀하의 계정으로 로그인하실 수 있습니다. \n Thank you for your email confirmation. Now you can login your account.'
+        fail_msg = '활성화 링크가 잘못되었습니다!  \n  Activation link is invalid!'
+        return render(request, 'introapp/account/activate.html', {'success_msg': success_msg})
+        # return HttpResponse('Thank you for your email confirmation. Now you can login your account.')
     else:
-        return HttpResponse('Activation link is invalid!')
-
-
-
-
-
-
+        return render(request, 'introapp/account/activate.html', {'success_msg': fail_msg})
+        # return HttpResponse('Activation link is invalid!')
 
 
 # ===============================================

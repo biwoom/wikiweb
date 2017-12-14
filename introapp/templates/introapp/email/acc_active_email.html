@@ -1,5 +1,11 @@
 {% load i18n %}{% autoescape off %}
-Hi {{ user.username }},
-Please click on the link to confirm your registration,
-http://{{ domain }}{% url 'activate' uidb64=uid token=token %}
+<h3>나란다불교학술원 이메일 인증</h3>
+<br>
+<br>
+<p>{{ user.username }} 회원님,</p>
+<p>회원가입을 완료하려면 다음의 링크를 클릭하십시오.</p>
+<p>Please click on the link to confirm your registration</p>
+<p><a href='http://{{ domain }}{% url 'activate' uidb64=uid token=token %}'>활성화링크</a></p>
+<br>
+<p> 이 이메일은 나란다불교학술원에서 발송된 이메일입니다.</p>
 {% endautoescape %}

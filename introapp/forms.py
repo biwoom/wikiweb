@@ -1,7 +1,28 @@
 from django import forms
-from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.forms import UserCreationForm, PasswordResetForm
 from django.contrib.auth.models import User
 from .models import Intro_BW
+from .python_email.email_bw import EmailSender
+from .python_email.email_info import SERVER_DOMAIN, EMAIL_HOST_NAME
+
+from django.template import loader
+import unicodedata
+from django import forms
+from django.contrib.auth import (authenticate, get_user_model, password_validation,)
+from django.contrib.auth.hashers import (UNUSABLE_PASSWORD_PREFIX, identify_hasher,)
+from django.contrib.auth.models import User
+from django.contrib.auth.tokens import default_token_generator
+from django.contrib.sites.shortcuts import get_current_site
+from django.core.mail import EmailMultiAlternatives
+from django.forms.utils import flatatt
+from django.template import loader
+from django.utils.encoding import force_bytes
+from django.utils.html import format_html, format_html_join
+from django.utils.http import urlsafe_base64_encode
+from django.utils.safestring import mark_safe
+from django.utils.text import capfirst
+from django.utils.translation import ugettext, ugettext_lazy as _
+
 
 class CommentForm(forms.Form):
     name = forms.CharField(label='Your name')
@@ -10,10 +31,10 @@ class CommentForm(forms.Form):
 
 # 회원 to 관리자 문의 이메일
 class Contact_us_Form(forms.Form):
-    name = forms.CharField(label='Your name')
-    subject = forms.CharField(label='Subject')
-    email = forms.EmailField(label='Your email', required=True)
-    message = forms.CharField(label='Email message', widget=forms.Textarea)
+    name = forms.CharField(label='이름')
+    subject = forms.CharField(label='주제')
+    email = forms.EmailField(label='이메일', required=True)
+    message = forms.CharField(label='이메일 내용', widget=forms.Textarea)
 
 # 관리자 to 회원 1인 이메일    
 class Email_member_Form(forms.Form):
@@ -25,17 +46,77 @@ class Email_member_Form(forms.Form):
 # 회원가입 커스텀 폼
 class SignupForm(UserCreationForm):
     email = forms.EmailField(max_length=200, help_text='Required')
+    
+    def clean_email(self):
+        email = self.cleaned_data.get('email')
+        username = self.cleaned_data.get('username')
+        if email and User.objects.filter(email=email).exclude(username=username).exists():
+            raise forms.ValidationError(u'Email 주소가 이미 존재합니다')
+        return email
+        
     class Meta:
         model = User
         fields = ('username', 'email', 'password1', 'password2')
 
 
+# 비밀번호 변경 폼 커스텀
+class MyPasswordResetForm(PasswordResetForm):
+    def send_mail(self, subject_template_name, email_template_name,
+                  context, from_email, to_email, html_email_template_name=None):
+        """
+        Sends a django.core.mail.EmailMultiAlternatives to `to_email`.
+        """
+        subject = loader.render_to_string(subject_template_name, context)
+        # Email subject *must not* contain newlines
+        subject = ''.join(subject.splitlines())
+        body = loader.render_to_string(email_template_name, context)
+
+        email_message = EmailSender(to_email, body, to_email, subject)
+        
+        if html_email_template_name is not None:
+            html_email = loader.render_to_string(html_email_template_name, context)
+            email_message.attach_alternative(html_email, 'text/html')
+
+        email_message.sending_one()
+        
+    def save(self, domain_override=None,
+             subject_template_name='registration/password_reset_subject.txt',
+             email_template_name='registration/password_reset_email.html',
+             use_https=False, token_generator=default_token_generator,
+             from_email=None, request=None, html_email_template_name=None,
+             extra_email_context=None):
+        """
+        Generates a one-use only link for resetting password and sends to the
+        user.
+        """
+        
+        email = self.cleaned_data["email"]
+        for user in self.get_users(email):
+            if not domain_override:
+                current_site = get_current_site(request)
+                site_name = current_site.name
+                domain = current_site.domain
+            else:
+                site_name = domain = domain_override
+            context = {
+                'email': user.email,
+                'domain': SERVER_DOMAIN,
+                'site_name': EMAIL_HOST_NAME,
+                'uid': urlsafe_base64_encode(force_bytes(user.pk)),
+                'user': user,
+                'token': token_generator.make_token(user),
+                'protocol': 'https' if use_https else 'http',
+            }
+            if extra_email_context is not None:
+                context.update(extra_email_context)
+            self.send_mail(
+                subject_template_name, email_template_name, context, from_email,
+                user.email, html_email_template_name=html_email_template_name,
+            )
 
 
 
-
-
-
+    
 # ===============================================
 # ===============================================
 # ===============================================

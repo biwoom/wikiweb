@@ -1,0 +1,31 @@
+{% extends 'introapp/base-origin.html' %}
+
+{% block content %}
+  <h1>이메일 인증</h1>
+  <h3>Email Verification</h3>
+  
+  <!--이메일 인증 성공 -->
+  {% if success_msg %}
+     <div class="jumbotron">
+     <h1 class="display-3">Welcome</h1>
+     <div class="alert alert-dismissible alert-success">
+     <button type="button" class="close" data-dismiss="alert">&times;</button>
+     <h3 class="alert-heading">Success</h3>
+     <p class="mb-0"><p>{{ success_msg }}</p>
+     </div>
+     </div>
+  {% endif %}
+  
+  <!--이메일 인증 실패 -->
+     {% if fail_msg %}
+     <div class="jumbotron" >
+     <h1 class="display-3">Sorry</h1>
+     <div class="alert alert-dismissible alert-warning">
+     <button type="button" class="close" data-dismiss="alert">&times;</button>
+     <h3 class="alert-heading">Warning!</h3>
+     <p class="mb-0"><p>{{ fail_msg }}</p>
+     </div>
+     </div>
+  {% endif %}
+  
+{% endblock %}

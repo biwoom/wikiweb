@@ -37,10 +37,10 @@
                   <!--메뉴 목록-->
                   <div class="navbar-left">
                   <ul class="nav navbar-nav">
-                  <li class="intro_menu_list"><a href="{% url 'intro_list' %}"> Intro list </a></li>
+                  <!--<li class="intro_menu_list"><a href="{% url 'intro_list' %}"> Intro list </a></li>-->
                   <li class="intro_menu_list"><a href="{% url 'wiki:root' %}"> WIKI </a></li>
                   <li class="intro_menu_list"><a href="/dictapp"> DICT </a></li>
-                  <li class="intro_menu_list"><a href="/bookapp"> BOOK </a></li>
+                  <li class="intro_menu_list"><a href="/bookapp/list"> BOOK </a></li>
                   </ul>
                   </div>
                   <!--검색 창-->
@@ -71,14 +71,14 @@
                     {# % if "ACCOUNT_HANDLING"|wiki_settings % #}
                     <li>
                         <!--<a href="https://wiki-intro-intro-biwoom.c9users.io/_accounts/settings/">-->
-                        <a href="{% url 'wiki:profile_update' %}">    
+                        <a href="/password_change">    
                         <i class="fa fa-gear"></i>
                         {# % trans "Account Settings" % #}계정 설정
                         </a>
                     </li>
                     <li>
                         <!--<a href="https://wiki-intro-intro-biwoom.c9users.io/_accounts/logout">-->
-                        <a href="{% url 'wiki:logout' %}">    
+                        <a href="/logout">    
                         <i class="fa fa-power-off"></i>
                         {# % trans "Log out" % #} 로그아웃
                         </a>
@@ -90,11 +90,13 @@
             {% else %}
                   <ul class="nav navbar-nav">
                   <li>
-                  <a href="{% url 'wiki:login' %}">로그인</a>
+                  <a href="/login">로그인</a>
                   </li>
                   {# % if "ACCOUNT_HANDLING"|wiki_settings % #}
                   <li>
-                  <a href="{% url 'wiki:signup' %}">{# % trans "Sign up" % #}회원가입</a>
+                <!--# 차후 변경 href="/signup" -->
+                  <!--<a href="{% url 'wiki:signup' %}">{# % trans "Sign up" % #}회원가입</a>-->
+                  <a href="/signup">회원가입</a>
                   </li>
                   {# % endif % #}
                   </ul>

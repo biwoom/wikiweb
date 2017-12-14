@@ -1,21 +1,50 @@
 {% extends 'introapp/base-origin.html' %}
 
 {% block content %}
-  <h2>Sign up</h2>
-  <form method="post">
-    {% csrf_token %}
-      {% for field in form %}
-      <p>
-        {{ field.label_tag }}<br>
-        {{ field }}
-        {% if field.help_text %}
-          <small style="display: none">{{ field.help_text }}</small>
-        {% endif %}
-        {% for error in field.errors %}
-          <p style="color: red">{{ error }}</p>
-        {% endfor %}
-      </p>
-      {% endfor %}
-    <button type="submit">Sign up</button>
+  <div class="row">
+  
+  <div class="col-md-2">
+  </div>  
+   
+  <div class="signup_custom_form col-md-8" >
+    <h2>회원가입 <small>Sign up</small></h2>
+    <fieldset>
+      <div class="form-group row">  
+      <form method="post">
+        {% csrf_token %}
+          {% for field in form %}
+          <p>
+            {{ field.label_tag }}<br>
+            {{ field }}
+            {% if field.help_text %}
+              <small style="display: none">{{ field.help_text }}</small>
+            {% endif %}
+            {% for error in field.errors %}
+              <p style="color: red">{{ error }}</p>
+            {% endfor %}
+          </p>
+          {% endfor %}
+        <!--<button type="submit">Sign up</button>-->
+        <button type="submit" class="btn btn-primary">회원가입 Sign up</button>
+      </div>
+    </fieldset>  
   </form>
+  </div>
+  
+  <div class="col-md-2">
+  </div> 
+  
+  </div>
+  <!--이메일 체크 메시지-->
+  
+  {% if confirm_email_msg %}
+  <hr>   
+  <div class="row">
+  <div class="alert alert-info" role="alert">
+      {{ confirm_email_msg }}     
+  </div>
+  </div>
+  {% endif %}
+  
+  
 {% endblock %}

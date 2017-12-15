@@ -35,14 +35,19 @@ class Contact_us_Form(forms.Form):
     subject = forms.CharField(label='주제')
     email = forms.EmailField(label='이메일', required=True)
     message = forms.CharField(label='이메일 내용', widget=forms.Textarea)
+    
+# 관리자 to 전체회원 이메일    
+class Email_all_member_Form(forms.Form):
+    subject = forms.CharField(label='주제')
+    message = forms.CharField(label='이메일 내용', widget=forms.Textarea)    
 
 # 관리자 to 회원 1인 이메일    
 class Email_member_Form(forms.Form):
     mamber_name = forms.CharField(label='mamber_name')
     subject = forms.CharField(label='Subject')
     mamber_email = forms.EmailField(label='mamber_email', required=True)
-    message = forms.CharField(label='Email message', widget=forms.Textarea)    
-
+    message = forms.CharField(label='Email message', widget=forms.Textarea)  
+    
 # 회원가입 커스텀 폼
 class SignupForm(UserCreationForm):
     email = forms.EmailField(max_length=200, help_text='Required')
@@ -70,7 +75,8 @@ class MyPasswordResetForm(PasswordResetForm):
         # Email subject *must not* contain newlines
         subject = ''.join(subject.splitlines())
         body = loader.render_to_string(email_template_name, context)
-
+        
+        # 커스텀 이메일 모듈 연결
         email_message = EmailSender(to_email, body, to_email, subject)
         
         if html_email_template_name is not None:

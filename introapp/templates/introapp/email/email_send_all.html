@@ -1,7 +1,7 @@
 {% extends 'introapp/base-origin.html' %}
 
 {% block content %}
-
+    
 
 <!--이메일 인증 성공 -->
   {% if success_msg %}
@@ -28,7 +28,7 @@
   </div>  
    
   <div class="signup_custom_form col-md-8" >
-    <h2>문의하기<small>contact us</small></h2>
+    <h2>전체회원 이메일발송<small>Send email to all members</small></h2>
     <fieldset>
       <div class="form-group row">  
       <form method="POST" class="post-form" enctype='multipart/form-data'>{% csrf_token %}
@@ -58,7 +58,5 @@
   </div>
   
  
-  
-  
-  
+    
 {% endblock %}

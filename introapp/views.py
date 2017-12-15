@@ -1,7 +1,7 @@
 from django.shortcuts import render, get_object_or_404
 from django.utils import timezone
 from .models import Intro_BW
-from .forms import Intro_BWForm, Contact_us_Form, Email_member_Form
+from .forms import Intro_BWForm, Contact_us_Form, Email_member_Form, Email_all_member_Form
 from django.shortcuts import redirect
 # paginator
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
@@ -95,6 +95,41 @@ def email_send_one(request):
     else:
         form = Email_member_Form()
     return render(request, 'introapp/email/email_send_one.html', {'form': form})  
+
+# 이메일-전체맴버
+def email_send_all(request):
+    if request.method == "POST":
+        form = Email_all_member_Form(request.POST, request.FILES or None)
+        if form.is_valid():
+            to_member_email = form.cleaned_data.get("mamber_email")
+            message = form.cleaned_data.get("message")
+            member_name = form.cleaned_data.get("mamber_name")
+            subject = form.cleaned_data.get("subject")
+            
+            success_msg = '''
+            이메일이 성공적으로 발송되었습니다. 
+            '''
+            fail_msg = '''
+            이메일 발송에 실패했습니다. 차후에 다시 시도해 주세요.
+            '''
+            try:
+                # send = EmailSender(to_member_email, message, member_name, subject)
+                # send.sending_one()
+                
+                for user in User.objects.all():
+                    send = EmailSender(user.email, message, user.username, subject)
+                    send.sending_one()
+            except IOError:
+                # return HttpResponse('이메일 보내기: 실패')
+                return render(request, 'introapp/email/email_contact_us.html', 
+                         {'form': form, 'success_msg': fail_msg})
+                
+            # return HttpResponse('이메일 보내기: 성공')
+            return render(request, 'introapp/email/email_contact_us.html', 
+                         {'form': form, 'success_msg': success_msg})
+    else:
+        form = Email_all_member_Form()
+    return render(request, 'introapp/email/email_send_all.html', {'form': form})  
 
 
 # 회원가입 처리 1. 인증이메일 발송

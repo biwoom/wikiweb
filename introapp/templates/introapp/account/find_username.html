@@ -2,15 +2,14 @@
 
 {% block content %}
 <!--<div class="container">-->
-<!--    <h1>Welcome</h1>-->
+<!--    <h1>Password reset</h1>-->
 <!--    <p>-->
-<!--        You can log in here!-->
+<!--        Forgotten your password? Enter your email address below, and we'll email instructions for setting a new one.-->
 <!--    </p>-->
-<!--    <h2>Login</h2>-->
 <!--    <form method="post">-->
 <!--        {% csrf_token %}-->
 <!--        {{ form.as_p }}-->
-<!--        <button type="submit">Login</button>-->
+<!--        <button type="submit">Reset password</button>-->
 <!--    </form>-->
 <!--</div>-->
 
@@ -20,7 +19,8 @@
   </div>  
    
   <div class="signup_custom_form col-md-8" >
-    <h2>로그인 <small>Login</small></h2>
+    <h2>사용자이름 찾기 <small>Find username</small></h2>
+    <p>회원이메일로 사용자이름을 검색할 수 있습니다.</p>
     <fieldset>
       <div class="form-group row">  
       <form method="post">
@@ -37,26 +37,14 @@
             {% endfor %}
           </p>
           {% endfor %}
-        <button type="submit" class="btn btn-primary">로그인</button>
+        <button type="submit" class="btn btn-primary">사용자이름 검색 </button>
       </div>
     </fieldset>  
   </form>
-  
-  <div class="row">
-        <p style="margin-left:10px">
-        <a href="/find_username">사용자이름 찾기 &raquo;</a>
-        &nbsp;&nbsp;
-        <a href="/reset-password">비밀번호 찾기 &raquo;</a>
-        </p>
-  </div>
-  
   </div>
   
   <div class="col-md-2">
   </div> 
   
   </div>
-  
-  
-  
 {% endblock %}

@@ -1,5 +1,5 @@
 from django import forms
-from django.contrib.auth.forms import UserCreationForm, PasswordResetForm
+from django.contrib.auth.forms import UserCreationForm, PasswordResetForm, AuthenticationForm
 from django.contrib.auth.models import User
 from .models import Intro_BW
 from .python_email.email_bw import EmailSender
@@ -85,6 +85,12 @@ class MyPasswordResetForm(PasswordResetForm):
 
         # email_message.sending_one()
         email_message.contact_us_img()
+    
+    def clean_email(self):
+        email = self.cleaned_data.get('email')
+        if not User.objects.filter(email=email).exists():
+            raise forms.ValidationError(u'Email 주소가 존재하지 않습니다.')
+        return email
         
     def save(self, domain_override=None,
              subject_template_name='registration/password_reset_subject.txt',
@@ -96,8 +102,8 @@ class MyPasswordResetForm(PasswordResetForm):
         Generates a one-use only link for resetting password and sends to the
         user.
         """
-        
         email = self.cleaned_data["email"]
+            
         for user in self.get_users(email):
             if not domain_override:
                 current_site = get_current_site(request)
@@ -121,8 +127,38 @@ class MyPasswordResetForm(PasswordResetForm):
                 user.email, html_email_template_name=html_email_template_name,
             )
 
-
-
+# 로그인 폼 커스텀
+class MyAuthenticationForm(AuthenticationForm):
+    def clean_email(self):
+        email = self.cleaned_data.get('email')
+        if not User.objects.filter(email=email).exists():
+            raise forms.ValidationError(u'Email 주소가 존재하지 않습니다.')
+        return email
+        
+    def clean_username(self):    
+        username = self.cleaned_data.get('username')
+        if not User.objects.filter(username=username).exists():
+            raise forms.ValidationError(u'사용자이름이 존재하지 않습니다.')
+        return username
+        
+    def clean_password(self):
+        # 두 비밀번호 입력 일치 확인
+        password = self.cleaned_data.get("password")
+        if not User.objects.filter(password=password).exists():
+            raise forms.ValidationError(u'비밀번호가 올바르지 않습니다.')
+        return password
+ 
+# username 찾기 폼
+class FindUsernameForm(forms.Form):
+    email = forms.EmailField(label='이메일', required=True)
+    
+    def clean_email(self):
+        email = self.cleaned_data.get('email')
+        if not User.objects.filter(email=email).exists():
+            raise forms.ValidationError(u'Email 주소가 존재하지 않습니다.')
+        return email
+            
+        
     
 # ===============================================
 # ===============================================

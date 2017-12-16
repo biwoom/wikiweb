@@ -1,0 +1,25 @@
+{% extends 'introapp/base-origin.html' %}
+
+{% block content %}
+
+
+    <div class="jumbotron">
+     <h2 class="display-3">사용자 이름 검색 결과</h2>
+     <div class="alert alert-dismissible alert-success">
+     
+     <p class="mb-0">이메일로 검색된 사용자이름입니다. </p>
+     <p><small>이름 : {{username}} </small></p>
+     </div>
+     
+     <div class="row">
+        <p style="margin-left:10px">
+        <a href="/login"><small>로그인 &raquo; </small></a>
+        &nbsp;&nbsp;
+        <a href="/reset-password"><small>비밀번호 찾기 &raquo; </small></a>
+        </p>
+     </div>
+     
+     </div>
+    
+     
+{% endblock %}

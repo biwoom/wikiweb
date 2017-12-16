@@ -1,7 +1,9 @@
 from django.shortcuts import render, get_object_or_404
 from django.utils import timezone
 from .models import Intro_BW
-from .forms import Intro_BWForm, Contact_us_Form, Email_member_Form, Email_all_member_Form
+from .forms import (
+Intro_BWForm, Contact_us_Form, Email_member_Form, Email_all_member_Form, 
+FindUsernameForm, MyPasswordResetForm)
 from django.shortcuts import redirect
 # paginator
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
@@ -155,7 +157,7 @@ def signup(request):
             current_site = SERVER_DOMAIN
             subject = '나란다불교학술원 이메일인증 활성화'
             to_member_email = form.cleaned_data.get('email')
-            message = render_to_string('introapp/email/signup_active_email_2.html', {
+            message = render_to_string('introapp/email/signup_active_email.html', {
                 'user': user,
                 'domain': current_site,
                 'uid':urlsafe_base64_encode(force_bytes(user.pk)),
@@ -193,6 +195,21 @@ def activate(request, uidb64, token):
     else:
         return render(request, 'introapp/account/activate.html', {'fail_msg': fail_msg})
         # return HttpResponse('Activation link is invalid!')
+
+
+def find_username(request):
+    form = FindUsernameForm(request.POST or None)
+    if request.method == "POST" and form.is_valid():
+        
+        email = form.cleaned_data['email']
+        user = User.objects.get(email=email)
+        username = user
+        return render(request, 'introapp/account/find_username_done.html', 
+                         {'form': form, 'username':username})
+    return render(request, 'introapp/account/find_username.html', {'form': form})  
+
+
+
 
 
 # ===============================================

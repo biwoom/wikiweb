@@ -43,16 +43,6 @@
             <p> Web Services by</p>
             <img src="{% static "introapp/images/demo/logo-lotus-bo-tran-tibetan-col1.png" alt="inb-tibetan-name" %}">
             
-             <!--{% if user.is_authenticated %}-->
-             <!-- <a class="d-table ml-auto mr-auto mt-4" href="/logout"  >-->
-             <!--   <button class="btn btn-pill btn-outline-primary"> 로그아웃 </button>-->
-             <!-- </a>-->
-             <!-- {% else %}-->
-             <!-- <a class="d-table ml-auto mr-auto mt-4" href="/login"  >-->
-             <!--   <button class="btn btn-pill btn-outline-primary"> 로그인 </button>-->
-             <!-- </a>-->
-             <!-- {% endif %}-->
-            
     </div>
 </div>
 
@@ -159,6 +149,16 @@
             </div>
         </div>
     </div>
+    
+{% if user.is_authenticated %}
+              <a class="d-table ml-auto mr-auto mt-4" href="/logout"  >
+                <button class="btn btn-pill btn-outline-primary"> 로그아웃 </button>
+              </a>
+              {% else %}
+              <a class="d-table ml-auto mr-auto mt-4" href="/login"  >
+                <button class="btn btn-pill btn-outline-primary"> 로그인 </button>
+              </a>
+              {% endif %}
     
 
     <footer class="main-footer" style="padding:1rem 0; margin-bottom:20px;" >

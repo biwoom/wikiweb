@@ -180,8 +180,7 @@ MARKDOWN_DEUX_STYLES = {
 # LOGOUT_URL = '/accounts/logout/' # 기본값
 # LOGIN_REDIRECT_URL = '/' # 반드시 정의할 것!
 
-# AUTH_USER_MODEL = 'account.User'
-# AUTHENTICATION_BACKENDS = ('account.backends.OpencartBackend',)
+# AUTH_USER_MODEL = 'introapp.MyUser'
 
 LOGIN_REDIRECT_URL = '/wiki'
 LOGOUT_REDIRECT_URL = '/'

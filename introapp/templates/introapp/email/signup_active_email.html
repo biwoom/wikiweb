@@ -8,8 +8,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 </head>
 
-<body style="margin: 0; padding: 0;">
- <table align="center" border="0" cellpadding="0" cellspacing="0" width="500" style="border-collapse: collapse;">
+<body style="margin: 0; padding: 0; background-color: #f6f6f6; ">
+ <table align="center" border="0" cellpadding="0" cellspacing="0" max-width="500" 
+ style="border-collapse: collapse; ">
+ 
+ <tr bgcolor="#f6f6f6"> 
+ <td height="30px" style="">
+ </td>
+ </tr>
+
+ 
  <tr bgcolor="#ffe066"> 
  <td height="10px" style="">
  </td>
@@ -27,7 +35,7 @@
  <p><small style="font-family: 'Helvetica Neue', sans-serif; font-weight:100; font-size: 15px; ">
  Institute of Nalanda Buddhism</small></p>
  <p> 
-	 <!-- <span style="font-family: 'Source Sans Pro', cursive; font-size: 50px; color:#ffffff; "> -->
+	
 	 <span style="font-family: 'Helvetica Neue', sans-serif; font-weight:100; font-size: 50px; color:#ffffff; ">
 	 email
 	</span>
@@ -68,7 +76,7 @@
 
 			    <tr>
 			     <td bgcolor="#29abd6" align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse; border-radius: 25px;">
-			      <p><span style="font-family: 'Helvetica Neue', sans-serif;  font-size: 20px; color:#ffffff; ">
+			      <p><span style="font-family: 'Helvetica Neue', sans-serif; font-size: 20px; color:#ffffff; ">
  					이메일 인증을 완료하세요 </span>
  				  </p>
 			     </td>
@@ -81,6 +89,7 @@
 			      <br/>
 			      {{ user.username }} 회원님, <br/>
 			      회원가입을 완료하려면 다음의 버튼을 클릭하십시오.<br/>
+
 			      <div align="center" cellpadding="0" cellspacing="0">
 			      <a href="http://{{ domain }}{% url 'activate' uidb64=uid token=token %}" 
 			      class="btn-primary" style="font-family: Arial, sans-serif; font-weight:400; box-sizing: border-box; font-size: 14px; color: #FFF; text-decoration: none; line-height: 2em;  text-align: center; cursor: pointer; display: inline-block; border-radius: 5px; text-transform: capitalize; background-color: #348eda; margin: 0; border-color: #348eda; border-style: solid; border-width: 10px 20px; margin-top: 15px;">
@@ -100,7 +109,7 @@
    	<table border="0" cellpadding="0" cellspacing="0" width="100%">
 	 <tr>	
 	  <td width="50%">
-	  	<span style="font-family: 'Helvetica Neue', sans-serif; font-weight:300; font-size: 13px; color:#ffffff; ">
+	  	<span style="font-family: 'Helvetica Neue', sans-serif; font-weight:100; font-size: 13px; color:#ffffff; ">
 		 <i class="fa fa-envelope" aria-hidden="true"></i> 
 		 Institute of Nalanda Buddhism<br/>
 		 나란다불교학술원<br/>
@@ -147,32 +156,31 @@
 	</table>
   </td>
  </tr>
- <tr>
- 	<td max-width="400" valign="top">
-	<table border="0" cellpadding="0" cellspacing="0" width="100%">
-	<tr>
-	<td bgcolor="" align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse;">
-	<p><span style="font-family: 'Helvetica Neue', sans-serif; font-weight:100; font-size: 10px; color:#000000; ">
-	<strong> www.nalanda.kr </strong><br/>
-	경상북도 경주시 첨성로 81번길 20
-	Institute Of Nalanda Buddhism, 20, 81-gil, Cheomseong-ro, Gyeongju-si, Gyeongsangbuk-do, Korea<br/>
-	054-624-5353 
- 	</span>
- 	</p>
-	</td>
-	</tr>
-	</table>
-	</td>
- </tr>
 
- <tr bgcolor="#ffe066"> 
- <td height="10px" style="">
- </td>
- </tr>
+
+ <tr bgcolor="#f6f6f6">
+		 	<td height="50px" max-width="400" valign="top">
+			<table border="0" cellpadding="0" cellspacing="0" width="100%">
+			<tr>
+			<td bgcolor="" align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse;">
+			<p>
+			<span style="font-family: 'Helvetica Neue', sans-serif; font-weight:100; font-size: 10px; color:#000000; ">
+			 <spnn style="font-family: 'Helvetica Neue', sans-serif; font-weight:100; font-size: 13px; color:#000000; ">www.nalanda.kr</spnn> <br/>
+			경상북도 경주시 첨성로 81번길 20
+			Institute Of Nalanda Buddhism, 20, 81-gil, Cheomseong-ro, Gyeongju-si, Gyeongsangbuk-do, Korea<br/>
+			054-624-5353 
+		 	</span>
+		 	</p>
+			</td>
+			</tr>
+			</table>
+			</td>
+</tr>
 
 </table>
 
+
 </body>
 
-</html> 
+</html>
 {% endautoescape %}

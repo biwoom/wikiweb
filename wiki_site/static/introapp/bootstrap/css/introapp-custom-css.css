@@ -4862,7 +4862,7 @@ a.text-black:focus, a.text-black:hover {
 .mb-auto {margin-bottom: 5px !important;}
 }
 /* 아이폰 6 & 6 Plus 세로 */
-@media only screen and (min-device-width : 375px) and (max-device-width : 736px) and (orientation : portrait) {
+@media only screen and (min-device-width : 360px) and (max-device-width : 736px) and (orientation : portrait) {
 .nalanda{width:290px;  opacity: 0.3; margin-top: 17%;}
 }
 

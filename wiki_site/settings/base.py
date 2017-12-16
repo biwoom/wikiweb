@@ -101,7 +101,7 @@ TEMPLATES = [
 WSGI_APPLICATION = 'wiki_site.wsgi.application'
 
 
-LOGIN_REDIRECT_URL = reverse_lazy('wiki:get', kwargs={'path': ''})
+# LOGIN_REDIRECT_URL = reverse_lazy('wiki:get', kwargs={'path': ''})
 
 
 # Database
@@ -183,3 +183,5 @@ MARKDOWN_DEUX_STYLES = {
 # AUTH_USER_MODEL = 'account.User'
 # AUTHENTICATION_BACKENDS = ('account.backends.OpencartBackend',)
 
+LOGIN_REDIRECT_URL = '/wiki'
+LOGOUT_REDIRECT_URL = '/'

@@ -18,7 +18,7 @@ urlpatterns = [
     url(r'^logout/$', logout, {'template_name': 'introapp/account/logout.html'}, name='logout'),
     # 비밀번호 변경
     url(r'^password_change/$', password_change, {
-        'template_name': 'introapp/account/reset_password.html'}, name='change_password'),
+        'template_name': 'introapp/account/password_change_form.html'}, name='password_change'),
     url(r'^password_change/done/$', password_change_done, {
         'template_name': 'introapp/account/password_change_done.html'}, name='password_change_done'),    
     # 회원가입
@@ -29,7 +29,7 @@ urlpatterns = [
     url(r'^reset-password/$', password_reset, {
         'password_reset_form':MyPasswordResetForm,
         'template_name': 'introapp/account/reset_password.html', 
-        'email_template_name': 'introapp/account/reset_password_email.html'}, name='reset_password'),
+        'email_template_name': 'introapp/email/reset_password_email_2.html'}, name='reset_password'),
     url(r'^reset-password/done/$', password_reset_done, {
         'template_name': 'introapp/account/reset_password_done.html'}, name='password_reset_done'),
     url(r'^reset-password/confirm/(?P<uidb64>[0-9A-Za-z]+)-(?P<token>.+)/$', password_reset_confirm, {

@@ -83,7 +83,8 @@ class MyPasswordResetForm(PasswordResetForm):
             html_email = loader.render_to_string(html_email_template_name, context)
             email_message.attach_alternative(html_email, 'text/html')
 
-        email_message.sending_one()
+        # email_message.sending_one()
+        email_message.contact_us_img()
         
     def save(self, domain_override=None,
              subject_template_name='registration/password_reset_subject.txt',

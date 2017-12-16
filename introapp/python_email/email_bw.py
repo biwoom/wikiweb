@@ -1,7 +1,10 @@
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
+from email.mime.image import MIMEImage
 from .email_info import EMAIL_HOST, EMAIL_HOST_USER, EMAIL_HOST_PASSWORD, EMAIL_PORT, EMAIL_HOST_NAME
 import smtplib
+import os
+from django.template.loader import render_to_string
 
 class EmailSender:
     def __init__(self, to_member_email, message, member_name, subject):
@@ -20,7 +23,7 @@ class EmailSender:
         self.member_name = member_name
         self.subject = subject
 
-# 회원개인 이메일 전송    
+# 1. 회원개인 이메일 전송    
     def sending_one(self):
         try:
             email_conn = smtplib.SMTP(self.host, self.port)
@@ -55,7 +58,7 @@ class EmailSender:
             
             # part1 = MIMEText(text, 'plain')
             # part2 = MIMEText(html, 'html')
-            part2 = MIMEText(html, 'html')
+            part2 = MIMEText(text, 'html')
             
             # msg.attach(part1)
             msg.attach(part2)
@@ -65,7 +68,7 @@ class EmailSender:
         except smtplib.SMTPException:
             print("error sending email")
 
-# 문의사항 이메일
+# 2. 문의사항 이메일
     def contact_us(self):
         try:
             email_conn = smtplib.SMTP(self.host, self.port)
@@ -110,3 +113,50 @@ class EmailSender:
         except smtplib.SMTPException:
             print("error sending email")
     
+
+# 3. 관리자 to 회원 이메일 : 이미지 템플릿 이메일
+    def contact_us_img(self):
+        try:
+            email_conn = smtplib.SMTP(self.host, self.port)
+            email_conn.ehlo()
+            email_conn.starttls()
+            email_conn.login(self.admin_email, self.password)
+            
+            msg = MIMEMultipart('alternative')
+            msg['Subject'] = self.subject
+            msg['From'] = self.from_email
+            msg['To'] = self.from_email
+
+            sender = self.member_name
+            sender_email = self.to_member_email
+            subject = self.subject
+            text = self.message
+
+            img_name = ''
+            img_path = ''
+            
+            for f in [
+                'email_icon.png', 
+                'inboxiconanimation_30.gif',
+                'logo-lotus-bo-circle.png',
+                'facebook_icon.png',
+                'twitter_icon.png',
+                'youtube_icon.png'
+                ]:
+                img_name = f
+                img_path = 'img/' + f
+                fp = open(os.path.join(os.path.dirname(__file__), img_path), 'rb')
+                msg_img = MIMEImage(fp.read())
+                fp.close()
+                msg_img.add_header('Content-ID', '<{}>'.format(f))
+                msg.mixed_subtype = 'related'
+                msg.attach(msg_img)
+            
+            part1 = MIMEText(text, 'html')
+            
+            msg.attach(part1)
+           
+            email_conn.sendmail(self.from_email, self.to_member_email, msg.as_string())
+            email_conn.quit()
+        except smtplib.SMTPException:
+            print("error sending email")

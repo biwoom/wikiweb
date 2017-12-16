@@ -63,11 +63,12 @@ def email_contact_us(request):
             '''
             try:
                 send = EmailSender(to_member_email, message, member_name, subject_text)
-                send.contact_us()
+                # send.contact_us()
+                send.contact_us_img()
             except IOError:
                 # return HttpResponse('이메일 보내기: 실패')
                 return render(request, 'introapp/email/email_contact_us.html', 
-                         {'form': form, 'success_msg': fail_msg})
+                         {'form': form, 'fail_msg': fail_msg})
                 
             # return HttpResponse('이메일 보내기: 성공')
             return render(request, 'introapp/email/email_contact_us.html', 
@@ -86,12 +87,23 @@ def email_send_one(request):
             member_name = form.cleaned_data.get("mamber_name")
             subject = form.cleaned_data.get("subject")
             
+            success_msg = '''
+            이메일이 성공적으로 발송되었습니다. 
+            '''
+            fail_msg = '''
+            이메일 발송에 실패했습니다. 차후에 다시 시도해 주세요.
+            '''
             try:
                 send = EmailSender(to_member_email, message, member_name, subject)
                 send.sending_one()
             except IOError:
-                return HttpResponse('이메일 보내기: 실패')
-            return HttpResponse('이메일 보내기: 성공')
+                # return HttpResponse('이메일 보내기: 실패')
+                return render(request, 'introapp/email/email_send_one.html', 
+                         {'form': form, 'fail_msg': fail_msg})
+                
+            # return HttpResponse('이메일 보내기: 성공')
+            return render(request, 'introapp/email/email_send_one.html', 
+                         {'form': form, 'success_msg': success_msg})
     else:
         form = Email_member_Form()
     return render(request, 'introapp/email/email_send_one.html', {'form': form})  
@@ -101,9 +113,7 @@ def email_send_all(request):
     if request.method == "POST":
         form = Email_all_member_Form(request.POST, request.FILES or None)
         if form.is_valid():
-            to_member_email = form.cleaned_data.get("mamber_email")
-            message = form.cleaned_data.get("message")
-            member_name = form.cleaned_data.get("mamber_name")
+            contents = form.cleaned_data.get("message")
             subject = form.cleaned_data.get("subject")
             
             success_msg = '''
@@ -113,19 +123,21 @@ def email_send_all(request):
             이메일 발송에 실패했습니다. 차후에 다시 시도해 주세요.
             '''
             try:
-                # send = EmailSender(to_member_email, message, member_name, subject)
-                # send.sending_one()
-                
                 for user in User.objects.all():
+                    message = render_to_string('introapp/email/all_users_email.html', {
+                        'user': user,
+                        'contents': contents,
+                    })
                     send = EmailSender(user.email, message, user.username, subject)
-                    send.sending_one()
+                    # send.sending_one()
+                    send.contact_us_img()
             except IOError:
                 # return HttpResponse('이메일 보내기: 실패')
-                return render(request, 'introapp/email/email_contact_us.html', 
-                         {'form': form, 'success_msg': fail_msg})
+                return render(request, 'introapp/email/email_send_all.html', 
+                         {'form': form, 'fail_msg': fail_msg})
                 
             # return HttpResponse('이메일 보내기: 성공')
-            return render(request, 'introapp/email/email_contact_us.html', 
+            return render(request, 'introapp/email/email_send_all.html', 
                          {'form': form, 'success_msg': success_msg})
     else:
         form = Email_all_member_Form()
@@ -141,18 +153,18 @@ def signup(request):
             user.is_active = False
             user.save()
             current_site = SERVER_DOMAIN
-            subject = 'Activate your blog account.'
-            message = render_to_string('introapp/email/acc_active_email.html', {
+            subject = '나란다불교학술원 이메일인증 활성화'
+            to_member_email = form.cleaned_data.get('email')
+            message = render_to_string('introapp/email/signup_active_email_2.html', {
                 'user': user,
                 'domain': current_site,
                 'uid':urlsafe_base64_encode(force_bytes(user.pk)),
                 'token':account_activation_token.make_token(user),
             })
-            to_member_email = form.cleaned_data.get('email')
             
             send = EmailSender(to_member_email, message, user.username, subject)
-            send.sending_one()
-            
+            # send.sending_one()
+            send.contact_us_img()
             confirm_email_msg = '''
             회원가입을 완료하려면, 발송된 이메일 메시지 내부의 활성화링크로 재접속하세요. \n 
             Please confirm your email address to complete the registration'''
@@ -174,12 +186,12 @@ def activate(request, uidb64, token):
         user.save()
         login(request, user)
         # return redirect('home')
-        success_msg = '이메일 인증이 완료되었습니다. 이제 귀하의 계정으로 로그인하실 수 있습니다. \n Thank you for your email confirmation. Now you can login your account.'
-        fail_msg = '활성화 링크가 잘못되었습니다!  \n  Activation link is invalid!'
+        success_msg = '이메일 인증이 완료되었습니다. 이제 귀하의 계정으로 로그인하실 수 있습니다.'
+        fail_msg = '활성화 링크가 잘못되었습니다!'
         return render(request, 'introapp/account/activate.html', {'success_msg': success_msg})
         # return HttpResponse('Thank you for your email confirmation. Now you can login your account.')
     else:
-        return render(request, 'introapp/account/activate.html', {'success_msg': fail_msg})
+        return render(request, 'introapp/account/activate.html', {'fail_msg': fail_msg})
         # return HttpResponse('Activation link is invalid!')
 
 
@@ -187,6 +199,9 @@ def activate(request, uidb64, token):
 # ===============================================
 # ===============================================
 
+            
+            
+            
 
 
 def intro_list(request):

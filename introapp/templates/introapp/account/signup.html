@@ -1,17 +1,24 @@
 {% extends 'introapp/base-origin.html' %}
 
 {% block content %}
+<!-- Page Preloader -->
+<div class="preloader_1">
+    <div class="status_1">
+        <div class="status-mes"></div>
+    </div>
+</div>
+
 
  <!--이메일 체크 메시지-->
   
   {% if confirm_email_msg %}
-  <hr>   
+     
   <div class="row">
   <div class="alert alert-success" role="alert">
       {{ confirm_email_msg }}     
   </div>
   </div>
-  <hr>
+ 
   {% endif %}
   
   
@@ -39,7 +46,7 @@
               </p>
               {% endfor %}
             <!--<button type="submit">Sign up</button>-->
-            <button type="submit" class="btn btn-primary">회원가입 Sign up</button>
+            <button type="submit" class="btn btn-primary loading">회원가입 Sign up</button>
           </div>
         </fieldset>  
       </form>

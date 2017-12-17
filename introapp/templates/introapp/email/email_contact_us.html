@@ -1,7 +1,12 @@
 {% extends 'introapp/base-origin.html' %}
 
 {% block content %}
-
+<!-- Page Preloader -->
+<div class="preloader_1">
+    <div class="status_1">
+        <div class="status-mes"></div>
+    </div>
+</div>
 
 <!--이메일 인증 성공 -->
   {% if success_msg %}
@@ -46,7 +51,7 @@
           </p>
           {% endfor %}
         <!--<button type="submit">Sign up</button>-->
-        <button type="submit" class="btn btn-primary">이메일 보내기</button>
+        <button type="submit" class="btn btn-primary loading">이메일 보내기</button>
       </div>
     </fieldset>  
   </form>

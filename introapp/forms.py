@@ -50,11 +50,11 @@ class Email_member_Form(forms.Form):
     
 # 회원가입 커스텀 폼
 class SignupForm(UserCreationForm):
-    email = forms.EmailField(max_length=200, help_text='Required')
+    email = forms.EmailField(max_length=200, help_text='Required', label='이메일')
     
     alphanumeric = RegexValidator(r'^[0-9a-zA-Z]*$', '오직 알파벳만 사용할 수 있습니다.')
 
-    username = forms.CharField(max_length=200, validators=[alphanumeric])
+    username = forms.CharField(max_length=200, validators=[alphanumeric],  label='아이디')
     
     def clean_email(self):
         email = self.cleaned_data.get('email')

@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: django-wiki\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-07-10 15:09+0200\n"
-"PO-Revision-Date: 2017-10-19 11:16+0900\n"
+"PO-Revision-Date: 2017-12-18 09:45+0900\n"
 "Last-Translator: jh kim <freedharma@gmail.com>\n"
 "Language-Team: Korean (Korea) (http://www.transifex.com/django-wiki/django-wiki/language/ko_KR/)\n"
 "MIME-Version: 1.0\n"
@@ -196,7 +196,7 @@ msgstr "소유자"
 
 #: forms.py:464
 msgid "Enter the username of the owner."
-msgstr "소유자의 사용자명을 입력하세요."
+msgstr "소유자의 아이디를 입력하세요."
 
 #: forms.py:467 forms.py:526 plugins/notifications/util.py:14
 msgid "(none)"

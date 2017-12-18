@@ -22,7 +22,7 @@ from django.utils.http import urlsafe_base64_encode
 from django.utils.safestring import mark_safe
 from django.utils.text import capfirst
 from django.utils.translation import ugettext, ugettext_lazy as _
-
+from django.core.validators import RegexValidator
 
 class CommentForm(forms.Form):
     name = forms.CharField(label='Your name')
@@ -51,6 +51,10 @@ class Email_member_Form(forms.Form):
 # 회원가입 커스텀 폼
 class SignupForm(UserCreationForm):
     email = forms.EmailField(max_length=200, help_text='Required')
+    
+    alphanumeric = RegexValidator(r'^[0-9a-zA-Z]*$', '오직 알파벳만 사용할 수 있습니다.')
+
+    username = forms.CharField(max_length=200, validators=[alphanumeric])
     
     def clean_email(self):
         email = self.cleaned_data.get('email')
@@ -138,7 +142,7 @@ class MyAuthenticationForm(AuthenticationForm):
     def clean_username(self):    
         username = self.cleaned_data.get('username')
         if not User.objects.filter(username=username).exists():
-            raise forms.ValidationError(u'사용자이름이 존재하지 않습니다.')
+            raise forms.ValidationError(u'아이디가 존재하지 않습니다.')
         return username
         
     def clean_password(self):

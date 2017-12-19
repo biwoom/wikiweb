@@ -58,6 +58,7 @@ INSTALLED_APPS = [
     'dictapp',
     'markdown_deux',
     'introapp',
+    # 'backing',
 ]
 
 TEST_RUNNER = 'django.test.runner.DiscoverRunner'

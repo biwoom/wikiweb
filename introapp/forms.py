@@ -145,12 +145,6 @@ class MyAuthenticationForm(AuthenticationForm):
             raise forms.ValidationError(u'아이디가 존재하지 않습니다.')
         return username
         
-    def clean_password(self):
-        # 두 비밀번호 입력 일치 확인
-        password = self.cleaned_data.get("password")
-        if not User.objects.filter(password=password).exists():
-            raise forms.ValidationError(u'비밀번호가 올바르지 않습니다.')
-        return password
  
 # username 찾기 폼
 class FindUsernameForm(forms.Form):

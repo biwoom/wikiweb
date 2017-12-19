@@ -18,7 +18,8 @@ urlpatterns = [
     url(r'^bookapp/', include('bookapp.urls')),
     # url(r'^blogapp/', include('blogapp.urls')),
     # url(r'^home/', include('introapp.urls')),
-    url(r'', include('introapp.urls'))
+    url(r'', include('introapp.urls')),
+    # url(r'^backing/', include('backing.urls'))
 ]
 
 if settings.DEBUG:

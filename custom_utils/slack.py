@@ -1,12 +1,6 @@
 from slacker import Slacker
 from custom_utils.basic_info import SLACK_TOKEN
 
-
-# def slack_notify(text, channel, username, attachments):
-#     token = 'xoxb-288855504401-1rBL1UsVE5FUsvDIqdDMuypt' #토근값은 공개저장소에 공개되지 않도록 주의
-#     slack = Slacker(token)
-#     slack.chat.post_message(text=text, channel=channel, username=username, attachments=attachments)
-
 class SlackBot:
     def __init__(self, to_member_email, message, member_name, subject):
         self.token = SLACK_TOKEN

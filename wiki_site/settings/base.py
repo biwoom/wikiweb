@@ -58,6 +58,7 @@ INSTALLED_APPS = [
     'dictapp',
     'markdown_deux',
     'introapp',
+    'custom_utils',
     # 'backing',
 ]
 

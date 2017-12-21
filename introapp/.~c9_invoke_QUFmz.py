@@ -2,10 +2,10 @@ from django import forms
 from django.contrib.auth.forms import UserCreationForm, PasswordResetForm, AuthenticationForm
 from django.contrib.auth.models import User
 from .models import Intro_BW
-
-from custom_utils.email.python_email import EmailSender
-from custom_utils.basic_info import SERVER_DOMAIN, EMAIL_HOST_NAME
-
+from .python_email.email_bw import EmailSender
+from .python_email.email_info import SERVER_DOMAIN, EMAIL_HOST_NAME
+from custom_utils.email_python import EmailSender
+from custom_utils.basic_info import SERVER_DOMAIN
 from django.template import loader
 import unicodedata
 from django import forms
@@ -91,8 +91,8 @@ class MyPasswordResetForm(PasswordResetForm):
             email_message.attach_alternative(html_email, 'text/html')
 
         # email_message.sending_one()
-        email_message.sending_one()
-        # email_message.sending_with_img()
+        
+        email_message.sending_with_img()
         
     
     def clean_email(self):

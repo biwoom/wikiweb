@@ -31,7 +31,7 @@ urlpatterns = [
     url(r'^reset-password/$', password_reset, {
         'password_reset_form':MyPasswordResetForm,
         'template_name': 'introapp/account/reset_password.html', 
-        'email_template_name': 'introapp/email/reset_password_email.html'}, name='reset_password'),
+        'email_template_name': 'introapp/email/reset_password_email_plain.html'}, name='reset_password'),
     url(r'^reset-password/done/$', password_reset_done, {
         'template_name': 'introapp/account/reset_password_done.html'}, name='password_reset_done'),
     url(r'^reset-password/confirm/(?P<uidb64>[0-9A-Za-z]+)-(?P<token>.+)/$', password_reset_confirm, {

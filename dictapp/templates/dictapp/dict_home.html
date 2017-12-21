@@ -1,13 +1,20 @@
 {% extends 'dictapp/base.html' %}
 
 {% block content %}
+
+        
+        <div class="alert alert-dismissible alert-warning">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        <h4 class="alert-heading"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i>&nbsp;  주의!</h4>
+        <p class="mb-0">나란다불교학술원 티벳어-한국어 단어사전은 제작이 진행 중입니다. 완성된 단어사전이 아님을 주의하세요.</p>
+        </div> 
+           
         <div class="jumbotron">
         <h1 class="display-3">Tibetan Dictionary</h1>
         <p>티벳어 단어를 검색하세요</p>
         <form class="" method="GET" action="{% url 'dict_list' %}">
         <p>
         <input type="search" class="form-control search-query" name="q" placeholder="단어검색" value='{{ request.GET.q  }}'/>
-        <!--<a class="btn btn-primary btn-lg" id="search_btn" type="submit"  role="button"><span class="fa fa-search"></span> ..Search</a>-->
         <button id="search_btn" class="btn btn-primary btn-lg" type="submit"><span class="fa fa-search"></span> ..Search</button>
         <!-- 사전 추가 버튼 -->
         <!--<div class="pull-right">-->
@@ -16,8 +23,19 @@
         {% endif %}	
         <!--</div>-->
         </p>
-        
         </form>
         </div>
-
+        
+        <!--# THL 히말라야 티벳어-영어 온라인 사전-->
+        <div class="jumbotron">
+        <h2 class="display-3">Tibetan-English Dictionary</h2>
+        <p>티벳어-영어 단어사전. The Tibetan and Himalayan Library (THL) </p>
+        <form action="http://ttt.thlib.org/org.thdl.tib.scanner.OnLineScannerFilter" method=POST target="_blank">
+        <p>
+        <input type="search" class="form-control search-query" name="parrafo" />
+        <button id="search_btn" class="btn btn-primary btn-lg" type="submit"><span class="fa fa-search"></span> ..Search</button>
+        </p>
+        </form>
+        </div>
+        
 {% endblock %}

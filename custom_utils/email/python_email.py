@@ -125,7 +125,7 @@ class EmailSender:
             msg = MIMEMultipart('alternative')
             msg['Subject'] = self.subject
             msg['From'] = self.from_email
-            msg['To'] = self.to_member_email
+            msg['To'] = self.from_email
 
             sender = self.member_name
             sender_email = self.to_member_email

@@ -1,0 +1,133 @@
+{% load i18n %}{% autoescape off %}
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+ <head>
+  <meta charset="utf-8">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <title>Email Custom Design</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+</head>
+
+<body style="margin: 0; padding: 0; background-color: #f6f6f6; ">
+ <table align="center" border="0" cellpadding="0" cellspacing="0" max-width="500" 
+ style="border-collapse: collapse; ">
+ 
+ <tr bgcolor="#f6f6f6"> 
+ <td height="30px" style="">
+ </td>
+ </tr>
+
+ <tr bgcolor="#70bbd9"> 
+ <td height="10px" style="">
+ </td>
+ </tr>
+ <tr bgcolor="#ffffff"> 
+ <td align="center" >
+ </td>
+ </tr>
+
+ <tr bgcolor="#ffffff">
+  <td align="center" bgcolor="#70bbd9" style="padding: 40px 0 30px 0;">
+  <p>
+  	<span style="font-family: 'Helvetica Neue', sans-serif; font-size: 40px; color:#ffffff; ">
+	 NALANDA
+	</span>
+ </p>
+ <p><small style="font-family: 'Helvetica Neue', sans-serif; font-weight:100; font-size: 15px; ">
+ Institute of Nalanda Buddhism</small></p>
+ <p> 
+	
+	 <span style="font-family: 'Helvetica Neue', sans-serif; font-weight:100; font-size: 50px; color:#ffffff; ">
+	 email
+	</span>
+	 &nbsp;
+	 <span style="font-family: 'Helvetica Neue', sans-serif; font-weight:100; color:#d9d9d9; font-size: 30px;">
+	 from
+	</span>
+	 &nbsp;
+	<span style="font-family: 'Helvetica Neue', sans-serif; font-weight:100; font-size: 40px; color:#ffffff; ">
+	 Nalanda
+	</span>
+</p>
+</td>
+ </tr>
+ <tr>
+  <td bgcolor="#ffffff" style="padding: 40px 30px 40px 30px;">
+	 <table border="0" cellpadding="0" cellspacing="0" width="100%">
+	  <tr>
+	  <td align="center" border="0" cellpadding="0" cellspacing="0" style="color: #153643; font-family: Arial, sans-serif; font-weight:bold; font-size: 24px;">
+	   나란다불교학술원 회원가입을 환영합니다! 
+	  </td>
+	 </tr>
+
+	 <tr>
+	  <td align="center" border="0" cellpadding="0" cellspacing="0" style="padding: 20px 0 30px 0;">
+	   나란다불교학술원을 통해 감로와 같은 부처님의 가르침을 만나보세요.
+	  </td>
+	 </tr>
+
+	 <tr >
+		  <td max-width="400" valign="top">
+		   		<table border="0" cellpadding="0" cellspacing="0" width="100%">
+			    <tr>
+			     <td bgcolor="#ace600" align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse; border-radius: 25px;">
+			      <p><span style="font-family: 'Helvetica Neue', sans-serif; font-size: 20px; color:#ffffff; ">
+ 					이메일 인증을 완료하세요 </span>
+ 				  </p>
+			     </td>
+			    </tr>
+
+			    <tr>
+			     <td style="font-family: 'Helvetica Neue', sans-serif; padding: 25px 0 0 0;" >
+			      <strong> 발신자&nbsp;: </strong>&nbsp; 나란다불교학술원 운영진 <br/>
+			      <strong> 수신자&nbsp;: </strong>&nbsp; {{ user.email }} , {{ user.username }}<br/>
+			      <br/>
+			      {{ user.username }} 회원님, <br/>
+			      회원가입을 완료하려면 다음의 버튼을 클릭하십시오.<br/>
+
+			      <div align="center" cellpadding="0" cellspacing="0">
+			      <a href="http://{{ domain }}{% url 'activate' uidb64=uid token=token %}" 
+			      class="btn-primary" style="font-family: Arial, sans-serif; font-weight:400; box-sizing: border-box; font-size: 14px; color: #FFF; text-decoration: none; line-height: 2em;  text-align: center; cursor: pointer; display: inline-block; border-radius: 5px; text-transform: capitalize; background-color: #348eda; margin: 0; border-color: #348eda; border-style: solid; border-width: 10px 20px; margin-top: 15px;">
+			      이메일 인증 활성화</a>
+			     </div>
+			     </td>
+			    </tr>
+			   </table>
+		  </td>
+	 </tr>
+	</table>
+
+  </td>
+ </tr>
+ <tr>
+  <td bgcolor="#70bbd9" style="padding: 30px 30px 30px 30px;">
+  </td>
+ </tr>
+
+ <tr bgcolor="#f6f6f6">
+		 	<td height="50px" max-width="400" valign="top">
+			<table border="0" cellpadding="0" cellspacing="0" width="100%">
+			<tr>
+			<td bgcolor="" align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse;">
+			<p>
+			<span style="font-family: 'Helvetica Neue', sans-serif; font-size: 10px; color: #999; ">
+			 <spnn style="font-family: 'Helvetica Neue', sans-serif; font-size: 13px; color: #999; ">www.nalanda.kr</spnn> <br/>
+			경상북도 경주시 첨성로 81번길 20
+			Institute Of Nalanda Buddhism, 20, 81-gil, Cheomseong-ro, Gyeongju-si, Gyeongsangbuk-do, Korea<br/>
+			054-624-5353 
+		 	</span>
+		 	</p>
+			</td>
+			</tr>
+			</table>
+			</td>
+</tr>
+
+</table>
+
+</body>
+
+</html>
+
+{% endautoescape %}

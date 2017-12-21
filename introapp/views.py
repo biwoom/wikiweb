@@ -15,7 +15,6 @@ from django.contrib import messages
 from django.core.mail import send_mail
 from django.core.mail import send_mail, BadHeaderError
 from django.http import HttpResponse, HttpResponseRedirect
-from .python_email.email_bw import EmailSender
 # 회원가입
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
@@ -28,7 +27,6 @@ from django.template.loader import render_to_string
 from .tokens import account_activation_token
 from django.contrib.auth.models import User
 from django.core.mail import EmailMessage, EmailMultiAlternatives
-from .python_email.email_info import SERVER_DOMAIN
 from django.contrib.auth.views import password_reset
 # 비밀번호 변경
 from django.contrib.auth.models import User
@@ -36,6 +34,10 @@ from django.contrib.auth.forms import UserChangeForm, PasswordChangeForm
 from django.contrib.auth import update_session_auth_hash
 from django.contrib.auth.decorators import login_required
 
+# utils 
+from custom_utils.slack import SlackBot
+from custom_utils.email.python_email import EmailSender
+from custom_utils.basic_info import SERVER_DOMAIN
     
 # 홈
 def inb_home(request):
@@ -64,9 +66,14 @@ def email_contact_us(request):
             이메일 발송에 실패했습니다. 차후에 다시 시도해 주세요.
             '''
             try:
+                #슬랙 알림
+                slack = SlackBot(to_member_email, message, member_name, subject_text)
+                slack.slack_contact_us_notify()
+                
+                #이메일 알림
                 send = EmailSender(to_member_email, message, member_name, subject_text)
-                # send.contact_us()
-                send.contact_us_img()
+                send.contact_us()
+
             except IOError:
                 # return HttpResponse('이메일 보내기: 실패')
                 return render(request, 'introapp/email/email_contact_us.html', 
@@ -132,7 +139,7 @@ def email_send_all(request):
                     })
                     send = EmailSender(user.email, message, user.username, subject)
                     # send.sending_one()
-                    send.contact_us_img()
+                    send.sending_with_img()
             except IOError:
                 # return HttpResponse('이메일 보내기: 실패')
                 return render(request, 'introapp/email/email_send_all.html', 
@@ -157,7 +164,7 @@ def signup(request):
             current_site = SERVER_DOMAIN
             subject = '나란다불교학술원 이메일인증 활성화'
             to_member_email = form.cleaned_data.get('email')
-            message = render_to_string('introapp/email/signup_active_email.html', {
+            message = render_to_string('introapp/email/signup_active_email_plain.html', {
                 'user': user,
                 'domain': current_site,
                 'uid':urlsafe_base64_encode(force_bytes(user.pk)),
@@ -165,8 +172,8 @@ def signup(request):
             })
             
             send = EmailSender(to_member_email, message, user.username, subject)
-            # send.sending_one()
-            send.contact_us_img()
+            send.sending_one()
+            # send.sending_with_img()
             confirm_email_msg = '''
             회원가입을 완료하려면, 발송된 이메일 메시지 내부의 활성화링크로 재접속하세요. \n 
             Please confirm your email address to complete the registration'''

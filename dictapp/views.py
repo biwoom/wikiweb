@@ -10,7 +10,10 @@ from django.db.models import Q
     
 def dict_home(request):
     return render(request, 'dictapp/dict_home.html')
-
+    
+def dict_thl_dictionary(request):
+    return render(request, 'dictapp/tibet-himalaya-dict.html')
+    
 def dict_list(request):
     # dicts = Dict.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
     dicts_list = Dict.objects.all()

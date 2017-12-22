@@ -19,7 +19,7 @@ class SlackBot:
     
         # 슬랙 알림
         text = 'INB 문의'
-        channel = '#general'
+        channel = '#contact_us'
         username = 'inb_bot'
         attachments = [{
             "color": "#36a64f",

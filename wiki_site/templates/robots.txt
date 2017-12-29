@@ -1,11 +1,3 @@
-User-agent: *    
-Disallow: /owner   
-Disallow: /admin
-Disallow: /oldadmin
-Disallow: /m/search
-Disallow: /m/admin
-Allow: /                 
-
 User-agent: Mediapartners-Google  
 Disallow: /owner   
 Disallow: /admin
@@ -21,3 +13,11 @@ Disallow: /oldadmin
 Disallow: /m/search
 Disallow: /m/admin
 Allow: / 
+
+User-agent: *    
+Disallow: /owner   
+Disallow: /admin
+Disallow: /oldadmin
+Disallow: /m/search
+Disallow: /m/admin
+Allow: /         

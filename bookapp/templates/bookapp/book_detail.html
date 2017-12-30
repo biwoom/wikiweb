@@ -85,6 +85,7 @@
 <div class="theiaStickySidebar">
     
 <!--저자파트    -->
+{% if book.main_author %}
 <section class="section-wrapper section-experience gray-bg">
     <div class="container-fluid">
         <div class="row">
@@ -115,9 +116,12 @@
         </div>
     </div>
 </section>
+{% endif %}
 <!-- .section-저자파트 -->
 
+
 <!--역자파트    -->
+{% if book.main_translator %}
 <section class="section-wrapper section-experience gray-bg">
     <div class="container-fluid">
         <div class="row">
@@ -150,9 +154,11 @@
     </div>
     <!-- .container-fluid -->
 </section>
+{% endif %}
 <!-- .section-역자파트 -->
 
 <!--공동저자 파트    -->
+{% if book.co_writer_profile %}
 <section class="section-wrapper section-experience gray-bg">
     <div class="container-fluid">
         <div class="row">
@@ -177,19 +183,13 @@
     </div>
     <!-- .container-fluid -->
 </section>
+{% endif %}
+<!-- .section-공저자파트 -->
 
 
 <!--책소개파트-->
 <section class="section-wrapper section-interest gray-bg">
     <div class="container-fluid">
-        <!--<div class="row">-->
-        <!--    <div class="col-md-12">-->
-        <!--        <div class="section-title">-->
-        <!--            <h2>도서내용</h2>-->
-        <!--        </div>-->
-        <!--    </div>-->
-        <!--</div>-->
-        <!-- .row -->
 
         <div class="row">
             <div class="col-md-12">
@@ -238,6 +238,7 @@
 </section>
 
 <!--미리보기 이미지-->
+ {% if book.preview_img_1 %}
 <section class="section-wrapper portfolio-section">
     <div class="container-fluid">
         <div class="row">
@@ -252,7 +253,7 @@
             <div class="col-md-6">
                 <div class="portfolio-item" href="#">
                     <div class="portfolio-thumb">
-                    <img src="{{ book.preview_img_1.url }}" alt="preview_img_1"  class="img-rounded">
+                    <a href="{{ book.preview_img_1.url }}" target="_blank"><img src="{{ book.preview_img_1.url }}" alt="preview_img_1"  class="book_preview img-rounded"></a>
                     </div>
                 </div>
             </div>
@@ -263,7 +264,7 @@
             <div class="col-md-6">
                 <div class="portfolio-item" href="#">
                     <div class="portfolio-thumb">
-                    <img src="{{ book.preview_img_2.url }}" alt="preview_img_2"  class="img-rounded">
+                    <a href="{{ book.preview_img_2.url }}" target="_blank"><img src="{{ book.preview_img_2.url }}" alt="preview_img_2"  class="book_preview img-rounded"></a>
                     </div>
                 </div>
             </div>
@@ -272,6 +273,8 @@
         <!-- /.row -->
     </div>
 </section>
+{% endif %}
+
 
 <!--서지정보-->
 <section class="expertise-wrapper section-wrapper gray-bg">
@@ -438,6 +441,7 @@
 
 
 <!--오탈자파트-->
+{% if book.errata %} 
 <section class="section-wrapper section-interest gray-bg">
     <div class="container-fluid">
 
@@ -478,9 +482,10 @@
         </div>
     </div>
 </section>
-
+{% endif %}
 
 <!--관련자료 파트-->
+{% if book.video_url or book.wiki_url or book.supplement_file %} 
 <section class="section-wrapper section-interest gray-bg">
     <div class="container-fluid">
 
@@ -526,8 +531,11 @@
         </div>
     </div>
 </section>
+{% endif %}
+
 
 <!--가격정보-->
+{% if book.price %}
 <section class="expertise-wrapper section-wrapper gray-bg">
     <div class="container-fluid">
         <div class="row">
@@ -594,6 +602,7 @@
         </div>    
     </div>
 </section>
+{% endif %} 
 
 
 <section class="section-contact section-wrapper gray-bg">

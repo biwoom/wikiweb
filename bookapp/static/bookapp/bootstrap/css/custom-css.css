@@ -3028,9 +3028,12 @@ body{
   color: #595959;
   border-bottom: none;
 }
+.book_list_contents>.col-md-9>.book_list_col>div>a{
+  text-decoration: none !important;
+}
 .book_h1>a{
  color: black;
-}
+}s
 .book_list_col{
   margin: 0 30px;
 }
@@ -3506,7 +3509,7 @@ blockquote>p>code{
 
 /*# 북앱 디테일 이미지 ============================*/
 .img-bookapp{max-width:25% !important;}
-.book_cover_img{
+.book_cover_img, .book_preview{
   -moz-box-shadow: 4px 4px 8px rgba(0, 0, 0,0.3);
   -webkit-box-shadow: 4px 4px 8px rgba(0, 0, 0, .3);
   box-shadow: 4px 4px 8px rgba(0, 0, 0, .3);

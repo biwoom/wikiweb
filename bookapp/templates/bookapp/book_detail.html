@@ -441,9 +441,13 @@
 
 
 <!--오탈자파트-->
-{% if book.errata %} 
 <section class="section-wrapper section-interest gray-bg">
     <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="section-title"><h2>오탈자</h2></div>
+            </div>
+        </div>
 
         <div class="row">
             <div class="col-md-12">
@@ -451,7 +455,6 @@
                 {% if book.errata %} 
                 <div class="content-item">
                     <div class="content-item">
-                    <h3>오탈자</h3>
                     <p>{{ book.get_markdown_errata }}</p>
                     </div>
                 </div>
@@ -482,7 +485,6 @@
         </div>
     </div>
 </section>
-{% endif %}
 
 <!--관련자료 파트-->
 {% if book.video_url or book.wiki_url or book.supplement_file %} 

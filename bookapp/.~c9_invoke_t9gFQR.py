@@ -37,11 +37,11 @@ class Publication_BW(models.Model):
     def __str__(self):
         return '%s %s %s %s %s %s %s' % (self.main_author_profile, 
                           self.main_translator_profile,
-                          self.annotator_profile,
-                          self.co_writer_profile,
-                          self.introduction,
-                          self.table_of_contents,
-                          self.errata
+                          self.get_markdown_annotator_profile,
+                          self.get_markdown_co_writer_profile,
+                          self.get_markdown_introduction,
+                          self.get_markdown_table_of_contents,
+                          self.get_markdown_errata
                           )  
 
 # 기록파트 ==============================

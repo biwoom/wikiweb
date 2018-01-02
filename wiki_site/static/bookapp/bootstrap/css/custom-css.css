@@ -3049,9 +3049,15 @@ body{
 .book_list_sub_title{
   
 }
-@media (max-width: 400px){
+@media (max-width: 420px){
 .book_list_col{
   margin: 0 0px;
+}
+.book_list_collection_title{
+  margin-top: 30px !important;
+}
+.bokkapp_profile{
+  padding: 0 0 !important;
 }
 }
 /******************************
@@ -3628,3 +3634,4 @@ blockquote>p>code{
 .signup_custom_form>fieldset>.form-group>form>p>input{
   width: 100% !important;
 }
+

@@ -192,7 +192,9 @@ class Publication_BW_Form(forms.ModelForm):
             'video_url',
             # 4. 관련문서 위키 URL
             'wiki_url',
-            # 5. 부록자료-파일 필드 
+            # 5. 무료 도서 다운로드  URL
+            'book_cloud_url',
+            # 6. 부록자료-파일 필드 
             'supplement_file'
             )   
           

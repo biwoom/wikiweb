@@ -420,8 +420,13 @@
             <label for="id_wiki_url" class="col-form-label">위키문서 URL:</label>
             {{ form.wiki_url }}
             </div>
-            
-            <!-- # 5. 부록자료-파일 필드  -->
+            <!-- # 5. 무료 도서 다운로드  URL -->
+            <div class="form-group">
+            {{ form.book_cloud_url.errors }}
+            <label for="id_book_cloud_url" class="col-form-label">다운로드 URL:</label>
+            {{ form.book_cloud_url }}
+            </div>
+            <!-- # 6. 부록자료-파일 필드  -->
             {{ form.supplement_file.errors }}
             <table class="book-form-tabel-1-row">
         	<tr>

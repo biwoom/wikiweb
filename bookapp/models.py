@@ -220,7 +220,9 @@ class Publication_BW(models.Model):
     video_url = models.CharField(blank=True, null=True, default='', max_length=1000, verbose_name="Vedio_URL")
     # 4. 관련문서 위키 URL
     wiki_url = models.CharField(blank=True, null=True, default='', max_length=1000, verbose_name="Wiki_URL")
-    # 5. 부록자료-파일 필드 
+    # 5. 무료 도서 다운로드  URL
+    book_cloud_url = models.CharField(blank=True, null=True, default='', max_length=1000, verbose_name="Book_URL")
+    # 6. 부록자료-파일 필드 
     supplement_file = models.FileField(upload_to=upload_path_file, verbose_name='부록자료', help_text='', blank=True, null=True, default='')
     def get_filename(self):
         filename = str(self.supplement_file.name)

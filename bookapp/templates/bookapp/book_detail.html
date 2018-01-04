@@ -556,6 +556,13 @@
                     {{ book.price }} 원<br>
                 </address>
                 </div>
+                {% else %}
+                <div class="col-md-4">
+                <address>
+                    <strong>정가</strong><br>
+                    무료(free)<br>
+                </address>
+                </div>
                 {% endif %}
                 
                 {% if book.selling_price %}
@@ -629,6 +636,7 @@
                     054-624-5353
                 </address>
                 
+                {% if book.price %}
                 <address>
                 <strong>Email 주문하기</strong><br>
                 <a href="mailto:nalandakorea@gmail.com
@@ -641,6 +649,18 @@
                 </button>
                 </a>
                 </address>
+                {% else %}
+                <address>
+                <strong>책 다운로드</strong><br>
+                    <p>
+                    <button type="button" class="btn btn-link">
+                    <a href="{{ book.book_cloud_url}}" target="_blank"  >
+                    <i class="fa fa-cloud-download" aria-hidden="true"></i>
+                    </a>
+                    </button>| &nbsp;책 내려받기
+                    </p>
+                </address>
+                {% endif %}
                 
                     <strong>Web Address</strong><br>
                     <a href="www.nalanda.or.kr" target="_blank" >www.nalanda.or.kr</a><br>

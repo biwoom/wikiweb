@@ -92,6 +92,7 @@
         {% endif %}
         
         <!--나머지 리스트 묶음-->
+        {% if dict.ti_wylie %}
         <div class="dict-list-collapse">
             <p><strong><code>관련단어</code></strong></p>
             <!--# 와일리 ti_wylie -->
@@ -194,7 +195,7 @@
             </table>
             {% endif %}
         </div>
-        
+        {% endif %}
         
         <!--# 사진 자료 이미지파일-->
         {% if dict.image %}

@@ -3178,3 +3178,19 @@ blockquote>p>code{
 .signup_custom_form>fieldset>.form-group>form>p>input{
   width: 100% !important;
 }
+
+/*단어작성법*/
+.badge_info{
+  background-color: #cccccc !important;
+  /*color: #000000 !important;*/
+  border-radius: 3px !important;
+}
+
+.how_make_dict_code{
+  display: -webkit-box!important;
+  background-color: #f6f8fa;
+  border: 0px !important;
+  padding-top: 30px;
+  padding-bottom: 0px;
+  padding-left: 20px;
+}

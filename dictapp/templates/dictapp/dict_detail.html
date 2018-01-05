@@ -55,8 +55,8 @@
             {% if dict.ti_thesaurus %}
             <table class="dict-tabel-1-row">
         	<tr>
-        		<td> 유의어</td>
-        		<td class="dict_detail_tibetword">  <span></span> {{ dict.ti_thesaurus }} </td>
+        		<td class="dict_detail_title"> 유의어</td>
+        		<td class="dict_detail_tibetword">  <p class="dict_detail_tibetword_ti_thesaurus">{{ dict.ti_thesaurus }}</p> </td>
         	</tr>
             </table>
             {% endif %}
@@ -66,7 +66,7 @@
             <table class="dict-tabel-1-row">
         	<tr>
         		<td> 반의어</td>
-        		<td class="dict_detail_tibetword"> <span></span> {{ dict.ti_antonym }} </td>
+        		<td class="dict_detail_tibetword"> <p class="dict_detail_tibetword_ti_thesaurus">{{ dict.ti_antonym }}</p>  </td>
         	</tr>
             </table>
             {% endif %}
@@ -76,7 +76,7 @@
             <table class="dict-tabel-1-row">
         	<tr>
         		<td> 높임말</td>
-        		<td class="dict_detail_tibetword"> <span></span> {{ dict.ti_honorific }} </td>
+        		<td class="dict_detail_tibetword"> <p class="dict_detail_tibetword_ti_thesaurus">{{ dict.ti_honorific }}</p>  </td>
         	</tr>
             </table>
             {% endif %}
@@ -86,7 +86,7 @@
             <table class="dict-tabel-1-row">
         	<tr>
         		<td> 낮춤말</td>
-        		<td class="dict_detail_tibetword"> <span></span> {{ dict.ti_humble_terms }} </td>
+        		<td class="dict_detail_tibetword"> <p class="dict_detail_tibetword_ti_thesaurus">{{ dict.ti_humble_terms }}</p>  </td>
         	</tr>
             </table>
             {% endif %}
@@ -96,7 +96,7 @@
             <table class="dict-tabel-1-row">
         	<tr>
         		<td> 한국어</td>
-        		<td> <span></span> {{ dict.ti_korean_entry }} </td>
+        		<td class="dict_detail_korean"> <p class="dict_detail_tibetword_ti_thesaurus"> {{ dict.ti_korean_entry }}</p> </td>
         	</tr>
             </table>
             {% endif %}

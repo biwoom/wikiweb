@@ -3074,6 +3074,26 @@ li>strong>em{
   font-size: 1.3em;
   color: #000000;
 }
+.dict_detail_korean{
+  font-size: 0.9em;
+  color: #000000;
+}
+.dict_detail_korean>p{
+  border-left: solid 1px #a6a6a6;
+  margin-bottom: 10px;
+}
+.dict_detail_tibetword>p{
+  border-left: solid 1px #a6a6a6;
+  margin-bottom: 10px;
+}
+.dict_detail_tibetword_ti_thesaurus{
+  padding-left: 15px;
+}
+.dict_detail_title{
+  border-left: solid 1px #a6a6a6;
+  margin-right: 20px;
+  margin-left: 0px;
+}
 blockquote>p>code{
   background-color: #ccffcc;
   color: #666666;  

@@ -29,10 +29,10 @@
     		<td> <span></span> 명령</td>
     	</tr>
     	<tr>
-    		<td>  {{ dict.ti_future_tense }} </td>
-    		<td> <span></span> {{ dict.ti_present_tense }} </td>
-    		<td> <span></span> {{ dict.ti_past_tense }} </td>
-    		<td> <span></span> {{ dict.ti_imperative }} </td>
+    		<td class="dict_detail_tibetword">  {{ dict.ti_future_tense }} </td>
+    		<td class="dict_detail_tibetword"> <span></span> {{ dict.ti_present_tense }} </td>
+    		<td class="dict_detail_tibetword"> <span></span> {{ dict.ti_past_tense }} </td>
+    		<td class="dict_detail_tibetword"> <span></span> {{ dict.ti_imperative }} </td>
     	</tr>
         </table>
         {% endif %}
@@ -56,7 +56,7 @@
             <table class="dict-tabel-1-row">
         	<tr>
         		<td> 유의어</td>
-        		<td>  <span></span> {{ dict.ti_thesaurus }} </td>
+        		<td class="dict_detail_tibetword">  <span></span> {{ dict.ti_thesaurus }} </td>
         	</tr>
             </table>
             {% endif %}
@@ -66,7 +66,7 @@
             <table class="dict-tabel-1-row">
         	<tr>
         		<td> 반의어</td>
-        		<td> <span></span> {{ dict.ti_antonym }} </td>
+        		<td class="dict_detail_tibetword"> <span></span> {{ dict.ti_antonym }} </td>
         	</tr>
             </table>
             {% endif %}
@@ -76,7 +76,7 @@
             <table class="dict-tabel-1-row">
         	<tr>
         		<td> 높임말</td>
-        		<td> <span></span> {{ dict.ti_honorific }} </td>
+        		<td class="dict_detail_tibetword"> <span></span> {{ dict.ti_honorific }} </td>
         	</tr>
             </table>
             {% endif %}
@@ -86,7 +86,7 @@
             <table class="dict-tabel-1-row">
         	<tr>
         		<td> 낮춤말</td>
-        		<td> <span></span> {{ dict.ti_humble_terms }} </td>
+        		<td class="dict_detail_tibetword"> <span></span> {{ dict.ti_humble_terms }} </td>
         	</tr>
             </table>
             {% endif %}

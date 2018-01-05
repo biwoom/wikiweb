@@ -3062,6 +3062,18 @@ ul>li>code{
   font-weight: 500;
   display: -webkit-inline-box;
 }
+strong>em{
+  font-size: 1.5em;
+  color: #000000;
+}
+li>strong>em{
+  font-size: 1.5em;
+  color: #000000;
+}
+.dict_detail_tibetword{
+  font-size: 1.3em;
+  color: #000000;
+}
 blockquote>p>code{
   background-color: #ccffcc;
   color: #666666;  

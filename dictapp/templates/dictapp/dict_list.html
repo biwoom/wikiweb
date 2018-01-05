@@ -7,7 +7,7 @@
     	<div class="dict">
             
     	    <!--티벳어 표제어-->
-    	    <h1 class="dict_h1" id="dict-id-{{ dict.pk }}" ><a href="{% url 'dict_detail' pk=dict.pk %}">{{ dict.title }}</a></h1>
+    	    <h1 class="dict_h1 dict_detail_head" id="dict-id-{{ dict.pk }}" ><a href="{% url 'dict_detail' pk=dict.pk %}">{{ dict.title }}</a></h1>
     	    {# <p>{{ dict.text|linebreaksbr }}</p> #}
     	    
     	    <p>

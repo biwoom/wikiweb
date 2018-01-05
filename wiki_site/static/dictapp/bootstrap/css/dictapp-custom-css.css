@@ -3065,14 +3065,14 @@ ul>li>code{
 /*사전 티벳어*/
 strong>em{
   font-size: 1.5em;
-  color: #000000;
+  color: #4d4d4d;
   font-family: 'DDC_Uchen', sans-serif;
   font-size: 1.2em;
 }
 /*사전 티벳어*/
 li>strong>em{
   font-size: 1.5em;
-  color: #000000;
+  color: #4d4d4d;
   font-family: 'DDC_Uchen', sans-serif;
   font-size: 1.2em;
 }
@@ -3085,7 +3085,7 @@ li>strong>em{
   color: #000000;
 }
 .dict_detail_korean{
-  font-size: 0.8em;
+  font-size: 1em;
   color: #000000;
 }
 .dict_detail_korean>p{
@@ -3099,6 +3099,7 @@ li>strong>em{
 .dict_detail_tibetword_ti_thesaurus{
   font-family: 'DDC_Uchen', sans-serif;
   font-size: 0.8em;
+  color: #4d4d4d;
   padding-left: 15px;
 }
 .dict_detail_title{

@@ -9,7 +9,7 @@
         <p class="mb-0">나란다불교학술원 티벳어-한국어 단어사전은 제작이 진행 중입니다. 완성된 단어사전이 아님을 주의하세요.</p>
         </div> 
            
-        <div class="jumbotron">
+        <div class="dict">
         <h1 class="display-3">Tibetan Dictionary</h1>
         <p>티벳어 단어를 검색하세요</p>
         <form class="" method="GET" action="{% url 'dict_list' %}">
@@ -27,7 +27,7 @@
         </div>
         
         <!--# THL 히말라야 티벳어-영어 온라인 사전-->
-        <div class="jumbotron">
+        <div class="dict">
         <h2 class="display-3">Tibetan-English Dictionary</h2>
         <p>티벳어-영어 단어사전. The Tibetan and Himalayan Library (THL) </p>
         <form action="http://ttt.thlib.org/org.thdl.tib.scanner.OnLineScannerFilter" method=POST target="_blank">
@@ -39,6 +39,17 @@
         </div>
         
         <!--단어작성법 - 마크다운-->
+    <div class="dict">        
+    <h2 class="display-3">티벳어 단어 작성방법</h2>
+    <button class="btn btn-default dict_list_collaps_btn" type="button" data-toggle="collapse" data-target="#dict_collaps_how_make" aria-expanded="false" aria-controls="collapseExample">
+    펼쳐보기
+    <!--<i class="fa fa-angle-double-down" aria-hidden="true"></i>-->
+    <!--<i class="fa fa-arrow-down" aria-hidden="true"></i>-->
+    </button>
+    
+    <div class="collapse" id="dict_collaps_how_make">
+    <div class="card card-body">
+                    
         <div class="dict">
         
         <h2>단어 작성법</h2>
@@ -180,5 +191,15 @@
         </ul>
         
         </p>
+        
+        <a class="btn btn-primary dict_list_collaps_btn-2 pull-right" href="#dict_collaps_how_make" type="button" data-toggle="collapse" 
+        data-target="#dict_collaps_how_make" aria-expanded="false" aria-controls="collapseExample">
+       내용접기
+       </a>
         </div>
+        
+</div>
+</div> 
+
+</div> 
 {% endblock %}

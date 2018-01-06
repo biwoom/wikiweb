@@ -95,4 +95,4 @@ def dict_new(request):
         else:
             form = DictForm()
         return render(request, 'dictapp/dict_edit.html', {'form': form})
-        
+ 

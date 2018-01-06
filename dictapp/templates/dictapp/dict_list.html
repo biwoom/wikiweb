@@ -1,6 +1,11 @@
 {% extends 'dictapp/base.html' %}
 
 {% block content %}
+        <div class="alert alert-dismissible alert-warning">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        <h4 class="alert-heading"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i>&nbsp;  주의!</h4>
+        <p class="mb-0">나란다불교학술원 티벳어-한국어 단어사전은 제작이 진행 중입니다. 완성된 단어사전이 아님을 주의하세요.</p>
+        </div>
     <!--검색결과 리스트로 반환-->
     {# % for dict in dicts % #}
     {% for dict in dicts reversed %}

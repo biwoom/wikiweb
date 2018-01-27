@@ -2192,13 +2192,13 @@ div[id^="div_id_edit_email"]{
 }
 .tibetan-classic-grammar+div>table>tbody>tr>td:nth-child(3){
     /*font-family: 'Tibetan Machine Uni', sans-serif;*/
-    font-family: 'DDC_Uchen', sans-serif;
+    font-family: sans-serif, 'DDC_Uchen';
     font-size: 18px;
     width: 56%;
 }
 .tibetan-classic-grammar+div>table>tbody>tr>td:nth-child(4){
     /*font-family: 'Tibetan Machine Uni', sans-serif;*/
-    font-family: 'DDC_Uchen', sans-serif;
+    font-family: sans-serif, 'DDC_Uchen';
     font-size: 15px;
     width: 40%;
 }
@@ -2817,4 +2817,76 @@ label > span {
 }
 .signup_custom_form>fieldset>.form-group>form>p>input{
   width: 100% !important;
+}
+
+/******************************
+ kjh-마크다운 맞춤변겸 커스텀
+*******************************/
+/*.wiki-article{*/
+/*  font-family: 'DDC_Uchen', sans-serif;*/
+/*  font-size: 14px;*/
+/*}  */
+p>em{
+  font-family: sans-serif, 'DDC_Uchen'; 
+  font-size: 14px;
+  font-style: initial;
+  font-weight: normal;  
+} 
+ul>li>em{
+  font-family: sans-serif, 'DDC_Uchen'; 
+  font-size: 14px;
+  font-style: initial;
+  font-weight: normal;  
+} 
+p>em>code{
+  background-color: #ff6666;
+  color: #ffffff;
+  font-style: initial;
+  /*font-size: 90%;*/
+  font-weight: bold;
+}
+p>strong>code{
+  background-color: #80d4ff;
+  color: #ffffff;
+  font-style: initial;
+  /*font-size: 90%;*/
+  font-weight: bold;
+}
+/*ul>li>code{*/
+/*  background-color: #f5f5f5;*/
+/*  list-style-type: none !important;*/
+/*  color: #737373;*/
+/*  margin-left: -40px;*/
+/*  font-size: 1em;*/
+/*  font-style: italic;*/
+/*  font-weight: 500;*/
+/*  display: -webkit-inline-box;*/
+/*}*/
+/*사전 티벳어*/
+strong>em{
+  color: #ff6666;
+  font-family: sans-serif, 'DDC_Uchen'; 
+  font-size: 1em;
+  font-style: initial;
+  font-weight: normal;
+}
+/*사전 티벳어*/
+/*li>strong>em{*/
+/*  font-size: 1.5em;*/
+/*  color: #4d4d4d;*/
+/*  font-family: 'DDC_Uchen', sans-serif;*/
+/*  font-size: 1.2em;*/
+/*  font-style: initial;*/
+/*  font-weight: normal;*/
+/*}*/
+
+strong>em>code{
+  /*color: #80d4ff;*/
+  color: #4caf4f;
+  font-family: sans-serif, 'DDC_Uchen'; 
+  font-size: 1em;
+  font-style: initial;
+  font-weight: normal;
+  background: none;
+  padding: 0;
 }

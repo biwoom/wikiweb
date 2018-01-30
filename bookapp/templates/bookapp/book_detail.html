@@ -636,7 +636,14 @@
                     054-624-5353
                 </address>
                 
-                {% if book.price %}
+                {% if book.sale_check == '준비중' %}
+                <address>
+                <strong>책판매를 준비중입니다</strong><br>
+                    <p>
+                    준비가 완료되면 판매를 시작합니다.
+                    </p>
+                </address>
+                {% elif book.sale_check == '판매중' and book.price %}
                 <address>
                 <strong>Email 주문하기</strong><br>
                 <a href="mailto:nalandakorea@gmail.com
@@ -649,6 +656,7 @@
                 </button>
                 </a>
                 </address>
+                
                 {% else %}
                 <address>
                 <strong>책 다운로드</strong><br>

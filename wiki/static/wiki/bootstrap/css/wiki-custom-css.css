@@ -2327,7 +2327,7 @@ div[id^="div_id_edit_email"]{
 .thumbnail a > img {
     margin-left: auto;
     margin-right: auto;
-    max-width: 80%;
+    max-width: 90%;
     /*margin: 20px;*/
     margin-bottom: 20px;
     margin-top: 20px;
@@ -2336,6 +2336,21 @@ div[id^="div_id_edit_email"]{
     -webkit-box-shadow: 4px 4px 8px rgba(0, 0, 0, .5);
     box-shadow: 4px 4px 8px rgba(0, 0, 0, .5);
 }
+@media (max-width: 568px){
+.thumbnail a > img {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 100%;
+    /*margin: 20px;*/
+    margin-bottom: 5px;
+    margin-top: 5px;
+    position: relative;
+    -moz-box-shadow: 4px 4px 8px rgba(0, 0, 0,0.5);
+    -webkit-box-shadow: 4px 4px 8px rgba(0, 0, 0, .5);
+    box-shadow: 4px 4px 8px rgba(0, 0, 0, .5);
+}
+}
+
 .caption{
   padding: 1px !important;
   /*border-top: 2px solid #e6e6e6 !important;*/
@@ -2890,3 +2905,8 @@ strong>em>code{
   background: none;
   padding: 0;
 }
+
+.wiki-article>.btn {
+    margin-top: 10px;
+}
+

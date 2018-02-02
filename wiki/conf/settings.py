@@ -123,7 +123,7 @@ _default_attribute_whitelist['input'].append('hidden')
 _default_attribute_whitelist['label'].append('for')
 
 _default_attribute_whitelist['a'].append('href')
-
+_default_attribute_whitelist['a'].append('target')
 #: Dictionary of allowed attributes in Markdown article contents.
 MARKDOWN_HTML_ATTRIBUTES = _default_attribute_whitelist
 MARKDOWN_HTML_ATTRIBUTES.update(

@@ -33,6 +33,6 @@ $(function(){
             function  (){  
                 preloaderButton.classList.remove('status');
                 preloaderButton2.classList.remove('preloader');
-            }, 20000);
+            }, 4000);
     }, false);
 });

@@ -160,3 +160,80 @@ class EmailSender:
             email_conn.quit()
         except smtplib.SMTPException:
             print("error sending email")
+
+
+# 후원용 이메일 클래스
+class EmailSenderDonate:
+    def __init__(self, member_name, real_name, birth, mobile, to_member_email, addess, amount_of_donation, donation_message):
+        self.host = EMAIL_HOST
+        self.port = EMAIL_PORT
+        self.admin_email = EMAIL_HOST_USER
+        self.admin = EMAIL_HOST_NAME
+        self.password = EMAIL_HOST_PASSWORD
+        self.from_email = self.admin_email
+        
+        
+        self.member_name = member_name
+        self.real_name = real_name
+        self.birth = birth
+        self.mobile = mobile
+        self.to_member_email = to_member_email
+        self.addess = addess
+        self.amount_of_donation = amount_of_donation
+        self.donation_message = donation_message
+
+
+# 2. 일시후원 이메일
+    def email_one_time_donation(self):
+        try:
+            email_conn = smtplib.SMTP(self.host, self.port)
+            email_conn.ehlo()
+            email_conn.starttls()
+            email_conn.login(self.admin_email, self.password)
+            
+            msg = MIMEMultipart('alternative')
+            msg['Subject'] = '후원신청'
+            msg['From'] = self.from_email
+            msg['To'] = self.from_email
+            
+            sender = self.member_name
+            real_name = self.real_name
+            birth = self.birth
+            mobile = self.mobile
+            addess = self.addess
+            amount_of_donation = self.amount_of_donation
+            sender_email = self.to_member_email
+            donation_message = self.donation_message
+            subject = '후원신청'
+            
+            html = """
+            <html>
+              <head></head>
+              <body>
+                <h2>나란다불교학술원 문의하기</h2>
+                <h4>나란다불교학술원 이메일 알림</h4>
+                 <p> 발신자 : %s </p>
+                 <p> 발신자 E-mail : %s </p>
+                 <p> 주제 : %s </p>
+                 <p> 성명 : %s </p>
+                 <p> 생년월일 : %s </p>
+                 <p> 휴대전화 : %s </p>
+                 <p> 주소 : %s </p>
+                 <p> 후원금액 : %s </p>
+                 <p> 의견사항 </p>
+                 <p> %s </p>
+                 <hr>
+                 <p> 이 이메일은 나란다불교학술원 후원신청 이메일입니다.</p>
+              </body>
+            </html>
+            """% (sender, sender_email, subject, real_name, birth, mobile, addess, amount_of_donation, donation_message)
+            
+            part1 = MIMEText(html, 'html')
+            
+            msg.attach(part1)
+            
+            email_conn.sendmail(self.from_email, self.from_email, msg.as_string())
+            email_conn.quit()
+            
+        except smtplib.SMTPException:
+            print("error sending email")

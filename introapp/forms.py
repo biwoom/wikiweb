@@ -32,6 +32,19 @@ class CommentForm(forms.Form):
     url = forms.URLField(label='Your website', required=False)
     comment = forms.CharField()
 
+# 일시후원 이메일
+class One_time_donation_Form(forms.Form):
+    username = forms.CharField(label='아이디', required=False)
+    name = forms.CharField(label='성명', help_text='성명과 입금자명은 일치해야 합니다.', required=True)
+    birth = forms.IntegerField(label='생년월일', help_text='숫자만 입력하세요. 예)19870610', required=True)
+    mobile = forms.IntegerField(label='휴대전화', help_text='숫자만 입력하세요. 예)01012345678', required=True)
+    email = forms.EmailField(label='이메일', required=True)
+    addess = forms.CharField(label='주소', required=True)
+    amount_of_donation = forms.IntegerField(label='후원금액', required=True)
+    donation_message = forms.CharField(label='의견사항', widget=forms.Textarea(attrs={'height':200, 'cols' : 10, 'rows': 5 }), required=False)
+    use_agreement = forms.BooleanField(label='이용약관', help_text='이용약관에 동의합니다.')
+    privacy_policy_statement = forms.BooleanField(label='개인정보취급방침')
+
 # 회원 to 관리자 문의 이메일
 class Contact_us_Form(forms.Form):
     name = forms.CharField(label='이름')

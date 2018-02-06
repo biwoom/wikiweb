@@ -2803,6 +2803,10 @@ textarea[id="id_message"]{
   width: 100% !important;
   height: 350px;
 }
+textarea[id="id_donation_message"]{
+  width: 100% !important;
+  height: 150px;
+}
 input[type="file"]{
   width: 91%;
   padding: 1rem 1rem !important;
@@ -3174,8 +3178,17 @@ blockquote>p>code{
 .signup_custom_form>fieldset>.form-group>form>p>input{
   width: 100% !important;
 }
-
-
+.donation_custom_form{
+  border-radius: 20px;
+  background: #ffffff !important;
+  padding-top: 10px !important;
+  padding-bottom: 30px !important;
+  -webkit-box-shadow: 0 0 1em gold;
+  box-shadow: 0 0 1em gold;
+}
+.donation_custom_form>fieldset>.form-group>form>p>input{
+  width: 100% !important;
+}
 /*page loader 페이지로더*/
 
 .twoToneCenter {

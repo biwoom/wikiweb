@@ -3,7 +3,7 @@ from django.utils import timezone
 from .models import Intro_BW
 from .forms import (
 Intro_BWForm, Contact_us_Form, Email_member_Form, Email_all_member_Form, 
-FindUsernameForm, MyPasswordResetForm)
+FindUsernameForm, MyPasswordResetForm, One_time_donation_Form)
 from django.shortcuts import redirect
 # paginator
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
@@ -35,8 +35,8 @@ from django.contrib.auth import update_session_auth_hash
 from django.contrib.auth.decorators import login_required
 
 # utils 
-from custom_utils.slack import SlackBot
-from custom_utils.email.python_email import EmailSender
+from custom_utils.slack import SlackBot, SlackBotDonate
+from custom_utils.email.python_email import EmailSender, EmailSenderDonate
 from custom_utils.basic_info import SERVER_DOMAIN
     
 # 홈
@@ -46,6 +46,52 @@ def inb_home(request):
 # 인트로 홈    
 def intro_home(request):
     return render(request, 'introapp/intro/intro_home.html')    
+
+    
+# 일시후원 이메일   
+def email_one_time_donation(request):
+    if request.method == "POST":
+        form = One_time_donation_Form(request.POST, request.FILES or None)
+        if form.is_valid():
+            
+            member_name = form.cleaned_data.get("username")
+            real_name = form.cleaned_data.get("name")
+            birth = form.cleaned_data.get("birth")
+            mobile = form.cleaned_data.get("mobile")
+            to_member_email = form.cleaned_data.get("email")
+            addess = form.cleaned_data.get("addess")
+            amount_of_donation = form.cleaned_data.get("amount_of_donation")
+            donation_message = form.cleaned_data.get("donation_message")
+            
+            success_msg = '''
+            후원신청 이메일이 성공적으로 발송되었습니다.
+            학술원 후원계좌로 무통장입금 등을 통해 후원금을 입금해주시면,
+            입금 확인후 후원회원으로 등록되고 확인이메일을 보내드립니다.
+            홈페이지 회원가입을 위해서는 아이디와 이메일확인이 필요하므로 별도의 가입신청을 하셔야합니다.
+            '''
+            fail_msg = '''
+            후원신청 이메일 발송에 실패했습니다. 차후에 다시 시도해 주세요.
+            '''
+            try:
+                #슬랙 알림
+                slack = SlackBotDonate(member_name, real_name, birth, mobile, to_member_email, addess, amount_of_donation, donation_message)
+                slack.slack_one_time_donation_notify()
+                
+                #이메일 알림
+                send = EmailSenderDonate(member_name, real_name, birth, mobile, to_member_email, addess, amount_of_donation, donation_message)
+                send.email_one_time_donation()
+
+            except IOError:
+                # return HttpResponse('이메일 보내기: 실패')
+                return render(request, 'introapp/email/email_one_time_donation.html', 
+                         {'form': form, 'fail_msg': fail_msg})
+                
+            # return HttpResponse('이메일 보내기: 성공')
+            return render(request, 'introapp/email/email_one_time_donation.html', 
+                         {'form': form, 'success_msg': success_msg})
+    else:
+        form = One_time_donation_Form()
+    return render(request, 'introapp/email/email_one_time_donation.html', {'form': form})   
     
 # 이메일-문의사항   
 def email_contact_us(request):

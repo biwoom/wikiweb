@@ -13,6 +13,7 @@ urlpatterns = [
     url(r'^contact_us/$', views.email_contact_us, name='email_contact_us'),
     url(r'^email_one/$', views.email_send_one, name='email_send_one'),
     url(r'^email_all/$', views.email_send_all, name='email_send_all'),
+    url(r'^email_one_time_donation/$', views.email_one_time_donation, name='email_one_time_donation'),
     # 로그인 / # 로그아웃
     url(r'^login/$', login, {
         'template_name': 'introapp/account/login.html',

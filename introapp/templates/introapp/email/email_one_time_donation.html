@@ -87,34 +87,39 @@
           {% if user.is_authenticated %}
           <p >
             {{ form.username.errors }}
-            <label for="id_username"><strong>아이디(ID)</strong></label><br>
+            <label for="id_username"><strong>아이디</strong></label><br>
             <input type="text" name="" value="{{ user.username }}" readonly/>
+          </p>
+          {% else %}
+          <p >
+            <label for="id_username"><strong>아이디</strong></label><br>
+            <input type="text" name="" value="비회원" readonly/>
           </p>
           {% endif %}
           
           <p >
-            {{ form.name.errors }}
-            <label for="id_name"><strong>*성명</strong></label><br>
+           <label for="id_name"><strong>*성명</strong></label><br>
             <small class="form_small_help_text">성명과 입금자명은 일치해야 합니다.</small>
             {{ form.name }}
+            <div style="color: red">{{ form.name.errors }}</div>
           </p>
           <p >
-            {{ form.birth.errors }}
             <label for="id_birth"><strong>*생년월일</strong></label><br>
             <small class="form_small_help_text">숫자만 입력하세요. 예)19870610</small>
             {{ form.birth }}
+            <div style="color: red">{{ form.birth.errors }}</div>
           </p>
           <p >
-            {{ form.mobile.errors }}
             <label for="id_mobile"><strong>*휴대전화</strong></label><br>
             <small class="form_small_help_text">숫자만 입력하세요. 예)01012345678</small>
             {{ form.mobile }}
+            <div style="color: red">{{ form.mobile.errors }}</div>
           </p>
           <p >
-            {{ form.email.errors }}
             <label for="id_email"><strong>*이메일</strong></label><br>
             <small class="form_small_help_text"></small>
             {{ form.email }}
+            <div style="color: red">{{ form.email.errors }}</div>
           </p>
           <p >
             {{ form.addess.errors }}

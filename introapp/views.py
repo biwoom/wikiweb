@@ -53,8 +53,10 @@ def email_one_time_donation(request):
     if request.method == "POST":
         form = One_time_donation_Form(request.POST, request.FILES or None)
         if form.is_valid():
-            
-            member_name = form.cleaned_data.get("username")
+            if request.user.is_authenticated:
+                member_name = request.user.username
+            else:
+                member_name = "비회원"
             real_name = form.cleaned_data.get("name")
             birth = form.cleaned_data.get("birth")
             mobile = form.cleaned_data.get("mobile")

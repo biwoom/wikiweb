@@ -279,7 +279,7 @@ else:
 #: Maximum amount of children to display in a menu before going "+more"
 #: NEVER set this to 0 as it will wrongly inform the user that there are no
 #: children and for instance that an article can be safely deleted.
-SHOW_MAX_CHILDREN = getattr(django_settings, 'WIKI_SHOW_MAX_CHILDREN', 20)
+SHOW_MAX_CHILDREN = getattr(django_settings, 'WIKI_SHOW_MAX_CHILDREN', 100)
 
 #: User Bootstrap's select widget. Switch off if you're not using Bootstrap!
 USE_BOOTSTRAP_SELECT_WIDGET = getattr(

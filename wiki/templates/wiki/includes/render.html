@@ -49,7 +49,7 @@
 <nav class="article_side_list" data-md-state="lock">
 <p class="table-of-article-title">하위문서</p>  
 <ul>
-{% for child in children_slice_100 %}
+{% for child in children_slice_all %}
 <li>
     <a href="{% url 'wiki:get' path=child.path %}">
     {{ child.article.current_revision.title }}

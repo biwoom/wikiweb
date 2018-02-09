@@ -49,7 +49,7 @@
 <nav class="article_side_list" data-md-state="lock">
 <p class="table-of-article-title">하위문서</p>  
 <ul>
-{% for child in children_slice %}
+{% for child in children_slice_100 %}
 <li>
     <a href="{% url 'wiki:get' path=child.path %}">
     {{ child.article.current_revision.title }}
@@ -58,13 +58,14 @@
 {% empty %}
 <li><a href="#"><em>{% trans "No sub-articles" %}</em></a></li>
 {% endfor %}
-{% if children_slice_more %}
-<li><a href="#"><em>{% trans "...and more" %}</em></a></li>
-{% endif %}
-  <!--<li class="divider"></li>-->
-  <!--<li>-->
-  <!--<a href="{% url 'wiki:dir' path=urlpath.path %}">{% trans "Browse articles in this level" %} &raquo;</a>-->
-  <!--</li>-->
+
+{% if children_slice_more_100 %}
+<li><a href="#"><em> 문서가 더 있습니다.</em></a></li>
+  <li class="divider"></li>
+  <li>
+  <a href="{% url 'wiki:dir' path=urlpath.path %}">모든 문서보기 &raquo;</a>
+  </li>
+{% endif %}  
 </ul>
 </nav>
 </div>   

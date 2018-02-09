@@ -3072,14 +3072,14 @@ h1:target,h2:target,h3:target {
   overflow-y: scroll;
   margin-top: 12px;
   overflow-y: auto;
-  width: 200px;
+  width: 160px;
 }
 .table-of-article-title{
   font-size: 15px;
   font-weight: bold;
 }
 .article_side_list{
-  width:180px;
+  width:150px;
   margin-top: 25px;
 }
 .article_side_list ul {

@@ -2465,7 +2465,7 @@ pre {
 @media (max-width: 480px){
 .breadcrumb{
   margin-top: 10px !important;
-  margin-left: 1px !important;
+  /*margin-left: 1px !important;*/
 }
 }
 .breadcrumb{
@@ -2759,63 +2759,7 @@ label > span {
 }  
 }
 
-/******************************
- kjh-toc
-*******************************/
-.toc {
-  /*background-color: #f6f8fa;*/
-}
 
-.wiki-article div.toc,
-.wiki-article div.article-list {
-  max-width: 400px;
-  width: 350px;
-  clear: left;
-  display: inline-block;
-  /* Fix height problem when next to floating elements */
-}
-.wiki-article div.toc .nav-header,
-.wiki-article div.article-list .nav-header {
-  padding: 3px 10px;
-  border-bottom: 1px solid #DDD;
-  font-weight: bold;
-}
-.wiki-article div.toc ul,
-.wiki-article div.article-list ul {
-  padding-left: 0;
-  list-style: none;
-}
-.wiki-article div.toc > ul,
-.wiki-article div.article-list > ul {
-  border-radius: 5px;
-  /*background-color: #f6f6f6;*/
-  background-color: #f6f8fa;
-
-  padding-top: 5px;
-}
-.wiki-article div.toc ul li ul li,
-.wiki-article div.article-list ul li ul li {
-  padding-left: 10px;
-}
-.wiki-article div.toc ul li a,
-.wiki-article div.article-list ul li a {
-  padding: 5px 10px;
-  display: block;
-  /*border-bottom: 1px solid #DDD;*/
-  border-bottom: 0.8px solid #dee6ed;
-}
-.wiki-article div.toc ul li:last-child,
-.wiki-article div.article-list ul li:last-child {
-  margin-bottom: 7px;
-}
-.wiki-article div.toc .toctitle {
-  display: block;
-  padding: 3px 20px;
-  font-size: 12px;
-  line-height: 1.42857143;
-  color: #777777;
-  white-space: nowrap;
-}
 
 /******************************
  kjh-editor
@@ -2918,5 +2862,266 @@ strong>em>code{
 .wiki-article>iframe{
   width: 100%;
   height: 180px;
+}
+}
+/******************************
+ kjh-마크다운 문서 내부 toc
+*******************************/
+.toc {
+  /*background-color: #f6f8fa;*/
+}
+
+.wiki-article div.toc,
+.wiki-article div.article-list {
+  max-width: 400px;
+  width: 350px;
+  clear: left;
+  display: inline-block;
+  /* Fix height problem when next to floating elements */
+}
+.wiki-article div.toc .nav-header,
+.wiki-article div.article-list .nav-header {
+  padding: 3px 10px;
+  border-bottom: 1px solid #DDD;
+  font-weight: bold;
+}
+.wiki-article div.toc ul,
+.wiki-article div.article-list ul {
+  padding-left: 0;
+  list-style: none;
+}
+.wiki-article div.toc > ul,
+.wiki-article div.article-list > ul {
+  border-radius: 5px;
+  /*background-color: #f6f6f6;*/
+  background-color: #f6f8fa;
+
+  padding-top: 5px;
+}
+.wiki-article div.toc ul li ul li,
+.wiki-article div.article-list ul li ul li {
+  padding-left: 10px;
+}
+.wiki-article div.toc ul li a,
+.wiki-article div.article-list ul li a {
+  padding: 5px 10px;
+  display: block;
+  /*border-bottom: 1px solid #DDD;*/
+  border-bottom: 0.8px solid #dee6ed;
+}
+.wiki-article div.toc ul li:last-child,
+.wiki-article div.article-list ul li:last-child {
+  margin-bottom: 7px;
+}
+.wiki-article div.toc .toctitle {
+  display: block;
+  padding: 3px 20px;
+  font-size: 12px;
+  line-height: 1.42857143;
+  color: #777777;
+  white-space: nowrap;
+}
+
+/******************************
+ wiki - auto - toc
+*******************************/
+.wiki-article{
+  padding-left: 30px;
+  padding-right: 20px;
+}
+.toc_box{
+  width: 270px;
+  
+}
+.toc_auto{
+  overflow-y: scroll;
+  margin-top: 12px;
+  overflow-y: auto;
+  width: 270px;
+}
+.table-of-contents {
+  width:250px;
+  font-size: 13px;
+  padding: 1em 2em;
+}
+.table-of-contents-title{
+  font-size: 15px;
+  font-weight: bold;
+  margin-left: 10px;
+}
+
+.table-of-contents ul {
+  padding: 0;
+  list-style-type: none;
+}
+.table-of-contents li {
+  margin: 0 0 0.25em 0;
+  list-style-type: none;
+  padding-top: 5px;
+}
+.table-of-contents>ul>li>a {
+  text-decoration: none;
+  color: slategray;
+}
+.table-of-contents a:hover,
+.table-of-contents a:active {
+  text-decoration: underline;
+}
+
+h1:target,h2:target,h3:target {
+  animation: highlight 1s ease;
+}
+
+@keyframes highlight {
+  from { background: yellow; }
+  to { background: white; }
+}
+.toc_H1{
+  font-size: 1.2em; 
+  font-weight: bold;
+}
+.toc_H2{
+  margin-left:0.8em !important; 
+}
+.toc_H3{
+  margin-left:1.6em !important;  
+}
+.toc_H4{
+  margin-left:2.4em !important;  
+}
+.toc_H5{
+  margin-left:3.2em !important;  
+}
+.toc_H6{
+  margin-left:4em !important;  
+}
+#scrollbar_style_1::-webkit-scrollbar-track
+{
+	border-radius: 30px;
+	background-color: #ffffff;
+}
+
+#scrollbar_style_1::-webkit-scrollbar
+{
+	width: 4px;
+	background-color: #ffffff;
+	background-color: white;
+}
+
+#scrollbar_style_1::-webkit-scrollbar-thumb
+{
+	border-radius: 10px;
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+	background-color: #bdbdbd;
+}
+
+@media all and (min-width: 200px) and (max-width: 765px){
+ .toc_box{display: none;}
+}
+@media all and (min-width : 766px) and (max-width: 990px){
+.toc_box, .toc_auto_mobile, #toc_auto_mobile_btn{display: none;}
+}
+@media all and (min-width : 991px) and (max-width: 1980px){
+.toc_auto_mobile, #toc_auto_mobile_btn{display: none;}
+}
+@media all and (min-width : 1981px) {
+.toc_auto_mobile, #toc_auto_mobile_btn{display: none;}
+}
+
+.toc_auto_mobile{
+  background-color: #fafafa !important;
+  /*box-shadow: 3px -3px 6px rgba(0,0,0,0.16), 3px 3px 6px rgba(0,0,0,0.23);*/
+}
+.icon_bar{
+  /*background-color: #ff3377 !important*/
+}
+#toc_auto_mobile_btn{
+  background-color: rgba(0, 0, 0, 0) !important;
+  box-shadow: none;
+}
+#toc_auto_mobile_btn_bg{
+  background-color: rgba(0, 0, 0, 0) !important;
+  height: 50px;
+}
+#toc_auto_mobile_icon{
+  position: relative;
+    float: right;
+    margin-right: 15px;
+    margin-left: 15px;
+    padding: 9px 10px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    background-color: #fafafa;
+    /*background-color: transparent;*/
+    background-image: none;
+    border: 1px solid transparent;
+    border-radius: 3px;
+}
+#toc_auto_mobile_icon_bg{
+  /*background: rgba(255, 255, 255, 0.5);*/
+  height: 0px;
+}
+/******************************
+ wiki - article sideabr list
+*******************************/
+.side_list_box{
+  width: 200px;
+  
+}
+.side_list_auto{
+  overflow-y: scroll;
+  margin-top: 12px;
+  overflow-y: auto;
+  width: 200px;
+}
+.table-of-article-title{
+  font-size: 15px;
+  font-weight: bold;
+}
+.article_side_list{
+  width:180px;
+  margin-top: 25px;
+}
+.article_side_list ul {
+  padding: 0;
+  list-style-type: none;
+}
+.article_side_list li {
+  margin: 0 0 0.25em 0;
+  list-style-type: none;
+  padding-top: 5px;
+}
+.article_side_list>ul>li>a {
+  text-decoration: none;
+  color: slategray;
+}
+#scrollbar_style_2::-webkit-scrollbar-track
+{
+	border-radius: 30px;
+	background-color: #ffffff;
+}
+
+#scrollbar_style_2::-webkit-scrollbar
+{
+	width: 3px;
+	background-color: #ffffff;
+	background-color: white;
+}
+
+#scrollbar_style_2::-webkit-scrollbar-thumb
+{
+	border-radius: 10px;
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+	background-color: #f2f2f2;
+}
+
+
+/******************************
+ wiki - article sideabr list mobile
+*******************************/
+
+@media (max-width: 990px){
+.side_list_box{
+  display: none;
 }
 }

@@ -4,8 +4,7 @@
   <script type="text/javascript" src="{% static "wiki/js/article.js" %}"></script>
 {% endaddtoblock %}
 
-<!--모바일 사이드바 아이콘-->
-    
+<!-- 모바일 toc -->
 <nav class="navbar navbar-default navbar-fixed-bottom" id="toc_auto_mobile_btn">
   <div class="container-fluid">
     <div class="navbar-header" id="toc_auto_mobile_icon_bg">
@@ -15,15 +14,46 @@
         <span class="icon-bar icon_bar"></span>
         <span class="icon-bar icon_bar"></span>
         <span class="icon-bar icon_bar"></span>
-        <!--<i class="fa fa-list-ul" aria-hidden="true"></i>-->
       </button>
-      <!--<a class="navbar-brand" href="#">Brand</a>-->
     </div>
 
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
       <div class="nav navbar-nav">
-       
-        <div class="toc_auto_mobile"></div>
+    
+    <!--모바일 하위문서 리스트    -->
+    <div class="side_list_box_mobile" style="margin-left: 0px; margin-top: 5px;">
+      <div class="btn-group">
+        <a class="btn btn-default btn-lg dropdown-toggle side_list_box_mobile_btn_drop" 
+        data-toggle="dropdown" href="#" style="padding: 7px;" title="{% trans "Sub-articles for" %} {{ article.current_revision.title }}">
+          <!--<span class="fa fa-sitemap"></span>-->
+          <p class="table-of-article-title-mobile">하위문서보기  
+          <span class="caret"></span></p>
+        </a>
+        <ul class="dropdown-menu">
+          {% for child in children_slice_100 %}
+            <li>
+              <a href="{% url 'wiki:get' path=child.path %}">
+                {{ child.article.current_revision.title }}
+              </a>
+            </li>
+            {% empty %}
+            <li><a href="#"><em>{% trans "No sub-articles" %}</em></a></li>
+          {% endfor %}
+          {% if children_slice_more_100 %}
+          <li><a href="#"><em>{% trans "...and more" %}</em></a></li>
+          {% endif %}
+          <li>
+            <a href="{% url 'wiki:dir' path=urlpath.path %}">{% trans "Browse articles in this level" %} &raquo;</a>
+          </li>
+          <li class="divider"></li>
+        </ul>
+      </div>
+    </div>
+    <!-- end 모바일 하위문서 리스트    -->
+     
+     <!--모바일 toc  -->
+     <div class="toc_auto_mobile"></div>
+     <!-- end 모바일 toc  -->
         
       </div>
       <!--<form class="navbar-form navbar-left">-->
@@ -35,9 +65,7 @@
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
-
-
-<!--end 모바일 사이드바 아이콘-->
+<!--end 모바일 toc -->
 
 <!--아티클 컨텐츠-->
 <div class="row">

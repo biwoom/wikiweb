@@ -3032,6 +3032,12 @@ h1:target,h2:target,h3:target {
   background-color: #fafafa !important;
   /*box-shadow: 3px -3px 6px rgba(0,0,0,0.16), 3px 3px 6px rgba(0,0,0,0.23);*/
 }
+.toc_auto_mobile>.table-of-contents {
+  width:180px;
+  font-size: 13px;
+  padding: 1em 0;
+  margin-left: 50px;
+}
 .icon_bar{
   /*background-color: #ff3377 !important*/
 }
@@ -3124,4 +3130,27 @@ h1:target,h2:target,h3:target {
 .side_list_box{
   display: none;
 }
+}
+.side_list_box_mobile{
+  /*width:270px;*/
+  /*background-color: #fafafa !important;*/
+  background-color: #ffffff !important;
+  box-shadow: 0 -1px 10px rgba(0, 0, 0, 0.1);
+  
+}
+.side_list_box_mobile_btn_drop{
+  /*width: 270px;*/
+  margin-left: 45px !important;
+  /*background-color: #fafafa;*/
+  background-color: ffffff;
+  box-shadow: none;
+}
+.side_list_box_mobile_btn_drop+ul{
+  margin-left: 30px !important;
+}
+.table-of-article-title-mobile{
+  font-size: 15px;
+  font-weight: bold;
+  margin-bottom: 5px;
+  margin-top: 5px;
 }

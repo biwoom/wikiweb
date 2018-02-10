@@ -12,4 +12,5 @@ WIKI_MARKDOWN_KWARGS = {
         'attr_list',
         'headerid',
         'extra',
+        'admonition',
     ]}

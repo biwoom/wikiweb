@@ -85,6 +85,9 @@ _default_tag_whitelists = bleach.ALLOWED_TAGS + [
     'span',
     'a',
     'small',
+    'details',
+    'summary',
+    'button',
 ] + ['h{}'.format(n) for n in range(8)]
 
 
@@ -125,6 +128,10 @@ _default_attribute_whitelist['label'].append('for')
 
 _default_attribute_whitelist['a'].append('href')
 _default_attribute_whitelist['a'].append('target')
+
+_default_attribute_whitelist['details'].append('open')
+
+_default_attribute_whitelist['button'].append('data-md-color-primary')
 #: Dictionary of allowed attributes in Markdown article contents.
 MARKDOWN_HTML_ATTRIBUTES = _default_attribute_whitelist
 MARKDOWN_HTML_ATTRIBUTES.update(

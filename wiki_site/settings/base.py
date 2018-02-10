@@ -185,3 +185,14 @@ MARKDOWN_DEUX_STYLES = {
 
 LOGIN_REDIRECT_URL = '/wiki'
 LOGOUT_REDIRECT_URL = '/'
+
+WIKI_MARKDOWN_KWARGS = {
+    'extensions': [
+        'codehilite',
+        'footnotes',
+        'attr_list',
+        'headerid',
+        'extra',
+        'admonition',
+        'details',
+    ]}

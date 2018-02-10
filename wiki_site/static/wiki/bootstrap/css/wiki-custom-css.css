@@ -3039,15 +3039,16 @@ h1:target,h2:target,h3:target {
   margin-left: 50px;
 }
 .icon_bar{
-  /*background-color: #ff3377 !important*/
+  background-color: #ffffff !important
 }
 #toc_auto_mobile_btn{
   background-color: rgba(0, 0, 0, 0) !important;
   box-shadow: none;
 }
 #toc_auto_mobile_btn_bg{
-  background-color: rgba(0, 0, 0, 0) !important;
-  height: 50px;
+  /*background-color: rgba(0, 0, 0, 0) !important;*/
+  /*height: 50px;*/
+  height: 90px;
 }
 #toc_auto_mobile_icon{
   position: relative;
@@ -3057,15 +3058,20 @@ h1:target,h2:target,h3:target {
     padding: 9px 10px;
     margin-top: 15px;
     margin-bottom: 15px;
-    background-color: #fafafa;
-    /*background-color: transparent;*/
+    /*background-color: #fafafa;*/
+    background-color: #b3e6e0;
     background-image: none;
     border: 1px solid transparent;
-    border-radius: 3px;
+    border-radius: 22px;
+    width: 44px;
+    height: 44px;
 }
 #toc_auto_mobile_icon_bg{
   /*background: rgba(255, 255, 255, 0.5);*/
-  height: 0px;
+  height: 85px;
+}
+#toc_auto_mobile_icon_contents{
+  margin-top: 0px !important;
 }
 /******************************
  wiki - article sideabr list
@@ -3136,6 +3142,8 @@ h1:target,h2:target,h3:target {
   /*background-color: #fafafa !important;*/
   background-color: #ffffff !important;
   box-shadow: 0 -1px 10px rgba(0, 0, 0, 0.1);
+  margin-left: 0px;
+  margin-top: 2px;
   
 }
 .side_list_box_mobile_btn_drop{

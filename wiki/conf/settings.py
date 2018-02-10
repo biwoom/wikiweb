@@ -131,7 +131,9 @@ _default_attribute_whitelist['a'].append('target')
 
 _default_attribute_whitelist['details'].append('open')
 
-_default_attribute_whitelist['button'].append('data-md-color-primary')
+_default_attribute_whitelist['button'].append('data-color')
+_default_attribute_whitelist['button'].append('data-size')
+
 #: Dictionary of allowed attributes in Markdown article contents.
 MARKDOWN_HTML_ATTRIBUTES = _default_attribute_whitelist
 MARKDOWN_HTML_ATTRIBUTES.update(

@@ -2930,6 +2930,12 @@ strong>em>code{
   padding-left: 20px;
   padding-right: 10px;
 }
+@media (max-width: 480px){
+.wiki-article{
+  padding-left: 10px;
+  padding-right: 10px;
+}
+}
 .toc_box{
   width: 200px;
   
@@ -3472,8 +3478,7 @@ details.time>summary:before{
 
 /*-----------------------------------------*/
 /*마크다운 button tag*/
-
-button[data-md-color-accent], button[data-md-color-primary]{
+button[data-color]{
     width: 13rem;
     margin-bottom: .4rem;
     padding: 2.4rem .8rem .4rem;
@@ -3487,10 +3492,48 @@ button[data-md-color-accent], button[data-md-color-primary]{
     border: 0;
     outline-style: none;
     background: transparent;
+    -webkit-box-shadow: 0 0 0.2rem rgba(0,0,0,.54) inset ;
+    box-shadow: inset 0 0 0.2rem rgba(0,0,0,.54);
+    overflow-wrap: break-word;
 }
-button[data-md-color-primary=white]{
-  background-color: #fff;
-  /*color: rgba(0,0,0,.87);*/
-  -webkit-box-shadow: 0 0 0.1rem rgba(0,0,0,.54) inset;
-  box-shadow: inset 0 0 0.1rem rgba(0,0,0,.54);
+button[data-size=full]{
+  width: 100%
+}
+button[data-size=mid]{
+  width: 26rem;
+}
+button[data-color]>em{
+  font-size: 2.5rem; 
+  font-style: normal;
+}
+button[data-color]>small{
+  color: #a6a6a6;
+}
+button[data-color=white]{
+  background-color: #ffffff;
+  color: #dea821;
+}
+button[data-color=cyan]{
+  background-color: #00b8d4;
+  color: #ffffff;
+}
+button[data-color=yellow]{
+  background-color: #ffd600;
+  color: #ffffff;
+}
+button[data-color=lime]{
+  background-color: #aeea00;
+  color: #ffffff;
+}
+button[data-color=gray]{
+  background-color: #757575;
+  color: #ffffff;
+}
+button[data-color=teal]{
+  background-color: #00bfa5;
+  color: #ffffff;
+}
+button[data-color=brown]{
+  background-color: #8f6556;
+  color: #ffffff;
 }

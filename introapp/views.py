@@ -39,13 +39,16 @@ from custom_utils.slack import SlackBot, SlackBotDonate
 from custom_utils.email.python_email import EmailSender, EmailSenderDonate
 from custom_utils.basic_info import SERVER_DOMAIN
     
-# 홈
-def inb_home(request):
-    return render(request, 'introapp/home/base_home.html')
 
-# 인트로 홈    
-def intro_home(request):
-    return render(request, 'introapp/intro/intro_home.html')    
+# 홈2 - new
+def inb_home(request):
+    return render(request, 'introapp/new_home/inb_home.html')
+    
+def inb_intro(request):
+    return render(request, 'introapp/new_home/inb_intro.html')   
+    
+    
+# 홈2 - new end
 
     
 # 일시후원 이메일   
@@ -85,15 +88,15 @@ def email_one_time_donation(request):
 
             except IOError:
                 # return HttpResponse('이메일 보내기: 실패')
-                return render(request, 'introapp/email/email_one_time_donation.html', 
+                return render(request, 'introapp/donation/email_one_time_donation.html', 
                          {'form': form, 'fail_msg': fail_msg})
                 
             # return HttpResponse('이메일 보내기: 성공')
-            return render(request, 'introapp/email/email_one_time_donation.html', 
+            return render(request, 'introapp/donation/email_one_time_donation.html', 
                          {'form': form, 'success_msg': success_msg})
     else:
         form = One_time_donation_Form()
-    return render(request, 'introapp/email/email_one_time_donation.html', {'form': form})   
+    return render(request, 'introapp/donation/email_one_time_donation.html', {'form': form})   
     
 # 이메일-문의사항   
 def email_contact_us(request):
@@ -270,7 +273,14 @@ def find_username(request):
 # ===============================================
 # ===============================================
 # ===============================================
+# 홈
+def inb_home2(request):
+    return render(request, 'introapp/home/base_home.html')
 
+    
+# 인트로 홈    
+def intro_home(request):
+    return render(request, 'introapp/intro/intro_home.html')    
             
             
             

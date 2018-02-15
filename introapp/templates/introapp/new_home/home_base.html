@@ -1,0 +1,195 @@
+{% load staticfiles %}
+<html lang="ko">
+  <head>
+    <meta charset="utf-8">  
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!--사이트정보-->
+    <meta name="description" content="나란다불교학술원 홈페이지">
+    <meta name="author" content="www.nalanda.kr">
+    <!--네이버 사이트 등록 태그-->
+    <meta name="naver-site-verification" content="4977b9d276276505a8575f83c40dc5eec1fb9d5f"/>
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="나란다불교학술원">
+    <meta property="og:description" content="나란다불교학술원을 통해 감로와 같은 부처님의 가르침을 만나보세요">
+    <meta property="og:url" content="http://www.nalanda.kr">
+    <!--구글 사이트 등록 태그-->
+    <meta name="google-site-verification" content="VMS5kjB_m8xEiRBCw-2e0hdIYD9J4oEY375SuBm6T94" />
+    <!--폰트 & css-->
+	<link href="//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+	<link href="https://fonts.googleapis.com/css?family=Cormorant+Garamond:700i" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Cinzel:700" rel="stylesheet">
+	<link href="{% static "introapp/bootstrap/css/bootswatch-paper.css" %}" rel="stylesheet">
+	<link href="{% static "introapp/bootstrap/css/new-custom-css.css" %}" rel="stylesheet">
+	<link rel="shortcut icon" type="image/png" href="{% static "introapp/img/favicon.ico" %}"/>
+    
+  <title>NALANDA</title>
+
+  </head>
+    
+  <body>
+
+      <div class="navbar navbar-fixed-top navbar-default">
+      <div class="container">
+            <div class="navbar-header">
+                  <!--햄버거 메뉴-->
+                  <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                  </button>
+                  <!--브랜드 로고-->
+                  <a class="inb_brand" href="{% url 'inb_home' %}">
+                  <img class="inb_brand_logo pull-left" src="{% static "introapp/img/favicon.ico" alt="nalanda_logo" %}"><span class="navbar-brand">NALANDA</span>
+                  </a>
+            </div>
+            <div class="navbar-collapse collapse">
+                  <!--메뉴 목록-->
+                  <div class="navbar-left">
+                  <ul class="nav navbar-nav">
+                      <li class="inb_menu_list"><a href="{% url 'wiki:root' %}"> 위키 </a></li>
+                      <!--<li class="inb_menu_list"><a href="/dictapp"> DICT </a></li>-->
+                      <li class="inb_menu_list"><a href="/bookapp/list"> 도서 </a></li>
+                      <li class="inb_menu_list"><a href="/wiki/blog"> 블로그 </a></li>
+                      <li class="inb_menu_list"><a href="/email_one_time_donation"> 후원 </a></li>
+                      
+                      <!--드롭다움메뉴1-->
+                      <!--<li class="dropdown inb_menu_list">-->
+                      <!--<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">소개<span class="caret"></span></a>-->
+                      <!--<ul class="dropdown-menu">-->
+                      <!--  <li><a href="/inb_intro">인사말</a></li>-->
+                      <!--  <li><a href="/inb_intro">설립취지</a></li>-->
+                      <!--  <li><a href="/inb_intro">조직도</a></li>-->
+                      <!--  <li><a href="/inb_intro">규정</a></li>-->
+                      <!--  <li role="separator" class="divider"></li>-->
+                      <!--  <li><a href="/inb_intro">연혁</a></li>-->
+                      <!--</ul>-->
+                      <!--</li>-->
+                      
+                      <!--드롭다운메뉴2-->
+                      <li class="dropdown inb_menu_list">
+                      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">교육<span class="caret"></span></a>
+                      <ul class="dropdown-menu">
+                        <li><a href="/wiki/inb-time-table/">교육시간표</a></li>
+                        <li><a href="/wiki/blog/lectures-intro-index/">강좌소개</a></li>
+                        <!--<li role="separator" class="divider"></li>-->
+                      </ul>
+                      </li>
+                      
+                      <!--드롭다운메뉴3-->
+                      <li class="dropdown inb_menu_list">
+                      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">참여<span class="caret"></span></a>
+                      <ul class="dropdown-menu">
+                        <li><a href="/inb_intro">학술원 소개</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li><a href="/wiki/blog/events-intro-index/">행사소개</a></li>
+                        <li><a href="/contact_us/">문의하기</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li><a href="/wiki/inb-directions/">오시는 길</a></li>
+                        <li><a href="/wiki/etc-relevant-material/">기타자료모음</a></li>
+                      </ul>
+                      </li>
+                      
+                      <!--드롭다운메뉴4-->
+                      <li class="dropdown inb_menu_list">
+                      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">운영<span class="caret"></span></a>
+                      <ul class="dropdown-menu">
+                        <li><a href="/wiki/inb-main-service/">주요사업</a></li>
+                        <li><a href="/wiki/support-history-data/">후원현황</a></li>
+                        <li><a href="/wiki/expense-data/">지출현황</a></li>
+                      </ul>
+                      </li>
+                      
+                  </ul>
+                  </div>
+                  <!--검색 창-->
+                  <!--<div class="">-->
+                  <!--<form class="navbar-form navbar-right" method="GET" action="{% url 'intro_list' %}">-->
+                  <!--<div class="input-group">-->
+                  <!--<input type="search" class="form-control search-query" name="q" placeholder="단어검색" value='{{ request.GET.q  }}'/>-->
+                  <!--<span class="input-group-btn">-->
+                  <!--<button class="btn btn-link" type="submit">-->
+                  <!--<span class="fa fa-search"></span>-->
+                  <!--</button>-->
+                  <!--</span>-->
+                  <!--</div>-->
+                  <!--</form>-->
+                  <!--</div>-->
+                  
+            <!-- 로그인 바 -->
+            <div class="navbar-right">
+            {% if user.is_authenticated %}
+                <ul class="nav navbar-nav">
+                    <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    <!--<span class="badge notification-cnt">0</span>-->
+                    {{ user }}
+                <b class="caret"></b>
+                    </a>
+                    <ul class="dropdown-menu">
+                    {# % if "ACCOUNT_HANDLING"|wiki_settings % #}
+                    <li>
+                        <!--<a href="https://wiki-intro-intro-biwoom.c9users.io/_accounts/settings/">-->
+                        <a href="/password_change">    
+                        <i class="fa fa-gear"></i>
+                        {# % trans "Account Settings" % #}계정 설정
+                        </a>
+                    </li>
+                    <li>
+                        <!--<a href="https://wiki-intro-intro-biwoom.c9users.io/_accounts/logout">-->
+                        <a href="/logout">    
+                        <i class="fa fa-power-off"></i>
+                        {# % trans "Log out" % #} 로그아웃
+                        </a>
+                    </li>
+                    {# % endif % #}
+                    </ul>
+                </li>
+                </ul>
+            {% else %}
+                  <ul class="nav navbar-nav">
+                  <li>
+                  <a href="/login">로그인</a>
+                  </li>
+                  {# % if "ACCOUNT_HANDLING"|wiki_settings % #}
+                  <li>
+                <!--# 차후 변경 href="/signup" -->
+                  <!--<a href="{% url 'wiki:signup' %}">{# % trans "Sign up" % #}회원가입</a>-->
+                  <a href="/signup">회원가입</a>
+                  </li>
+                  {# % endif % #}
+                  </ul>
+            {% endif %}
+            </div>
+                   
+                  
+            </div>
+      </div>
+      </div>
+
+    {% block content %}  
+    {% endblock %}
+    
+    <!--# 푸터-->
+    <footer class="container" id="wiki-footer">
+    <hr /> 
+    <a href="/" class="pull-right"><img src="{% static "introapp/img/inb-logo-eng-lotus-bo-notran.png" %}" style="width:105px" "height:75px"/></a>
+    <p>Powered by <a href="http://www.nalanda.or.kr">INB</a>, an open source application under the <a href="http://www.gnu.org/licenses/quick-guide-gplv3.html">GPLv3</a> license. Let knowledge be the cure.</p>
+    <div style="clear: both"></div>
+    </footer>
+ 
+        
+        
+        
+<!-- JavaScript -->
+    <script src="{% static "introapp/js/jquery.min.js" %}"></script>
+    <script src="{% static "introapp/js/core.js" %}"></script>
+    <script src="{% static "introapp/bootstrap/js/bootstrap.min.js" %}"></script>
+    <script src="js/shards.min.js"></script>
+    <script src="js/demo.min.js"></script>
+    <!-- Optionally enable responsive features in IE8 -->
+    <script src="{% static "introapp/js/respond.min.js" %}"></script>
+    <script src="{% static "introapp/js/loader.js" %}"></script>
+    <script src="{% static "introapp/js/bootstrap_custom.js" %}"></script>
+    </body>
+</html>

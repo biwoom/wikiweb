@@ -8,6 +8,8 @@
     <meta name="author" content="www.nalanda.kr">
     
 	<link href="//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+	<link href="https://fonts.googleapis.com/css?family=Cinzel:700" rel="stylesheet">
+	
 	<link href="{% static "dictapp/bootstrap/css/bootswatch-paper.css" %}" rel="stylesheet">
     <link href="{% static "dictapp/bootstrap/css/dictapp-custom-css.css" %}" rel="stylesheet">
 
@@ -28,18 +30,79 @@
                   <span class="icon-bar"></span>
                   </button>
                   <!--브랜드 로고-->
-                  <a class="navbar-brand" href="{% url 'dict_home' %}">inb Dictionary</a>
+                  <!--<a class="navbar-brand" href="{% url 'dict_home' %}">inb Dictionary</a>-->
+                  <!--브랜드 로고-->
+                  <a class="inb_brand" href="{% url 'inb_home' %}">
+                  <img class="inb_brand_logo pull-left" src="{% static "introapp/img/favicon.ico" alt="nalanda_logo" %}"><span class="navbar-brand">NALANDA</span>
+                  </a>
             </div>
+            
             <div class="navbar-collapse collapse">
                   <!--메뉴 목록-->
                   <div class="navbar-left">
                   <ul class="nav navbar-nav">
-                  <li class="dict_menu_list"><a href="{% url 'dict_list' %}"> WORD LIST </a></li>
-                  <li class="dict_menu_list"><a href="{% url 'wiki:root' %}"> WIKI </a></li>
-                  <li class="dict_menu_list"><a href="/bookapp/list"> BOOK </a></li>
-                  <li class="dict_menu_list"><a href="/wiki/blog"> BLOG </a></li>
-                  <li class="dict_menu_list"><a href="/email_one_time_donation"> 후원 </a></li>
-                  <li class="dict_menu_list"><a href="/"> HOME </a></li> 
+                      <li class="inb_menu_list"><a href="{% url 'wiki:root' %}"> 위키 </a></li>
+                      <!--<li class="inb_menu_list"><a href="/dictapp"> DICT </a></li>-->
+                      <!--<li class="dict_menu_list"><a href="{% url 'dict_list' %}"> WORD LIST </a></li>-->
+                      <li class="inb_menu_list"><a href="/bookapp/list"> 도서 </a></li>
+                      <li class="inb_menu_list"><a href="/wiki/blog"> 블로그 </a></li>
+                      <li class="inb_menu_list"><a href="/email_one_time_donation"> 후원 </a></li>
+                      <!--드롭다움메뉴0-->
+                      <li class="dropdown inb_menu_list">
+                      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">DICT<span class="caret"></span></a>
+                      <ul class="dropdown-menu">
+                        <li><a href="{% url 'dict_list' %}">WORD LIST</a></li>
+                        <li class="inb_menu_list"><a href="/dictapp"> DICT HOME </a></li>
+                      </ul>
+                      </li>
+                      
+                      <!--드롭다움메뉴1-->
+                      <!--<li class="dropdown inb_menu_list">-->
+                      <!--<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">소개<span class="caret"></span></a>-->
+                      <!--<ul class="dropdown-menu">-->
+                      <!--  <li><a href="/inb_intro">인사말</a></li>-->
+                      <!--  <li><a href="/inb_intro">설립취지</a></li>-->
+                      <!--  <li><a href="/inb_intro">조직도</a></li>-->
+                      <!--  <li><a href="/inb_intro">규정</a></li>-->
+                      <!--  <li role="separator" class="divider"></li>-->
+                      <!--  <li><a href="/inb_intro">연혁</a></li>-->
+                      <!--</ul>-->
+                      <!--</li>-->
+                      
+                      <!--드롭다운메뉴2-->
+                      <li class="dropdown inb_menu_list">
+                      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">교육<span class="caret"></span></a>
+                      <ul class="dropdown-menu">
+                        <li><a href="/wiki/inb-time-table/">교육시간표</a></li>
+                        <li><a href="/wiki/blog/lectures-intro-index/">강좌소개</a></li>
+                        <!--<li role="separator" class="divider"></li>-->
+                      </ul>
+                      </li>
+                      
+                      <!--드롭다운메뉴3-->
+                      <li class="dropdown inb_menu_list">
+                      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">참여<span class="caret"></span></a>
+                      <ul class="dropdown-menu">
+                        <li><a href="/inb_intro">학술원 소개</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li><a href="/wiki/blog/events-intro-index/">행사소개</a></li>
+                        <li><a href="/contact_us/">문의하기</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li><a href="/wiki/inb-directions/">오시는 길</a></li>
+                        <li><a href="/wiki/etc-relevant-material/">기타자료모음</a></li>
+                      </ul>
+                      </li>
+                      
+                      <!--드롭다운메뉴4-->
+                      <li class="dropdown inb_menu_list">
+                      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">운영<span class="caret"></span></a>
+                      <ul class="dropdown-menu">
+                        <li><a href="/wiki/inb-main-service/">주요사업</a></li>
+                        <li><a href="/wiki/support-history-data/">후원현황</a></li>
+                        <li><a href="/wiki/expense-data/">지출현황</a></li>
+                      </ul>
+                      </li>
+                      
                   </ul>
                   </div>
                   <!--검색 창-->

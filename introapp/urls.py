@@ -7,8 +7,11 @@ from django.contrib.auth.views import (
 )
 
 urlpatterns = [
-    # 홈
+    # 뉴 홈
     url(r'^$', views.inb_home, name='inb_home'),
+    url(r'^inb_intro', views.inb_intro, name='inb_intro'),
+    # 홈
+    url(r'^home2', views.inb_home2, name='inb_home2'),
     # 이메일
     url(r'^contact_us/$', views.email_contact_us, name='email_contact_us'),
     url(r'^email_one/$', views.email_send_one, name='email_send_one'),

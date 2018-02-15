@@ -22,7 +22,23 @@ def book_list(request):
     if query:
         books_list = books_list.filter(
 				Q(main_title__icontains=query)|
-				Q(main_author__icontains=query)
+				Q(collection_title__icontains=query)|
+				Q(sub_title__icontains=query)|
+				Q(main_author_profile__icontains=query) |
+				Q(main_translator__icontains=query) |
+				Q(main_translator_profile__icontains=query) |
+				Q(co_writer_profile__icontains=query) |
+				Q(editor__icontains=query) |
+				Q(production_company__icontains=query) |
+				Q(publisher__icontains=query) |
+				Q(publishing_company__icontains=query) |
+				Q(introduction__icontains=query) |
+				Q(table_of_contents__icontains=query) |
+				Q(subject__icontains=query) |
+				Q(topic_keyword__icontains=query) |
+				Q(supplement_file__icontains=query) |
+				Q(contributor__icontains=query) |
+				Q(helper__icontains=query)
 				).distinct()
     if not books_list:
             error_text = 1

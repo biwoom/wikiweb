@@ -2868,6 +2868,10 @@ strong>em>code{
   width: 100%;
   height: 180px;
 }
+.wiki-article>details>details>p>iframe{
+  width: 100%;
+  height: 180px;
+}
 }
 /******************************
  kjh-마크다운 문서 내부 toc
@@ -3501,8 +3505,8 @@ details.edu>summary:before{
   content: "\f19d";
 } 
 
-/*details - video*/
-details.video{
+/*details - edu_video*/
+details.edu_video{
   /*border-left: .4rem solid #9e9e9e;*/
   border-left: .4rem solid #ffffff;
   box-shadow: none;
@@ -3510,7 +3514,7 @@ details.video{
   margin-bottom: 0px;
   margin-top: 0px;
 }
-details.video>summary{
+details.edu_video>summary{
   background-color: #ffffff;
   font-size: 1.4rem;
   font-weight: 500;
@@ -3518,11 +3522,11 @@ details.video>summary{
   padding-top: 1.5rem;
   padding-bottom: 1.5rem;
 }
-details.video>summary:after{
+details.edu_video>summary:after{
   color: #9e9e9e;
   top: 1.8rem;
 }
-details.video>summary:before{
+details.edu_video>summary:before{
     /*color: #9e9e9e;*/
     color: #ffffff;
     font-size: 1.7rem;
@@ -3534,6 +3538,71 @@ details.video>summary:before{
     padding-left: 6px;
 } 
 
+/*details - edu_doc*/
+details.edu_doc{
+  /*border-left: .4rem solid #9e9e9e;*/
+  border-left: .4rem solid #ffffff;
+  box-shadow: none;
+  /*border-bottom: .1rem solid #d9d9d9;*/
+  margin-bottom: 0px;
+  margin-top: 0px;
+}
+details.edu_doc>summary{
+  background-color: #ffffff;
+  font-size: 1.4rem;
+  font-weight: 500;
+  padding-left: 5rem;
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
+}
+details.edu_doc>summary:after{
+  color: #9e9e9e;
+  top: 1.8rem;
+}
+details.edu_doc>summary:before{
+    /*color: #9e9e9e;*/
+    color: #ffffff;
+    font-size: 1.7rem;
+    margin-top: 13px;
+    content: "\f15c";
+    background: #e6e6e6;
+    border-radius: 15px;
+    width: 30px;
+    padding-left: 8px;
+} 
+summary>small{
+    font-size: 1.2rem;
+    color: #bfbfbf;
+    padding-left: 7px;
+}
+details>p>em{
+  font-size: 1.5rem;
+  font-weight: 800;
+}
+@media (max-width: 480px){
+details>summary:before{
+  
+}details.edu{
+  padding: 0 0.5rem;
+}
+details.edu_video{
+  
+}
+details.edu_video>summary{
+  padding-left: 4rem;padding-right: 3rem;
+}
+details.edu_video>summary:before{
+  left: -0.5px;margin-top: 1.5rem;
+}
+
+details.edu_doc>summary{
+  padding-left: 4rem;padding-right: 3rem;
+}
+details.edu_doc>summary:before{
+  left: -0.5px;margin-top: 1.5rem;
+}
+
+}
 /*-----------------------------------------*/
 /*마크다운 button tag*/
 button[data-color]{

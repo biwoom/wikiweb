@@ -97,6 +97,10 @@
                         <li><a href="/wiki/inb-main-service/">주요사업</a></li>
                         <li><a href="/wiki/support-history-data/">후원현황</a></li>
                         <li><a href="/wiki/expense-data/">지출현황</a></li>
+                        {% if user.is_staff %}
+                        <li role="separator" class="divider"></li>
+                        <li><a href="/wiki/inb-manage/">학술원운영</a></li>
+                        {% endif %}
                       </ul>
                       </li>
                       

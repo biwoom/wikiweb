@@ -67,7 +67,7 @@ class SlackBot:
         attachments = [{
             "color": "#36a64f",
             "title": "사용자관리페이지이동",
-            "title_link": "https://"+SERVER_DOMAIN+"/admin/auth/user/",
+            "title_link": "http://"+SERVER_DOMAIN+"/admin/auth/user/",
             "fallback": "신규회원가입신청",
             "fields": [
                 {

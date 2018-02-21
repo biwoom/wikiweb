@@ -248,6 +248,13 @@ def activate(request, uidb64, token):
         # return redirect('home')
         success_msg = '이메일 인증이 완료되었습니다. 이제 귀하의 계정으로 로그인하실 수 있습니다.'
         fail_msg = '활성화 링크가 잘못되었습니다!'
+        #슬랙 알림
+        message = '신규회원가입'
+        subject = '신규회원'
+        to_member_email = user.email
+        member_name = user.username
+        slack = SlackBot(to_member_email, message, member_name, subject)
+        slack.slack_new_signup_notify()
         return render(request, 'introapp/account/activate.html', {'success_msg': success_msg})
         # return HttpResponse('Thank you for your email confirmation. Now you can login your account.')
     else:

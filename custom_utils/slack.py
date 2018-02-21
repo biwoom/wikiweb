@@ -1,5 +1,5 @@
 from slacker import Slacker
-from custom_utils.basic_info import SLACK_TOKEN
+from custom_utils.basic_info import SLACK_TOKEN, SERVER_DOMAIN
 
 class SlackBot:
     def __init__(self, to_member_email, message, member_name, subject):
@@ -24,7 +24,7 @@ class SlackBot:
         attachments = [{
             "color": "#36a64f",
             "title": "문의이메일",
-            "title_link": "https://wiki-blog-dict-biwoom.c9users.io/",
+            # "title_link": "https://wiki-blog-dict-biwoom.c9users.io/",
             "fallback": "문의이메일 알림",
             "fields": [
                 {
@@ -46,6 +46,42 @@ class SlackBot:
                     "title": '내용',
                     "value": message,
                     "short": False
+                }
+            ]
+        }]
+                
+        slack = Slacker(token)
+        slack.chat.post_message(text=text, channel=channel, username=username, attachments=attachments)
+        
+    def slack_new_signup_notify(self):
+        token = self.token
+        member_email = self.to_member_email
+        message = self.message
+        member_name = self.member_name
+        subject = self.subject
+    
+        # 슬랙 알림
+        text = 'INB 신규회원가입신청'
+        channel = '#new_signup'
+        username = 'inb_bot'
+        attachments = [{
+            "color": "#36a64f",
+            "title": "사용자관리페이지이동",
+            "title_link": "https://"+SERVER_DOMAIN+"/admin/auth/user/",
+            "fallback": "신규회원가입신청",
+            "fields": [
+                {
+                    "title": '회원아이디',
+                    "value": member_name,
+                    "short": True
+                },
+                {
+                    "title": '회원이메일',
+                    "value": member_email,
+                    "short": True
+                },
+                {
+                    "value": '신규회원 USER그룹지정 절차 진행필요'
                 }
             ]
         }]
@@ -84,7 +120,7 @@ class SlackBotDonate:
         attachments = [{
             "color": "#36a64f",
             "title": "후원신청",
-            "title_link": "https://wiki-blog-dict-biwoom.c9users.io/",
+            # "title_link": "https://wiki-blog-dict-biwoom.c9users.io/",
             "fallback": "후원신청 알림",
             "fields": [
                 {

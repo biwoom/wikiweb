@@ -1,6 +1,11 @@
 /******************************
  Tibetan font
 *******************************/
+@import url(//fonts.googleapis.com/earlyaccess/notosanskr.css);
+
+@import url(//fonts.googleapis.com/earlyaccess/jejugothic.css);
+/*font-family: 'Jeju Gothic', sans-serif;*/
+/*font-family: 'Noto Sans KR', sans-serif;*/
 @import url(//fonts.googleapis.com/earlyaccess/notosanstibetan.css);
 @font-face {
   font-family: 'Tibetan Machine Uni';
@@ -14,6 +19,8 @@
   font-family: 'DDC_Uchen';
   src: url('../fonts/DDC_Uchen.ttf') format('truetype')
 }
+
+
 /******************************
  ICONS
 *******************************/
@@ -3381,12 +3388,14 @@ blockquote>p>code{
   text-align: left !important;
 }
 .carousel-caption>h2{
+  font-family: 'Noto Sans KR', 'Jeju Gothic', 'Roboto', sans-serif;
   text-shadow: none !important;
   font-size: 50px;
   font-style: sans-serif;
   font-weight: bold;
 }
 .carousel-caption>p{
+  font-family: 'Noto Sans KR', 'Jeju Gothic', 'Roboto', sans-serif;
   text-shadow: none !important;
   font-size: 30px;
   font-style: sans-serif;
@@ -3432,6 +3441,7 @@ blockquote>p>code{
   font-weight: 700
 }
 .featurette-heading{
+  font-family: 'Noto Sans KR', 'Jeju Gothic', 'Roboto', sans-serif;
   font-weight: 700;
   font-size: 2.5em
 }

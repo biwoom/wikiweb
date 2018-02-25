@@ -3402,3 +3402,17 @@ blockquote>p>code{
      margin-bottom: 0px;
    }
 }
+/******************************
+ kjh-단어 홈 메뉴 스타일 menu
+*******************************/
+.inb_menu_list > a{
+  font-size: 1.4em;
+  font-weight: 300;
+  margin-top: 2px;
+}
+.introapp_btn{
+  margin-bottom: 20px;
+}
+#search_btn{
+  margin-left: 0px !important;
+}

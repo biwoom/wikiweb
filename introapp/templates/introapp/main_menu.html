@@ -1,0 +1,47 @@
+ <div class="navbar-left">
+    <ul class="nav navbar-nav">
+        <li class="inb_menu_list"><a href="{% url 'wiki:root' %}"> 위키 </a></li>
+        <!--<li class="inb_menu_list"><a href="/dictapp"> DICT </a></li>-->
+        <li class="inb_menu_list"><a href="/bookapp/list"> 도서 </a></li>
+        <li class="inb_menu_list"><a href="/wiki/blog"> 블로그 </a></li>
+        <li class="inb_menu_list"><a href="/email_one_time_donation"> 후원 </a></li>
+                      
+        <!--드롭다운메뉴1-->
+        <li class="dropdown inb_menu_list">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">교육<span class="caret"></span></a>
+          <ul class="dropdown-menu">
+          <li><a href="/wiki/inb-time-table/">교육시간표</a></li>
+          <li><a href="/wiki/blog/lectures-intro-index/">강좌소개</a></li>
+          </ul>
+        </li>
+                      
+        <!--드롭다운메뉴2-->
+        <li class="dropdown inb_menu_list">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">참여<span class="caret"></span></a>
+          <ul class="dropdown-menu">
+          <li><a href="/inb_intro">학술원 소개</a></li>
+          <li role="separator" class="divider"></li>
+          <li><a href="/wiki/blog/events-intro-index/">행사소개</a></li>
+          <li><a href="/contact_us/">문의하기</a></li>
+          <li role="separator" class="divider"></li>
+          <li><a href="/wiki/inb-directions/">오시는 길</a></li>
+          <li><a href="/wiki/etc-relevant-material/">기타자료모음</a></li>
+          </ul>
+        </li>
+                      
+        <!--드롭다운메뉴3-->
+        <li class="dropdown inb_menu_list">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">운영<span class="caret"></span></a>
+          <ul class="dropdown-menu">
+          <li><a href="/wiki/inb-main-service/">주요사업</a></li>
+          <li><a href="/wiki/support-history-data/">후원현황</a></li>
+          <li><a href="/wiki/expense-data/">지출현황</a></li>
+          {% if user.is_staff %}
+          <li role="separator" class="divider"></li>
+          <li><a href="/wiki/inb-manage/">학술원운영</a></li>
+          {% endif %}
+          </ul>
+          </li>
+    </ul>
+</div>
+                  

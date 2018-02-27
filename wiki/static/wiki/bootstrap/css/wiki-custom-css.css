@@ -1972,7 +1972,7 @@ div[id^="div_id_edit_email"]{
     margin:0px auto;
     /*font-family: 'DDC_Uchen', sans-serif;*/
     /*font-family: 'Noto Sans Tibetan', sans-serif;*/
-    font-family: 'Tibetan Machine Uni', sans-serif;
+    font-family: 'Tibetan Machine Uni', 'Noto Sans Tibetan', sans-serif;
     /*font-family: 'Monlam Uni OuChan2', sans-serif;*/
 }
 .dialogue+div>table tr:nth-of-type(odd) { 
@@ -2059,7 +2059,7 @@ div[id^="div_id_edit_email"]{
     border-collapse: collapse; 
     margin:0px auto;
     /*font-family: 'DDC_Uchen', sans-serif;*/
-    font-family: 'Tibetan Machine Uni', sans-serif;
+    font-family: 'Tibetan Machine Uni', 'Noto Sans Tibetan', sans-serif;
     /*font-family: 'Monlam Uni OuChan2', sans-serif;*/
 }
 .tibetan+div>table tr:nth-of-type(odd) { 
@@ -2144,7 +2144,7 @@ div[id^="div_id_edit_email"]{
 } 
 /*한국어 테이블 안에 티벳어 써야 할 때*/
 .korean+div>table>tbody>tr>td>em { 
-    font-family: 'Tibetan Machine Uni', sans-serif;
+    font-family: 'Tibetan Machine Uni', 'Noto Sans Tibetan', sans-serif;
     /*font-family: 'DDC_Uchen', sans-serif;*/
     /*font-family: 'Monlam Uni OuChan2', sans-serif;*/
     font-style: normal;
@@ -2192,13 +2192,13 @@ div[id^="div_id_edit_email"]{
 }
 .tibetan-classic-grammar+div>table>tbody>tr>td:nth-child(3){
     /*font-family: 'Tibetan Machine Uni', sans-serif;*/
-    font-family: sans-serif, 'DDC_Uchen';
+    font-family: sans-serif, 'DDC_Uchen', 'Noto Sans Tibetan';
     font-size: 18px;
     width: 56%;
 }
 .tibetan-classic-grammar+div>table>tbody>tr>td:nth-child(4){
     /*font-family: 'Tibetan Machine Uni', sans-serif;*/
-    font-family: sans-serif, 'DDC_Uchen';
+    font-family: sans-serif, 'DDC_Uchen', 'Noto Sans Tibetan';
     font-size: 15px;
     width: 40%;
 }
@@ -2233,22 +2233,22 @@ div[id^="div_id_edit_email"]{
 }
 .korean-tibetan+div>table>tbody>tr>td:first-child{
     /*background: blue;*/
-    font-family: 'Tibetan Machine Uni', sans-serif;
+    font-family: 'Tibetan Machine Uni', 'Noto Sans Tibetan', sans-serif;
     font-size: 16px;
     width: 25%; 
 } 
 .korean-tibetan+div>table>tbody>tr>td:nth-child(2){
-    font-family: 'Tibetan Machine Uni', sans-serif;
+    font-family: 'Tibetan Machine Uni', 'Noto Sans Tibetan', sans-serif;
     /*font-size: 15px;*/
     width: 25%;
 }
 .korean-tibetan+div>table>tbody>tr>td:nth-child(3){
-    font-family: 'Tibetan Machine Uni', sans-serif;
+    font-family: 'Tibetan Machine Uni', 'Noto Sans Tibetan', sans-serif;
     /*font-size: 15px;*/
     width: 25%;
 }
 .korean-tibetan+div>table>tbody>tr>td:nth-child(4){
-    font-family: 'Tibetan Machine Uni', sans-serif;
+    font-family: 'Tibetan Machine Uni', 'Noto Sans Tibetan', sans-serif;
     /*font-size: 15px;*/
     width: 25%;
 }
@@ -2273,7 +2273,7 @@ div[id^="div_id_edit_email"]{
 
 /*티벳어 제목 ================= */
 .tibetan-title {
-  font-family: 'Tibetan Machine Uni', sans-serif;
+  font-family: 'Tibetan Machine Uni', 'Noto Sans Tibetan', sans-serif;
   padding: 5px; 
   text-align: left; 
   font-size: 28px;  
@@ -2283,7 +2283,7 @@ div[id^="div_id_edit_email"]{
   margin-bottom: 10px;
 }
 .tibetan-subtitle {
-  font-family: 'Tibetan Machine Uni', sans-serif;
+  font-family: 'Tibetan Machine Uni', 'Noto Sans Tibetan', sans-serif;
   padding: 5px; 
   text-align: left; 
   font-size: 23px;  

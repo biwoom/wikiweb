@@ -3315,6 +3315,11 @@ p.admonition-title{
   content: "\f073";
 } 
 
+.admonition-title>small{
+    font-size: 1.2rem;
+    color: #b3b3b3;
+    padding-left: 7px;
+}
 
 /*--------------------------------------------------*/
 /*Details*/
@@ -3666,6 +3671,15 @@ button[data-color=brown]{
   background-color: #8f6556;
   color: #ffffff;
 }
+button[data-color=light_blue]{
+  background-color: #ebf3ff;
+  color: #ffffff;
+}
+
+/*강의시간표 css */
+.time>p>button{ width: 100%; }
+
+
 /* ---------------------------------------------- /*
  * inb - new - home css
 /* ---------------------------------------------- */    

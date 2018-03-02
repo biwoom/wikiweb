@@ -29,7 +29,7 @@ from django.contrib.auth.models import User
 from django.core.mail import EmailMessage, EmailMultiAlternatives
 from django.contrib.auth.views import password_reset
 # 비밀번호 변경
-from django.contrib.auth.models import User
+from django.contrib.auth.models import User, Group
 from django.contrib.auth.forms import UserChangeForm, PasswordChangeForm
 from django.contrib.auth import update_session_auth_hash
 from django.contrib.auth.decorators import login_required
@@ -243,6 +243,10 @@ def activate(request, uidb64, token):
         user = None
     if user is not None and account_activation_token.check_token(user, token):
         user.is_active = True
+        # 자동그룹지정
+        basic_group = Group.objects.get(name='USER')
+        basic_group.user_set.add(user)
+        
         user.save()
         login(request, user)
         # return redirect('home')

@@ -79,9 +79,6 @@ class SlackBot:
                     "title": '회원이메일',
                     "value": member_email,
                     "short": True
-                },
-                {
-                    "value": '신규회원 USER그룹지정 절차 진행필요'
                 }
             ]
         }]

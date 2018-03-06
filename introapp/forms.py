@@ -161,8 +161,20 @@ class MyAuthenticationForm(AuthenticationForm):
         username = self.cleaned_data.get('username')
         if not User.objects.filter(username=username).exists():
             raise forms.ValidationError(u'아이디가 존재하지 않습니다.')
+        # 이메일인증 활성화 검증 
+        if not User.objects.get(username=username).is_active:
+            raise forms.ValidationError(u'이메일인증이 완료되지 않으셨습니다. 회원님에게 발송된 이메일을 확인하여 이메일 인증절차를 완료해 주세요.')
         return username
-        
+    
+    # 비밀번호 검증
+    def clean_password(self):
+        username = self.cleaned_data.get('username')
+        password = self.cleaned_data.get('password')
+        if User.objects.filter(username=username).exists():
+            user = User.objects.get(username=username)
+            if not user.check_password(password):
+                raise forms.ValidationError(u'비밀번호가 올바르지 않습니다.')
+        return password
  
 # username 찾기 폼
 class FindUsernameForm(forms.Form):

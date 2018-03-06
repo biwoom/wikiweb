@@ -226,7 +226,7 @@ def signup(request):
             send.sending_one()
             # send.sending_with_img()
             confirm_email_msg = '''
-            회원가입을 완료하려면, 발송된 이메일 메시지 내부의 활성화링크로 재접속하세요. \n 
+            이메일이 발송되었습니다. 회원가입을 완료하려면, 회원님의 이메일함에 접속하여 발송된 <이메일 인증 활성화>버튼을 클릭하세요. \n 
             Please confirm your email address to complete the registration'''
             return render(request, 'introapp/account/signup.html', {'form': form, 'confirm_email_msg': confirm_email_msg})
             # return HttpResponse('Please confirm your email address to complete the registration')

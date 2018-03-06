@@ -196,6 +196,3 @@ WIKI_MARKDOWN_KWARGS = {
         'admonition',
         'details',
     ]}
-
-WIKI_GROUP_MODEL = 'auth.Group'
-WIKI_ANONYMOUS = 'True'

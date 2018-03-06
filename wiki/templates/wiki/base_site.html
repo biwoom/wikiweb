@@ -96,6 +96,69 @@
                   {% if "wiki.plugins.globalhistory"|plugin_enabled %}
                     {% include "wiki/plugins/globalhistory/menubaritem.html" %}
                   {% endif %}
+                  
+              <!--문서 편집 메뉴 article_menu ==================-->
+              <li role="separator" class="divider"></li>
+              
+              <li class="{% if selected == "view" %} active{% endif %}" style="margin-bottom:6px;">
+              <a href="{% url 'wiki:get' article_id=article.id path=urlpath.path %}">
+                <span class="fa fa-home"></span>
+                <span style="padding: 3px;"></span>
+                <span class="">{% trans "View" %}</span>
+              </a>
+              </li>
+              
+              {% if article|can_write:user and not article.current_revision.locked %}
+                    <li class="{% if selected == "edit" %} active{% endif %}" style="margin-bottom:6px;">
+                      <a href="{% url 'wiki:edit' article_id=article.id path=urlpath.path %}">
+                        <span class="fa fa-edit"></span>
+                        <span style="padding: 3px;"></span>
+                        <span class="">{% trans "Edit" %}</span>
+                      </a>
+                    </li>
+                    {% else %}
+                    
+                    <li class="{% if selected == "source" %} active{% endif %}" style="margin-bottom:6px;">
+                      <a href="{% url 'wiki:source' article_id=article.id path=urlpath.path %}">
+                        <span class="fa fa-lock"></span>
+                        <span style="padding: 3px;"></span>
+                        <span class="">{% trans "View Source" %}</span>
+                      </a>
+                    </li>
+              {% endif %}
+              
+                      <li class="{% if selected == "history" %} active{% endif %}" style="margin-bottom:6px;">
+                      <a href="{% url 'wiki:history' article_id=article.id path=urlpath.path %}">
+                        <span class="fa fa-clock-o"></span>
+                        <span style="padding: 3px;"></span>
+                        <span class="">{% trans "Changes" %}</span>
+                      </a>
+                      </li>
+             
+              {% for plugin in article_tabs %}
+                    <li class="{% if selected == plugin.slug %} active{% endif %}" style="margin-bottom:6px;">
+                        <a href="{% url 'wiki:plugin' slug=plugin.slug article_id=article.id path=urlpath.path %}">
+                          <span class="fa fa-paperclip"></span>
+                          <!--<span class="{{ plugin.article_tab.1 }}"></span>-->
+                          <span style="padding: 3px;"></span>
+                          <span class="">{{ plugin.article_tab.0 }}</span>
+                        </a>
+                    
+                    </li>              
+              {% endfor %}
+        
+              {% if not user.is_anonymous %}
+                    <li class="{% if selected == "settings" %} active{% endif %}" style="margin-bottom:6px;">
+                     
+                      <a href="{% url 'wiki:settings' article_id=article.id path=urlpath.path %}">
+                        <span class="fa fa-wrench"></span>
+                        <span style="padding: 3px;"></span>
+                        <span class="">{% trans "Settings" %}</span>
+                      </a>
+                    </li>    
+               {% endif %}
+              <!--end 문서 편집 메뉴 article_menu ====================-->
+                  
                 </ul>
               </li>
             </ul>

@@ -47,11 +47,13 @@ jQuery(document).ready(function () {
     var w_height = window.innerHeight;
     jQuery('.toc_box, .side_list_box').css('height', w_height-100)
     jQuery('.toc_auto, .side_list_auto').css('max-height', w_height-190);
+    jQuery('#my_iframe').attr("height", w_height-100);
     
     jQuery( window ).resize(function() {
       var w_height = window.innerHeight;
       jQuery('.toc_box, .side_list_box').css('height', w_height-100);
       jQuery('.toc_auto, .side_list_auto').css('max-height', w_height-190);
+      jQuery('#my_iframe').attr("height", w_height-100);
     });
     
     jQuery(window).scroll(function() {
@@ -81,3 +83,17 @@ jQuery(document).ready(function () {
   }, false);
 })();
 
+
+// jQuery("admonition.nav-tabs > ul > li").filter(":first").addClass("active");
+// jQuery(".nav-tabs").addClass("active");
+// $('.nav-tabs').addClass('active');
+// $(".nav-tabs > ul > li").filter(":first").addClass("active");
+
+// (function() {
+//     // jQuery('.toc_box')
+//     $(".nav-tabs > ul > li").filter(":first").addClass("active");
+// })();
+
+$(document).ready(function () {
+    $(".nav-tabs > ul > li").filter(":first").addClass("active");
+});

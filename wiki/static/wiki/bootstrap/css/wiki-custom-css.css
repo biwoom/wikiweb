@@ -3851,3 +3851,53 @@ button[data-color=light_blue]{
   font-weight: 300;
   margin-top: 2px;
 }
+
+/******************************
+ kjh-문서 내부 tabs 스타일
+*******************************/
+.admonition.nav-tabs {
+    box-shadow: none;
+    border: none;
+    padding-left: 0px;
+    left: -40px;
+    border-bottom: 1px solid transparent;
+    margin-bottom: 5px;
+}
+.admonition.nav-tabs > ul > li {
+    float: left;
+    /*margin-right: 40px;*/
+    list-style: none;
+}
+.admonition.nav-tabs > ul > li > p > a {
+    text-decoration: none;
+    color: #666666;
+    -webkit-box-shadow: inset 0 -1px 0 #dddddd;
+    box-shadow: inset 0 -1px 0 #dddddd;
+    -webkit-transition: all 0.2s;
+    -o-transition: all 0.2s;
+    transition: all 0.2s;
+    padding: 10px 15px;
+}
+.admonition.nav-tabs > ul > li.active > p > a, 
+.admonition.nav-tabs > ul > li.active > p > a:focus{
+  border: none;
+  -webkit-box-shadow: inset 0 -2px 0 #2196f3;
+  box-shadow: inset 0 -2px 0 #2196f3;
+  color: #2196f3;
+  padding: 10px 15px;
+  padding-left: 5px;
+}
+.admonition.tab-content{
+    box-shadow: none;
+    border: none;
+    border-bottom: 1px solid transparent;
+    margin-top: 0px;
+}
+.admonition.tab-content>p>strong{
+  font-size: 20px;
+  font-weight: 400;
+}
+.admonition.tab-content>p{
+  font-size: 15px;
+}
+.get_iframe>#article-title-li{display: none;}

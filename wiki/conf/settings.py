@@ -128,6 +128,7 @@ _default_attribute_whitelist['label'].append('for')
 
 _default_attribute_whitelist['a'].append('href')
 _default_attribute_whitelist['a'].append('target')
+_default_attribute_whitelist['a'].append('data-toggle')
 
 _default_attribute_whitelist['details'].append('open')
 

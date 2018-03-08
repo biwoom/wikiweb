@@ -3900,4 +3900,14 @@ button[data-color=light_blue]{
 .admonition.tab-content>p{
   font-size: 15px;
 }
-.get_iframe>#article-title-li{display: none;}
+.get_iframe_1>#article-title-li,
+.get_iframe_2>#article-title-li,
+.get_iframe_3>#article-title-li,
+.get_iframe_4>#article-title-li,
+.get_iframe_5>#article-title-li,
+.get_iframe_6>#article-title-li,
+.get_iframe_7>#article-title-li,
+.get_iframe_8>#article-title-li,
+.get_iframe_9>#article-title-li,
+.get_iframe_10>#article-title-li
+{display: none;}

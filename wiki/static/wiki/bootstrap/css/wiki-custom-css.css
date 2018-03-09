@@ -3913,7 +3913,9 @@ button[data-color=light_blue]{
 {display: none;}
 
 
-
+/******************************
+ kjh-문서 내부 toc scroll change 스타일
+*******************************/
 a.toc-reading,
 a.toc-already-read.toc-reading {
   /*color: #b2c908;*/

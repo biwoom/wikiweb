@@ -76,16 +76,16 @@
 <div class="side_list_auto"  id="scrollbar_style_2">
     <nav class="article_side_list" data-md-state="lock">
     <p class="table-of-article-title">하위문서</p> 
-    <ul>
-    {% for child in children_slice_100 %}
-    <li>
-        <a href="{% url 'wiki:get' path=child.path %}">
-        {{ child.article.current_revision.title }}
-        </a>
-    </li>
-    {% empty %}
-    <li><a href="#"><em>{% trans "No sub-articles" %}</em></a></li>
-    {% endfor %}
+    <ul id="get-table-of-article-title">
+    {# for child in children_slice_100 #}
+    <!--<li>-->
+    <!--    <a href="{% url 'wiki:get' path=child.path %}">-->
+    <!--    {{ child.article.current_revision.title }}-->
+    <!--    </a>-->
+    <!--</li>-->
+    {# empty #}
+    <!--<li><a href="#"><em>{% trans "No sub-articles" %}</em></a></li>-->
+    {# endfor #}
     
     {% if children_slice_more_100 %}
     <li><a href="#"><em> 문서가 더 있습니다.</em></a></li>

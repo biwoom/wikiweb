@@ -3911,3 +3911,19 @@ button[data-color=light_blue]{
 .get_iframe_9>#article-title-li,
 .get_iframe_10>#article-title-li
 {display: none;}
+
+
+
+a.toc-reading,
+a.toc-already-read.toc-reading {
+  /*color: #b2c908;*/
+  color: #757575;
+  opacity: 1;
+  font-weight: 700;
+  padding-left: 5px;
+  border-left: 2px solid #ea4a4f;
+}
+
+a.toc-already-read {
+  opacity: 0.7;
+}

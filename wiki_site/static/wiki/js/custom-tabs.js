@@ -1,4 +1,7 @@
 'use strict';
+$(document).ready(function () {
+    $(".nav-tabs > ul > li").filter(":first").addClass("active");
+});
 
 (function() {
   $(".nav-tabs > ul > li").filter(":first").addClass("active");

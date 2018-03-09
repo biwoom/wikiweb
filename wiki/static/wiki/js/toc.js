@@ -1,20 +1,21 @@
 var ToC =
-  "<nav role='navigation' class='table-of-contents'>" +
+  "<nav role='navigation' class='table-of-contents' id='target_nav'>" +
     "<p class='table-of-contents-title'>문서목차</p>" +
-    "<ul>";
+    "<ul class='section table-of-contents'>";
 
 var newLine, el, title, link, tocclass;
 
-$("h2,h3,h4,h5,h6").each(function() {
+$("h2,h3,h4,h5,h6").each(function(i) {
 
   el = $(this);
   title = el.text();
   link = "#" + el.attr("id");
   toc_class = "toc_" + el.get(0).tagName;
-
+  a_id = "toc-title_" + i
+  
   newLine =
     "<li class='" + toc_class + "'>" +
-      "<a href='" + link + "'>" +
+      "<a class='" + a_id + "' href='" + link + "' >" +
         title +
       "</a>" +
     "</li>";
@@ -30,30 +31,19 @@ ToC +=
 $(".toc_auto").prepend(ToC);
 $(".toc_auto_mobile").prepend(ToC);
 
-// $(document).ready(function () {
-//     $('.article_side_list, .toc_auto').css('position', 'absolute');
-//     $(window).scroll(function() {
-//         var sclTop = $(this).scrollTop();
-//         if (sclTop > 70)
-//         {
-//             $('.article_side_list, .toc_auto').css('position', 'fixed').css('top', '55px');        
-//         }
-//         else 
-//         {$('.article_side_list, .toc_auto').css('position','absolute').css('top','0');}
-//     });
-// });
+
 jQuery(document).ready(function () {
-    // jQuery('.toc_box')
+   
     var w_height = window.innerHeight;
     jQuery('.toc_box, .side_list_box').css('height', w_height-100)
     jQuery('.toc_auto, .side_list_auto').css('max-height', w_height-190);
-    jQuery('#my_iframe').attr("height", w_height-100);
+    // jQuery('#my_iframe').attr("height", w_height-100);
     
     jQuery( window ).resize(function() {
       var w_height = window.innerHeight;
       jQuery('.toc_box, .side_list_box').css('height', w_height-100);
       jQuery('.toc_auto, .side_list_auto').css('max-height', w_height-190);
-      jQuery('#my_iframe').attr("height", w_height-100);
+      // jQuery('#my_iframe').attr("height", w_height-100);
     });
     
     jQuery(window).scroll(function() {
@@ -82,18 +72,3 @@ jQuery(document).ready(function () {
     });
   }, false);
 })();
-
-
-// jQuery("admonition.nav-tabs > ul > li").filter(":first").addClass("active");
-// jQuery(".nav-tabs").addClass("active");
-// $('.nav-tabs').addClass('active');
-// $(".nav-tabs > ul > li").filter(":first").addClass("active");
-
-// (function() {
-//     // jQuery('.toc_box')
-//     $(".nav-tabs > ul > li").filter(":first").addClass("active");
-// })();
-
-$(document).ready(function () {
-    $(".nav-tabs > ul > li").filter(":first").addClass("active");
-});

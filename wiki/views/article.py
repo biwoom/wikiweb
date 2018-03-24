@@ -644,7 +644,8 @@ class Dir(ListView, ArticleMixin):
     model = models.URLPath
     paginator_class = WikiPaginator
     paginate_by = 30
-
+    
+    
     @method_decorator(get_article(can_read=True))
     def dispatch(self, request, article, *args, **kwargs):
         self.filter_form = forms.DirFilterForm(request.GET)
@@ -656,6 +657,7 @@ class Dir(ListView, ArticleMixin):
 
     def get_queryset(self):
         children = self.urlpath.get_children().can_read(self.request.user)
+        
         if self.query:
             children = children.filter(
                 Q(article__current_revision__title__contains=self.query) |
@@ -682,6 +684,10 @@ class Dir(ListView, ArticleMixin):
         kwargs[self.context_object_name] = updated_children
 
         return kwargs
+    
+    # def sub_article(self):
+    #     sub_article = self.urlpath.get_children().can_read(self.request.user)
+    #     return sub_article
 
 
 class SearchView(ListView):
@@ -690,7 +696,7 @@ class SearchView(ListView):
     paginator_class = WikiPaginator
     paginate_by = 25
     context_object_name = "articles"
-
+    
     def dispatch(self, request, *args, **kwargs):
         # Do not allow anonymous users to search if they cannot read content
         if request.user.is_anonymous() and not settings.ANONYMOUS:
@@ -701,13 +707,16 @@ class SearchView(ListView):
         else:
             self.query = None
         return super(SearchView, self).dispatch(request, *args, **kwargs)
-
+        
+    
     def get_queryset(self):
         if not self.query:
             return models.Article.objects.none()
+            
         articles = models.Article.objects.filter(
             Q(current_revision__title__icontains=self.query) |
             Q(current_revision__content__icontains=self.query))
+            
         if not permissions.can_moderate(
                 models.URLPath.root().article,
                 self.request.user):

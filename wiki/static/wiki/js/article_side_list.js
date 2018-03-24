@@ -30,9 +30,3 @@
   $('#article_list_origin').html(article_list_origin);
   
 })();
-
-
-// ["A1", "A10", "A11", "A12", "A2", "A3", "A4", "B10", "B2", "F1", "F12", "F3"].sort(sortAlphaNum);
-// var aA = $(a).text().toUpperCase().replace(reN, "");
-// var bA = $(b).text().toUpperCase().replace(reN, "");
-        

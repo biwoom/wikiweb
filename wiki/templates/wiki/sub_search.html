@@ -12,7 +12,7 @@
 <p class="lead">
   <div class="pull-right">
     <div class="input-group">
-      <input type="search" class="form-control search-query" name="q" value="{{ search_query }}" />
+      <input type="search" class="form-control search-query" name="q" value="{{ search_query }}"  style="background-color: #ccf2ff;"/>
       <span class="input-group-btn">
         <button class="btn btn-link" type="button">
           <span class="fa fa-search"></span>
@@ -23,16 +23,16 @@
   <p>{% blocktrans with paginator.object_list.count as cnt %}Your search returned <strong>{{ cnt }}</strong> results.{% endblocktrans %}</p>
   <div class="clearfix"></div>
 </p>
-</form>ㅇ
+</form>
 
 <table class="table table-striped">
   <tr>
     <th style="width: 75%">{% trans "Title" %}</th>
     <th>{% trans "Last modified" %}</th>
   </tr>
-  {% for article in articles %}
+  {% for urlpath in articles %}
     {% block wiki_search_loop %}
-    {% include "wiki/includes/searchresult.html" %}
+    {% include "wiki/includes/sub_searchresult.html" %}
     {% endblock %}
     {% empty%}
     <tr>

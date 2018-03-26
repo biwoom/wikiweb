@@ -686,87 +686,37 @@ class Dir(ListView, ArticleMixin):
         return kwargs
 
 # kjh-search-custom : SearchView 새로 만듬
-class SearchView(ListView, ArticleMixin):
+# class SearchView(ListView, ArticleMixin):
 
-    template_name = "wiki/sub_search.html"
-    allow_empty = True
-    context_object_name = "articles"
-    model = models.URLPath
-    paginator_class = WikiPaginator
-    paginate_by = 25
-    
-    
-    @method_decorator(get_article(can_read=True))
-    def dispatch(self, request, article,  *args, **kwargs):
-        if request.user.is_anonymous() and not settings.ANONYMOUS:
-            return redirect(settings.LOGIN_URL)
-
-        self.search_form = forms.SearchForm(request.GET)
-        if self.search_form.is_valid():
-            self.query = self.search_form.cleaned_data['q']
-        else:
-            self.query = None
-        return super(SearchView, self).dispatch(request, article, *args, **kwargs)
-        
-    def get_queryset(self):
-        if not self.query:
-            return models.Article.objects.none()
-        children = self.urlpath.get_children().can_read(self.request.user)  
-        # children = self.urlpath.path
-        
-        articles = children.filter(
-            Q(article__current_revision__title__icontains=self.query) |
-            Q(article__current_revision__content__contains=self.query))
-            
-        if not permissions.can_moderate(
-                models.URLPath.root().article,
-                self.request.user):
-            articles = articles.active().can_read(self.request.user)
-        return articles
-
-    def get_context_data(self, **kwargs):
-        kwargs_article = ArticleMixin.get_context_data(self, **kwargs)
-        kwargs_listview = ListView.get_context_data(self, **kwargs)
-        kwargs = ListView.get_context_data(self, **kwargs)
-        kwargs.update(kwargs_article)
-        kwargs.update(kwargs_listview)
-        kwargs['search_form'] = self.search_form
-        kwargs['search_query'] = self.query
-        
-        updated_children = kwargs[self.context_object_name]
-        for child in updated_children:
-            child.set_cached_ancestors_from_parent(self.urlpath)
-        kwargs[self.context_object_name] = updated_children
-
-        return kwargs
-        
-        
-# class SearchView(ListView):
-
-#     template_name = "wiki/search.html"
+#     template_name = "wiki/sub_search.html"
+#     allow_empty = True
+#     context_object_name = "articles"
+#     model = models.URLPath
 #     paginator_class = WikiPaginator
 #     paginate_by = 25
-#     context_object_name = "articles"
     
-#     def dispatch(self, request, *args, **kwargs):
-#         # Do not allow anonymous users to search if they cannot read content
+    
+#     @method_decorator(get_article(can_read=True))
+#     def dispatch(self, request, article,  *args, **kwargs):
 #         if request.user.is_anonymous() and not settings.ANONYMOUS:
 #             return redirect(settings.LOGIN_URL)
+
 #         self.search_form = forms.SearchForm(request.GET)
 #         if self.search_form.is_valid():
 #             self.query = self.search_form.cleaned_data['q']
 #         else:
 #             self.query = None
-#         return super(SearchView, self).dispatch(request, *args, **kwargs)
+#         return super(SearchView, self).dispatch(request, article, *args, **kwargs)
         
-    
 #     def get_queryset(self):
 #         if not self.query:
 #             return models.Article.objects.none()
-            
-#         articles = models.Article.objects.filter(
-#             Q(current_revision__title__icontains=self.query) |
-#             Q(current_revision__content__icontains=self.query))
+#         children = self.urlpath.get_children().can_read(self.request.user)  
+#         # children = self.urlpath.path
+        
+#         articles = children.filter(
+#             Q(article__current_revision__title__icontains=self.query) |
+#             Q(article__current_revision__content__contains=self.query))
             
 #         if not permissions.can_moderate(
 #                 models.URLPath.root().article,
@@ -775,10 +725,60 @@ class SearchView(ListView, ArticleMixin):
 #         return articles
 
 #     def get_context_data(self, **kwargs):
+#         kwargs_article = ArticleMixin.get_context_data(self, **kwargs)
+#         kwargs_listview = ListView.get_context_data(self, **kwargs)
 #         kwargs = ListView.get_context_data(self, **kwargs)
+#         kwargs.update(kwargs_article)
+#         kwargs.update(kwargs_listview)
 #         kwargs['search_form'] = self.search_form
 #         kwargs['search_query'] = self.query
+        
+#         updated_children = kwargs[self.context_object_name]
+#         for child in updated_children:
+#             child.set_cached_ancestors_from_parent(self.urlpath)
+#         kwargs[self.context_object_name] = updated_children
+
 #         return kwargs
+        
+        
+class SearchView(ListView):
+
+    template_name = "wiki/search.html"
+    paginator_class = WikiPaginator
+    paginate_by = 25
+    context_object_name = "articles"
+    
+    def dispatch(self, request, *args, **kwargs):
+        # Do not allow anonymous users to search if they cannot read content
+        if request.user.is_anonymous() and not settings.ANONYMOUS:
+            return redirect(settings.LOGIN_URL)
+        self.search_form = forms.SearchForm(request.GET)
+        if self.search_form.is_valid():
+            self.query = self.search_form.cleaned_data['q']
+        else:
+            self.query = None
+        return super(SearchView, self).dispatch(request, *args, **kwargs)
+        
+    
+    def get_queryset(self):
+        if not self.query:
+            return models.Article.objects.none()
+            
+        articles = models.Article.objects.filter(
+            Q(current_revision__title__icontains=self.query) |
+            Q(current_revision__content__icontains=self.query))
+            
+        if not permissions.can_moderate(
+                models.URLPath.root().article,
+                self.request.user):
+            articles = articles.active().can_read(self.request.user)
+        return articles
+
+    def get_context_data(self, **kwargs):
+        kwargs = ListView.get_context_data(self, **kwargs)
+        kwargs['search_form'] = self.search_form
+        kwargs['search_query'] = self.query
+        return kwargs
 
 
 class Plugin(View):

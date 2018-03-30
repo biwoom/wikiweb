@@ -3,7 +3,7 @@ from django.utils import timezone
 from .models import Intro_BW
 from .forms import (
 Intro_BWForm, Contact_us_Form, Email_member_Form, Email_all_member_Form, 
-FindUsernameForm, MyPasswordResetForm, One_time_donation_Form)
+FindUsernameForm, MyPasswordResetForm, Regular_donation_Form)
 from django.shortcuts import redirect
 # paginator
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
@@ -48,13 +48,14 @@ def inb_intro(request):
     return render(request, 'introapp/new_home/inb_intro.html')   
     
     
-# 홈2 - new end
-
+# 일시 후원
+def one_time_donation(request):
+    return render(request, 'introapp/donation/one_time_donation.html') 
     
-# 일시후원 이메일   
-def email_one_time_donation(request):
+# 정기후원    
+def regular_donation(request):
     if request.method == "POST":
-        form = One_time_donation_Form(request.POST, request.FILES or None)
+        form = Regular_donation_Form(request.POST, request.FILES or None)
         if form.is_valid():
             if request.user.is_authenticated:
                 member_name = request.user.username
@@ -62,41 +63,44 @@ def email_one_time_donation(request):
                 member_name = "비회원"
             real_name = form.cleaned_data.get("name")
             birth = form.cleaned_data.get("birth")
+            phone = form.cleaned_data.get("phone")
             mobile = form.cleaned_data.get("mobile")
             to_member_email = form.cleaned_data.get("email")
             addess = form.cleaned_data.get("addess")
             amount_of_donation = form.cleaned_data.get("amount_of_donation")
             donation_message = form.cleaned_data.get("donation_message")
+            bank = form.cleaned_data.get("bank")
+            bank_num = form.cleaned_data.get("bank_num")
+            bank_owner = form.cleaned_data.get("bank_owner")
+            bank_division = form.cleaned_data.get("bank_division")
             
             success_msg = '''
-            후원신청 이메일이 성공적으로 발송되었습니다.
-            학술원 후원계좌로 무통장입금 등을 통해 후원금을 입금해주시면,
-            입금 확인후 후원회원으로 등록되고 확인이메일을 보내드립니다.
-            홈페이지 회원가입을 위해서는 아이디와 이메일확인이 필요하므로 별도의 가입신청을 하셔야합니다.
+            정기 후원신청 이메일이 성공적으로 발송되었습니다.
+            추후 본인 확인을 위해 전화를 통한 확인 및 녹취 과정이 진행됩니다. 후원신청을 해주셔서 대단히 감사드립니다.
             '''
             fail_msg = '''
             후원신청 이메일 발송에 실패했습니다. 차후에 다시 시도해 주세요.
             '''
             try:
                 #슬랙 알림
-                slack = SlackBotDonate(member_name, real_name, birth, mobile, to_member_email, addess, amount_of_donation, donation_message)
-                slack.slack_one_time_donation_notify()
+                slack = SlackBotDonate(member_name, real_name, birth, phone, mobile, to_member_email, addess, amount_of_donation, donation_message, bank, bank_num, bank_owner, bank_division)
+                slack.slack_regular_donation_notify()
                 
                 #이메일 알림
-                send = EmailSenderDonate(member_name, real_name, birth, mobile, to_member_email, addess, amount_of_donation, donation_message)
-                send.email_one_time_donation()
+                send = EmailSenderDonate(member_name, real_name, birth, phone, mobile, to_member_email, addess, amount_of_donation, donation_message, bank, bank_num, bank_owner, bank_division)
+                send.email_regular_donation()
 
             except IOError:
                 # return HttpResponse('이메일 보내기: 실패')
-                return render(request, 'introapp/donation/email_one_time_donation.html', 
+                return render(request, 'introapp/donation/regular_donation.html', 
                          {'form': form, 'fail_msg': fail_msg})
                 
             # return HttpResponse('이메일 보내기: 성공')
-            return render(request, 'introapp/donation/email_one_time_donation.html', 
+            return render(request, 'introapp/donation/regular_donation.html', 
                          {'form': form, 'success_msg': success_msg})
     else:
-        form = One_time_donation_Form()
-    return render(request, 'introapp/donation/email_one_time_donation.html', {'form': form})   
+        form = Regular_donation_Form()
+    return render(request, 'introapp/donation/regular_donation.html', {'form': form})   
     
 # 이메일-문의사항   
 def email_contact_us(request):

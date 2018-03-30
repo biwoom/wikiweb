@@ -25,25 +25,37 @@ from django.utils.text import capfirst
 from django.utils.translation import ugettext, ugettext_lazy as _
 from django.core.validators import RegexValidator
 
-
+BANK_CHOICES= [
+    ('국민', '국민'),('농협', '농협'),('우리', '우리'),('신한', '신한'),('하나', '하나'), ('새마을', '새마을'),('우체국', '우체국'),('수협', '수협'),
+    ('기업', '기업'),('제일', '제일'),('외환', '외한'),('씨티', '씨티'),('광주', '광주'),('전북', '전북'),('제주', '제주'),
+    ('경남', '경남'),('부산', '부산'),('대구', '대구'),('신협', '신협')
+    ]
+BANK_DIVISION= [
+    ('개인', '개인'),('법인', '법인')
+    ]    
 
 class CommentForm(forms.Form):
     name = forms.CharField(label='Your name')
     url = forms.URLField(label='Your website', required=False)
     comment = forms.CharField()
 
-# 일시후원 이메일
-class One_time_donation_Form(forms.Form):
+# 정기후원 폼
+class Regular_donation_Form(forms.Form):
     username = forms.CharField(label='아이디', required=False)
-    name = forms.CharField(label='성명', help_text='성명과 입금자명은 일치해야 합니다.', required=True)
-    birth = forms.IntegerField(label='생년월일', help_text='숫자만 입력하세요. 예)19870610', required=True)
-    mobile = forms.IntegerField(label='휴대전화', help_text='숫자만 입력하세요. 예)01012345678', required=True)
-    email = forms.EmailField(label='이메일', required=True)
-    addess = forms.CharField(label='주소', required=True)
-    amount_of_donation = forms.IntegerField(label='후원금액', required=True)
-    donation_message = forms.CharField(label='의견사항', widget=forms.Textarea(attrs={'height':200, 'cols' : 10, 'rows': 5 }), required=False)
-    use_agreement = forms.BooleanField(label='이용약관', help_text='이용약관에 동의합니다.')
-    privacy_policy_statement = forms.BooleanField(label='개인정보취급방침')
+    name = forms.CharField(label='*성명 (필수)', help_text='(필수)', required=True)
+    birth = forms.CharField(label='*주민번호 앞 6자리 (필수)', help_text='(필수)', required=True)
+    phone = forms.CharField(label='*일반전화 (필수)', help_text='(필수)', required=True)
+    mobile = forms.CharField(label='*휴대전화 (필수)', help_text='(필수)', required=True)
+    email = forms.EmailField(label='*이메일 (필수)', help_text='(필수)', required=True)
+    addess = forms.CharField(label='*주소 (필수)', help_text='(필수)', required=True)
+    amount_of_donation = forms.CharField(label='*후원금액 (필수)', help_text='(5,000원 이상부터 후원하실 수 있습니다.)', required=True)
+    donation_message = forms.CharField(label='의견사항 (선택)', help_text='(선택)', widget=forms.Textarea(attrs={'height':200, 'cols' : 10, 'rows': 5 }), required=False)
+    use_agreement = forms.BooleanField(label='*이용약관에 동의합니다. (필수)', help_text='(필수)')
+    privacy_policy_statement = forms.BooleanField(label='*개인정보처리방침에 동의합니다. (필수)', help_text='(필수)')
+    bank = forms.CharField(label='*신청계좌 거래은행 (필수)', widget=forms.Select(choices=BANK_CHOICES))
+    bank_num = forms.CharField(label='*출금계좌번호 (필수)', help_text='숫자만 입력하세요. 예)01012345678', required=True)
+    bank_owner = forms.CharField(label='*예금주명 (필수)', help_text='', required=True)
+    bank_division = forms.CharField(label='*예금주 구분 (필수)', help_text='(필수)', widget=forms.Select(choices=BANK_DIVISION))
 
 # 회원 to 관리자 문의 이메일
 class Contact_us_Form(forms.Form):

@@ -3493,3 +3493,10 @@ blockquote>p>code{
      margin-bottom: 0px;
    }
 }
+
+/* ---------------------------------------------- /*
+ * 후원페이지 폼  css
+/* ---------------------------------------------- */   
+select[id="id_bank"], select[id="id_bank_division"]{
+  width: 100% !important;
+}

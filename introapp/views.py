@@ -96,8 +96,6 @@ def regular_donation(request):
                     image_name_1 = donor_name + '-' +date + "-signature.png"
                     image_name = image_name_1.replace(' ','-')
                     global signature_url
-                    if signature_url:
-                        signature_url = ''
                     signature_url = '/media/signature/' + image_name
                     filepath = os.path.join(DIRECTORY_NAME, image_name)
                     image_result = open(filepath, 'wb')

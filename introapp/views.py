@@ -105,7 +105,7 @@ def regular_donation(request):
             withdrawal_date = form.cleaned_data.get("withdrawal_date")
             
             # image_name_1 = to_member_email +'-'+ "signature.png"
-            image_name_1 = real_name +'-'+ to_member_email +'-'+ "-signature.png"
+            image_name_1 = real_name +'-'+ to_member_email +'-'+ "signature.png"
             image_name = image_name_1.replace(' ','-')
             signature_url = '/media/signature/' + image_name
             

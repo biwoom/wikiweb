@@ -127,11 +127,11 @@ def regular_donation(request):
 
             except IOError:
                 # return HttpResponse('이메일 보내기: 실패')
-                return render(request, 'introapp/donation/regular_donation.html', 
+                return render(request, 'introapp/donation/donation_complete.html', 
                          {'form': form, 'fail_msg': fail_msg})
                 
             # return HttpResponse('이메일 보내기: 성공')
-            return render(request, 'introapp/donation/regular_donation.html', 
+            return render(request, 'introapp/donation/donation_complete.html', 
                          {'form': form, 'success_msg': success_msg})
     else:
         form = Regular_donation_Form()

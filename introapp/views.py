@@ -62,9 +62,13 @@ def regular_donation(request):
             try:
                 data_uri= request.body
                 if data_uri:
-                    encoded_image = data_uri.decode('utf8').split(',')[1]
-                    donor_name = data_uri.decode('utf8').split(',')[2]
-                    donor_mobile = data_uri.decode('utf8').split(',')[3]
+                    data = data_uri.decode('utf8').split(',')
+                    encoded_image = data[1]
+                    donor_name = data[2]
+                    donor_mobile = data[3]
+                    # encoded_image = data_uri.decode('utf8').split(',')[1]
+                    # donor_name = data_uri.decode('utf8').split(',')[2]
+                    # donor_mobile = data_uri.decode('utf8').split(',')[3]
                     decoded_image = base64.b64decode(encoded_image)
                     PROJECT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
                     DIRECTORY_NAME = PROJECT_DIR + '/wiki_site/media/signature/'

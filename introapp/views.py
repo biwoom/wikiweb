@@ -70,8 +70,8 @@ def regular_donation(request):
                 if not(os.path.isdir(DIRECTORY_NAME)):
                     os.makedirs(os.path.join(DIRECTORY_NAME))
                 date = str(timezone.now())
-                image_name_1 = donor_name + '-' +date + "-signature.png"
-                image_name = image_name_1.replace(' ','-')
+                image_name_1 = donor_name + '-' + date 
+                image_name = image_name_1.replace(' ','-').replace(':','-').replace('.','-').replace('+','-') + "-signature.png"
                 filepath = os.path.join(DIRECTORY_NAME, image_name)
                 image_result = open(filepath, 'wb')
                 image_result.write(decoded_image)
@@ -104,8 +104,8 @@ def regular_donation(request):
             bank_division = form.cleaned_data.get("bank_division")
             withdrawal_date = form.cleaned_data.get("withdrawal_date")
             date = str(timezone.now())
-            image_name_1 = real_name + '-' +date + "-signature.png"
-            image_name = image_name_1.replace(' ','-')
+            image_name_1 = real_name + '-' + date 
+            image_name = image_name_1.replace(' ','-').replace(':','-').replace('.','-').replace('+','-') + "-signature.png"
             global signature_url
             signature_url = '/media/signature/' + image_name
             

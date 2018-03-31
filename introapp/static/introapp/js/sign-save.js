@@ -18,10 +18,8 @@ $(function() {
     
      $('.button_save').click(function() {
             var dataURL = signaturePad.toDataURL();
-            // var donor_name = document.getElementById('id_name').value;
-            var donor_email = document.getElementById('id_email').value;
-            // dataURL = dataURL+','+donor_name+','+donor_email
-            dataURL = dataURL+','+donor_email
+            var donor_name = document.getElementById('id_name').value;
+            dataURL = dataURL+','+donor_name
             $.ajax({
                 type: 'POST',
                 url: '/regular_donation/',

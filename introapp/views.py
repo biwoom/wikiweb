@@ -64,14 +64,14 @@ def regular_donation(request):
                 if data_uri:
                     encoded_image = data_uri.decode('utf8').split(',')[1]
                     donor_name = data_uri.decode('utf8').split(',')[2]
-                    donor_email = data_uri.decode('utf8').split(',')[3]
+                    # donor_email = data_uri.decode('utf8').split(',')[3]
                     global decoded_image
                     decoded_image = base64.b64decode(encoded_image)
                     PROJECT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
                     DIRECTORY_NAME = PROJECT_DIR + '/wiki_site/media/signature/'
                     if not(os.path.isdir(DIRECTORY_NAME)):
                         os.makedirs(os.path.join(DIRECTORY_NAME))
-                    image_name = donor_name + '-' + donor_email + "-signature.png"
+                    image_name = donor_name + '-' + "-signature.png"
                     # image_name = image_name_1.replace(' ','-') 
                     filepath = os.path.join(DIRECTORY_NAME, image_name)
                     image_result = open(filepath, 'wb')
@@ -103,7 +103,7 @@ def regular_donation(request):
             bank_division = form.cleaned_data.get("bank_division")
             withdrawal_date = form.cleaned_data.get("withdrawal_date")
             
-            image_name = real_name + '-' + to_member_email + "-signature.png"
+            image_name = real_name + '-' + "-signature.png"
             signature_url = '/media/signature/' + image_name
             
             success_msg = '''

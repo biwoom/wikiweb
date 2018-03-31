@@ -18,7 +18,7 @@
     {% if not user.is_authenticated %}
     <a class="d-table ml-auto mr-auto mt-4" href="/signup">
     <strong>아직 회원가입 전이시군요. 학술원 웹싸이트에 가입하시면 다양한 혜택이 있습니다. </strong>
-    <button style="margin-top: 15px; width:100%; margin-left:0 !important;" class="btn btn-success loading">회원가입</button>
+    <button style="margin-top: 15px; width:100%; margin-left:0 !important;" class="btn btn-warning loading">회원가입</button>
     </a>
     {% endif %}
   </div>
@@ -81,7 +81,7 @@
   
   <div class="donation_custom_form col-md-8">
     <h2>정기후원하기<small>CMS자동이체 후원</small></h2>
-    
+
     <fieldset>
       <div class="form-group row">  
       <form method="POST" class="post-form" enctype='multipart/form-data'>{% csrf_token %}
@@ -136,6 +136,7 @@
           </p>
           <p >
             {{ form.bank_num.label }}
+            {{ form.bank_num.help_text }}
             {{ form.bank_num }}
             <div style="color: red">{{ form.bank_num.errors }}</div>
           </p>
@@ -155,7 +156,33 @@
             {{ form.bank_division }}
             <div style="color: red">{{ form.bank_division.errors }}</div>
           </p>
-          
+          <p >
+            {{ form.withdrawal_date.label }}
+            {{ form.withdrawal_date }}
+            <div style="color: red">{{ form.withdrawal_date.errors }}</div>
+          </p>
+          <!--서명필드-->
+          <label for="id_username" style="margin-bottom: -10px;">*서명란 (필수) </label>
+          <div class="signature-pad-container">
+          <div id="signature-pad" class="signature-pad">
+            <div class="signature-pad--body">
+              <canvas></canvas>
+            </div>
+            <div class="signature-pad--footer">
+              <div class="description">서명해 주세요</div>
+        
+              <div class="signature-pad--actions">
+                <div>
+                  <button type="button" class="button clear" data-action="clear">지우기</button>
+                  <button type="button" class="button" data-action="undo">뒤로</button>
+                  <!--<button type="button" class="button_save">저장</button>-->
+                </div>
+                
+              </div>
+            </div>
+           </div>
+           </div>
+    
           <hr>
           
           <p>
@@ -165,6 +192,15 @@
           </p>
           
           <hr>
+          <div style="background-color:#e6e6e6; padding: 10px 10px;">
+            <strong>
+            <p>상기 자동이체 신청과 관련하여 CMS 출금이체약관과 개인정보 수집 및 이용동의, 개인정보 취급 위탁 및
+            문자(SMS)발송에 동의하며, 자동출금이체서비스를 신청합니다.</p>
+            <p>◇ 금융거래정보의 제공동의서 ◇</p>
+            <p>본 신청과 관련하여 본인은 금융거래정보를 출금이체를 신규 신청하는 때로부터 해지 신청할 때까지 상기 수납기관에 제공하는 것에
+            대하여 「금융실명거래 및 비밀보장에 관한 법률」의 규정에 따라 동의 합니다.</p>
+            </strong>
+          </div>
           <p>
             {{ form.use_agreement.label }}
             {{ form.use_agreement }}
@@ -177,7 +213,7 @@
             <div style="color: red">{{ form.privacy_policy_statement.errors }}</div>
           </p>
         
-        <button style="margin-top: 15px; width:100%; margin-left:0 !important;" type="submit" class="btn btn-primary loading">신청하기</button>
+        <button style="margin-top: 15px; width:100%; margin-left:0 !important;" type="submit" class="btn btn-primary loading button_save">신청하기</button>
         
       </div>
     </fieldset>  
@@ -186,12 +222,23 @@
 <hr>  
 <!--이용약관 내용-->
 <button style="margin-bottom: 15px;" class="btn btn-default book_list_collaps_btn" type="button" data-toggle="collapse" data-target="#use_agreement_collaps" aria-expanded="false" aria-controls="collapseExample">
-이용약관보기
+CMS출금이체 및 홈페이지 이용약관보기
 </button>
 <div class="collapse" id="use_agreement_collaps">
 <div class="card card-body">
 <div  style="background-color: #fcfcfc; border: 1px solid #ccc; width: 100%; height: 200px; padding: 8px; font-color: #e3e3e3; overflow: auto;">
-
+<h2>CMS 출금이체 약관</h2>
+<ol start='' >
+<li>위의 본인(예금주)이 납부하여야 할 요금에 대하여 별도의 통지 없이 본인의 지정출금계좌에서 수납기관이 정한 지정 출금일(휴일인경우 익영업일)에 출금대체 납부하여 주십시오.</li>
+<li>출금이체를 위하여 지정출금계좌의 예금을 출금하는 경우에는 예금약관이나 약정서의 규정에 불구하고 예금청구서나 수표 없이출금이체 처리절차에 의하여 출금하여도 이의가 없습니다.</li>
+<li>출금이체 지정계좌의 예금잔액(자동대출약정이 있는 경우 대출한도 포함)이 지정 출금일 현재 수납기관의 청구금액보다 부족하거나,예금의 지급제한 또는 약정대출의 연체 등으로 대체납부가 불가능한 경우의 손해는 본인의 책임으로 하겠습니다.</li>
+<li>지정출금일에 동일한 수종의 출금이체청구가 있는 경우의 출금우선순위는 출금은행이 정하는 바에 따르도록 하겠습니다.</li>
+<li>출금이체 신규신청에 의한 이체개시일은 수납기관의 사정에 의하여 결정됩니다.</li>
+<li>출금이체신청(신규, 해지)은 해당납기일 30일전까지 신청서를 제출하여야 합니다.</li>
+<li>출금이체 신청에 의한 지정계좌에서의 출금은 수납기관의 청구대로 출금키로 하며 출금요금에 이의가 있는 경우에는 본인과 수납기관이 협의하여 조정키로 합니다.</li>
+<li>출금이체금액은 해당 지정출금일 은행 영업시간 내에 입금된 예금(지정출금일에 입금된 타점권은 제외)에 한하여 출금처리 됩니다.</li>
+<li>이 약관은 신청서를 수납기관에 직접 제출하여 출금이체를 신청한 경우에도 적용합니다.</li>
+</ol>
 <h2 id="inb-홈페이지-이용약관">INB 홈페이지 이용약관</h2>
 
 <p><strong>제 1조 약관의 목적</strong> </p>
@@ -362,6 +409,28 @@
 <div class="collapse" id="privacy_policy_statement">
 <div class="card card-body">
 <div  style="background-color: #fcfcfc; border: 1px solid #ccc; width: 100%; height: 200px; padding: 8px; font-color: #e3e3e3; overflow: auto;">
+
+<h2>개인정보 수집 및 이용동의</h2>
+<ol start='' >
+<li>수집 및 이용목적 : 나이스페이먼츠(주) 자동이체서비스를 통한 요금 수납, 민원처리 및 상담요청 응답</li>
+<li>수집항목 : 성명, 전화번호, 휴대폰번호, 은행명, 계좌번호, 예금주명, 예금주 주민번호앞6자리, 이메일</li>
+<li>보유 및 이용기간 : 수집 이용 동의일부터 자동이체서비스 종료일(해지일)까지며, 보유는 해지일로부터 5년간 보존 후 파기(관계 법령에 의거)</li>
+<li>신청자는 개인정보 수집 및 이용을 거부할 수 있습니다. 단, 거부시 자동이체서비스 신청이 처리되지 않습니다.</li>
+</ol>
+
+<h2>개인정보 취급 위탁</h2>
+<ol start='' >
+<li>결제(자동이체)서비스를 통한 요금 수납, 관련 민원처리 및 상담요청 응답을 위하여 개인정보 취급 업무를 나이스페이먼츠(주)에 위탁·운영하고 있습니다.</li>
+<li>위탁 계약 시 개인정보보호를 위해 위탁업무 수행 목적 외 개인정보 처리 금지, 기술적·관리적 보호조치, 위탁업무의 목적 및 범위, 재위탁 제한, 개인정보에 대한 접근 제한 등 안전성 확보 조치, 위탁업무와 관련하여 보유하고 있는 개인정보의 관리 현황 점검 등 감
+독에 관한 사항 등을 명확히 규정한 계약을 서면 보관하고 있습니다.</li>
+<li>위탁 업체가 변경될 경우, 변경된 업체 명을 인터넷홈페이지, SMS, 전자우편, 서면, 모사전송 등의 방법으로 공개하겠습니다.</li>
+</ol>
+
+<h2>문자(SMS)발송 동의</h2>
+<ol start='' >
+<li>자동이체 동의 및 처리결과 안내(휴대폰 문자전송)송부에 동의합니다.</li>
+</ol>
+
 <h2 id="inb-개인정보-처리방침-1">INB 개인정보 처리방침</h2>
 
 <p><strong>1. 수집하는 개인정보 항목 및 수집방법</strong></p>

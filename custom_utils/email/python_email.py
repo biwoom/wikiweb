@@ -1,7 +1,7 @@
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 from email.mime.image import MIMEImage
-from custom_utils.basic_info import EMAIL_HOST, EMAIL_HOST_USER, EMAIL_HOST_PASSWORD, EMAIL_PORT, EMAIL_HOST_NAME
+from custom_utils.basic_info import EMAIL_HOST, EMAIL_HOST_USER, EMAIL_HOST_PASSWORD, EMAIL_PORT, EMAIL_HOST_NAME, SERVER_DOMAIN
 import smtplib
 import os
 from django.template.loader import render_to_string
@@ -164,7 +164,7 @@ class EmailSender:
 
 # 후원용 이메일 클래스
 class EmailSenderDonate:
-    def __init__(self, member_name, real_name, birth, phone, mobile, to_member_email, addess, amount_of_donation, donation_message, bank, bank_num, bank_owner, bank_division):
+    def __init__(self, member_name, real_name, birth, phone, mobile, to_member_email, addess, amount_of_donation, donation_message, bank, bank_num, bank_owner, bank_division, withdrawal_date, signature_url):
         self.host = EMAIL_HOST
         self.port = EMAIL_PORT
         self.admin_email = EMAIL_HOST_USER
@@ -185,6 +185,8 @@ class EmailSenderDonate:
         self.bank_num = bank_num
         self.bank_owner = bank_owner
         self.bank_division = bank_division
+        self.withdrawal_date = withdrawal_date
+        self.signature_url = signature_url
 
 # 2. 정기후원 이메일
     def email_regular_donation(self):
@@ -212,6 +214,8 @@ class EmailSenderDonate:
             bank_num = self.bank_num
             bank_owner = self.bank_owner
             bank_division = self.bank_division
+            withdrawal_date = self.withdrawal_date
+            signature_url =  "http://"+SERVER_DOMAIN+self.signature_url
         
             subject = '정기 후원신청'
             
@@ -235,11 +239,13 @@ class EmailSenderDonate:
                  <p> 결제계좌 : %s </p>
                  <p> 예금주 : %s </p>
                  <p> 예금주 구분 : %s </p>
+                 <p> 출금일 : %s </p>
+                 <p> 서명 : %s </p>
                  <hr>
                  <p> 이 이메일은 나란다불교학술원의 정기 후원신청 이메일입니다.</p>
               </body>
             </html>
-            """% (sender, sender_email, subject, real_name, birth, phone, mobile, addess, amount_of_donation, donation_message, bank, bank_num, bank_owner, bank_division)
+            """% (sender, sender_email, subject, real_name, birth, phone, mobile, addess, amount_of_donation, donation_message, bank, bank_num, bank_owner, bank_division, withdrawal_date, signature_url)
             
             part1 = MIMEText(html, 'html')
             

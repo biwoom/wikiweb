@@ -24,6 +24,7 @@ from django.utils.safestring import mark_safe
 from django.utils.text import capfirst
 from django.utils.translation import ugettext, ugettext_lazy as _
 from django.core.validators import RegexValidator
+from jsignature.forms import JSignatureField
 
 BANK_CHOICES= [
     ('국민', '국민'),('농협', '농협'),('우리', '우리'),('신한', '신한'),('하나', '하나'), ('새마을', '새마을'),('우체국', '우체국'),('수협', '수협'),
@@ -33,6 +34,10 @@ BANK_CHOICES= [
 BANK_DIVISION= [
     ('개인', '개인'),('법인', '법인')
     ]    
+WITHDRAWAL_DATE= [
+    ('20일', '20일'),('27일', '27일')
+    ] 
+BOOL_CHOICES = ((None, '선택'), (True, '동의합니다.'), (False, '동의하지 않습니다.'))  
 
 class CommentForm(forms.Form):
     name = forms.CharField(label='Your name')
@@ -50,12 +55,15 @@ class Regular_donation_Form(forms.Form):
     addess = forms.CharField(label='*주소 (필수)', help_text='(필수)', required=True)
     amount_of_donation = forms.CharField(label='*후원금액 (필수)', help_text='(5,000원 이상부터 후원하실 수 있습니다.)', required=True)
     donation_message = forms.CharField(label='의견사항 (선택)', help_text='(선택)', widget=forms.Textarea(attrs={'height':200, 'cols' : 10, 'rows': 5 }), required=False)
-    use_agreement = forms.BooleanField(label='*이용약관에 동의합니다. (필수)', help_text='(필수)')
-    privacy_policy_statement = forms.BooleanField(label='*개인정보처리방침에 동의합니다. (필수)', help_text='(필수)')
-    bank = forms.CharField(label='*신청계좌 거래은행 (필수)', widget=forms.Select(choices=BANK_CHOICES))
-    bank_num = forms.CharField(label='*출금계좌번호 (필수)', help_text='숫자만 입력하세요. 예)01012345678', required=True)
+    # use_agreement = forms.BooleanField(label='*CMS출금이체 및 홈페이지 이용약관 동의합니다. (필수)', help_text='(필수)')
+    use_agreement = forms.BooleanField(label='*CMS출금이체 및 홈페이지 이용약관 동의합니다. (필수)', help_text='(필수)', widget=forms.Select(choices=BOOL_CHOICES))
+    # privacy_policy_statement = forms.BooleanField(label='*개인정보처리방침에 동의합니다. (필수)', help_text='(필수)')
+    privacy_policy_statement = forms.BooleanField(label='*개인정보처리방침에 동의합니다. (필수)', help_text='(필수)', widget=forms.Select(choices=BOOL_CHOICES))
+    bank = forms.CharField(label='*신청계좌 거래은행 (필수)', required=True, widget=forms.Select(choices=BANK_CHOICES))
+    bank_num = forms.CharField(label='*출금계좌번호 (필수)', help_text='(휴대폰번호 계좌번호는 이용불가)', required=True)
     bank_owner = forms.CharField(label='*예금주명 (필수)', help_text='', required=True)
-    bank_division = forms.CharField(label='*예금주 구분 (필수)', help_text='(필수)', widget=forms.Select(choices=BANK_DIVISION))
+    bank_division = forms.CharField(label='*예금주 구분 (필수)', help_text='(필수)', required=True, widget=forms.Select(choices=BANK_DIVISION))
+    withdrawal_date = forms.CharField(label='*출금일 (필수)', required=True, widget=forms.Select(choices=WITHDRAWAL_DATE))
 
 # 회원 to 관리자 문의 이메일
 class Contact_us_Form(forms.Form):

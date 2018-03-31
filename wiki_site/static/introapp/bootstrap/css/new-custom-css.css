@@ -3497,6 +3497,6 @@ blockquote>p>code{
 /* ---------------------------------------------- /*
  * 후원페이지 폼  css
 /* ---------------------------------------------- */   
-select[id="id_bank"], select[id="id_bank_division"]{
+select[id="id_bank"], select[id="id_bank_division"],select[id="id_withdrawal_date"],select[id="id_use_agreement"],select[id="id_privacy_policy_statement"]{
   width: 100% !important;
 }

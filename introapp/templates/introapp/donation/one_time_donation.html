@@ -1,6 +1,8 @@
 {% extends 'introapp/donation/donation_base.html' %}
 {% load staticfiles %}
 {% block content %}
+
+{{ form.media }}
 <!-- Page Preloader -->
 <!--<div class="preloader_1">-->
 <!--    <div class="status_1">-->
@@ -9,6 +11,8 @@
 <!--</div>  -->
 
 <!--이메일 인증 성공 -->
+
+
   {% if success_msg %}
   <div class="row">
   <div class="alert alert-success" role="alert">
@@ -80,6 +84,7 @@
   <div class="col-md-2"></div>  
   
   <div class="donation_custom_form col-md-8">
+  
     <h2>후원하기<small>donation</small></h2>
     <fieldset>
       <div class="form-group row">  
@@ -480,7 +485,6 @@
 <!--row-->
   
  
-  
-  
+   
   
 {% endblock %}

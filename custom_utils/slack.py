@@ -102,7 +102,7 @@ class SlackBot:
     
 # 후원용 슬랙
 class SlackBotDonate:
-    def __init__(self, member_name, real_name, birth, phone, mobile, to_member_email, addess, amount_of_donation, donation_message, bank, bank_num, bank_owner, bank_division):
+    def __init__(self, member_name, real_name, birth, phone, mobile, to_member_email, addess, amount_of_donation, donation_message, bank, bank_num, bank_owner, bank_division, withdrawal_date, signature_url):
         self.token = SLACK_TOKEN
         
         self.member_name = member_name
@@ -118,6 +118,8 @@ class SlackBotDonate:
         self.bank_num = bank_num
         self.bank_owner = bank_owner
         self.bank_division = bank_division
+        self.withdrawal_date = withdrawal_date
+        self.signature_url = signature_url
         
     def slack_regular_donation_notify(self):
         token = self.token
@@ -134,6 +136,8 @@ class SlackBotDonate:
         bank_num = self.bank_num
         bank_owner = self.bank_owner
         bank_division = self.bank_division
+        withdrawal_date = self.withdrawal_date
+        signature_url =  "http://"+SERVER_DOMAIN+self.signature_url
     
         # 슬랙 알림
         text = 'INB 정기후원 신청'
@@ -208,6 +212,16 @@ class SlackBotDonate:
                 {
                     "title": '예금주 구분',
                     "value": bank_division,
+                    "short": True
+                },
+                {
+                    "title": '출금일',
+                    "value": withdrawal_date,
+                    "short": True
+                },
+                {
+                    "title": '서명',
+                    "value": signature_url,
                     "short": True
                 }
             ]

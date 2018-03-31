@@ -15,6 +15,11 @@
 	<!--<link href="{% static "introapp/bootstrap/css/bootstrap-4.min.css" %}" rel="stylesheet">-->
     <!--<link href="{% static "introapp/bootstrap/css/introapp-custom-css.css" %}" rel="stylesheet">-->
     
+    <link rel="stylesheet" href="{% static "introapp/css/signature-pad.css" %}">
+    <!--[if IE]>
+    <link rel="stylesheet" type="text/css" href="{% static "introapp/css/ie9.css" %}">
+    <![endif]-->
+    
   <title>INB Intro</title>
 
   </head>
@@ -115,5 +120,8 @@
     <!-- Optionally enable responsive features in IE8 -->
     <script src="{% static "introapp/js/respond.min.js" %}"></script>
     <script src="{% static "introapp/js/loader.js" %}"></script>
+    <script src="{% static "introapp/js/signature_pad.umd.js" %}"></script>
+    <script src="{% static "introapp/js/signature_pad.app.js" %}"></script>
+    <script src="{% static "introapp/js/sign-save.js" %}"></script>
     </body>
 </html>

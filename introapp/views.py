@@ -38,7 +38,8 @@ from django.contrib.auth.decorators import login_required
 from custom_utils.slack import SlackBot, SlackBotDonate
 from custom_utils.email.python_email import EmailSender, EmailSenderDonate
 from custom_utils.basic_info import SERVER_DOMAIN
-    
+import base64    
+import os
 
 # 홈2 - new
 def inb_home(request):
@@ -50,17 +51,70 @@ def inb_intro(request):
     
 # 일시 후원
 def one_time_donation(request):
-    return render(request, 'introapp/donation/one_time_donation.html') 
-    
+    return render(request, 'introapp/donation/one_time_donation.html')
+
+signature_url = '/'
 # 정기후원    
-def regular_donation(request):
+def regular_donation(request):  
+    # if request.is_ajax():
+    #     try:
+    #         data_uri= request.body
+            
+    #         if data_uri:
+    #             encoded_image = data_uri.decode('utf8').split(',')[1]
+    #             donor_name = data_uri.decode('utf8').split(',')[2]
+    #             decoded_image = base64.b64decode(encoded_image)
+    #             PROJECT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    #             DIRECTORY_NAME = PROJECT_DIR + '/wiki_site/media/signature/'
+    #             if not(os.path.isdir(DIRECTORY_NAME)):
+    #                 os.makedirs(os.path.join(DIRECTORY_NAME))
+    #             date = str(timezone.now())
+    #             image_name = donor_name + '-' +date + "-signature.png"
+    #             filepath = os.path.join(DIRECTORY_NAME, image_name)
+    #             image_result = open(filepath, 'wb')
+    #             image_result.write(decoded_image)
+    #             image_result.close()
+    #             return HttpResponse('save_ok')
+    #     except KeyError:
+    #         return HttpResponse('error') # Incorrect Post
+    #     return HttpResponse('None')
+    
     if request.method == "POST":
+        
+        if request.is_ajax():
+            try:
+                data_uri= request.body
+                if data_uri:
+                    encoded_image = data_uri.decode('utf8').split(',')[1]
+                    donor_name = data_uri.decode('utf8').split(',')[2]
+                    decoded_image = base64.b64decode(encoded_image)
+                    PROJECT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+                    DIRECTORY_NAME = PROJECT_DIR + '/wiki_site/media/signature/'
+                    if not(os.path.isdir(DIRECTORY_NAME)):
+                        os.makedirs(os.path.join(DIRECTORY_NAME))
+                    date = str(timezone.now())
+                    image_name_1 = donor_name + '-' +date + "-signature.png"
+                    image_name = image_name_1.replace(' ','-')
+                    global signature_url
+                    if signature_url:
+                        signature_url = '/'
+                    signature_url = '/media/signature/' + image_name
+                    filepath = os.path.join(DIRECTORY_NAME, image_name)
+                    image_result = open(filepath, 'wb')
+                    image_result.write(decoded_image)
+                    image_result.close()
+                    return HttpResponse('save_ok')
+            except KeyError:
+                return HttpResponse('error') # Incorrect Post
+            return HttpResponse('None')
+        
         form = Regular_donation_Form(request.POST, request.FILES or None)
         if form.is_valid():
             if request.user.is_authenticated:
                 member_name = request.user.username
             else:
                 member_name = "비회원"
+                
             real_name = form.cleaned_data.get("name")
             birth = form.cleaned_data.get("birth")
             phone = form.cleaned_data.get("phone")
@@ -73,21 +127,22 @@ def regular_donation(request):
             bank_num = form.cleaned_data.get("bank_num")
             bank_owner = form.cleaned_data.get("bank_owner")
             bank_division = form.cleaned_data.get("bank_division")
+            withdrawal_date = form.cleaned_data.get("withdrawal_date")
             
             success_msg = '''
             정기 후원신청 이메일이 성공적으로 발송되었습니다.
-            추후 본인 확인을 위해 전화를 통한 확인 및 녹취 과정이 진행됩니다. 후원신청을 해주셔서 대단히 감사드립니다.
+            신청하신 정보를 확인 후 계좌 자동이체를 신청합니다. 후원신청을 해주셔서 대단히 감사드립니다.
             '''
             fail_msg = '''
             후원신청 이메일 발송에 실패했습니다. 차후에 다시 시도해 주세요.
             '''
             try:
                 #슬랙 알림
-                slack = SlackBotDonate(member_name, real_name, birth, phone, mobile, to_member_email, addess, amount_of_donation, donation_message, bank, bank_num, bank_owner, bank_division)
+                slack = SlackBotDonate(member_name, real_name, birth, phone, mobile, to_member_email, addess, amount_of_donation, donation_message, bank, bank_num, bank_owner, bank_division, withdrawal_date, signature_url)
                 slack.slack_regular_donation_notify()
                 
                 #이메일 알림
-                send = EmailSenderDonate(member_name, real_name, birth, phone, mobile, to_member_email, addess, amount_of_donation, donation_message, bank, bank_num, bank_owner, bank_division)
+                send = EmailSenderDonate(member_name, real_name, birth, phone, mobile, to_member_email, addess, amount_of_donation, donation_message, bank, bank_num, bank_owner, bank_division, withdrawal_date, signature_url)
                 send.email_regular_donation()
 
             except IOError:

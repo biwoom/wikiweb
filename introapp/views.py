@@ -104,7 +104,7 @@ def regular_donation(request):
             bank_division = form.cleaned_data.get("bank_division")
             withdrawal_date = form.cleaned_data.get("withdrawal_date")
             date = str(timezone.now())
-            image_name_1 = to_member_email + '-' +date + "-signature.png"
+            image_name_1 = real_name + '-' +date + "-signature.png"
             image_name = image_name_1.replace(' ','-')
             global signature_url
             signature_url = '/media/signature/' + image_name

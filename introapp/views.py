@@ -66,7 +66,7 @@ def regular_donation(request):
                 donor_name = data_uri.decode('utf8').split(',')[2]
                 decoded_image = base64.b64decode(encoded_image)
                 PROJECT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-                DIRECTORY_NAME = PROJECT_DIR + '/wiki_site/media/signature/'
+                DIRECTORY_NAME = PROJECT_DIR + '/wiki_site/media/introapp/signature/'
                 if not(os.path.isdir(DIRECTORY_NAME)):
                     os.makedirs(os.path.join(DIRECTORY_NAME))
                 date = str(timezone.now())
@@ -107,7 +107,7 @@ def regular_donation(request):
             image_name_1 = real_name + '-' + date 
             image_name = image_name_1.replace(' ','-').replace(':','-').replace('.','-').replace('+','-') + "-signature.png"
             global signature_url
-            signature_url = '/media/signature/' + image_name
+            signature_url = '/media/introapp/signature/' + image_name
             
             success_msg = '''
             정기 후원신청 이메일이 성공적으로 발송되었습니다.

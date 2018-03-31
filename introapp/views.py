@@ -57,33 +57,32 @@ def one_time_donation(request):
 time = ''
 # 정기후원    
 def regular_donation(request):  
-
-    if request.is_ajax():
-        try:
-            data_uri= request.body
-            if data_uri:
-                encoded_image = data_uri.decode('utf8').split(',')[1]
-                donor_name = data_uri.decode('utf8').split(',')[2]
-                decoded_image = base64.b64decode(encoded_image)
-                PROJECT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-                DIRECTORY_NAME = PROJECT_DIR + '/wiki_site/media/signature/'
-                if not(os.path.isdir(DIRECTORY_NAME)):
-                    os.makedirs(os.path.join(DIRECTORY_NAME))
-                global time
-                if not time:
-                    time = str(timezone.now())
-                image_name_1 = donor_name + '-' + time 
-                image_name = image_name_1.replace(' ','-') + "-signature.png"
-                filepath = os.path.join(DIRECTORY_NAME, image_name)
-                image_result = open(filepath, 'wb')
-                image_result.write(decoded_image)
-                image_result.close()
-                return HttpResponse('save_ok')
-        except KeyError:
-            return HttpResponse('error')
-        return HttpResponse('None')
-            
+         
     if request.method == "POST":
+        if request.is_ajax():
+            try:
+                data_uri= request.body
+                if data_uri:
+                    encoded_image = data_uri.decode('utf8').split(',')[1]
+                    donor_name = data_uri.decode('utf8').split(',')[2]
+                    decoded_image = base64.b64decode(encoded_image)
+                    PROJECT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+                    DIRECTORY_NAME = PROJECT_DIR + '/wiki_site/media/signature/'
+                    if not(os.path.isdir(DIRECTORY_NAME)):
+                        os.makedirs(os.path.join(DIRECTORY_NAME))
+                    global time
+                    if not time:
+                        time = str(timezone.now())
+                    image_name_1 = donor_name + '-' + time 
+                    image_name = image_name_1.replace(' ','-') + "-signature.png"
+                    filepath = os.path.join(DIRECTORY_NAME, image_name)
+                    image_result = open(filepath, 'wb')
+                    image_result.write(decoded_image)
+                    image_result.close()
+                    return HttpResponse('save_ok')
+            except KeyError:
+                return HttpResponse('error')
+            return HttpResponse('None')  
         
         form = Regular_donation_Form(request.POST, request.FILES or None)
         if form.is_valid():

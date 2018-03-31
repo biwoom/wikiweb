@@ -62,15 +62,16 @@ def regular_donation(request):
                 data_uri= request.body
                 if data_uri:
                     encoded_image = data_uri.decode('utf8').split(',')[1]
-                    donor_name = data_uri.decode('utf8').split(',')[2]
-                    donor_email = data_uri.decode('utf8').split(',')[3]
+                    # donor_name = data_uri.decode('utf8').split(',')[2]
+                    donor_email = data_uri.decode('utf8').split(',')[2]
                     global decoded_image
                     decoded_image = base64.b64decode(encoded_image)
                     PROJECT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
                     DIRECTORY_NAME = PROJECT_DIR + '/wiki_site/media/signature/'
                     if not(os.path.isdir(DIRECTORY_NAME)):
                         os.makedirs(os.path.join(DIRECTORY_NAME))
-                    image_name_1 = donor_name +'-'+ donor_email +'-'+date+'-'+ "-signature.png"
+                    # image_name_1 = donor_name +'-'+ donor_email +'-'+date+'-'+ "-signature.png"
+                    image_name_1 = donor_email +'-'+date+'-'+ "-signature.png"
                     image_name = image_name_1.replace(' ','>') 
                     filepath = os.path.join(DIRECTORY_NAME, image_name)
                     image_result = open(filepath, 'wb')
@@ -103,8 +104,8 @@ def regular_donation(request):
             withdrawal_date = form.cleaned_data.get("withdrawal_date")
             global date
             date = str(timezone.now())
-            # image_name = to_member_email + "-signature.png"
-            image_name_1 = real_name +'-'+ to_member_email +'-'+date+'-'+ "-signature.png"
+            image_name_1 = to_member_email +'-'+date+'-'+ "-signature.png"
+            # image_name_1 = real_name +'-'+ to_member_email +'-'+date+'-'+ "-signature.png"
             image_name = image_name_1.replace(' ','>')
             signature_url = '/media/signature/' + image_name
             

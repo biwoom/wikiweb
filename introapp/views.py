@@ -53,7 +53,7 @@ def inb_intro(request):
 def one_time_donation(request):
     return render(request, 'introapp/donation/one_time_donation.html')
 
-signature_url = '/'
+signature_url = ''
 # 정기후원    
 def regular_donation(request):  
     # if request.is_ajax():
@@ -97,7 +97,7 @@ def regular_donation(request):
                     image_name = image_name_1.replace(' ','-')
                     global signature_url
                     if signature_url:
-                        signature_url = '/'
+                        signature_url = ''
                     signature_url = '/media/signature/' + image_name
                     filepath = os.path.join(DIRECTORY_NAME, image_name)
                     image_result = open(filepath, 'wb')

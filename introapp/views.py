@@ -52,8 +52,7 @@ def inb_intro(request):
 # 일시 후원
 def one_time_donation(request):
     return render(request, 'introapp/donation/one_time_donation.html')
-
-
+date = ''
 # 정기후원    
 def regular_donation(request):  
     
@@ -64,15 +63,15 @@ def regular_donation(request):
                 if data_uri:
                     encoded_image = data_uri.decode('utf8').split(',')[1]
                     donor_name = data_uri.decode('utf8').split(',')[2]
-                    # donor_email = data_uri.decode('utf8').split(',')[3]
+                    donor_email = data_uri.decode('utf8').split(',')[3]
                     global decoded_image
                     decoded_image = base64.b64decode(encoded_image)
                     PROJECT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
                     DIRECTORY_NAME = PROJECT_DIR + '/wiki_site/media/signature/'
                     if not(os.path.isdir(DIRECTORY_NAME)):
                         os.makedirs(os.path.join(DIRECTORY_NAME))
-                    image_name = donor_name + '-' + "-signature.png"
-                    # image_name = image_name_1.replace(' ','-') 
+                    image_name_1 = donor_name +'-'+ donor_email +'-'+date+'-'+ "-signature.png"
+                    image_name = image_name_1.replace(' ','>') 
                     filepath = os.path.join(DIRECTORY_NAME, image_name)
                     image_result = open(filepath, 'wb')
                     image_result.write(decoded_image)
@@ -102,8 +101,11 @@ def regular_donation(request):
             bank_owner = form.cleaned_data.get("bank_owner")
             bank_division = form.cleaned_data.get("bank_division")
             withdrawal_date = form.cleaned_data.get("withdrawal_date")
-            
-            image_name = real_name + '-' + "-signature.png"
+            global date
+            date = str(timezone.now())
+            # image_name = to_member_email + "-signature.png"
+            image_name_1 = real_name +'-'+ to_member_email +'-'+date+'-'+ "-signature.png"
+            image_name = image_name_1.replace(' ','>')
             signature_url = '/media/signature/' + image_name
             
             success_msg = '''

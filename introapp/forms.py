@@ -24,7 +24,6 @@ from django.utils.safestring import mark_safe
 from django.utils.text import capfirst
 from django.utils.translation import ugettext, ugettext_lazy as _
 from django.core.validators import RegexValidator
-from jsignature.forms import JSignatureField
 
 BANK_CHOICES= [
     ('국민', '국민'),('농협', '농협'),('우리', '우리'),('신한', '신한'),('하나', '하나'), ('새마을', '새마을'),('우체국', '우체국'),('수협', '수협'),

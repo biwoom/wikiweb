@@ -53,9 +53,8 @@ def inb_intro(request):
 def one_time_donation(request):
     return render(request, 'introapp/donation/one_time_donation.html')
 
-signature_url = '/'
-image_name = '/'
-signature_datetime = str(timezone.now())
+
+time = ''
 # 정기후원    
 def regular_donation(request):  
 
@@ -70,7 +69,10 @@ def regular_donation(request):
                 DIRECTORY_NAME = PROJECT_DIR + '/wiki_site/media/signature/'
                 if not(os.path.isdir(DIRECTORY_NAME)):
                     os.makedirs(os.path.join(DIRECTORY_NAME))
-                image_name_1 = donor_name + '-' + signature_datetime 
+                global time
+                if not time:
+                    time = str(timezone.now())
+                image_name_1 = donor_name + '-' + time 
                 image_name = image_name_1.replace(' ','-') + "-signature.png"
                 filepath = os.path.join(DIRECTORY_NAME, image_name)
                 image_result = open(filepath, 'wb')
@@ -103,10 +105,11 @@ def regular_donation(request):
             bank_owner = form.cleaned_data.get("bank_owner")
             bank_division = form.cleaned_data.get("bank_division")
             withdrawal_date = form.cleaned_data.get("withdrawal_date")
-            
-            image_name_1 = real_name + '-' + signature_datetime 
+            global time
+            if not time:
+                time = str(timezone.now())
+            image_name_1 = real_name + '-' + time 
             image_name = image_name_1.replace(' ','-') + "-signature.png"
-            global signature_url
             signature_url = '/media/signature/' + image_name
             
             success_msg = '''

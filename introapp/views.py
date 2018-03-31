@@ -54,35 +54,59 @@ def one_time_donation(request):
     return render(request, 'introapp/donation/one_time_donation.html')
 
 signature_url = '/'
+image_name = '/'
 # 정기후원    
 def regular_donation(request):  
+    # if request.is_ajax():
+    #         try:
+    #             data_uri= request.body
+    #             if data_uri:
+    #                 encoded_image = data_uri.decode('utf8').split(',')[1]
+    #                 donor_name = data_uri.decode('utf8').split(',')[2]
+    #                 decoded_image = base64.b64decode(encoded_image)
+    #                 PROJECT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    #                 DIRECTORY_NAME = PROJECT_DIR + '/wiki_site/media/signature/'
+    #                 if not(os.path.isdir(DIRECTORY_NAME)):
+    #                     os.makedirs(os.path.join(DIRECTORY_NAME))
+    #                 date = str(timezone.now())
+    #                 image_name_1 = donor_name + '-' +date + "-signature.png"
+    #                 image_name = image_name_1.replace(' ','-')
+    #                 global signature_url
+    #                 signature_url = '/media/signature/' + image_name
+    #                 filepath = os.path.join(DIRECTORY_NAME, image_name)
+    #                 image_result = open(filepath, 'wb')
+    #                 image_result.write(decoded_image)
+    #                 image_result.close()
+    #                 return HttpResponse('save_ok')
+    #         except KeyError:
+    #             return HttpResponse('error') # Incorrect Post
+    #         return HttpResponse('None')
     if request.is_ajax():
-            try:
-                data_uri= request.body
-                if data_uri:
-                    encoded_image = data_uri.decode('utf8').split(',')[1]
-                    donor_name = data_uri.decode('utf8').split(',')[2]
-                    decoded_image = base64.b64decode(encoded_image)
-                    PROJECT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-                    DIRECTORY_NAME = PROJECT_DIR + '/wiki_site/media/signature/'
-                    if not(os.path.isdir(DIRECTORY_NAME)):
-                        os.makedirs(os.path.join(DIRECTORY_NAME))
-                    date = str(timezone.now())
-                    image_name_1 = donor_name + '-' +date + "-signature.png"
-                    image_name = image_name_1.replace(' ','-')
-                    global signature_url
-                    signature_url = '/media/signature/' + image_name
-                    filepath = os.path.join(DIRECTORY_NAME, image_name)
-                    image_result = open(filepath, 'wb')
-                    image_result.write(decoded_image)
-                    image_result.close()
-                    return HttpResponse('save_ok')
-            except KeyError:
-                return HttpResponse('error') # Incorrect Post
-            return HttpResponse('None')
-    
+        try:
+            data_uri= request.body
+            if data_uri:
+                encoded_image = data_uri.decode('utf8').split(',')[1]
+                donor_name = data_uri.decode('utf8').split(',')[2]
+                decoded_image = base64.b64decode(encoded_image)
+                PROJECT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+                DIRECTORY_NAME = PROJECT_DIR + '/wiki_site/media/signature/'
+                if not(os.path.isdir(DIRECTORY_NAME)):
+                    os.makedirs(os.path.join(DIRECTORY_NAME))
+                date = str(timezone.now())
+                image_name_1 = donor_name + '-' +date + "-signature.png"
+                global image_name
+                image_name = image_name_1.replace(' ','-')
+                filepath = os.path.join(DIRECTORY_NAME, image_name)
+                image_result = open(filepath, 'wb')
+                image_result.write(decoded_image)
+                image_result.close()
+                return HttpResponse('save_ok')
+        except KeyError:
+            return HttpResponse('error') # Incorrect Post
+        return HttpResponse('None')
+            
     if request.method == "POST":
-        
+ 
         # if request.is_ajax():
         #     try:
         #         data_uri= request.body
@@ -96,9 +120,8 @@ def regular_donation(request):
         #                 os.makedirs(os.path.join(DIRECTORY_NAME))
         #             date = str(timezone.now())
         #             image_name_1 = donor_name + '-' +date + "-signature.png"
+        #             global image_name
         #             image_name = image_name_1.replace(' ','-')
-        #             global signature_url
-        #             signature_url = '/media/signature/' + image_name
         #             filepath = os.path.join(DIRECTORY_NAME, image_name)
         #             image_result = open(filepath, 'wb')
         #             image_result.write(decoded_image)
@@ -128,6 +151,8 @@ def regular_donation(request):
             bank_owner = form.cleaned_data.get("bank_owner")
             bank_division = form.cleaned_data.get("bank_division")
             withdrawal_date = form.cleaned_data.get("withdrawal_date")
+            global signature_url
+            signature_url = '/media/signature/' + image_name
             
             success_msg = '''
             정기 후원신청 이메일이 성공적으로 발송되었습니다.

@@ -65,7 +65,7 @@ def regular_donation(request):
                     data = data_uri.decode('utf8').split(',')
                     encoded_image = data[1]
                     donor_name = data[2]
-                    donor_mobile = data[3]
+                    # donor_mobile = data[3]
                     # encoded_image = data_uri.decode('utf8').split(',')[1]
                     # donor_name = data_uri.decode('utf8').split(',')[2]
                     # donor_mobile = data_uri.decode('utf8').split(',')[3]
@@ -74,8 +74,8 @@ def regular_donation(request):
                     DIRECTORY_NAME = PROJECT_DIR + '/wiki_site/media/signature/'
                     if not(os.path.isdir(DIRECTORY_NAME)):
                         os.makedirs(os.path.join(DIRECTORY_NAME))
-                    image_name_1 = donor_name +'-'+ donor_mobile +'-'+ "signature.png"
-                    # image_name_1 = donor_name +'-'+date+'-'+ "signature.png"
+                    # image_name_1 = donor_name +'-'+ donor_mobile +'-'+ "signature.png"
+                    image_name_1 = donor_name + '-'+ "signature.png"
                     image_name = image_name_1.replace(' ','-') 
                     filepath = os.path.join(DIRECTORY_NAME, image_name)
                     image_result = open(filepath, 'wb')
@@ -107,7 +107,7 @@ def regular_donation(request):
             bank_division = form.cleaned_data.get("bank_division")
             withdrawal_date = form.cleaned_data.get("withdrawal_date")
             
-            image_name_1 = real_name +'-'+mobile+'-'+ "signature.png"
+            image_name_1 = real_name +'-'+ "signature.png"
             # image_name_1 = real_name +'-'+ to_member_email +'-'+date+'-'+ "-signature.png"
             image_name = image_name_1.replace(' ','-')
             signature_url = '/media/signature/' + image_name

@@ -6,12 +6,13 @@
     <!--이메일 발송 성공 -->
     {% if success_msg %}
      <div class="jumbotron">
-         <h2 class="display-3">감사합니다. </h2>
+         <h2 class="display-3">{{ real_name }} 님, 감사합니다. </h2>
          <div class="alert alert-dismissible alert-success">
          <p><small>{{ success_msg }}</small></p>
          </div>
-     <hr>
+     
         {% if not user.is_authenticated %}
+        <hr>
         <div>
         <a class="d-table ml-auto mr-auto mt-4" href="/signup">
         <strong>아직 회원가입 전이시군요. 학술원 웹싸이트에 가입하시면 다양한 혜택이 있습니다. </strong>
@@ -25,7 +26,7 @@
     <!--이메일 발송 실패 -->
     {% if fail_msg %}
      <div class="jumbotron">
-     <h2 class="display-3">죄송합니다. </h2>
+     <h2 class="display-3">{{ real_name }} 님, 죄송합니다. </h2>
      <div class="alert alert-dismissible alert-success">
      <p><small>{{ fail_msg }}</small></p>
      </div>

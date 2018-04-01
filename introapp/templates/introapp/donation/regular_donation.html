@@ -161,27 +161,7 @@
             {{ form.withdrawal_date }}
             <div style="color: red">{{ form.withdrawal_date.errors }}</div>
           </p>
-          <!--서명필드-->
-          <label for="id_username" style="margin-bottom: -10px;">*서명란 (필수) </label>
-          <div class="signature-pad-container">
-          <div id="signature-pad" class="signature-pad">
-            <div class="signature-pad--body">
-              <canvas></canvas>
-            </div>
-            <div class="signature-pad--footer">
-              <div class="description">서명해 주세요</div>
-        
-              <div class="signature-pad--actions">
-                <div>
-                  <button type="button" class="button clear" data-action="clear">지우기</button>
-                  <button type="button" class="button" data-action="undo">뒤로</button>
-                  <!--<button type="button" class="button_save">저장</button>-->
-                </div>
-                
-              </div>
-            </div>
-           </div>
-           </div>
+
     
           <hr>
           
@@ -212,7 +192,28 @@
             {{ form.privacy_policy_statement }}
             <div style="color: red">{{ form.privacy_policy_statement.errors }}</div>
           </p>
+          <!--서명필드-->
+          <!--<label for="id_username" style="margin-bottom: -10px;">*서명란 (필수) </label>-->
+          <!--<div class="signature-pad-container">-->
+          <!--<div id="signature-pad" class="signature-pad">-->
+          <!--  <div class="signature-pad--body">-->
+          <!--    <canvas></canvas>-->
+          <!--  </div>-->
+          <!--  <div class="signature-pad--footer">-->
+          <!--    <div class="description">서명해 주세요</div>-->
         
+          <!--    <div class="signature-pad--actions">-->
+          <!--      <div>-->
+          <!--        <button type="button" class="button clear" data-action="clear">지우기</button>-->
+          <!--        <button type="button" class="button" data-action="undo">뒤로</button>-->
+                  <!--<button type="button" class="button_save">저장</button>-->
+          <!--      </div>-->
+                
+          <!--    </div>-->
+          <!--  </div>-->
+          <!-- </div>-->
+          <!-- </div>-->
+           
         <button style="margin-top: 15px; width:100%; margin-left:0 !important;" type="submit" class="btn btn-primary loading button_save">신청하기</button>
         
       </div>

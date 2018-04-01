@@ -55,34 +55,40 @@ def one_time_donation(request):
 
 # 정기후원    
 def regular_donation(request): 
-    # global date
-    # date = str(timezone.now())
+    # if request.is_ajax():
+    #     print("ajax-request")
+    #     try:
+    #         data_uri= request.body
+    #         print("data_uri : " , data_uri)
+    #         if data_uri:
+    #             data = data_uri.decode('utf8').split(',')
+    #             print("data :" , data)
+    #             encoded_image = data[1]
+    #             print("encoded_image :" , encoded_image)
+    #             donor_name = data[2]
+    #             print("donor_name :" , donor_name)
+    #             donor_email = data[3]
+    #             print("donor_email :" , donor_email)
+    #             decoded_image = base64.b64decode(encoded_image)
+    #             print("decoded_image :" , decoded_image)
+    #             PROJECT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    #             DIRECTORY_NAME = PROJECT_DIR + '/wiki_site/media/signature/'
+    #             if not(os.path.isdir(DIRECTORY_NAME)):
+    #                 os.makedirs(os.path.join(DIRECTORY_NAME))
+    #             image_name_1 = donor_name +'-'+ donor_email +'-'+ "signature.png"
+    #             # image_name_1 = donor_email + '-'+ "signature.png"
+    #             image_name = image_name_1.replace(' ','-') 
+    #             filepath = os.path.join(DIRECTORY_NAME, image_name)
+    #             image_result = open(filepath, 'wb')
+    #             image_result.write(decoded_image)
+    #             image_result.close()
+    #             return HttpResponse('save_ok')
+    #     except KeyError:
+    #         return HttpResponse('error')
+    #     return HttpResponse('None')
+            
     if request.method == "POST":
-        if request.is_ajax():
-            try:
-                data_uri= request.body
-                if data_uri:
-                    data = data_uri.decode('utf8').split(',')
-                    encoded_image = data[1]
-                    donor_name = data[2]
-                    donor_email = data[3]
-                    decoded_image = base64.b64decode(encoded_image)
-                    PROJECT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-                    DIRECTORY_NAME = PROJECT_DIR + '/wiki_site/media/signature/'
-                    if not(os.path.isdir(DIRECTORY_NAME)):
-                        os.makedirs(os.path.join(DIRECTORY_NAME))
-                    image_name_1 = donor_name +'-'+ donor_email +'-'+ "signature.png"
-                    # image_name_1 = donor_email + '-'+ "signature.png"
-                    image_name = image_name_1.replace(' ','-') 
-                    filepath = os.path.join(DIRECTORY_NAME, image_name)
-                    image_result = open(filepath, 'wb')
-                    image_result.write(decoded_image)
-                    image_result.close()
-                    return HttpResponse('save_ok')
-            except KeyError:
-                return HttpResponse('error')
-            return HttpResponse('None')  
-        
+       
         form = Regular_donation_Form(request.POST, request.FILES or None)
         if form.is_valid():
             if request.user.is_authenticated:
@@ -110,9 +116,13 @@ def regular_donation(request):
             signature_url = '/media/signature/' + image_name
             
             success_msg = '''
-            정기 후원신청 이메일이 성공적으로 발송되었습니다.
-            신청하신 정보를 확인 후 계좌 자동이체를 신청합니다. 후원신청을 해주셔서 대단히 감사드립니다.
-            '''
+            정기 후원신청 이메일이 성공적으로 발송되었습니다. 
+            \n %s 님이 신청해 주신 후원정보를 확인 후 전화를 통한 본인확인 과정이 완료되면 계좌 자동이체를 신청합니다.
+            \n후원신청을 해주셔서 대단히 감사드립니다.
+            '''% (real_name)
+            
+            
+            
             fail_msg = '''
             후원신청 이메일 발송에 실패했습니다. 차후에 다시 시도해 주세요.
             '''
@@ -128,11 +138,11 @@ def regular_donation(request):
             except IOError:
                 # return HttpResponse('이메일 보내기: 실패')
                 return render(request, 'introapp/donation/donation_complete.html', 
-                         {'form': form, 'fail_msg': fail_msg})
+                         {'form': form, 'fail_msg': fail_msg, 'real_name': real_name })
                 
             # return HttpResponse('이메일 보내기: 성공')
             return render(request, 'introapp/donation/donation_complete.html', 
-                         {'form': form, 'success_msg': success_msg})
+                         {'form': form, 'success_msg': success_msg, 'real_name': real_name,})
     else:
         form = Regular_donation_Form()
     return render(request, 'introapp/donation/regular_donation.html', {'form': form})   

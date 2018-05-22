@@ -128,8 +128,8 @@ def regular_donation(request):
             '''
             try:
                 #슬랙 알림
-                slack = SlackBotDonate(member_name, real_name, birth, phone, mobile, to_member_email, addess, amount_of_donation, donation_message, bank, bank_num, bank_owner, bank_division, withdrawal_date, signature_url)
-                slack.slack_regular_donation_notify()
+                # slack = SlackBotDonate(member_name, real_name, birth, phone, mobile, to_member_email, addess, amount_of_donation, donation_message, bank, bank_num, bank_owner, bank_division, withdrawal_date, signature_url)
+                # slack.slack_regular_donation_notify()
                 
                 #이메일 알림
                 send = EmailSenderDonate(member_name, real_name, birth, phone, mobile, to_member_email, addess, amount_of_donation, donation_message, bank, bank_num, bank_owner, bank_division, withdrawal_date, signature_url)

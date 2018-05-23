@@ -2,6 +2,8 @@
 {% load staticfiles %}
 {% block content %}
 
+
+ 
 <div class="carousel_inb">
     <div id="myCarousel" class="carousel slide" data-ride="carousel">
         <!-- Carousel indicators -->
@@ -66,6 +68,31 @@
 
 <div class="container" style="margin-top: 15px;">
 
+<!--팝업 popup -->     
+{% if popup_switch %}
+<div class="row">
+<!--<div class="col-md-2"></div>-->
+<!--<div class="col-md-8">-->
+    <div class="jumbotron">
+      <h1 class="display-3" style="font-size: 30px;">{{ popup_title }}</h1>
+      <p class="" style="font-size: 16px;">{{ popup_msg | linebreaks  }}</p>
+      <hr class="my-4">
+      <div style="font-size: 10px;">
+      <p class="" style="font-size: 15px;">{{ popup_date }}</p>
+      <p class="" style="font-size: 15px;">{{ popup_loc }}</p>
+      <p class="" style="font-size: 15px;">{{ popup_contact }}</p>
+      <hr class="my-4">
+      </div>
+      <p class="lead">
+        <a class="btn btn-primary btn-lg" href="{{ popup_event_url }}" role="button">행사내용 상세보기</a>
+      </p>
+    </div>
+<!--</div>-->
+<!--<div class="col-md-2"></div> -->
+</div>
+{% endif %}
+<!--팝업 popup -->  
+ 
 <!-- START THE FEATURETTES -->
 
 <!--<hr class="featurette-divider">-->

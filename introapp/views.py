@@ -38,12 +38,37 @@ from django.contrib.auth.decorators import login_required
 from custom_utils.slack import SlackBot, SlackBotDonate
 from custom_utils.email.python_email import EmailSender, EmailSenderDonate
 from custom_utils.basic_info import SERVER_DOMAIN
+from custom_utils.popup.popup_info import ON_OFF, TITLE, MESSAGE, EVENT_PAGE, DATE, LOCATION, CONTACT
 import base64    
 import os
 
 # 홈2 - new
+# def inb_home(request):
+#     return render(request, 'introapp/new_home/inb_home.html')
+    
 def inb_home(request):
-    return render(request, 'introapp/new_home/inb_home.html')
+    popup_switch = ON_OFF
+    popup_title = TITLE
+    popup_msg =  MESSAGE
+    popup_event_url = EVENT_PAGE
+    popup_date =  DATE
+    popup_loc =  LOCATION
+    popup_contact =  CONTACT
+    
+    if ON_OFF:
+        return render(request, 'introapp/new_home/inb_home.html', {
+                    'popup_switch':popup_switch,
+                    'popup_title':popup_title,
+                    'popup_msg':popup_msg,
+                    'popup_event_url':popup_event_url,
+                    'popup_date':DATE,
+                    'popup_loc':LOCATION,
+                    'popup_contact':CONTACT
+                    })
+    else:
+        return render(request, 'introapp/new_home/inb_home.html')
+
+
     
 def inb_intro(request):
     return render(request, 'introapp/new_home/inb_intro.html')   
@@ -167,8 +192,8 @@ def email_contact_us(request):
             '''
             try:
                 #슬랙 알림
-                slack = SlackBot(to_member_email, message, member_name, subject_text)
-                slack.slack_contact_us_notify()
+                # slack = SlackBot(to_member_email, message, member_name, subject_text)
+                # slack.slack_contact_us_notify()
                 
                 #이메일 알림
                 send = EmailSender(to_member_email, message, member_name, subject_text)
@@ -306,8 +331,8 @@ def activate(request, uidb64, token):
         subject = '신규회원'
         to_member_email = user.email
         member_name = user.username
-        slack = SlackBot(to_member_email, message, member_name, subject)
-        slack.slack_new_signup_notify()
+        # slack = SlackBot(to_member_email, message, member_name, subject)
+        # slack.slack_new_signup_notify()
         return render(request, 'introapp/account/activate.html', {'success_msg': success_msg})
         # return HttpResponse('Thank you for your email confirmation. Now you can login your account.')
     else:

@@ -43,6 +43,7 @@ introapp/python_email/email_info.py
 # 유틸 기본정보 #
 ######################
 custom_utils/basic_info.py
+custom_utils/popup/popup_info.py
 # 후원 테스트앱 #
 ######################
 backing/

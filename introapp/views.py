@@ -38,7 +38,7 @@ from django.contrib.auth.decorators import login_required
 from custom_utils.slack import SlackBot, SlackBotDonate
 from custom_utils.email.python_email import EmailSender, EmailSenderDonate
 from custom_utils.basic_info import SERVER_DOMAIN
-from custom_utils.popup.popup_info import ON_OFF, TITLE, MESSAGE, EVENT_PAGE, DATE, LOCATION, CONTACT
+from custom_utils.popup.popup_info import ON_OFF, TITLE, MESSAGE, EVENT_PAGE, DATE, LOCATION, CONTACT, IMG_TITLE, IMG_TEXT, IMG_BUTTON_NAME, IMG_BUTTON_URL
 import base64    
 import os
 
@@ -54,6 +54,10 @@ def inb_home(request):
     popup_date =  DATE
     popup_loc =  LOCATION
     popup_contact =  CONTACT
+    slide_title =  IMG_TITLE
+    slide_text =  IMG_TEXT
+    slide_button_name =  IMG_BUTTON_NAME
+    slide_button_url =  IMG_BUTTON_URL
     
     if ON_OFF:
         return render(request, 'introapp/new_home/inb_home.html', {
@@ -62,8 +66,12 @@ def inb_home(request):
                     'popup_msg':popup_msg,
                     'popup_event_url':popup_event_url,
                     'popup_date':DATE,
-                    'popup_loc':LOCATION,
-                    'popup_contact':CONTACT
+                    'popup_loc':popup_loc,
+                    'popup_contact':popup_contact,
+                    'slide_title':slide_title,
+                    'slide_text':slide_text,
+                    'slide_button_name':slide_button_name,
+                    'slide_button_url':slide_button_url
                     })
     else:
         return render(request, 'introapp/new_home/inb_home.html')

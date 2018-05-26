@@ -20,8 +20,8 @@
                 <div class="carousel-caption">      
                 {% if slide_title %} <h2 style="color:black"> &nbsp;{{ slide_title }}</h2> {% endif %}
                 {% if slide_text %} <p style="color:black; font-size: 21px;">{{ slide_text }} </p>{% endif %}
-                {% if slide_text %}
-                &nbsp;&nbsp;<a style="margin-bottom: 15px; color:black" href="/bookapp/2/" class="btn btn-warning inb_btn_home"> 도서 상세정보 보기</a>
+                {% if slide_button_name %}
+                &nbsp;&nbsp;<a style="margin-bottom: 15px; color:black" href="{{ slide_button_url }}" class="btn btn-warning inb_btn_home"> {{ slide_button_name }}</a>
                 {% endif %}
                 </div>
             </div>

@@ -32,8 +32,9 @@
          <div class="book_list_col content">
              <div>
             <!--컬렉션제목-->
-            {% if book.collection_title %}   
-            <p class="book_list_collection_title">{{ book.collection_title }}</p>
+            {% if book.collection_title %} 
+            <a href="{% url 'book_detail' pk=book.pk %}" style="color: #666666;">
+            <p class="book_list_collection_title">{{ book.collection_title }}</p></a>
             {% endif %}
             <!--책 주제목-->
             {% if book.main_title %}
@@ -43,11 +44,13 @@
             {% endif %}
             <!--책 부제목-->
             {% if book.sub_title %}
-            <span class="book_list_sub_title lead">{{ book.sub_title }}</span>
+            <a href="{% url 'book_detail' pk=book.pk %}" style="color: #666666;">
+            <span class="book_list_sub_title lead">{{ book.sub_title }}</span></a>
             {% endif %}
             <!--책 권수-->
             {% if book.volume %}
-            <span class="book_list_sub_title lead">{{ book.volume }}권</span>
+            <a href="{% url 'book_detail' pk=book.pk %}" style="color: #666666;">
+            <span class="book_list_sub_title lead">{{ book.volume }}권</span></a>
             {% endif %}
             </div>
         </div>
@@ -56,6 +59,7 @@
             <div class="col-md-9">
             <div class="book_list_col content">    
                 {% if book.main_author %}
+                <a href="{% url 'book_detail' pk=book.pk %}" style="color: #666666;">
                 <p>
                 <strong>저자</strong> &nbsp;:&nbsp;
                     {{ book.main_author }}
@@ -70,13 +74,15 @@
                     {{ book.publisher }}
                 {% endif %}
                 </p>
+                </a>
             </div>
             </div>
             
             <div class="col-md-9">
-            <div class="book_list_col content"> 
+            <div class="book_list_col content">
+                {% if book.page_num %} 
+                <a href="{% url 'book_detail' pk=book.pk %}" style="color: #666666;">
                 <p>
-                 {% if book.page_num %}
                 <strong>페이지수</strong>&nbsp;:&nbsp;
                     {{ book.page_num }} 페이지
                 {% endif %}
@@ -85,6 +91,7 @@
                 &nbsp;|&nbsp;<strong>판</strong>&nbsp;:&nbsp;
                     {{ book.edition }} 판
                 </p>
+                </a>
                 {% endif %}
             </div>
             </div>

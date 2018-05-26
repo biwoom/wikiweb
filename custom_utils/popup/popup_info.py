@@ -1,7 +1,7 @@
 # 팝업 정보 
 
 # 팝업 켜고 끄기<< 켜기: True 입력 / 끄기:  False 입력 >>
-ON_OFF = True 
+ON_OFF = False 
 
 # 팝업 제목
 TITLE = '보리도차제론 1권 출판기념회 개최'

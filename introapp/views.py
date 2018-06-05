@@ -74,7 +74,12 @@ def inb_home(request):
                     'slide_button_url':slide_button_url
                     })
     else:
-        return render(request, 'introapp/new_home/inb_home.html')
+        return render(request, 'introapp/new_home/inb_home.html',{
+                    'slide_title':slide_title,
+                    'slide_text':slide_text,
+                    'slide_button_name':slide_button_name,
+                    'slide_button_url':slide_button_url
+        })
 
 
     

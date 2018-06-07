@@ -189,10 +189,10 @@ class Publication_BW(models.Model):
 # 가격 파트 ==============================
     # 1. 정가
     price  = models.IntegerField(blank=True, null=True, default=1, verbose_name='정가', help_text='')
-    # 2. 판매가
-    selling_price  = models.IntegerField(blank=True, null=True, default=1, verbose_name='판매가', help_text='')
-    # 3. 재고수량
-    stock_num  = models.IntegerField(blank=True, null=True, default=1, verbose_name='재고수량', help_text='')
+    # 2. 할인 : 원래 판매가였으나 할인 필드로 교체
+    selling_price  = models.CharField(blank=True, null=True, default=1, max_length=300, verbose_name='할인', help_text='')
+    # 3. 배송료 : 원래 재고수량이었으나 배송료 필드로 교체
+    stock_num  = models.CharField(blank=True, null=True, default=1, max_length=300, verbose_name='배송료', help_text='')
     # 4. 판매상태 - 판매중 / 준비중 / 절판    
     SALE_CHECK_LIST = (
     ('판매중', '판매중'),
